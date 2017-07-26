@@ -14,19 +14,28 @@
   "dependencies": {
     "axios": "^0.15.3",
     "cross-env": "^5.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
     "koa": "^2.0.0",
+    "lru-cache": "^4.0.2",
     "nuxt": "~1.0.0-alpha1",
+    "postcss-hexrgba": "^0.2.1",
+    "postcss-nested": "^2.1.0",
+    "postcss-responsive-type": "^1.0.0",
     "source-map-support": "^0.4.15"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
+    "babel-preset-stage-2": "^6.24.1",
     "backpack-core": "^0.3.0",
     "eslint": "^3.13.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-html": "^2.0.3",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^3.0.1",
+    "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
+    "sass-loader": "^4.1.1",
     "scmp": "^2.0.0"
   }
 }

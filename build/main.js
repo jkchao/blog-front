@@ -65,37 +65,42 @@ module.exports =
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-module.exports = {
-  /*
-  ** Headers of the page
-  */
-  head: {
-    title: 'starter',
-    meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { hid: 'description', name: 'description', content: 'Nuxt.js project' }],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
-  },
-  /*
-  ** Global CSS
-  */
-  css: ['~assets/css/main.css'],
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#3B8070' }
-};
+var _module$exports;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+module.exports = (_module$exports = {
+  cache: true
+}, _defineProperty(_module$exports, 'cache', {
+  max: 1000,
+  maxAge: 900000
+}), _defineProperty(_module$exports, 'build', {
+  // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
+  vendor: ['axios'],
+  // postcss
+  postcss: [__webpack_require__(6)(), __webpack_require__(7)(), __webpack_require__(5)()],
+  // babel
+  babel: {
+    presets: ['es2015', 'stage-2']
+  }
+}), _defineProperty(_module$exports, 'head', {
+  title: 'starter',
+  meta: [{ charset: 'utf-8' }, { 'http-equiv': 'cleartype', content: 'on' }, { 'http-equiv': 'Cache-Control' }, { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' }, { hid: 'description', name: 'description', content: 'blog' }, { hid: 'keywords', name: 'keywords', content: '三毛，前端开发，JavaScript, Node' }, { name: 'author', content: 'jkchaom@gmail.com' }],
+  link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+}), _defineProperty(_module$exports, 'css', ['~assets/css/main.css']), _defineProperty(_module$exports, 'loading', { color: '#3B8070' }), _module$exports);
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(4);
+module.exports = __webpack_require__(8);
 
 
 /***/ },
@@ -111,13 +116,32 @@ module.exports = require("koa");
 module.exports = require("nuxt");
 
 /***/ },
-/* 4 */
+/* 4 */,
+/* 5 */
+/***/ function(module, exports) {
+
+module.exports = require("postcss-hexrgba");
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+module.exports = require("postcss-nested");
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+module.exports = require("postcss-responsive-type");
+
+/***/ },
+/* 8 */
 /***/ function(module, exports) {
 
 module.exports = require("regenerator-runtime");
 
 /***/ },
-/* 5 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
