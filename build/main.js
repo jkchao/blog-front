@@ -65,42 +65,53 @@ module.exports =
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-var _module$exports;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-module.exports = (_module$exports = {
-  cache: true
-}, _defineProperty(_module$exports, 'cache', {
-  max: 1000,
-  maxAge: 900000
-}), _defineProperty(_module$exports, 'build', {
-  // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
-  vendor: ['axios'],
-  // postcss
-  postcss: [__webpack_require__(6)(), __webpack_require__(7)(), __webpack_require__(5)()],
-  // babel
-  babel: {
-    presets: ['es2015', 'stage-2']
-  }
-}), _defineProperty(_module$exports, 'head', {
-  title: 'starter',
-  meta: [{ charset: 'utf-8' }, { 'http-equiv': 'cleartype', content: 'on' }, { 'http-equiv': 'Cache-Control' }, { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' }, { hid: 'description', name: 'description', content: 'blog' }, { hid: 'keywords', name: 'keywords', content: '三毛，前端开发，JavaScript, Node' }, { name: 'author', content: 'jkchaom@gmail.com' }],
-  link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
-}), _defineProperty(_module$exports, 'css', ['~assets/css/main.css']), _defineProperty(_module$exports, 'loading', { color: '#3B8070' }), _module$exports);
+module.exports = {
+  // cache: true,
+  cache: {
+    max: 1000,
+    maxAge: 900000
+  },
+  build: {
+    // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
+    vendor: ['axios'],
+    // postcss
+    postcss: [__webpack_require__(5)(), __webpack_require__(6)(), __webpack_require__(4)()],
+    // babel
+    babel: {
+      presets: ['es2015', 'stage-2']
+    }
+  },
+  dev: "development" !== 'production',
+  /*
+  ** Headers of the page
+  */
+  head: {
+    title: 'starter',
+    meta: [{ charset: 'utf-8' }, { 'http-equiv': 'cleartype', content: 'on' }, { 'http-equiv': 'Cache-Control' }, { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' }, { hid: 'description', name: 'description', content: 'blog' }, { hid: 'keywords', name: 'keywords', content: '三毛，前端开发，JavaScript, Node' }, { name: 'author', content: 'jkchaom@gmail.com' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+  },
+  /*
+  ** Global CSS
+  */
+  css: ['~assets/css/main.css'],
+  /*
+  ** Customize the progress-bar color
+  */
+  loading: { color: '#3B8070' }
+};
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(8);
+module.exports = __webpack_require__(7);
 
 
 /***/ },
@@ -116,32 +127,31 @@ module.exports = require("koa");
 module.exports = require("nuxt");
 
 /***/ },
-/* 4 */,
-/* 5 */
+/* 4 */
 /***/ function(module, exports) {
 
 module.exports = require("postcss-hexrgba");
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports) {
 
 module.exports = require("postcss-nested");
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports) {
 
 module.exports = require("postcss-responsive-type");
 
 /***/ },
-/* 8 */
+/* 7 */
 /***/ function(module, exports) {
 
 module.exports = require("regenerator-runtime");
 
 /***/ },
-/* 9 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";

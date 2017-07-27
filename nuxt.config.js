@@ -11,7 +11,7 @@ module.exports = {
     postcss: [
       require('postcss-nested')(),
       require('postcss-responsive-type')(),
-      require('postcss-hexrgba')(),
+      require('postcss-hexrgba')()
     ],
     // babel
     babel: {
@@ -31,16 +31,25 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' },
       { hid: 'description', name: 'description', content: 'blog' },
       { hid: 'keywords', name: 'keywords', content: '三毛，前端开发，JavaScript, Node' },
-      { name: 'author', content: 'jkchaom@gmail.com' },
+      { name: 'author', content: 'jkchaom@gmail.com' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [],
+    noscript: [
+      { innerHTML: 'This website requires JavaScript.' }
     ]
   },
   /*
   ** Global CSS
   */
-  css: ['~assets/css/main.css'],
+  css: [
+    '~assets/css/main.css',
+    '~assets/css/reset.css',
+    { src: '~assets/scss/common.scss', lang: 'scss' },
+    { src: '~assets/scss/mixin.scss', lang: 'scss' }
+  ],
   /*
   ** Customize the progress-bar color
   */
