@@ -41,6 +41,13 @@ module.exports = {
       { innerHTML: 'This website requires JavaScript.' }
     ]
   },
+  // router
+  router: {
+    linkActiveClass: 'link-active',
+    scrollBehavior: function (to, from, savedPosition) {
+      return { x: 0, y: 0 }
+    }
+  },
   /*
   ** Global CSS
   */
