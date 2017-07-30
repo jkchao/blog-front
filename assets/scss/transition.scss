@@ -1,0 +1,49 @@
+// 整体区域
+.fadeIn-enter-active, .fadeIn-leave-active { transition: all .3s; }
+.fadeIn-enter, .fadeIn-leave-active { opacity: 0; }
+.fadeIn-enter { transform: translateX(31px); }
+.fadeIn-leave-active { transform: translateX(-31px); }
+
+// dowm
+.slide-down-enter-active { transition: all .5s ease;}
+.slide-down-leave-active { transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);}
+.slide-down-enter, .slide-down-leave-active { transform: translateY(20px); opacity: 0;}
+.slide-down-move { transition: all .5s;}
+.slide-down-active { position: absolute !important; }
+
+
+
+// up
+.slide-up-enter-active { transition: all .5s ease;}
+.slide-up-leave-active { transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);}
+.slide-up-enter, .slide-up-leave-active { transform: translateY(-20px); opacity: 0;}
+.slide-up-active { position: absolute !important; }
+.slide-up-move { transition: all .5s;}
+
+// left
+.slide-left-enter-active { transition: all .5s ease;}
+.slide-left-leave-active { transition: all .5s cubic-bezier(.55,0,.1,1);}
+.slide-left-enter,{ transform: translateX(20px); opacity: 0;}
+.slide-left-leave-active { transform: translateX(-20px); opacity: 0;}
+.slide-left-move { transition: all .5s;}
+
+
+// right
+.slide-right-enter-active { transition: all .5s ease;}
+.slide-right-leave-active { transition: all .5s cubic-bezier(.55,0,.1,1);}
+.slide-right-enter { transform: translateX(-20px); opacity: 0;}
+.slide-right-leave-active { transform: translateX(20px); opacity: 0;}
+.slide-right-move { transition: all .5s;}
+
+
+// 列表过度
+.list-enter-active, .list-leave-active { transition: all .5s; }
+.list-enter, .list-leave-active { opacity: 0; transform: translateX(30px); }
+.list-leave-active { position: absolute !important; }
+.list-move { transition: all .5s; }
+
+
+// 卡片部分
+.fade-enter-active, .fade-leave-active { transition: opacity .3s; }
+.fade-enter, .fade-leave-active { opacity: 0; }
+.fade-move { transition: transform .4s; }

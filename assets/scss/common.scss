@@ -1,6 +1,58 @@
+
+body {
+  padding: 5rem 0 0 0;
+  margin: 0;
+  background-color: #fff;
+  color: #2e2f30;
+  letter-spacing: 0.5px;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+*, *:hover {
+  @include transition(background-color .25s linear,
+                      color .05s linear,
+                      margin .25s linear,
+                      opacity .25s linear,
+                      filter .25s linear,
+                      visibility .25s linear,
+                      transform .25s linear);
+}
+
+* {
+  box-sizing: border-box;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.container {
+  width: $container-width;
+  margin: 0 auto;
+}
+
+.header {
+  height: $header-height;
+}
+
+// 清除浮动
+.clearfix {
+  &:after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+
+
 ::-webkit-scrollbar {
-  width: .5rem;
-  height: .5rem;
+  width: .8rem;
+  height: .8rem;
   background: hsla(0, 0%, 100%, 0.6);
 }
 

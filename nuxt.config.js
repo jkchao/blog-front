@@ -15,7 +15,11 @@ module.exports = {
     ],
     // babel
     babel: {
-      presets: ['es2015', 'stage-2']
+      presets: ['es2015', 'stage-2'],
+      plugins: [
+        'transform-async-to-generator',
+        'transform-runtime'
+      ]
     }
   },
   dev: (process.env.NODE_ENV !== 'production'),
@@ -30,7 +34,7 @@ module.exports = {
       { 'http-equiv': 'Cache-Control' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' },
       { hid: 'description', name: 'description', content: 'blog' },
-      { hid: 'keywords', name: 'keywords', content: '三毛，前端开发，JavaScript, Node' },
+      { hid: 'keywords', name: 'keywords', content: '三毛，前端开发，JavaScript, Node, Vue' },
       { name: 'author', content: 'jkchaom@gmail.com' }
     ],
     link: [
@@ -43,19 +47,17 @@ module.exports = {
   },
   // router
   router: {
-    linkActiveClass: 'link-active',
-    scrollBehavior: function (to, from, savedPosition) {
-      return { x: 0, y: 0 }
-    }
+    linkActiveClass: 'link-active'
+    // scrollBehavior (to, from, savedPosition) {
+    //   return { x: 0, y: 0 }
+    // }
   },
   /*
   ** Global CSS
   */
   css: [
-    '~assets/css/main.css',
     '~assets/css/reset.css',
-    { src: '~assets/scss/common.scss', lang: 'scss' },
-    { src: '~assets/scss/mixin.scss', lang: 'scss' }
+    { src: '~assets/scss/index.scss', lang: 'scss' }
   ],
   /*
   ** Customize the progress-bar color
