@@ -80,7 +80,7 @@ module.exports = {
   },
   build: {
     // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
-    vendor: ['axios'],
+    vendor: ['axios', 'particles.js'],
     // postcss
     postcss: [__webpack_require__(5)(), __webpack_require__(6)(), __webpack_require__(4)()],
     // babel
@@ -95,7 +95,7 @@ module.exports = {
   */
   head: {
     title: 'starter',
-    meta: [{ charset: 'utf-8' }, { 'http-equiv': 'cleartype', content: 'on' }, { 'http-equiv': 'Cache-Control' }, { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' }, { hid: 'description', name: 'description', content: 'blog' }, { hid: 'keywords', name: 'keywords', content: '三毛，前端开发，JavaScript, Node, Vue' }, { name: 'author', content: 'jkchaom@gmail.com' }],
+    meta: [{ charset: 'utf-8' }, { 'http-equiv': 'cleartype', content: 'on' }, { 'http-equiv': 'Cache-Control' }, { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' }, { hid: 'description', name: 'description', content: '民谣，读书，ma nong' }, { hid: 'keywords', name: 'keywords', content: '三毛，前端开发，JavaScript, Node, Vue' }, { name: 'author', content: 'jkchaom@gmail.com' }],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [],
     noscript: [{ innerHTML: 'This website requires JavaScript.' }]
@@ -114,7 +114,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#3B8070' }
+  loading: { color: '#20A0FF' }
 };
 
 /***/ },

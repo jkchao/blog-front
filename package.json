@@ -19,6 +19,7 @@
     "koa": "^2.0.0",
     "lru-cache": "^4.0.2",
     "nuxt": "~1.0.0-alpha1",
+    "particles.js": "^2.0.0",
     "postcss-hexrgba": "^0.2.1",
     "postcss-nested": "^2.1.0",
     "postcss-responsive-type": "^1.0.0",

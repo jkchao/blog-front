@@ -1,12 +1,15 @@
 <template>
   <section class="container">
-    <h1>hello world!</h1>
+    Hello world!
   </section>
 </template>
 
-<style scoped>
-.title
-{
-  margin: 50px 0;
+<script>
+export default {
+  transition: 'fade'
 }
+</script>
+
+
+<style scoped>
 </style>

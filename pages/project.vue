@@ -1,12 +1,12 @@
 <template>
-  <div id='about'>
-    about
+  <div id='project'>
+    project
   </div>
 </template>
 
 <script>
 export default {
-  name: 'about',
+  name: 'project',
   transition: 'fade'
 }
 </script>
