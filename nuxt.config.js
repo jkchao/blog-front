@@ -55,11 +55,16 @@ module.exports = {
     //   return { x: 0, y: 0 }
     // }
   },
+  // plugins
+  plugins: [
+    { src: '~plugins/swiper.js', ssr: false }
+  ],
   /*
   ** Global CSS
   */
   css: [
-    '~assets/css/reset.css',
+    'swiper/dist/css/swiper.css',
+    // '~assets/css/reset.css',
     { src: '~assets/scss/index.scss', lang: 'scss' }
   ],
   /*

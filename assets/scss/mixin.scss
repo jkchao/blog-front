@@ -332,6 +332,8 @@
 }
 
 
+
+
 // Transform-Style
 /// @param {List} $params - Params
 /// @require {mixin} css3-prefix
@@ -355,6 +357,14 @@
   }
 }
 
+
+/// transition-delay
+/// @param {List} $params - Params
+/// @require {mixin} css3-prefix
+
+@mixin transition-delay($params) {
+  @include css3-prefix('transition-delay', $params);
+}
 
 /// Triple Borders
 /// @param {Color} $colorOne [#3C3C3C] - Color One
@@ -402,4 +412,11 @@
 
 @mixin animation($str) {
   @include css3-prefix('animation', $str);
+}
+
+
+@mixin def {
+  content: '';
+  position: absolute;
+  display: block;
 }

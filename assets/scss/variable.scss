@@ -7,14 +7,28 @@ $header-height: 4rem;
 $white: #fff;
 $black: #000;
 $blue: #20A0FF;
+$green: #5ab95c;
 $border-color: #eaeefb;
-$text: #555;
+$gyey: #efefef;
+$black-light: #555;
 
 // radius
 $radius: 4px;
 
 // padding
+$br: 4px;
 $xs-pad: 4px;
+$sm-pad: 8px;
+$md-pad: 1.2em;
+$lg-pad: 1.5em;
+$xlg-pad: 3em;
+
+
+//text
+$text: $black-light;
+$secondary: rgba(0, 0, 0, .54);
+$disabled: rgba(0, 0, 0, .38);
+$dividers: rgba(0, 0, 0, .26);
 
 
 // font-sisze

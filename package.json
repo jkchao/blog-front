@@ -23,7 +23,8 @@
     "postcss-hexrgba": "^0.2.1",
     "postcss-nested": "^2.1.0",
     "postcss-responsive-type": "^1.0.0",
-    "source-map-support": "^0.4.15"
+    "source-map-support": "^0.4.15",
+    "vue-awesome-swiper": "^2.5.4"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
