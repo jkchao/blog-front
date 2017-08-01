@@ -34,8 +34,7 @@ body {
 // 清除浮动
 .clearfix {
   &:after {
-    content: '';
-    display: block;
+    @include def;
     height: 0;
     clear: both;
     visibility: hidden;
