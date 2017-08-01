@@ -64,7 +64,6 @@ module.exports = {
   */
   css: [
     'swiper/dist/css/swiper.css',
-    // '~assets/css/reset.css',
     { src: '~assets/scss/index.scss', lang: 'scss' }
   ],
   /*

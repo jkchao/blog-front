@@ -24,11 +24,6 @@ body {
                       transform .25s linear);
 }
 
-* {
-  box-sizing: border-box;
-  font-size: inherit;
-  line-height: inherit;
-}
 
 .container {
   width: $container-width;

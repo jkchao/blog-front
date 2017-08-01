@@ -112,9 +112,7 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['swiper/dist/css/swiper.css',
-  // '~assets/css/reset.css',
-  { src: '~assets/scss/index.scss', lang: 'scss' }],
+  css: ['swiper/dist/css/swiper.css', { src: '~assets/scss/index.scss', lang: 'scss' }],
   /*
   ** Customize the progress-bar color
   */
