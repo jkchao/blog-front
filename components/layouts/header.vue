@@ -18,12 +18,12 @@
           </nuxt-link>
         </nav>
       </div>
-      <div class="search-box">
+      <!-- <div class="search-box">
         <div class="search" :class="{'open': open}" @click="open = true">
           <input type="text" v-model="keyword">
-          <div class="eks"></div>
+          <div class="eks" @click.stop="open = false"></div>
         </div>
-      </div>
+      </div> -->
     </div>
   </header>
 </template>

@@ -143,7 +143,7 @@
       width: 100%;
       height: 100%;
       opacity: .4;
-      background: url(~static/images/background.png) no-repeat -20% 20%;
+      background: url(~static/images/background.png) repeat -10%;
     }
     .background-canvas {
       position: absolute;
