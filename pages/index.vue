@@ -1,7 +1,8 @@
 <template>
   <section id="index" class="clearfix">
     <div class="content-left">
-      <carrousel></carrousel>
+      <!-- <carrousel></carrousel> -->
+      左边区域
     </div>
     <div class="content-right">
       右边内容区域
@@ -10,11 +11,11 @@
 </template>
 
 <script>
-const carrousel = () => import('~components/common/carrousel.vue')
+// const carrousel = () => import('~components/common/carrousel.vue')
 export default {
   transition: 'fade',
   components: {
-    carrousel
+    // carrousel
   }
 }
 </script>
