@@ -18,11 +18,11 @@ $radius: 4px;
 
 // padding
 $br: 4px;
-$xs-pad: 4px;
-$sm-pad: 8px;
-$md-pad: 1.2em;
-$lg-pad: 1.5em;
-$xlg-pad: 3em;
+$xs-pad: .3rem;
+$sm-pad: .5rem;
+$md-pad: 1.2rem;
+$lg-pad: 1.5rem;
+$xlg-pad: 3rem;
 
 
 //text
@@ -30,6 +30,7 @@ $text: $black-light;
 $secondary: rgba(0, 0, 0, .54);
 $disabled: rgba(0, 0, 0, .38);
 $dividers: rgba(0, 0, 0, .26);
+$lastbg: rgba(0, 0, 0, .14);
 
 
 // font-sisze

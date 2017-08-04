@@ -117,6 +117,12 @@ input[type="checkbox"]:focus:invalid:focus {
   // outline-color: $red;
 }
 
+input:-webkit-autofill, 
+textarea:-webkit-autofill, 
+select:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px rgb(230, 230, 230) inset; 
+}
+
 select {
   -webkit-appearance: menulist-button;
   vertical-align: sub;
