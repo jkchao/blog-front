@@ -16,7 +16,7 @@
         particlesJS ('particles-background', {
           "particles": {
             "number": {
-              "value": 20,
+              "value": 16,
               "density": {
                 "enable": true,
                 "value_area": 1000
@@ -41,14 +41,14 @@
               }
             },
             "opacity": {
-              "value": 0.5,
-              "random": false,
-              "anim": {
-                "enable": true,
-                "speed": 0.8,
-                "opacity_min": 0.1,
-                "sync": false
-              }
+              "value": 0.3
+              // "random": false,
+              // "anim": {
+              //   "enable": true,
+              //   "speed": 0.8,
+              //   "opacity_min": 0.1,
+              //   "sync": false
+              // }
             },
             "size": {
               "value": 15,

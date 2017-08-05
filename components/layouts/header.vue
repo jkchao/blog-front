@@ -33,6 +33,7 @@
 </template>
 
 <script>
+
 import carrousel from '~components/common/carrousel.vue'
 import saying from '~assets/saying/index.js'
 export default {
@@ -42,12 +43,12 @@ export default {
       keyword: '',
       open: false,
       nav: [
-        { path: '/', name: 'HOME', icon: '' },
-        { path: '/article', name: 'ARTICLE', icon: '' },
-        { path: '/think', name: 'THINK', icon: '' },
-        { path: '/music', name: 'MUSIC', icon: '' },
-        { path: '/project', name: 'PROJECT', icon: '' },
-        { path: '/about', name: 'ABOUT', icon: '' }
+        { path: '/', name: 'HOME'},
+        { path: '/article', name: 'ARTICLE'},
+        { path: '/think', name: 'THINK'},
+        { path: '/music', name: 'MUSIC'},
+        { path: '/project', name: 'PROJECT'},
+        { path: '/about', name: 'ABOUT'}
       ],
       saying,
       swiperOption: {
@@ -68,6 +69,7 @@ export default {
   components: { carrousel }
 }
 </script>
+
 <style lang="scss">
 
 @import '~assets/scss/variable.scss';
@@ -93,7 +95,7 @@ export default {
 
     .logo{
       a {
-        color: $blue;
+        color: $black;
         font-size: 2rem;
       }
     }
@@ -104,15 +106,15 @@ export default {
     a {
       margin-right: 2rem;
       padding: .5rem;
-      color: #555;
+      color: $disabled;
 
       &:hover {
-        color: $blue;
+        color: $black;
       }
     }
 
     a.link-active {
-      color: $blue;
+      color: $black;
     }
   }
 
@@ -121,6 +123,7 @@ export default {
     font-size: $font-size-small;
     line-height: 1rem;
     overflow: hidden;
+
     .swiper {
       height: 100%;
       color: $dividers;
@@ -138,7 +141,7 @@ export default {
       }
 
       &:hover {
-        color: $secondary;
+        color: $black;
       }
     }
   }

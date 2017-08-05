@@ -108,7 +108,7 @@ module.exports = {
     // }
   },
   // plugins
-  plugins: [{ src: '~plugins/swiper.js', ssr: false }],
+  plugins: [{ src: '~plugins/swiper.js', ssr: false }, { src: '~plugins/clickOutside.js', ssr: false }],
   /*
   ** Global CSS
   */
@@ -116,7 +116,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#20A0FF' }
+  loading: { color: '#24292e' }
 };
 
 /***/ },
