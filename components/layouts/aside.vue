@@ -1,6 +1,6 @@
 <template>
   <div id='aside'>
-    <div class="search-box" @click="open = true" v-click-outside="hide">
+    <div class="aside-item search-box" @click="open = true" v-click-outside="hide">
       <div class="search" :class="{'open': open}">
         <input
           type="text"
@@ -22,11 +22,24 @@
         </p>
       </transition-group>
     </div>
-    <div class="aside-item calendar"></div>
+    <div class="aside-item calendar">
+      <calendar></calendar>
+    </div>
+    <div class="aside-item aside-tag">
+      <ul class="tag clearfix">
+        <li class="tag-item" v-for="item in tag" :key="item.id">
+          <nuxt-link to="">
+            {{ item.name }}
+            <span>( {{ item.num }} )</span>
+          </nuxt-link>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
+const calendar = () => import('~components/common/calendar.vue')
 export default {
   name: 'aside',
   data () {
@@ -34,18 +47,35 @@ export default {
       open : false,
       keyword: '',
       articleList: [
-        { name: '第一篇文章',  link: '', id: 1 },
-        { name: '第一篇文章',  link: '', id: 2 },
-        { name: '第一篇文章',  link: '', id: 3 },
-        { name: '第一篇文章',  link: '', id: 4 },
-        { name: '第一篇文章',  link: '', id: 5 },
-        { name: '第一篇文章',  link: '', id: 6 },
-        { name: '第一篇文章',  link: '', id: 6 },
-        { name: '第一篇文章',  link: '', id: 6 },
-        { name: '第一篇文章',  link: '', id: 6 }
+        { name: '文章标题',  link: '', id: 1 },
+        { name: '文章标题',  link: '', id: 2 },
+        { name: '文章标题',  link: '', id: 3 },
+        { name: '文章标题',  link: '', id: 4 },
+        { name: '文章标题',  link: '', id: 5 },
+        { name: '文章标题',  link: '', id: 6 },
+        { name: '文章标题',  link: '', id: 6 },
+        { name: '文章标题',  link: '', id: 6 },
+        { name: '文章标题',  link: '', id: 6 }
+      ],
+      tag: [
+        { name: 'Javascript', num: '10', id: 1 },
+        { name: 'Nodejs', num: '10', id: 2 },
+        { name: 'Think', num: '10', id: 3 },
+        { name: 'Http', num: '3', id: 4 },
+        { name: '世界', num: '4', id: 6 },
+        { name: '算法', num: '2', id: 7 },
+        { name: 'Css', num: '3', id: 8 },
+        { name: '工作', num: '3', id: 9 },
+        { name: 'Vue', num: '0', id: 10 },
+        { name: 'React', num: '10', id: 10 },
+        { name: 'Github', num: '10', id: 10 },
+        { name: 'HTML5', num: '10', id: 5 }
       ]
     }
   },
+
+  components: { calendar },
+
   watch: {
     open (val) {
       if (val) {
@@ -89,13 +119,13 @@ export default {
       cursor: pointer;
 
       &::after {
-        @include def;
         top: 90%;
         left: 100%;
         width: 7px;
         height: 3px;
         background-color: $dividers;
         border-radius: 1px;
+        @include def;        
         @include transition(width .15s ease .55s);
         @include transform(rotate(45deg));
         @include transform-origin(top left);
@@ -164,7 +194,7 @@ export default {
     input {
       position: absolute;
       padding: .5rem 2.5rem .5rem .5rem;      
-      background: $lastbg;
+      background: $light-dark;
       opacity: 1;
       @include transition-delay(.05s);
     }
@@ -191,9 +221,13 @@ export default {
     }
   }
 
-  .hot-article {
-    margin-top: 1rem;
+  .aside-item {
     background: $module-bg;
+    margin-bottom: 1rem;
+  }
+
+  .aside-item.hot-article {
+
 
     .title {
       padding: 0 $sm-pad;
@@ -207,6 +241,7 @@ export default {
       padding: $sm-pad 0;
 
       .list {
+
         a {
           display: block;
           padding: $sm-pad 1rem;
@@ -214,11 +249,36 @@ export default {
 
           &:hover {
             color: $black;
-            background: $lastbg;
+            background: $module-hover-bg;
           }
 
           .list-num {
             margin-right: 1rem;
+            
+          }
+        }
+      }
+    }
+  }
+
+  .aside-tag {
+
+    .tag {
+      padding: .85rem;
+
+      .tag-item {
+        float: left;
+        margin: .3rem;
+
+        a {
+          display: block;
+          padding: .4rem .5rem;
+          color: $secondary;
+          background: $light-dark;
+
+          &:hover {
+            color: $black;
+            background: $dividers;
           }
         }
       }

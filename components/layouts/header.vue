@@ -78,6 +78,7 @@ export default {
 #header {
   position: fixed;
   top: 0;
+  z-index: 999;
   width: 100%;
   height: $header-height;
   background: $module-bg;
@@ -100,8 +101,8 @@ export default {
       }
     }
   }
+
   nav {
-    margin-left: 2rem;
 
     a {
       margin-right: 2rem;

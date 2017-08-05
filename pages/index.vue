@@ -9,7 +9,7 @@ import banner1 from '~static/images/banner1.png'
 import banner2 from '~static/images/banner2.png'
 import banner3 from '~static/images/banner3.png'
 import banner4 from '~static/images/banner4.png'
-import banner5 from '~static/images/banner5.jpg'
+import banner5 from '~static/images/banner5.png'
 
 const carrousel = () => import('~components/common/carrousel.vue')
 

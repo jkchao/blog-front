@@ -23,7 +23,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import '~assets/scss/variable.scss';
   @import '~assets/scss/mixin.scss';
 
@@ -31,5 +31,12 @@ export default {
     height: 100%;
     position: relative;
     overflow: hidden;
+    .swiper-pagination-bullet {
+      opacity: .5;
+    }
+    .swiper-pagination-bullet-active {
+      background-color: lighten($black, .4);
+      opacity: 1;
+    }
   }
 </style>

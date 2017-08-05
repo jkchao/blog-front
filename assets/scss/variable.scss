@@ -3,13 +3,14 @@ $container-width: 70rem;
 $body-bg: #eee;
 $header-height: 4rem;
 $module-bg: rgba(255,255,255,0.6);
+$module-hover-bg: rgba(0, 0, 0, .12);
 
 // color
 $white: #fff;
 $black: #24292e;
 $blue: #20A0FF;
 $green: #5ab95c;
-$border-color: #eaeefb;
+$border-color: #d1d5da;
 $gyey: #efefef;
 $black-light: #555;
 
@@ -30,7 +31,7 @@ $text: $black-light;
 $secondary: rgba(0, 0, 0, .54);
 $disabled: rgba(0, 0, 0, .38);
 $dividers: rgba(0, 0, 0, .26);
-$lastbg: rgba(0, 0, 0, .12);
+$light-dark: $module-hover-bg;
 
 
 // font-sisze
