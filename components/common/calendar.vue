@@ -125,7 +125,7 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/scss/variable.scss'; // @import '~assets/scss/mixin.scss';
 .calendar-box {
-  padding: 1rem;
+  padding: $normal-pad;
 
   .months {
     margin-bottom: .5rem;

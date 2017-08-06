@@ -2,8 +2,10 @@
 $container-width: 70rem;
 $body-bg: #eee;
 $header-height: 4rem;
+
 $module-bg: rgba(255,255,255,0.6);
 $module-hover-bg: rgba(0, 0, 0, .12);
+$header-fix-bg: rgba(255, 255, 255, .8);
 
 // color
 $white: #fff;
@@ -21,6 +23,7 @@ $radius: 4px;
 $br: 4px;
 $xs-pad: .3rem;
 $sm-pad: .5rem;
+$normal-pad: 1rem;
 $md-pad: 1.2rem;
 $lg-pad: 1.5rem;
 $xlg-pad: 3rem;

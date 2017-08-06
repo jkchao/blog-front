@@ -1,6 +1,7 @@
 <template>
-  <section id="index" class="clearfix">
+  <section  class="clearfix">
     <carrousel :option="swiperOption" type="banner" :con="banners"></carrousel>
+    <div class="article"></div>
   </section>
 </template>
 <script>
@@ -49,9 +50,7 @@ export default {
 @import '../assets/scss/variable.scss';
 @import '../assets/scss/mixin.scss';
 
-#index {
-  .carrousel {
-    height: 20rem;
-  }
+.carrousel {
+  height: 20rem;
 }
 </style>

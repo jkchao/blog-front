@@ -1,16 +1,15 @@
 <template>
-  <div class='read'>
-    read
+  <div class='heroes'>
+    heroes
   </div>
 </template>
 
 <script>
 export default {
-  name: 'name',
-  transition: 'fade'
+  name: 'heroes',
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>

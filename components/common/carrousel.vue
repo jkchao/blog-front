@@ -24,6 +24,7 @@ export default {
 </script>
 
 <style lang="scss">
+
   @import '~assets/scss/variable.scss';
   @import '~assets/scss/mixin.scss';
 
@@ -35,7 +36,7 @@ export default {
       opacity: .5;
     }
     .swiper-pagination-bullet-active {
-      background-color: lighten($black, .4);
+      background-color: lighten($black, 20%);
       opacity: 1;
     }
   }

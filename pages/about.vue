@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'about',
-  transition: 'fade'
+  // transition: 'fade'
 }
 </script>
 

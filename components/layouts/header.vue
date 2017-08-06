@@ -19,14 +19,6 @@
         </nav>
       <div class="saying">
         <carrousel :option="swiperOption" type="text" :con="saying"></carrousel>
-        <!-- <div v-swiper:mySwiper="swiperOption" class="swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide item" v-for="list in says" :key="list">
-              <p class="saying-content">{{ list.content }}</p>
-              <p class="saying-author">{{ list.author }}</p>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div> 
   </header>
@@ -36,6 +28,7 @@
 
 import carrousel from '~components/common/carrousel.vue'
 import saying from '~assets/saying/index.js'
+
 export default {
   name: 'header',
   data () {
@@ -44,11 +37,11 @@ export default {
       open: false,
       nav: [
         { path: '/', name: 'HOME'},
-        { path: '/article', name: 'ARTICLE'},
         { path: '/think', name: 'THINK'},
         { path: '/music', name: 'MUSIC'},
         { path: '/project', name: 'PROJECT'},
-        { path: '/about', name: 'ABOUT'}
+        { path: '/about', name: 'ABOUT'},
+        { path: '/heroes', name: 'HEROES'}
       ],
       saying,
       swiperOption: {
@@ -122,7 +115,7 @@ export default {
   .saying {
     width: 20rem;
     font-size: $font-size-small;
-    line-height: 1rem;
+    line-height: $normal-pad;
     overflow: hidden;
 
     .swiper {

@@ -1,45 +1,49 @@
 <template>
-  <div id='aside'>
-    <div class="aside-item search-box" @click="open = true" v-click-outside="hide">
-      <div class="search" :class="{'open': open}">
-        <input
-          type="text"
-          v-model="keyword"
-          placeholder="search..."
-          ref="search"
-          @keyup.enter="search">
-        <div class="eks" @click.stop="search"></div>
+    <transition-group tag="div" class="aside" name="slide-left">
+      <div
+        class="aside-item search-box"
+        @click="open = true"
+        v-click-outside="hide"
+        key="1">
+        <div class="search" :class="{'open': open}">
+          <input
+            type="text"
+            v-model="keyword"
+            placeholder="search..."
+            ref="search"
+            @keyup.enter="search">
+          <div class="eks" @click.stop="search"></div>
+        </div>
       </div>
-    </div>
-    <div class="aside-item hot-article">
-      <h3 class="title">热门文章</h3>
-      <transition-group tag="div" class="hot-article-list" name="list">
-        <p v-for="(list, index) in articleList" :key="list.id" class="list">
-          <nuxt-link to="">
-            <span class="list-num">{{ index + 1}}</span>
-            <span class="list-name">{{ list.name }}</span>
-          </nuxt-link>
-        </p>
-      </transition-group>
-    </div>
-    <div class="aside-item calendar">
-      <calendar></calendar>
-    </div>
-    <div class="aside-item aside-tag">
-      <ul class="tag clearfix">
-        <li class="tag-item" v-for="item in tag" :key="item.id">
-          <nuxt-link to="">
-            {{ item.name }}
-            <span>( {{ item.num }} )</span>
-          </nuxt-link>
-        </li>
-      </ul>
-    </div>
-  </div>
+      <div class="aside-item hot-article" key="2">
+        <h3 class="title">热门文章</h3>
+        <transition-group tag="div" class="hot-article-list" name="list">
+          <p v-for="(list, index) in articleList" :key="list.id" class="list">
+            <nuxt-link to="">
+              <span class="list-num">{{ index + 1}}</span>
+              <span class="list-name">{{ list.name }}</span>
+            </nuxt-link>
+          </p>
+        </transition-group>
+      </div>
+      <div class="aside-item calendar" key="3">
+        <calendar></calendar>
+      </div>
+      <div class="aside-item aside-tag" key="4">
+        <ul class="tag clearfix">
+          <li class="tag-item" v-for="item in tag" :key="item.id">
+            <nuxt-link to="">
+              {{ item.name }}
+              <span>( {{ item.num }} )</span>
+            </nuxt-link>
+          </li>
+        </ul>
+      </div>
+    </transition-group>
 </template>
 
 <script>
-const calendar = () => import('~components/common/calendar.vue')
+import calendar from '~components/common/calendar.vue'
 export default {
   name: 'aside',
   data () {
@@ -223,7 +227,7 @@ export default {
 
   .aside-item {
     background: $module-bg;
-    margin-bottom: 1rem;
+    margin-bottom: $normal-pad;
   }
 
   .aside-item.hot-article {
@@ -244,7 +248,7 @@ export default {
 
         a {
           display: block;
-          padding: $sm-pad 1rem;
+          padding: $sm-pad $normal-pad;
           color: $secondary;
 
           &:hover {
@@ -253,7 +257,7 @@ export default {
           }
 
           .list-num {
-            margin-right: 1rem;
+            margin-right: $normal-pad;
             
           }
         }
