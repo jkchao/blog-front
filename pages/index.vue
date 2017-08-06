@@ -26,7 +26,6 @@ export default {
       swiperOption: {
         autoplay: 3500,
         setWrapperSize: true,
-        loop: true,
         pagination: '.swiper-pagination',
         paginationClickable: true,
         mousewheelControl: true,

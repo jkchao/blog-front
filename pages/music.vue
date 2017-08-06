@@ -1,5 +1,5 @@
 <template>
-  <div class='music'>
+  <div class="music">
     music
   </div>
 </template>
@@ -7,7 +7,12 @@
 <script>
 export default {
   name: 'music',
-  transition: 'fade'
+
+  transition: 'fade',
+
+  head: {
+    title: 'music'
+  }
 }
 </script>
 

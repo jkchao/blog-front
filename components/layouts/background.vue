@@ -1,7 +1,7 @@
 <template>
   <div class="global-background">
     <div class="background-image"></div>
-    <div id="particles-background" class="background-canvas"></div>
+     <!-- <div id="particles-background" class="background-canvas"></div> -->
   </div>
 </template>
 
@@ -9,7 +9,7 @@
   export default {
     name: 'background',
     mounted () {
-      this.buildBackground()
+      // this.buildBackground()
     },
     methods: {
       buildBackground () {

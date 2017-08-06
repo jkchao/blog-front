@@ -31,7 +31,6 @@ export default {
 @import '~assets/scss/mixin.scss';
 
 .article-box {
-  margin-top: $normal-pad;
 
   .article-item {
     display: flex;

@@ -29,8 +29,9 @@ export default {
   @import '~assets/scss/mixin.scss';
 
   .carrousel {
-    height: 100%;
     position: relative;
+    margin-bottom: $normal-pad;
+    height: 100%;
     overflow: hidden;
     .swiper-pagination-bullet {
       opacity: .5;

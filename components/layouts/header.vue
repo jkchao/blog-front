@@ -142,7 +142,7 @@ header {
     overflow: hidden;
 
     .swiper {
-      height: 100%;
+      height: $header-height;
       color: $dividers;
 
       .item {

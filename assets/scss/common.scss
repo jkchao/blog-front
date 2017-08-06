@@ -42,10 +42,8 @@ body {
   }
 }
 
-
-
 ::-webkit-scrollbar {
-  width: .8rem;
+  width: .5rem;
   height: .8rem;
   background: hsla(0, 0%, 100%, 0.6);
 }
@@ -57,8 +55,8 @@ body {
 ::-webkit-scrollbar-thumb {
   border-radius: 0;
   background-color: rgba(95,95,95,.4);
-  transition: background-color .15s;
-  border-radius: 4px;
+  transition: all .2s;
+  border-radius: .5rem;
 
   &:hover {
     background-color: rgba(95,95,95, .7);
