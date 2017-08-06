@@ -1,5 +1,5 @@
 <template>
-  <header id='header'>
+  <header v-fix>
     <div class="container header">
       <!-- <div class="header-left"> -->
         <div class="logo">
@@ -59,7 +59,21 @@ export default {
       }
     }
   },
-  components: { carrousel }
+  components: { carrousel },
+  directives: {
+    fix: {
+      inserted (el) {
+        window.addEventListener('scroll', _ => {
+          const top = document.body.scrollTop
+          if (top > 64) el.classList.add('draken')
+          else el.classList.remove('draken')
+        })
+      },
+      unbind () {
+        window.onscroll = null
+      }
+    }
+  }
 }
 </script>
 
@@ -68,7 +82,8 @@ export default {
 @import '~assets/scss/variable.scss';
 @import '~assets/scss/mixin.scss';
 
-#header {
+
+header {
   position: fixed;
   top: 0;
   z-index: 999;
@@ -76,6 +91,14 @@ export default {
   height: $header-height;
   background: $module-bg;
   @include box-shadow(0, 1px, 2px, rgba(0,0,0,.05));
+
+  &:hover {
+    background: $white;
+  }
+
+  &.draken {
+    background: $white;
+  }
 
   .header {
     display: flex;
@@ -113,7 +136,7 @@ export default {
   }
 
   .saying {
-    width: 20rem;
+    width: 20.3rem;
     font-size: $font-size-small;
     line-height: $normal-pad;
     overflow: hidden;

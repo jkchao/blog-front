@@ -108,7 +108,7 @@ module.exports = {
     // }
   },
   // plugins
-  plugins: [{ src: '~plugins/swiper.js', ssr: false }, { src: '~plugins/clickOutside.js', ssr: false }],
+  plugins: [{ src: '~plugins/swiper.js', ssr: false }, { src: '~plugins/clickOutside.js', ssr: false }, { src: '~plugins/filter.js' }],
   /*
   ** Global CSS
   */

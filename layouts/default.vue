@@ -39,7 +39,7 @@ export default {
 }
 
 .content-right {
-  width: 20rem;
+  width: 20.5rem;
   float: right;
 }
 </style>

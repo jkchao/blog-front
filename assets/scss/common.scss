@@ -58,6 +58,7 @@ body {
   border-radius: 0;
   background-color: rgba(95,95,95,.4);
   transition: background-color .15s;
+  border-radius: 4px;
 
   &:hover {
     background-color: rgba(95,95,95, .7);
