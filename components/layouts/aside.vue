@@ -1,5 +1,5 @@
 <template>
-    <transition-group tag="div" class="aside" name="slide-left">
+    <div tag="div" class="aside" >
       <div
         class="aside-item search-box"
         @click="open = true"
@@ -39,7 +39,7 @@
           </li>
         </ul>
       </div>
-    </transition-group>
+    </div>
 </template>
 
 <script>

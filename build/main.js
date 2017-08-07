@@ -103,7 +103,11 @@ module.exports = {
   },
   // router
   router: {
+    middleware: ['layout'],
     linkActiveClass: 'link-active'
+    // scrollBehavior: (to, from, savedPosition) => {
+    //   return { x: 0, y: 0 }
+    // }
     // scrollBehavior (to, from, savedPosition) {
     //   return { x: 0, y: 0 }
     // }

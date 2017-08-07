@@ -6,12 +6,12 @@
 
 <script>
 export default {
-  name: 'music',
+  name: 'Music',
 
   transition: 'fade',
 
   head: {
-    title: 'music'
+    title: 'Music'
   }
 }
 </script>

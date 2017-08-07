@@ -10,8 +10,8 @@
             <span>年</span>
             <span>{{ currentMonth }}</span>
             <span>月</span>
-            <span>{{ currentDay }}</span>
-            <span>日</span>
+            <!-- <span>{{ currentDay }}</span>
+            <span>日</span> -->
           </span>
         </li>
         <li class="arrow next" @click="pickNext(currentYear, currentMonth)">❯</li>
@@ -57,13 +57,18 @@ export default {
     }
   },
 
-  mounted () {
-    this.initData(null)
+  created () {
+    const year = new Date().getFullYear()
+    const month = new Date().getMonth() + 1
+    const d = new Date(this.formatDate(year, month, 1))
+    d.setDate(35)
+    this.initData(this.formatDate(d.getFullYear(), d.getMonth(), 1))
   },
 
   methods: {
 
     initData (cur) {
+      this.days = []
       const date = cur ? new Date(cur) : new Date()
       this.currentDay = date.getDate()
       this.currentYear = date.getFullYear()
@@ -71,14 +76,15 @@ export default {
       this.currentWeek = date.getDay()
       if (this.currentWeek == 0) this.currentWeek = 7
       const str = this.formatDate(this.currentYear, this.currentMonth, this.currentDay)
-      this.days.length = 0
       // 今天是周日，放在第一行第7个位置，前面6个
+      // 本周
       for (let i = this.currentWeek - 1; i >= 0; i--) {
         const d = new Date(str)
         d.setDate(d.getDate() - i)
         // console.log("y:" + d.getDate())
         this.days.push(d)
       }
+      // console.log(this.currentWeek)
       for (let i = 1; i <= 35 - this.currentWeek; i++) {
         const d = new Date(str)
         d.setDate(d.getDate() + i)
@@ -123,7 +129,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 @import '~assets/scss/variable.scss'; // @import '~assets/scss/mixin.scss';
+
 .calendar-box {
   padding: $normal-pad;
 

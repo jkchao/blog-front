@@ -3,7 +3,7 @@
     <div v-swiper:mySwiper="option" class="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide item" v-for="list in con" :key="list">
-          <img :src="list" width="100%" v-if="type === 'banner'">
+          <img :src="list" width="100%" v-if="type === 'banner'" />
           <p class="saying-content" v-if="type === 'text'">{{ list.content }}</p>
           <p class="saying-author" v-if="type === 'text'">{{ list.author }}</p>
         </div>

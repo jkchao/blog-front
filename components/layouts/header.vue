@@ -119,7 +119,7 @@ header {
   }
 
   nav {
-
+    font-family: Futura;    
     a {
       margin-right: 2rem;
       padding: .5rem;

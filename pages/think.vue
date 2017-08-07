@@ -19,6 +19,8 @@ const articleView = () => import('~components/common/article.vue')
 
 export default {
 
+  scrollToTop: true,
+
   head: {
     title: 'Think'
   },

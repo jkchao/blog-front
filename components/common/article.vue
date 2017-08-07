@@ -12,7 +12,7 @@
         </div>
       </div>
       <nuxt-link to="">
-        <img :src="item.logo" alt="" width="180">
+        <img :src="item.logo" alt="" width="180" />
       </nuxt-link>
     </div>
   </div>
