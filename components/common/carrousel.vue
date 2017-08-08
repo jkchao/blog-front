@@ -33,10 +33,10 @@ export default {
     margin-bottom: $normal-pad;
     height: 100%;
     overflow: hidden;
-    .swiper-pagination-bullet {
+    >.swiper-pagination-bullet {
       opacity: .5;
     }
-    .swiper-pagination-bullet-active {
+    >.swiper-pagination-bullet-active {
       background-color: lighten($black, 20%);
       opacity: 1;
     }

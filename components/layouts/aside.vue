@@ -34,7 +34,7 @@
           <li class="tag-item" v-for="item in tag" :key="item.id">
             <nuxt-link to="">
               {{ item.name }}
-              <span>( {{ item.num }} )</span>
+              <span>({{ item.num }})</span>
             </nuxt-link>
           </li>
         </ul>
@@ -113,7 +113,7 @@ export default {
     background: $module-bg;
     cursor: pointer;
 
-    .search {
+    >.search {
       position: relative;
       width: 1.8rem;
       height: 1.8rem;
@@ -135,7 +135,7 @@ export default {
         @include transform-origin(top left);
       }
 
-      input {
+      >input {
         width: 100%;
         height: 100%;
         font-size: 14px;
@@ -146,7 +146,7 @@ export default {
         @include transition(opacity .15s ease);
       }
 
-      .eks {
+      >.eks {
         display: block;
         position: absolute;
         top: 50%;
@@ -195,7 +195,7 @@ export default {
       @include transition-delay(0s);
     }
 
-    input {
+    >input {
       position: absolute;
       padding: .5rem 2.5rem .5rem .5rem;      
       background: $light-dark;
@@ -203,7 +203,7 @@ export default {
       @include transition-delay(.05s);
     }
 
-    .eks {
+    >.eks {
       right: 10px;
 
       &:before, &:after {
@@ -233,7 +233,7 @@ export default {
   .aside-item.hot-article {
 
 
-    .title {
+    >.title {
       padding: 0 $sm-pad;
       line-height: 2.5rem;
       font-size: 1rem;
@@ -241,12 +241,12 @@ export default {
       border-bottom: 1px solid #eee;
     }
 
-    .hot-article-list {
+    >.hot-article-list {
       padding: $sm-pad 0;
 
-      .list {
+      >.list {
 
-        a {
+        >a {
           display: block;
           padding: $sm-pad $normal-pad;
           color: $secondary;
@@ -256,7 +256,7 @@ export default {
             background: $module-hover-bg;
           }
 
-          .list-num {
+          >.list-num {
             margin-right: $normal-pad;
             
           }
@@ -267,14 +267,15 @@ export default {
 
   .aside-tag {
 
-    .tag {
+    >.tag {
       padding: .85rem;
+      font-family: Futura;
 
-      .tag-item {
+      >.tag-item {
         float: left;
         margin: .3rem;
 
-        a {
+        >a {
           display: block;
           padding: .4rem .5rem;
           color: $secondary;

@@ -8,7 +8,8 @@ module.exports = {
     // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
     vendor: [
       'axios',
-      'particles.js'
+      'particles.js',
+      'swiper'
     ],
     // postcss
     postcss: [
@@ -64,7 +65,8 @@ module.exports = {
   plugins: [
     { src: '~plugins/swiper.js', ssr: false },
     { src: '~plugins/clickOutside.js', ssr: false },
-    { src: '~plugins/filter.js' }
+    { src: '~plugins/filter.js' },
+    { src: '~plugins/finally.js' }
   ],
   /*
   ** Global CSS

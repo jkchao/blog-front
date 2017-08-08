@@ -17,6 +17,7 @@
 </template>
 
 <script>
+
 const MyFooter = () => import('~components/layouts/footer.vue')
 const myHeader = () => import('~components/layouts/header.vue')
 const background = () => import('~components/layouts/background.vue')
@@ -59,6 +60,7 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/scss/variable.scss';
 @import '~assets/scss/mixin.scss';
+
 .app {
   position: relative;
 }
@@ -66,6 +68,8 @@ export default {
 .content-left {
   width: 48.5rem;
   float: left;
+  // @include css3-prefix(transition, width .4s linear -0.4s);
+  // @include css3-prefix(transition, all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0));
 }
 
 .content-left.full-page {

@@ -107,7 +107,6 @@ export default {
   components: {
     articleView
   }
-
 }
 </script>
 

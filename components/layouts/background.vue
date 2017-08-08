@@ -140,7 +140,7 @@
     z-index: -1;
     background-color: #eee;
 
-    .background-image {
+    >.background-image {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -148,7 +148,7 @@
       background: url(~static/images/background.png);
     }
 
-    .background-canvas {
+    >.background-canvas {
       position: absolute;
       width: 100%;
       height: 100%;

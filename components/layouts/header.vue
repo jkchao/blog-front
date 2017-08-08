@@ -82,7 +82,6 @@ export default {
 @import '~assets/scss/variable.scss';
 @import '~assets/scss/mixin.scss';
 
-
 header {
   position: fixed;
   top: 0;
@@ -100,17 +99,17 @@ header {
     background: $white;
   }
 
-  .header {
+  >.header {
     display: flex;
     justify-content: space-between;
     height: $header-height;
     line-height: $header-height;
 
-    .header-left {
+    >.header-left {
       display: flex;
     }
 
-    .logo{
+    >.logo{
       a {
         color: $black;
         font-size: 2rem;
@@ -119,8 +118,9 @@ header {
   }
 
   nav {
-    font-family: Futura;    
-    a {
+    font-family: Futura;
+
+    >a {
       margin-right: 2rem;
       padding: .5rem;
       color: $disabled;
@@ -130,7 +130,7 @@ header {
       }
     }
 
-    a.link-active {
+    >a.link-active {
       color: $black;
     }
   }
@@ -151,7 +151,7 @@ header {
         justify-content: center;
         height: 100%;
 
-        .saying-author {
+        >.saying-author {
           margin-top: .3rem;
           text-align: right;
         }

@@ -32,7 +32,7 @@ export default {
 
 .article-box {
 
-  .article-item {
+  >.article-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,30 +45,30 @@ export default {
       color: $black;
       background: lighten($module-hover-bg, 60%);
 
-      .title {
+      >.title {
         color: $black;
       }
     }
 
-    .title {
+    >.title {
       margin-bottom: $sm-pad;
       font-size: $font-size-large;
       // color: $secondary;
     }
 
-    .content {
+    >.content {
       margin-right: 1.3rem;
 
-      .meta {
+      >.meta {
         margin-top: $sm-pad;
         height: 1rem;
         line-height: 1rem;
         font-size: $font-size-small;
 
-        span {
+        >span {
           margin-right: 1rem;
 
-          i {
+          >i {
             margin-right: .2rem;
             vertical-align: text-bottom;
           }
