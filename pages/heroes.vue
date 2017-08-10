@@ -1,8 +1,9 @@
 <template>
   <div class="heroes">
-    <div class="head">
+    <div class="head font-futura">
       <div class="box">
         <p>EVERYONE IS A HERO.</p>
+        <a href="javascript:;" class="join"  @click.stop="open">JOIN!</a>
       </div>
     </div>
     <div class="list" v-for="(list, index) in lists" :key="index">
@@ -11,15 +12,43 @@
       <div class="info">
         <span class="time"><i class="iconfont icon-time"></i>{{ list.time | dateFormat('yyyy-MM-dd hh:mm')}}</span>
         <span class="icon">
-          <a href="javascript:;" target="_blank"><i class="iconfont icon-github"></i></a>
-          <a href="javascript:;"><i class="iconfont icon-boke"></i></a>
+          <a :href="list.github" target="_blank" v-show="list.github !== ''"><i class="iconfont icon-github"></i></a>
+          <a :href="list.blog"  target="_blank" v-show="list.blog !== ''"><i class="iconfont icon-boke"></i></a>
         </span>
       </div>
     </div>
+
+    <dialog-com :visible.sync = "show">
+      <form>
+        <div class="dialog-item name">
+          <span>大名：</span>
+          <input type="text" v-model="name" maxlength="40" class="form-item" />
+        </div>
+        <div class="dialog-item github">
+          <span>GITHUB：</span>
+          <input type="text" v-model="github" maxlength="40" placeholder="http:// or https://" class="form-item" />
+        </div>
+        <div class="dialog-item blog">
+          <span>BLOG：</span>
+          <input type="text" v-model="blog" maxlength="40" placeholder="http:// or https://" class="form-item" />
+        </div>
+        <div class="dialog-item content">
+          <span>说点啥？</span>
+          <textarea maxlength="200" resize="none" rows="6" placeholder="曾经有一个 BUG 摆在我的面前......" class="form-item" />
+        </div>
+      </form>
+      <div class="footer" slot="foot">
+        <button @click="show = false">取消</button>
+        <button @click="show = false">确定</button>
+      </div>
+    </dialog-com>
+
   </div>
 </template>
 
 <script>
+import dialogCom from '~components/common/dialog.vue'
+
 export default {
   name: 'heroes',
 
@@ -28,19 +57,58 @@ export default {
   head: {
     title: 'Heroes'
   },
+
+  components: { dialogCom },
   
   data () {
     return {
+      show: false,
+      name: '',
+      github: '',
+      blog: '',
+      content: '',
       lists: [
-        { 
+        {
           name: 'KChaoJKChaoJKChaoJKChaoJKChao',
           content: '这被禁忌的游戏 一如既往的岁月这被禁忌的游戏 一如既往的岁月这被禁忌的游戏 一如既往的岁月这被禁忌的游戏 一如既往的岁月这被禁忌的游戏 一如既往的岁月',
-          github: '',
+          github: 'https://github.com/jkchao',
+          blog: 'https://github.com/jkchao',
+          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
+          id: 1
+        },
+        {
+          name: 'JKChao',
+          content: '这被禁忌的游戏 一如既往的岁月',
+          github: 'https://github.com/jkchao',
+          blog: 'https://github.com/jkchao',
+          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
+          id: 1
+        },
+        {
+          name: 'JKChao',
+          content: '这被禁忌的游戏 一如既往的岁月',
+          github: 'https://github.com/jkchao',
           blog: '',
           time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
           id: 1
         },
-        { 
+        {
+          name: 'JKChao',
+          content: '这被禁忌的游戏 一如既往的岁月',
+          github: '',
+          blog: 'https://github.com/jkchao',
+          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
+          id: 1
+        },
+        {
+          name: 'JKChao',
+          content: '这被禁忌的游戏 一如既往的岁月',
+          github: '',
+          blog: 'https://github.com/jkchao',
+          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
+          id: 1
+        },
+        {
           name: 'JKChao',
           content: '这被禁忌的游戏 一如既往的岁月',
           github: '',
@@ -48,7 +116,7 @@ export default {
           time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
           id: 1
         },
-        { 
+        {
           name: 'JKChao',
           content: '这被禁忌的游戏 一如既往的岁月',
           github: '',
@@ -56,7 +124,7 @@ export default {
           time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
           id: 1
         },
-        { 
+        {
           name: 'JKChao',
           content: '这被禁忌的游戏 一如既往的岁月',
           github: '',
@@ -64,71 +132,46 @@ export default {
           time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
           id: 1
         },
-        { 
+        {
           name: 'JKChao',
           content: '这被禁忌的游戏 一如既往的岁月',
-          github: '',
+          github: 'https://github.com/jkchao',
           blog: '',
           time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
           id: 1
         },
-        { 
+        {
           name: 'JKChao',
           content: '这被禁忌的游戏 一如既往的岁月',
           github: '',
-          blog: '',
+          blog: 'https://github.com/jkchao',
           time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
           id: 1
         },
-        { 
+        {
           name: 'JKChao',
           content: '这被禁忌的游戏 一如既往的岁月',
           github: '',
-          blog: '',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          id: 1
-        },
-        { 
-          name: 'JKChao',
-          content: '这被禁忌的游戏 一如既往的岁月',
-          github: '',
-          blog: '',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          id: 1
-        },
-        { 
-          name: 'JKChao',
-          content: '这被禁忌的游戏 一如既往的岁月',
-          github: '',
-          blog: '',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          id: 1
-        },
-        { 
-          name: 'JKChao',
-          content: '这被禁忌的游戏 一如既往的岁月',
-          github: '',
-          blog: '',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          id: 1
-        },
-        { 
-          name: 'JKChao',
-          content: '这被禁忌的游戏 一如既往的岁月',
-          github: '',
-          blog: '',
+          blog: 'https://github.com/jkchao',
           time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
           id: 1
         }
       ]
+    }
+  },
+
+  methods: {
+    open () {
+      this.show = true
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-@import '../assets/scss/variable.scss';
-@import '../assets/scss/mixin.scss';
+
+@import '~assets/scss/variable.scss';
+@import '~assets/scss/mixin.scss';
 
 .heroes {
   display: grid;
@@ -144,10 +187,49 @@ export default {
     width: 100%;
     height: 20rem;
     font-size: 1.3rem;
-    font-family: Futura;
     color: $black;
+    text-align: center;
     background: $module-bg;
 
+    p {
+      margin-bottom: .7rem;
+    }
+
+    .join {
+      position: relative;
+      padding: .5rem 1rem;
+      color: $black;
+      @include border-radius($xs-pad);
+      @include transition(all .5s ease);
+      @include transform(perspective(1px) translateZ(0));
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        @include border-radius($xs-pad);
+        @include transform(scaleY(0));
+        @include transform-origin(50% 0px 0px);
+        transition-property: transform;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-out;
+        background: $black;
+      }
+
+      &:hover {
+        color: white;
+        // background: $black;
+      }
+
+      &:hover::after {
+        transform: scaleY(1);
+        transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+      }
+    }
   }
 
   >.list {
@@ -179,7 +261,8 @@ export default {
       height: 1rem;
       font-size: $font-size-small;
       line-height: 1rem;
-      i {
+
+      >.time>i {
         margin-right: .3rem;
         vertical-align: text-top;
       }
@@ -188,16 +271,51 @@ export default {
         margin: .3rem;
         color: #555;
 
-        i {
+        >i {
           @include transition(all .5s ease);
         }
 
         &:hover {
+          color: $black;
+
           i {
             font-size: 1.35rem;
           }
         }
       }
+    }
+  }
+}
+
+.dialog {
+  .dialog-item {
+    display: grid;
+    grid-template-columns: 80px auto;
+    margin: .8rem 1.5rem 1rem 0;
+
+    >span {
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      text-align: right;
+    }
+
+    >.form-item {
+      padding: .3rem .5rem;
+      border: 1px solid $border-color;
+      color: $black;
+      @include border-radius(4px);
+
+      &:hover {
+        border-color: $form-hover;
+      }
+    }
+  }
+  .footer {
+    text-align: right;
+
+    >button {
+      margin-right: 1.5rem;
     }
   }
 }

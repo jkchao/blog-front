@@ -1,6 +1,6 @@
 input,
 input:focus {
-  @include css3-prefix(outline, none);
+    @include css3-prefix(outline, none);
 }
 
 input[type="text"],
@@ -16,29 +16,30 @@ input[type="week"],
 input[type="number"],
 input[type="search"],
 input[type="tel"],
-select {
-  background: $white;
-  color: $text;
-  display: inline-block;
-  padding: $xs-pad;
-  vertical-align: middle;
-  border: none;
-  outline: none;
-  -webkit-appearance: none;
+select,
+textarea {
+    background: $white;
+    color: $text;
+    display: inline-block;
+    padding: $xs-pad;
+    vertical-align: middle;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
 }
 
-input[type="color"], {
-  background: $white;
-  display: inline-block;
-  vertical-align: middle;
+input[type="color"],
+{
+    background: $white;
+    display: inline-block;
+    vertical-align: middle;
 }
-
 
 input:not([type]) {
-  -webkit-appearance: none;
-  background-clip: padding-box;
-  display: inline-block;
-  text-align: left;
+    -webkit-appearance: none;
+    background-clip: padding-box;
+    display: inline-block;
+    text-align: left;
 }
 
 input[type="text"]:focus,
@@ -57,17 +58,17 @@ input[type="tel"]:focus,
 input[type="color"]:focus,
 select:focus,
 textarea:focus {
-  border-color: $blue;
+    border-color: $blue;
 }
 
 input:not([type]):focus {
-  border-color: $blue;
+    border-color: $blue;
 }
 
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: 1px thin $dividers;
+    outline: 1px thin $dividers;
 }
 
 input[type="text"][disabled],
@@ -86,75 +87,74 @@ input[type="tel"][disabled],
 input[type="color"][disabled],
 select[disabled],
 textarea[disabled] {
-  background-color: $dividers;
-  color: $secondary;
-  cursor: not-allowed;
+    background-color: $dividers;
+    color: $secondary;
+    cursor: not-allowed;
 }
 
 input:not([type])[disabled] {
-  background-color: $dividers;
-  color: $secondary;
-  cursor: not-allowed;
+    background-color: $dividers;
+    color: $secondary;
+    cursor: not-allowed;
 }
 
 input[readonly],
 select[readonly],
 textarea[readonly] {
-  border-color: $dividers;
-  color: $secondary;
+    border-color: $dividers;
+    color: $secondary;
 }
 
 input:focus:invalid,
 textarea:focus:invalid,
 select:focus:invalid {
-  // border-color: darken($red, 10);
-  // color: $red;
+    // border-color: darken($red, 10);
+    // color: $red;
 }
 
 input[type="file"]:focus:invalid:focus,
 input[type="radio"]:focus:invalid:focus,
 input[type="checkbox"]:focus:invalid:focus {
-  // outline-color: $red;
+    // outline-color: $red;
 }
 
-input:-webkit-autofill, 
-textarea:-webkit-autofill, 
+input:-webkit-autofill,
+textarea:-webkit-autofill,
 select:-webkit-autofill {
-  box-shadow: 0 0 0px 1000px rgb(230, 230, 230) inset; 
+    box-shadow: 0 0 0px 1000px rgb(230, 230, 230) inset;
 }
 
 select {
-  -webkit-appearance: menulist-button;
-  vertical-align: sub;
+    -webkit-appearance: menulist-button;
+    vertical-align: sub;
 }
 
 select[multiple] {
-  height: auto;
+    height: auto;
 }
 
 label {
-  line-height: 2;
+    line-height: 2;
 }
 
 fieldset {
-  border: 0;
-  margin: 0;
-  padding: $sm-pad 0;
+    border: 0;
+    margin: 0;
+    padding: $sm-pad 0;
 }
 
 legend {
-  border-bottom: 1px solid $border-color;
-  color: $text;
-  display: block;
-  margin-bottom: $sm-pad;
-  padding: $sm-pad 0;
-  width: 100%;
+    border-bottom: 1px solid $border-color;
+    color: $text;
+    display: block;
+    margin-bottom: $sm-pad;
+    padding: $sm-pad 0;
+    width: 100%;
 }
 
 textarea {
-  background: $white;
-  display: block;
-  margin-bottom: $sm-pad;
-  max-width: 100%;
-  vertical-align: middle;
+    background: $white;
+    display: block;
+    max-width: 100%;
+    vertical-align: middle;
 }

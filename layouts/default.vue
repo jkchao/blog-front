@@ -38,21 +38,21 @@ export default {
   },
 
   methods: {
-    watchTab () {
-      let reallyDocumentTitle
-      document.addEventListener('visibilitychange', event => {
-        if (event.target.hidden || event.target.webkitHidden) {
-          reallyDocumentTitle = document.title
-          document.title = '出 BUG 了，快看！'
-        } else {
-          document.title = reallyDocumentTitle
-        }
-      }, false)
-    }
+    // watchTab () {
+    //   let reallyDocumentTitle
+    //   document.addEventListener('visibilitychange', event => {
+    //     if (event.target.hidden || event.target.webkitHidden) {
+    //       reallyDocumentTitle = document.title
+    //       document.title = '出 BUG 了，快看！'
+    //     } else {
+    //       document.title = reallyDocumentTitle
+    //     }
+    //   }, false)
+    // }
   },
 
   mounted () {
-    this.watchTab ()
+    // this.watchTab ()
   }
 }
 </script>
@@ -69,7 +69,7 @@ export default {
   width: 48.5rem;
   float: left;
   // @include css3-prefix(transition, width .4s linear -0.4s);
-  // @include css3-prefix(transition, all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0));
+  @include css3-prefix(transition, all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0));
 }
 
 .content-left.full-page {

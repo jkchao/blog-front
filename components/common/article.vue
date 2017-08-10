@@ -5,6 +5,7 @@
         <p class="title">{{ item.title }}</p>
         <p class="abstrack">{{ item.abstrack }}</p>
         <div class="meta">
+          <span class="tag"><i class="iconfont icon-tag"></i>{{ item.tag }}</span>
           <span class="time"><i class="iconfont icon-time"></i>{{ item.time | dateFormat('yyyy-MM-dd hh:mm')}}</span>
           <span class="read"><i class="iconfont icon-icon"></i>{{ item.read }}</span>
           <span class="comments"><i class="iconfont icon-comments"></i>{{ item.comments }}</span>

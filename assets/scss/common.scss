@@ -26,13 +26,17 @@ body {
                       opacity .25s linear,
                       filter .25s linear,
                       visibility .25s linear,
-                      transform .25s linear);
+                      transform .25s linear,
+                      border-color .25s linear);
 }
-
 
 .container {
   width: $container-width;
   margin: 0 auto;
+}
+
+.font-futura {
+  font-family: Futura;
 }
 
 
@@ -46,6 +50,31 @@ body {
     visibility: hidden;
   }
 }
+
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: $disabled;
+  font-size: 1rem;
+}
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: $disabled;
+  font-size: 1rem;
+}
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: $disabled;
+  font-size: 1rem;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: $disabled;
+  font-size: 1rem;
+}
+
 
 ::-webkit-scrollbar {
   width: .5rem;

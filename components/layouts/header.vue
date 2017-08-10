@@ -1,6 +1,6 @@
 <template>
   <header v-fix>
-    <div class="container header">
+    <div class="container header font-futura">
       <!-- <div class="header-left"> -->
         <div class="logo">
           <nuxt-link to="/">
@@ -118,7 +118,6 @@ header {
   }
 
   nav {
-    font-family: Futura;
 
     >a {
       margin-right: 2rem;

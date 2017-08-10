@@ -1,11 +1,10 @@
-
 @font-face {
   font-family: 'iconfont';  /* project id 376001 */
-  src: url('//at.alicdn.com/t/font_st0hguiay808uxr.eot');
-  src: url('//at.alicdn.com/t/font_st0hguiay808uxr.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_st0hguiay808uxr.woff') format('woff'),
-  url('//at.alicdn.com/t/font_st0hguiay808uxr.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_st0hguiay808uxr.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_pj1wqrhfjvpldi.eot');
+  src: url('//at.alicdn.com/t/font_pj1wqrhfjvpldi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_pj1wqrhfjvpldi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_pj1wqrhfjvpldi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_pj1wqrhfjvpldi.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -27,4 +26,10 @@
 .icon-github:before { content: "\e824"; }
 
 .icon-boke:before { content: "\e63e"; }
+
+.icon-tag:before { content: "\e815"; }
+
+.icon-close:before { content: "\e63c"; }
+
+
 

@@ -11,7 +11,7 @@
             v-model="keyword"
             placeholder="search..."
             ref="search"
-            @keyup.enter="search">
+            @keyup.enter="search" />
           <div class="eks" @click.stop="search"></div>
         </div>
       </div>
@@ -29,7 +29,7 @@
       <div class="aside-item calendar" key="3">
         <calendar></calendar>
       </div>
-      <div class="aside-item aside-tag" key="4">
+      <div class="aside-item aside-tag font-futura" key="4">
         <ul class="tag clearfix">
           <li class="tag-item" v-for="item in tag" :key="item.id">
             <nuxt-link to="">
@@ -269,7 +269,6 @@ export default {
 
     >.tag {
       padding: .85rem;
-      font-family: Futura;
 
       >.tag-item {
         float: left;
