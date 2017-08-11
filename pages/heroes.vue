@@ -234,18 +234,25 @@ export default {
 
   >.list {
     position: relative;
+    left: 0;
+    top: 0;
     padding: $normal-pad;
     height: 14rem;
     background: $module-bg;
+    margin: 0;
+    @include css3-prefix('transition', 'all .3s');
 
     &:hover {
+      left: -4px;
+      top: -4px;
+      box-shadow: 4px 4px 10px 0 rgba(0,0,0,.2);
       color: $black;
-      background: $module-hover-bg;
+      background: $white;
     }
 
     >.name {
       @include text-overflow();
-      max-width: 303px;
+      max-width: 20rem;
       font-weight: normal;
     }
 

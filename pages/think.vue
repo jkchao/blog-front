@@ -1,10 +1,10 @@
 <template>
   <section  class="think">
     <div class="head">
-      <div class="content">
+      <!-- <div class="content">
         <p>我走过山时，山不说话，</p>
         <p>我路过海时，海不说话。</p>
-      </div>
+      </div> -->
     </div>
     <div class="article">
       <articleView :articleList = "list"></articleView>
@@ -16,6 +16,7 @@
 import banner4 from '~static/images/banner4.png'
 
 const articleView = () => import('~components/common/article.vue')
+
 
 export default {
 
@@ -116,12 +117,9 @@ export default {
 @import '~assets/scss/variable.scss';
 @import '~assets/scss/mixin.scss';
 
-.carrousel {
-  height: 20rem;
-}
 
 .head {
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -129,6 +127,6 @@ export default {
   margin-bottom: $normal-pad;
   font-size: 1.3rem;
   color: $black;
-  background: $module-bg;
+  background: $module-bg url('~static/images/head1.png') center 55%;  
 }
 </style>

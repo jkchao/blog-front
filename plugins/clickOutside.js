@@ -1,5 +1,5 @@
 import Vue from 'vue'
 
-import clickOutside from '~assets/utils/clickOutside.js'
+import clickOutside from '../utils/clickOutside.js'
 
 Vue.directive('click-outside', clickOutside)

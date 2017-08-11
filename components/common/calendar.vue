@@ -45,6 +45,7 @@
 <script>
 
 export default {
+
   name: 'aside-calendar',
 
   data() {

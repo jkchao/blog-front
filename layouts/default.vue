@@ -35,24 +35,6 @@ export default {
     isAsdiePage () {
       return this.$store.state.options.isAsidePage
     }
-  },
-
-  methods: {
-    // watchTab () {
-    //   let reallyDocumentTitle
-    //   document.addEventListener('visibilitychange', event => {
-    //     if (event.target.hidden || event.target.webkitHidden) {
-    //       reallyDocumentTitle = document.title
-    //       document.title = '出 BUG 了，快看！'
-    //     } else {
-    //       document.title = reallyDocumentTitle
-    //     }
-    //   }, false)
-    // }
-  },
-
-  mounted () {
-    // this.watchTab ()
   }
 }
 </script>
