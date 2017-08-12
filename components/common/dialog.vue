@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="dialog" v-show="dialogVisible">
+    <div class="dialog" v-show="dialogVisible" :class="{'dialog-mobile': mobileLayout}">
       <transition name="slide-down">
         <div class="dialog-body" v-show="dialogVisible" v-click-outside="hide">
           <div class="dialog-head">
@@ -35,6 +35,9 @@ export default {
     dialogVisible () {
       if (this.visible) this.lockBody()
       return this.visible
+    },
+    mobileLayout () {
+      return this.$store.state.options.mobileLayout
     }
   },
 
@@ -90,6 +93,16 @@ export default {
 
       .icon {
         font-size: 1.3rem;
+      }
+    }
+  }
+  &.dialog-mobile {
+    >.dialog-body {
+      width: 24rem;
+      margin-bottom: 5rem;
+
+      .dialog-item {
+        grid-template-columns: 100%;
       }
     }
   }

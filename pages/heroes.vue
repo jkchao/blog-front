@@ -1,5 +1,5 @@
 <template>
-  <div class="heroes">
+  <div class="heroes" :class="{'heroes-mobile': mobileLayout}">
     <div class="head font-futura">
       <div class="box">
         <p>EVERYONE IS A HERO.</p>
@@ -18,17 +18,17 @@
       </div>
     </div>
 
-    <dialog-com :visible.sync = "show">
+    <dialog-com :visible.sync = "show" :class="{'dialog-mobile': mobileLayout}">
       <form>
-        <div class="dialog-item name">
+        <div class="dialog-item name" >
           <span>大名：</span>
           <input type="text" v-model="name" maxlength="40" class="form-item" />
         </div>
-        <div class="dialog-item github">
+        <div class="dialog-item github" >
           <span>GITHUB：</span>
           <input type="text" v-model="github" maxlength="40" placeholder="http:// or https://" class="form-item" />
         </div>
-        <div class="dialog-item blog">
+        <div class="dialog-item blog" >
           <span>BLOG：</span>
           <input type="text" v-model="blog" maxlength="40" placeholder="http:// or https://" class="form-item" />
         </div>
@@ -160,6 +160,12 @@ export default {
     }
   },
 
+  computed: {
+    mobileLayout () {
+      return this.$store.state.options.mobileLayout
+    }
+  },
+
   methods: {
     open () {
       this.show = true
@@ -178,6 +184,14 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
   margin-bottom: 1rem;
+
+  &.heroes-mobile {
+    grid-template-columns: auto;
+
+    >.head {
+      grid-column: 1 / 1;
+    }
+  }
 
   >.head {
     display: grid;
@@ -323,6 +337,30 @@ export default {
 
     >button {
       margin-right: 1.5rem;
+    }
+  }
+
+  &.dialog-mobile {
+
+    .dialog-item {
+      grid-template-columns: 100%;
+      margin: 0;
+      padding: 0 1rem;
+
+      > span {
+        text-align: left;
+      }
+    }
+
+    .dialog-item.content {
+      height: 8rem;
+    }
+    .footer {
+      margin-top: 1rem;
+      padding-right: 1rem;
+      >button {
+        margin: 0 0 0 1.5rem;
+      }
     }
   }
 }

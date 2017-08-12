@@ -1,22 +1,23 @@
 <template>
   <header v-fix>
     <div class="container header font-futura">
-      <!-- <div class="header-left"> -->
-        <div class="logo">
-          <nuxt-link to="/">
-            三毛
-          </nuxt-link>
+        <div class="header-left">
+          <div class="logo">
+            <nuxt-link to="/">
+              三毛
+            </nuxt-link>
+          </div> 
+          <nav>
+            <nuxt-link
+              v-for="(list, index) in nav"
+              :key="index"
+              :to="list.path"
+              exact>
+                <i :class="list.icon"></i>
+                <span>{{ list.name }}</span>
+            </nuxt-link>
+          </nav>
         </div>
-        <nav>
-          <nuxt-link
-            v-for="(list, index) in nav"
-            :key="index"
-            :to="list.path"
-            exact>
-              <i class="icon"></i>
-              <span>{{ list.name }}</span>
-          </nuxt-link>
-        </nav>
       <div class="saying">
         <carrousel :option="swiperOption" type="text" :con="saying"></carrousel>
       </div>
@@ -36,12 +37,11 @@ export default {
       keyword: '',
       open: false,
       nav: [
-        { path: '/', name: 'HOME'},
-        { path: '/think', name: 'THINK'},
-        { path: '/music', name: 'MUSIC'},
-        { path: '/project', name: 'PROJECT'},
-        { path: '/about', name: 'ABOUT'},
-        { path: '/heroes', name: 'HEROES'}
+        { path: '/', name: 'HOME', icon: 'iconfont icon-home'},
+        { path: '/think', name: 'THINK', icon: 'iconfont icon-read'},
+        { path: '/music', name: 'MUSIC', icon: 'iconfont icon-music'},
+        { path: '/about', name: 'ABOUT', icon: 'iconfont icon-user'},
+        { path: '/heroes', name: 'HEROES', icon: 'iconfont icon-hero'}
       ],
       saying,
       swiperOption: {
@@ -107,22 +107,28 @@ header {
 
     >.header-left {
       display: flex;
-    }
 
-    >.logo{
-      a {
-        color: $black;
-        font-size: 2rem;
+      >.logo{
+
+        a {
+          color: $black;
+          font-size: 2rem;
+        }
       }
     }
   }
 
   nav {
+    margin-left: 2rem;
 
     >a {
       margin-right: 2rem;
       padding: .5rem;
       color: $disabled;
+
+      >i {
+        margin-right: .5rem;
+      }
 
       &:hover {
         color: $black;

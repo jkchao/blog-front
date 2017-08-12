@@ -1,8 +1,15 @@
 <template>
   <div class="article-box">
-    <div class="article-item" v-for="item in articleList" :key="item.id">
+    <div
+      class="article-item"
+      v-for="item in articleList"
+      :key="item.id"
+      :class="{'mobile-article': mobileLayout}">
       <div class="content">
         <p class="title">{{ item.title }}</p>
+        <nuxt-link to="" v-if="mobileLayout">
+          <img :src="item.logo" alt="" width="100%" />
+        </nuxt-link>
         <p class="abstrack">{{ item.abstrack }}</p>
         <div class="meta">
           <span class="tag"><i class="iconfont icon-tag"></i>{{ item.tag }}</span>
@@ -12,8 +19,8 @@
           <span class="like"><i class="iconfont icon-like"></i>{{ item.like }}</span>
         </div>
       </div>
-      <nuxt-link to="">
-        <img :src="item.logo" alt="" width="180" />
+      <nuxt-link to="" v-if="!mobileLayout">
+        <img :src="item.logo" alt="" width="180"/>
       </nuxt-link>
     </div>
   </div>
@@ -22,7 +29,12 @@
 <script>
 export default {
   name: 'article-box',
-  props: ['articleList']
+  props: ['articleList'],
+  computed: {
+    mobileLayout () {
+      return this.$store.state.options.mobileLayout
+    }
+  }
 }
 </script>
 
@@ -46,21 +58,51 @@ export default {
       color: $black;
       background: lighten($module-hover-bg, 60%);
 
-      >.title {
+      .title {
         color: $black;
       }
     }
 
-    >.title {
+    .title {
       margin-bottom: $sm-pad;
       font-size: $font-size-large;
-      // color: $secondary;
+    }
+
+    &.mobile-article {
+      &:hover {
+        background: $module-bg;
+      }
+
+      >.content {
+        width: 100%;
+        margin: 0;
+        >a {
+
+          display: block;
+          margin-bottom: .5rem;
+          width: 100%;
+        }
+
+        .meta {
+          justify-content: space-between;
+          
+          span {
+            margin: 0;
+          }
+        }
+      }
     }
 
     >.content {
       margin-right: 1.3rem;
 
+      >.abstrack {
+        min-height: 3rem;
+      }
+
       >.meta {
+        display: flex;
+        flex-wrap: nowrap;
         margin-top: $sm-pad;
         height: 1rem;
         line-height: 1rem;
@@ -75,6 +117,9 @@ export default {
           }
         }
       }
+    }
+    >a {
+      width: 180px;
     }
   }
 }

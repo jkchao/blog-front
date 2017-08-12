@@ -1,10 +1,7 @@
 <template>
-  <section  class="think">
-    <div class="head">
-      <!-- <div class="content">
-        <p>我走过山时，山不说话，</p>
-        <p>我路过海时，海不说话。</p>
-      </div> -->
+  <section  class="think" >
+    <div class="head" :class="{'mobile': mobileLayout}">
+      <img src="~static/images/head1.png">
     </div>
     <div class="article">
       <articleView :articleList = "list"></articleView>
@@ -105,6 +102,12 @@ export default {
     }
   },
 
+  computed: {
+    mobileLayout () {
+      return this.$store.state.options.mobileLayout
+    }
+  },
+
   components: {
     articleView
   }
@@ -127,6 +130,15 @@ export default {
   margin-bottom: $normal-pad;
   font-size: 1.3rem;
   color: $black;
-  background: $module-bg url('~static/images/head1.png') center 55%;  
+  background: $module-bg;
+  // background: $module-bg url() no-repeat center 55%;  
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.head.mobile {
+  height: 10rem;
 }
 </style>

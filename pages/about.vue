@@ -1,11 +1,11 @@
 <template>
-  <div class="about">
-    <div class="info-box">
+  <div class="about" :class="{'mobile': mobileLayout}">
+    <div class="info-box" :class="{'info-mobile': mobileLayout}">
       <div class="info font-futura">
-        <div class="list">
+        <p class="list">
           <i class="iconfont icon-user"></i>
           <span class="list-content">Guo Wenchao, a 90s boy, Web Engineer.</span>
-        </div>
+        </p>
         <div class="list">
           <i class="iconfont icon-like"></i>
           <span class="list-content">Code, read, and music.</span>
@@ -31,7 +31,6 @@
           </span>
         </div>
       </div>
-
       <div class="user-box">
         <div class="user">
           <img src="~static/images/userFace.png" alt="" width="100%">
@@ -40,11 +39,12 @@
     </div>
     <div class="text-box font-futura">
       <div class="text">
-        <p calss="title">HI, DEAR FRIEND. </p>
-        <p>
-          I firmly believe in life long learning, and sooner or later we will get something that we want.
-          At my age, I have so many new ideas, and I will exploring new technologies, going ahead!
-        </p>
+        <p>Too young too simple, sometimes native.</p>
+        <p>Have so many new ideas, maybe i will go to relize it.</p>
+        <p>Sometimes writing art, but most of the time writing shit.</p>
+        <p>Enjoy the present.</p>
+        <p>Always on the road.</p>
+        <p>All of me in the code and music.</p>
       </div>
     </div>
   </div>
@@ -60,6 +60,12 @@ export default {
 
   head: {
     title: 'About'
+  },
+
+  computed: {
+    mobileLayout () {
+      return this.$store.state.options.mobileLayout
+    }
   }
 }
 
@@ -125,9 +131,36 @@ export default {
         overflow: hidden;
 
         img {
+          max-width: 100%;
           @include border-radius(4px);
         }
       }
+    }
+  }
+
+  &.mobile {
+    width: 100%;
+
+    >.info-box {
+      grid-template-columns: 100%;
+
+      >.info {
+        padding: 1rem;
+        grid-row: 2 / 3;
+
+        >.list {
+          width: 100%;
+          padding: 0;
+          @include text-overflow();
+          grid-gap: 1rem;
+        }
+      }
+      >.user-box {
+        grid-row: 1 / 2;
+      }
+    }
+    .text-box .text {
+      padding: 1rem;
     }
   }
 }
@@ -136,10 +169,11 @@ export default {
   margin-top: 1rem;
 
   >.text {
-    padding: 1rem 2rem;
+    padding: 5rem 10rem;
     background: $module-bg;
     color: $black;
     line-height: 2rem;
+
   }
 }
 

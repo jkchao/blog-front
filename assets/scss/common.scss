@@ -14,6 +14,12 @@ body {
   padding: 5rem 0 0 0;
 }
 
+body.mobile {
+  overflow-x: hidden;
+  padding: 0;
+  background: $mobile-bg;
+}
+
 @font-face {
   font-family: 'Futura';
   src: url('/fonts/Futura.ttc')
