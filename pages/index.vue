@@ -42,7 +42,7 @@ export default {
         {
           logo: banner4,
           title: '生活',
-          abstrack: '生活，就是一个又一个故事，参杂着一个又一个的人、事、物的故事，一个又一个梦想的故事，的连续剧。 而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
+          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的...',
           tag: 'Think',
           time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
           read: ~~(Math.random() * 100),
@@ -52,7 +52,7 @@ export default {
         {
           logo: banner4,
           title: '生活',
-          abstrack: ' 而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
+          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
           tag: 'Think',
           time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
           read: ~~(Math.random() * 100),
@@ -62,7 +62,7 @@ export default {
         {
           logo: banner4,
           title: '生活',
-          abstrack: '生活，就是一个又一个故事，参杂着一个又一个的人、事、物的故事，一个又一个梦想的故事，的连续剧。 而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
+          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
           tag: 'Think',
           time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
           read: ~~(Math.random() * 100),
@@ -72,7 +72,7 @@ export default {
         {
           logo: banner4,
           title: '生活',
-          abstrack: '生活，就是一个又一个故事，参杂着一个又一个的人、事、物的故事，一个又一个梦想的故事，的连续剧。 而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
+          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
           tag: 'Think',
           time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
           read: ~~(Math.random() * 100),
@@ -82,7 +82,7 @@ export default {
         {
           logo: banner4,
           title: '生活',
-          abstrack: '生活，就是一个又一个故事，参杂着一个又一个的人、事、物的故事，一个又一个梦想的故事，的连续剧。 而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
+          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
           tag: 'Think',
           time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
           read: ~~(Math.random() * 100),
@@ -92,7 +92,7 @@ export default {
         {
           logo: banner4,
           title: '生活',
-          abstrack: '生活，就是一个又一个故事，参杂着一个又一个的人、事、物的故事，一个又一个梦想的故事，的连续剧。 而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
+          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
           tag: 'Think',
           time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
           read: ~~(Math.random() * 100),
@@ -102,7 +102,7 @@ export default {
         {
           logo: banner4,
           title: '生活',
-          abstrack: '生活，就是一个又一个故事，参杂着一个又一个的人、事、物的故事，一个又一个梦想的故事，的连续剧。 而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
+          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
           tag: 'Think',
           time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
           read: ~~(Math.random() * 100),

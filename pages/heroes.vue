@@ -190,6 +190,7 @@ export default {
 
     >.head {
       grid-column: 1 / 1;
+      height: 10rem;
     }
   }
 

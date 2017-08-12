@@ -96,7 +96,9 @@ export default {
       }
     }
   }
+
   &.dialog-mobile {
+
     >.dialog-body {
       width: 24rem;
       margin-bottom: 5rem;

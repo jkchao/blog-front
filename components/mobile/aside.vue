@@ -1,5 +1,5 @@
 <template>
-  <div class="mobile-aside ">
+  <div class="mobile-aside">
     <div class="user-head">
       <img src="~static/images/muserFace.jpeg" />
       <p>三毛</p>

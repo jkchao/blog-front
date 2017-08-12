@@ -3,11 +3,12 @@
     <div class="search font-futura" :class="{'active': search}">
       <input
         type="text"
+        placeholder="Search"
         v-model="keyword"
-        placeholder="search..."
-        ref="search"
         @keyup.enter="search" 
+        required
         :maxlength="20"/>
+
       <a href="javascript:;" @click="close">
         <i class="iconfont icon-close"></i>
       </a>
@@ -113,6 +114,7 @@ export default {
     input {
       width: 20rem;
       height: 2rem;
+      line-height: 2rem;
     }
   }
 }

@@ -198,7 +198,8 @@ export default {
 
     >input {
       position: absolute;
-      padding: .5rem 2.5rem .5rem .5rem;      
+      padding: .5rem 2.5rem .5rem .5rem; 
+      line-height: 1rem;     
       background: $light-dark;
       opacity: 1;
       @include transition-delay(.05s);
