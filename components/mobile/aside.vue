@@ -30,7 +30,7 @@ export default {
       nav: [
         { path: '/', name: 'HOME', icon: 'iconfont icon-home'},
         { path: '/think', name: 'THINK', icon: 'iconfont icon-read'},
-        { path: '/music', name: 'MUSIC', icon: 'iconfont icon-music'},
+        { path: '/map', name: 'MAP', icon: 'iconfont icon-map'},
         { path: '/about', name: 'ABOUT', icon: 'iconfont icon-user'},
         { path: '/heroes', name: 'HEROES', icon: 'iconfont icon-hero'}
       ]
