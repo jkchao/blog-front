@@ -1,18 +1,23 @@
 <template>
   <header class="mobile-head">
-    <div class="search font-futura" :class="{'active': search}">
+
+    <form 
+      class="search font-futura" 
+      :class="{'active': search}"
+      @submit.stop.prevent="searchTo">
+
       <input
         type="text"
         placeholder="Search"
         v-model="keyword"
-        @keyup.enter="search" 
+        @keyup.enter.stop.prevent="searchTo" 
         required
         :maxlength="20"/>
 
       <a href="javascript:;" @click="close">
         <i class="iconfont icon-close"></i>
       </a>
-    </div>
+    </form>
     <nav>
       <div>
         <a href="javascript:;" @click.stop.prevent="toggleSidebar(!mobileSidebar)"><i class="iconfont icon-list"></i></a>
@@ -52,10 +57,17 @@ export default {
   },
 
   methods: {
+
     toggleSidebar (state) {
       this.$store.commit('options/SET_MOBILE_SIDEBAR', state)
     },
-    search () {},
+
+    searchTo () {
+      console.log(222)
+      this.$router.push(`/search/${this.keyword}`)
+      // this.keyword = ''
+    },
+
     close () {
       this.keyword = ''
       this.search = false

@@ -33,7 +33,7 @@
       <div class="aside-item aside-tag font-futura" key="4">
         <ul class="tag clearfix">
           <li class="tag-item" v-for="item in tag" :key="item.id">
-            <nuxt-link to="">
+            <nuxt-link :to="`/tag/${item.name}`">
               {{ item.name }}
               <span>({{ item.num }})</span>
             </nuxt-link>
@@ -94,6 +94,9 @@ export default {
     },
     search () {
       if (!this.open) this.open = true
+      this.$router.push(`/search/${this.keyword}`)
+      this.open = false
+      this.keyword = ''
     }
   }
 }
