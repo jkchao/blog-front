@@ -10,7 +10,13 @@ export const state = () => {
     mobileSidebar: false,
 
     // ua
-    userAgent: ''
+    userAgent: '',
+
+    // 博主信息
+    adminInfo: {},
+
+    // 网站信息
+    option: {}
   }
 }
 
@@ -34,6 +40,16 @@ export const mutations = {
   // 设置是否移动端状态
   SET_MOBILE_SIDEBAR (state, action) {
     state.mobileSidebar = action
+  },
+
+  // 博主用户信息
+  SET_ADMIN_INFO (state, data) {
+    state.adminInfo = data
+  },
+
+  // 网站信息
+  SET_WEB_OPTION (state, data) {
+    state.option = data
   }
 }
 

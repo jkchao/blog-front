@@ -1,5 +1,5 @@
 <template>
-  <section  class="clearfix">
+  <section  class="clearfix main">
     <carrousel :option="swiperOption" type="banner" :con="banners" :class="{ mobile: mobileLayout }"></carrousel>
     <div class="article">
       <articleView :articleList = "list"></articleView>
@@ -23,6 +23,10 @@ export default {
 
   transition: 'fade',
 
+  fetch ({ store }) {
+    return store.dispatch('getArtList')
+  },
+
   data () {
     return {
       swiperOption: {
@@ -37,85 +41,21 @@ export default {
         preloadImages: false,
         lazyLoading: true
       },
-      banners: [ banner1, banner2, banner3, banner4, banner5 ],
-      list: [
-        {
-          logo: banner4,
-          title: '生活',
-          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的...',
-          tag: 'Think',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          read: ~~(Math.random() * 100),
-          comments: ~~(Math.random() * 100),
-          like: ~~(Math.random() * 100)
-        },
-        {
-          logo: banner4,
-          title: '生活',
-          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
-          tag: 'Think',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          read: ~~(Math.random() * 100),
-          comments: ~~(Math.random() * 100),
-          like: ~~(Math.random() * 100)
-        },
-        {
-          logo: banner4,
-          title: '生活',
-          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
-          tag: 'Think',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          read: ~~(Math.random() * 100),
-          comments: ~~(Math.random() * 100),
-          like: ~~(Math.random() * 100)
-        },
-        {
-          logo: banner4,
-          title: '生活',
-          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
-          tag: 'Think',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          read: ~~(Math.random() * 100),
-          comments: ~~(Math.random() * 100),
-          like: ~~(Math.random() * 100)
-        },
-        {
-          logo: banner4,
-          title: '生活',
-          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
-          tag: 'Think',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          read: ~~(Math.random() * 100),
-          comments: ~~(Math.random() * 100),
-          like: ~~(Math.random() * 100)
-        },
-        {
-          logo: banner4,
-          title: '生活',
-          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
-          tag: 'Think',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          read: ~~(Math.random() * 100),
-          comments: ~~(Math.random() * 100),
-          like: ~~(Math.random() * 100)
-        },
-        {
-          logo: banner4,
-          title: '生活',
-          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
-          tag: 'Think',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          read: ~~(Math.random() * 100),
-          comments: ~~(Math.random() * 100),
-          like: ~~(Math.random() * 100)
-        }
-      ]
+      // banners: [ banner1, banner2, banner3, banner4, banner5 ]
     }
   },
 
   computed: {
     mobileLayout () {
       return this.$store.state.options.mobileLayout
+    },
+
+    list () {
+      return this.$store.state.article.art.list
+    },
+
+    banners () {
+      return this.list.slice(0, 9)
     }
   },
 
@@ -128,17 +68,34 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 @import '~assets/scss/variable.scss';
 @import '~assets/scss/mixin.scss';
+.main {
+  .carrousel {
+    height: 20rem;
 
-.carrousel {
-  height: 20rem;
+
+    .swiper-slide {
+      text-align: center;
+      position: relative;
+
+      >.swiper-title {
+        position: absolute;
+        right: $normal-pad;
+        top: $normal-pad;
+        color: $black;
+        z-index: 999;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .carrousel.mobile {
+    min-height: 8rem;
+    height: auto;
+  }
 }
 
-.carrousel.mobile {
-  min-height: 8rem;
-  height: auto;
-}
 </style>

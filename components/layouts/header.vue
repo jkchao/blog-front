@@ -156,6 +156,10 @@ header {
         justify-content: center;
         height: 100%;
 
+        >.saying-content {
+          text-align: left;
+        }
+
         >.saying-author {
           margin-top: .3rem;
           text-align: right;

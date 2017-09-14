@@ -8,19 +8,21 @@
       <div class="content">
         <p class="title">{{ item.title }}</p>
         <nuxt-link to="" v-if="mobileLayout">
-          <img :src="item.logo" alt="" width="100%" />
+          <img :src="item.thumb" alt="" width="100%" class="mobil-img"/>
         </nuxt-link>
-        <p class="abstrack">{{ item.abstrack }}</p>
+        <p class="abstrack">{{ item.descript }}</p>
         <div class="meta">
-          <span class="tag"><i class="iconfont icon-tag"></i>{{ item.tag }}</span>
-          <span class="time"><i class="iconfont icon-time"></i>{{ item.time | dateFormat('yyyy-MM-dd hh:mm')}}</span>
-          <span class="read"><i class="iconfont icon-icon"></i>{{ item.read }}</span>
-          <span class="comments"><i class="iconfont icon-comments"></i>{{ item.comments }}</span>
-          <span class="like"><i class="iconfont icon-like"></i>{{ item.like }}</span>
+          <span class="tag"><i class="iconfont icon-tag"></i>
+            <span v-for="list in item.tag" class="tag-list" :key="list._id">{{ list.name }}</span>
+          </span>
+          <span class="time"><i class="iconfont icon-time"></i>{{ item.create_at | dateFormat('yyyy-MM-dd hh:mm')}}</span>
+          <span class="read"><i class="iconfont icon-icon"></i>{{ item.meta.views }}</span>
+          <span class="comments"><i class="iconfont icon-comments"></i>{{ item.meta.comments }}</span>
+          <span class="like"><i class="iconfont icon-like"></i>{{ item.meta.likes }}</span>
         </div>
       </div>
       <nuxt-link to="" v-if="!mobileLayout">
-        <img :src="item.logo" alt="" width="180"/>
+        <img :src="item.thumb" alt="" width="180"/>
       </nuxt-link>
     </div>
   </div>
@@ -90,6 +92,11 @@ export default {
             margin: 0;
           }
         }
+
+        .mobil-img {
+          max-width: 100%;
+          max-height: 200px;
+        }
       }
     }
 
@@ -115,6 +122,10 @@ export default {
             margin-right: .2rem;
             vertical-align: text-bottom;
           }
+        }
+
+        .tag-list {
+          margin-right: .5rem;
         }
       }
     }

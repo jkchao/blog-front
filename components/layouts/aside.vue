@@ -19,10 +19,10 @@
       <div class="aside-item hot-article" key="2">
         <h3 class="title">热门文章</h3>
         <transition-group tag="div" class="hot-article-list" name="list">
-          <p v-for="(list, index) in articleList" :key="list.id" class="list">
+          <p v-for="(list, index) in hotArt" :key="list._id" class="list">
             <nuxt-link to="">
               <span class="list-num">{{ index + 1}}</span>
-              <span class="list-name">{{ list.name }}</span>
+              <span class="list-name">{{ list.title }}</span>
             </nuxt-link>
           </p>
         </transition-group>
@@ -35,7 +35,7 @@
           <li class="tag-item" v-for="item in tag" :key="item.id">
             <nuxt-link :to="`/tag/${item.name}`">
               {{ item.name }}
-              <span>({{ item.num }})</span>
+              <span>({{ item.count }})</span>
             </nuxt-link>
           </li>
         </ul>
@@ -50,32 +50,16 @@ export default {
   data () {
     return {
       open : false,
-      keyword: '',
-      articleList: [
-        { name: '文章标题',  link: '', id: 1 },
-        { name: '文章标题',  link: '', id: 2 },
-        { name: '文章标题',  link: '', id: 3 },
-        { name: '文章标题',  link: '', id: 4 },
-        { name: '文章标题',  link: '', id: 5 },
-        { name: '文章标题',  link: '', id: 6 },
-        { name: '文章标题',  link: '', id: 6 },
-        { name: '文章标题',  link: '', id: 6 },
-        { name: '文章标题',  link: '', id: 6 }
-      ],
-      tag: [
-        { name: 'Javascript', num: '10', id: 1 },
-        { name: 'Nodejs', num: '10', id: 2 },
-        { name: 'Think', num: '10', id: 3 },
-        { name: 'Http', num: '3', id: 4 },
-        { name: '世界', num: '4', id: 6 },
-        { name: '算法', num: '2', id: 7 },
-        { name: 'Css', num: '3', id: 8 },
-        { name: '工作', num: '3', id: 9 },
-        { name: 'Vue', num: '0', id: 10 },
-        { name: 'React', num: '10', id: 10 },
-        { name: 'Github', num: '10', id: 10 },
-        { name: 'HTML5', num: '10', id: 5 }
-      ]
+      keyword: ''
+    }
+  },
+
+  computed: {
+    tag () {
+      return this.$store.state.tag.data.list
+    },
+    hotArt () {
+      return this.$store.state.article.hotArt.list
     }
   },
 
