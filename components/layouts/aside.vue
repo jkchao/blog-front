@@ -33,7 +33,7 @@
       <div class="aside-item aside-tag font-futura" key="4">
         <ul class="tag clearfix">
           <li class="tag-item" v-for="item in tag" :key="item.id">
-            <nuxt-link :to="`/tag/${item.name}`">
+            <nuxt-link :to="`/tag/${item._id}`">
               {{ item.name }}
               <span>({{ item.count }})</span>
             </nuxt-link>

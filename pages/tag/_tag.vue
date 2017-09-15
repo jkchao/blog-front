@@ -4,7 +4,7 @@
     <div class="head font-futura" :class="{'mobile': mobileLayout}">
       <div>
         <p><i class="iconfont icon-tag"></i></p>
-        <p> {{ tag }} </p>
+        <p> {{ tagName }} </p>
       </div>
     </div>
 
@@ -24,85 +24,16 @@ export default {
 
   transition: 'slide-down',
 
-  head() {
-    return { title: `${this.tag} | tag` }
+  fetch ({ store, params }) {
+    return store.dispatch('getArtList', params)
+  },
+
+  head () {
+    return { title: `${this.tagName} | tag` }
   },
 
   data () {
-    return {
-      list: [
-        {
-          logo: banner4,
-          title: '生活',
-          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的...',
-          tag: 'Think',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          read: ~~(Math.random() * 100),
-          comments: ~~(Math.random() * 100),
-          like: ~~(Math.random() * 100)
-        },
-        {
-          logo: banner4,
-          title: '生活',
-          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
-          tag: 'Think',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          read: ~~(Math.random() * 100),
-          comments: ~~(Math.random() * 100),
-          like: ~~(Math.random() * 100)
-        },
-        {
-          logo: banner4,
-          title: '生活',
-          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
-          tag: 'Think',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          read: ~~(Math.random() * 100),
-          comments: ~~(Math.random() * 100),
-          like: ~~(Math.random() * 100)
-        },
-        {
-          logo: banner4,
-          title: '生活',
-          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
-          tag: 'Think',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          read: ~~(Math.random() * 100),
-          comments: ~~(Math.random() * 100),
-          like: ~~(Math.random() * 100)
-        },
-        {
-          logo: banner4,
-          title: '生活',
-          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
-          tag: 'Think',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          read: ~~(Math.random() * 100),
-          comments: ~~(Math.random() * 100),
-          like: ~~(Math.random() * 100)
-        },
-        {
-          logo: banner4,
-          title: '生活',
-          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
-          tag: 'Think',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          read: ~~(Math.random() * 100),
-          comments: ~~(Math.random() * 100),
-          like: ~~(Math.random() * 100)
-        },
-        {
-          logo: banner4,
-          title: '生活',
-          abstrack: '而成都这座城市，闲适又轻慢的城市，又特别的适合温养着无数的故事。甜的咸的，辣的...',
-          tag: 'Think',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          read: ~~(Math.random() * 100),
-          comments: ~~(Math.random() * 100),
-          like: ~~(Math.random() * 100)
-        }
-      ]
-    }
+    return {}
   },
 
   components: {
@@ -114,8 +45,13 @@ export default {
       return this.$store.state.options.mobileLayout
     },
 
-    tag () {
-      return this.$route.params.tag
+    tagName () {
+      const _id = this.$route.params.tag
+      return this.$store.state.tag.data.list.find(item => item._id === _id).name
+    },
+
+    list () {
+      return this.$store.state.article.art.list
     }
   }
 }

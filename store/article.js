@@ -7,7 +7,10 @@ export const state = () => ({
   },
 
   // 列表文章
-  art: {},
+  art: {
+    pagination: {},
+    list: {}
+  },
 
   // 文章详情
   details: {}

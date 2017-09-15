@@ -34,6 +34,7 @@
 .list-enter-active, .list-leave-active { transition: all .5s; }
 .list-enter, .list-leave-active { opacity: 0; transform: translateX(30px); }
 .list-move { transition: all .5s; }
+.list-leave-active { position: absolute !important; }
 
 .fade-enter-active, .fade-leave-active { transition: opacity .3s; }
 .fade-enter, .fade-leave-active { opacity: 0; }

@@ -8,12 +8,6 @@
 </template>
 <script>
 
-import banner1 from '~static/images/banner1.png'
-import banner2 from '~static/images/banner2.png'
-import banner3 from '~static/images/banner3.png'
-import banner4 from '~static/images/banner4.png'
-import banner5 from '~static/images/banner5.png'
-
 import carrousel from '~components/common/carrousel.vue'
 import articleView from '~components/common/article.vue'
 
@@ -24,7 +18,7 @@ export default {
   transition: 'fade',
 
   fetch ({ store }) {
-    return store.dispatch('getArtList')
+    return store.dispatch('getArtList', { type: 'code' })
   },
 
   data () {
