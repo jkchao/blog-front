@@ -2,7 +2,10 @@
   <section  class="clearfix main">
     <carrousel :option="swiperOption" type="banner" :con="banners" :class="{ mobile: mobileLayout }"></carrousel>
     <div class="article">
-      <articleView :articleList = "list"></articleView>
+      <articleView
+        :articleList = "list"
+        :haveMoreArt="haveMoreArt"
+        @loadMore="loadMore"></articleView>
     </div>
   </section>
 </template>
@@ -35,7 +38,6 @@ export default {
         preloadImages: false,
         lazyLoading: true
       },
-      // banners: [ banner1, banner2, banner3, banner4, banner5 ]
     }
   },
 
@@ -50,14 +52,26 @@ export default {
 
     banners () {
       return this.list.slice(0, 9)
+    },
+
+    haveMoreArt () {
+      return this.$store.state.article.art.pagination.current_page
+              === this.$store.state.article.art.pagination.total_page
     }
   },
 
   components: {
     carrousel,
     articleView
-  }
+  },
 
+  methods: {
+    loadMore () {
+      this.$store.dispatch('getArtList', {
+        current_page: this.$store.state.article.art.pagination.current_page + 1
+      })
+    }
+  }
 }
 </script>
 

@@ -9,7 +9,10 @@
     </div>
 
     <div class="article">
-      <articleView :articleList = "list"></articleView>
+      <articleView
+        :articleList = "list"
+        :haveMoreArt="haveMoreArt"
+        @loadMore="loadMore"></articleView>
     </div>
   </div>
 </template>
@@ -52,6 +55,19 @@ export default {
 
     list () {
       return this.$store.state.article.art.list
+    },
+
+    haveMoreArt () {
+      return this.$store.state.article.art.pagination.current_page
+              === this.$store.state.article.art.pagination.total_page
+    }
+  },
+
+  methods: {
+    loadMore () {
+      this.$store.dispatch('getArtList', {
+        current_page: this.$store.state.article.art.pagination.current_page + 1
+      })
     }
   }
 }

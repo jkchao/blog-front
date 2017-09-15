@@ -25,9 +25,12 @@
         <nuxt-link to="" v-if="!mobileLayout">
           <img :src="item.thumb" alt="" width="180"/>
         </nuxt-link>
-        <div class="empty-article article-item" v-if="articleList.length === 0" key="-1">
-          无更多文章
-        </div>
+      </div>
+      <div class="end-article" v-if="!haveMorArt" key="-1">
+        无更多文章
+      </div>
+      <div class="loading-more end-article " v-if="haveMorArt" key="-2">
+        <a href="javascript:;" @click="$emit('loadMore')">加载更多</a>
       </div>
     </transition-group>
 
@@ -37,7 +40,7 @@
 export default {
   name: 'article-box',
 
-  props: ['articleList'],
+  props: ['articleList', 'haveMorArt'],
 
   computed: {
     mobileLayout () {
@@ -139,6 +142,14 @@ export default {
     >a {
       width: 180px;
     }
+  }
+
+  .end-article {
+    margin-bottom: $normal-pad;
+    padding: $md-pad;
+    background: $module-bg;
+    text-align: center;
+    color: $black;
   }
 }
 

@@ -6,7 +6,7 @@
         <a href="javascript:;" class="join"  @click.stop="open">JOIN!</a>
       </div>
     </div>
-    <div class="list" v-for="(list, index) in lists" :key="index">
+    <div class="list" v-for="(list, index) in items" :key="index">
       <h3 class="name">{{ list.name }}</h3>
       <p class="content">{{ list.content }}</p>
       <div class="info">
@@ -22,24 +22,24 @@
       <form>
         <div class="dialog-item name" >
           <span>大名：</span>
-          <input type="text" v-model="name" maxlength="40" class="form-item" />
+          <input type="text" v-model="form.name" maxlength="40" class="form-item" />
         </div>
         <div class="dialog-item github" >
           <span>GITHUB：</span>
-          <input type="text" v-model="github" maxlength="40" placeholder="http:// or https://" class="form-item" />
+          <input type="text" v-model="form.github" maxlength="40" placeholder="http:// or https://" class="form-item" />
         </div>
         <div class="dialog-item blog" >
           <span>BLOG：</span>
-          <input type="text" v-model="blog" maxlength="40" placeholder="http:// or https://" class="form-item" />
+          <input type="text" v-model="form.blog" maxlength="40" placeholder="http:// or https://" class="form-item" />
         </div>
         <div class="dialog-item content">
           <span>说点啥？</span>
-          <textarea maxlength="200" resize="none" rows="6" placeholder="曾经有一个 BUG 摆在我的面前......" class="form-item" />
+          <textarea v-model="form.content" maxlength="200" resize="none" rows="6" placeholder="曾经有一个 BUG 摆在我的面前......" class="form-item" />
         </div>
       </form>
       <div class="footer" slot="foot">
         <button @click="show = false">取消</button>
-        <button @click="show = false">确定</button>
+        <button @click="submit">确定</button>
       </div>
     </dialog-com>
 
@@ -58,117 +58,60 @@ export default {
     title: 'Heroes'
   },
 
+  fetch ({ store }) {
+    return store.dispatch('getHero')
+  },
+
   components: { dialogCom },
   
   data () {
     return {
       show: false,
-      name: '',
-      github: '',
-      blog: '',
-      content: '',
-      lists: [
-        {
-          name: 'KChaoJKChaoJKChaoJKChaoJKChao',
-          content: '这被禁忌的游戏 一如既往的岁月这被禁忌的游戏 一如既往的岁月这被禁忌的游戏 一如既往的岁月这被禁忌的游戏 一如既往的岁月这被禁忌的游戏 一如既往的岁月',
-          github: 'https://github.com/jkchao',
-          blog: 'https://github.com/jkchao',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          id: 1
-        },
-        {
-          name: 'JKChao',
-          content: '这被禁忌的游戏 一如既往的岁月',
-          github: 'https://github.com/jkchao',
-          blog: 'https://github.com/jkchao',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          id: 1
-        },
-        {
-          name: 'JKChao',
-          content: '这被禁忌的游戏 一如既往的岁月',
-          github: 'https://github.com/jkchao',
-          blog: '',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          id: 1
-        },
-        {
-          name: 'JKChao',
-          content: '这被禁忌的游戏 一如既往的岁月',
-          github: '',
-          blog: 'https://github.com/jkchao',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          id: 1
-        },
-        {
-          name: 'JKChao',
-          content: '这被禁忌的游戏 一如既往的岁月',
-          github: '',
-          blog: 'https://github.com/jkchao',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          id: 1
-        },
-        {
-          name: 'JKChao',
-          content: '这被禁忌的游戏 一如既往的岁月',
-          github: '',
-          blog: '',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          id: 1
-        },
-        {
-          name: 'JKChao',
-          content: '这被禁忌的游戏 一如既往的岁月',
-          github: '',
-          blog: '',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          id: 1
-        },
-        {
-          name: 'JKChao',
-          content: '这被禁忌的游戏 一如既往的岁月',
-          github: '',
-          blog: '',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          id: 1
-        },
-        {
-          name: 'JKChao',
-          content: '这被禁忌的游戏 一如既往的岁月',
-          github: 'https://github.com/jkchao',
-          blog: '',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          id: 1
-        },
-        {
-          name: 'JKChao',
-          content: '这被禁忌的游戏 一如既往的岁月',
-          github: '',
-          blog: 'https://github.com/jkchao',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          id: 1
-        },
-        {
-          name: 'JKChao',
-          content: '这被禁忌的游戏 一如既往的岁月',
-          github: '',
-          blog: 'https://github.com/jkchao',
-          time: new Date().getTime() - 3600 * 1000 * 24 * Math.random() * 10,
-          id: 1
-        }
-      ]
+      form: {
+        name: '',
+        github: '',
+        blog: '',
+        content: ''
+      }
     }
   },
 
   computed: {
+
     mobileLayout () {
       return this.$store.state.options.mobileLayout
+    },
+
+    items () {
+      return this.$store.state.heros.data.list
     }
   },
 
   methods: {
     open () {
+      this.form = Object.assign({}, {
+        name: '',
+        github: '',
+        blog: '',
+        content: ''
+      })
       this.show = true
+    },
+
+    async submit () {
+      if (this.name === '') {
+        window.alert('姓名必填')
+        return
+      }
+      if (this.content === '') {
+        window.alert('说点什么？')
+        return
+      }
+      const res = await this.$store.dispatch('postHero', { ...this.form })
+      if (res.code === 1) {
+        window.alert(res.message)
+        this.show = false
+      } else window.alert(res.message)
     }
   }
 }

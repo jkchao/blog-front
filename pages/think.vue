@@ -4,13 +4,15 @@
       <img src="~static/images/head1.png">
     </div>
     <div class="article">
-      <articleView :articleList = "list"></articleView>
+      <articleView
+        :articleList = "list"
+        :haveMoreArt="haveMoreArt"
+        @loadMore="loadMore"></articleView>
     </div>
   </section>
 </template>
-<script>
 
-import banner4 from '~static/images/banner4.png'
+<script>
 
 const articleView = () => import('~components/common/article.vue')
 
@@ -25,20 +27,41 @@ export default {
 
   transition: 'fade',
 
+  fetch ({ store }) {
+    return store.dispatch('getArtList', { type: 'think' })
+  },
+
   data () {
-    return {
-      list: []
-    }
+    return {}
   },
 
   computed: {
+
     mobileLayout () {
       return this.$store.state.options.mobileLayout
+    },
+
+    list () {
+      return this.$store.state.article.art.list
+    },
+
+
+    haveMoreArt () {
+      return this.$store.state.article.art.pagination.current_page
+              === this.$store.state.article.art.pagination.total_page
     }
   },
 
   components: {
     articleView
+  },
+
+  methods: {
+    loadMore () {
+      this.$store.dispatch('getArtList', {
+        current_page: this.$store.state.article.art.pagination.current_page + 1
+      })
+    }
   }
 }
 </script>

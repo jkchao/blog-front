@@ -63,8 +63,14 @@ export const actions = {
   async likeArt () {},
 
   // 英雄版
-  async getHero () {},
+  async getHero ({ commit }, data) {
+    const res = await service.getHero({ current_page: 1 })
+    if (res.code === 1) commit('heros/SET_HERO', res.result)
+  },
 
   // 添加英雄版
-  async postHero () {}
+  async postHero ({ commit }, data) {
+    const res = await service.postHero(data)
+    return res
+  }
 }

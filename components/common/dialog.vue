@@ -4,7 +4,7 @@
       <transition name="slide-down">
         <div class="dialog-body" v-show="dialogVisible" v-click-outside="hide">
           <div class="dialog-head">
-            <a href="javascript:;"><i class="iconfont icon-close"></i></a>
+            <a href="javascript:;" @click="hide"><i class="iconfont icon-close"></i></a>
           </div>
           <div class="dialog-content"><slot></slot></div>
           <div class="dialog-foot">

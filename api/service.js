@@ -21,6 +21,7 @@ export function getHero (params) {
 // 增加英雄榜
 export function postHero (data) {
   return ax.post('/hero', {...data})
+          .then(res => res.data)
 }
 
 // 标签列表
