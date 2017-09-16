@@ -57,6 +57,73 @@ body.mobile {
   }
 }
 
+#share {
+  
+    &.article-share {
+  
+      > .share-box {
+        opacity: .6;
+  
+        &:hover {
+          opacity: 1;
+        }
+  
+        > .share-link {
+          width: calc((100% - (.445em * 11)) / 12);
+          height: 2.2em;
+          line-height: 2.3em;
+          background-color: #eee;
+          margin-right: .445em;
+  
+          > .iconfont {
+            font-size: 1.3em;
+          }
+  
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  
+    &.sidebar-share {
+      position: fixed;
+      top: 25%;
+      left: 0;
+      width: 4em;
+  
+      > .share-box {
+        opacity: .4;
+  
+        &:hover {
+          opacity: 1;
+        }
+  
+        > .share-link {
+          width: 3em;
+          height: 2.5em;
+          line-height: 2.6em;
+  
+          > .iconfont {
+            font-size: 1.3em;
+          }
+  
+          &.renren,
+          &.evernote,
+          &.google-plus,
+          &.linkedin,
+          &.mail {
+            display: none;
+          }
+  
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
 ::-webkit-input-placeholder {
   /* WebKit browsers */
   color: $disabled;

@@ -2,19 +2,42 @@
   <div class="article-list" :class="{'mobile': mobileLayout}">
     <div class="article-cont">
       <h3 class="font-futura">{{ article.title }}</h3>
+      <div class="meta">
+        <span class="time">{{ article.create_at | dateFormat('yyyy.MM.dd hh:mm') }}</span>
+        <span class="num">字数 {{ article.content.length }}</span>
+        <span class="view">阅读 {{ article.meta.views }}</span>
+        <span class="view">喜欢 {{ article.meta.likes }}</span>
+      </div>
       <div class="article-thumb">
         <img :src="article.thumb" alt="">
       </div>
       <div class="content" v-html="articleContent"></div>
     </div>
-    <div class="item">分享</div>
+    <div class="item">
+      <div class="info">
+        <div class="info-left">
+          <i
+            :class="{'is-liked': isLiked}"
+            class="iconfont icon-like like"
+            @click="like"></i>
+            <span>{{ article.meta.likes || 0}}</span>
+        </div>
+        <div>版权信息：
+          <a href="https://creativecommons.org/licenses/by-nc/3.0/cn/deed.zh"
+             target="_blank">非商用-署名-自由转载</a>
+        </div>
+      </div>
+      <div class="share">
+        <share class="article-share"></share>
+      </div>
+    </div>
     <div class="item comment">评论</div>
   </div>
 </template>
 
 <script>
 import marked from '~/plugins/marked'
-
+import share from '~/components/layouts/share'
 export default {
   name: 'article',
 
@@ -28,6 +51,14 @@ export default {
     return { title: `${this.$store.state.article.details.title}` }
   },
 
+  data () {
+    return {
+      likeArticles: []
+    }
+  },
+
+  components: { share },
+
   computed: {
     mobileLayout () {
       return this.$store.state.options.mobileLayout
@@ -39,7 +70,32 @@ export default {
 
     articleContent () {
       return marked(this.article.content)
+    },
+
+    isLiked () {
+      return this.likeArticles.includes(this.article._id)
     }
+  },
+
+  methods: {
+    async like () {
+      if (this.isLiked) return
+      const res = await this.$store.dispatch('likeArt', { _id: this.article._id })
+      if (res.code !== 1) alert(`喜欢文章失败：${res.message}`)
+      else {
+        this.article.meta.likes += 1
+        this.likeArticles.push(this.article._id)
+        window.localStorage.setItem('LIKE_ARTICLS', JSON.stringify(this.likeArticles))
+      }
+    },
+
+    init () {
+      this.likeArticles = JSON.parse(window.localStorage.getItem('LIKE_ARTICLS') || '[]')
+    }
+  },
+
+  mounted () {
+    this.init ()
   }
 }
 </script>
@@ -56,6 +112,16 @@ export default {
   >.article-cont {
     padding: $lg-pad;
     background: $module-bg;
+
+    >.meta {
+      margin-top: .3rem;
+      font-size: .8rem;
+      color: #969696;
+
+      span {
+        margin-right: .5rem;
+      }
+    }
 
     >h3 {
       font-size: 1.3rem;
@@ -246,12 +312,40 @@ export default {
     margin-top: 1rem;
     padding: $lg-pad;
     background: $module-bg;
+    // font-size: .8rem;
+
+    >.info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      >.info-left {
+        display: flex;
+        align-items: center;
+
+        .like {
+          cursor: pointer;
+          margin-right: .3rem;
+        }
+
+        .is-liked {
+          color: $red;
+        }
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+    >.share {
+      margin-top: 1rem;
+    }
   }
 }
 
 .article-list.mobile {
   .article-cont {
-    padding: .5rem;
+    padding: 1rem;
 
     .content {
 
@@ -267,6 +361,11 @@ export default {
   }
   .item {
     padding: .5rem;
+    font-size: .8rem;
+
+    >.info {
+      line-height: 20px;
+    }
   }
 }
 

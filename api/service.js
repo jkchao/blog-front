@@ -43,5 +43,6 @@ export function getArt (data) {
 }
 
 export function likeArt (data) {
-  return ax.puthArt('')
+  return ax.post(`/like`, data)
+          .then(res => res.data)
 }

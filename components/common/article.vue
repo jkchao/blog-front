@@ -15,16 +15,16 @@
           <p class="abstrack">{{ item.descript }}</p>
           <div class="meta">
             <span class="tag" v-if="!mobileLayout"><i class="iconfont icon-tag"></i>
-              <span v-for="list in item.tag" class="tag-list" :key="list._id">{{ list.name }}</span>
+              <span v-for="list in item.tag" class="tag-list" :key="list._id"> {{ list.name }}</span>
             </span>
             <span class="time"><i class="iconfont icon-time"></i>
               {{ 
-                item.create_at | dateFormat('yyyy-MM-dd hh:mm')
+                item.create_at | dateFormat('yyyy.MM.dd hh:mm')
               }}
             </span>
-            <span class="read"><i class="iconfont icon-icon"></i>{{ item.meta.views }}</span>
-            <span class="comments"><i class="iconfont icon-comments"></i>{{ item.meta.comments }}</span>
-            <span class="like"><i class="iconfont icon-like"></i>{{ item.meta.likes }}</span>
+            <span class="read"><i class="iconfont icon-icon"></i> {{ item.meta.views }}</span>
+            <span class="comments"><i class="iconfont icon-comments"></i> {{ item.meta.comments }}</span>
+            <span class="like"><i class="iconfont icon-like"></i> {{ item.meta.likes }}</span>
           </div>
         </div>
         <nuxt-link to="" v-if="!mobileLayout">

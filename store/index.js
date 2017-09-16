@@ -63,7 +63,10 @@ export const actions = {
   },
 
   // 喜欢文章
-  async likeArt () {},
+  async likeArt ({ commit }, data) {
+    const res = await service.likeArt(data)
+    return res
+  },
 
   // 英雄版
   async getHero ({ commit }, data) {
