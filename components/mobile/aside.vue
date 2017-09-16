@@ -32,7 +32,7 @@ export default {
         { path: '/think', name: 'THINK', icon: 'iconfont icon-read'},
         { path: '/map', name: 'MAP', icon: 'iconfont icon-map'},
         { path: '/about', name: 'ABOUT', icon: 'iconfont icon-user'},
-        { path: '/heroes', name: 'HEROES', icon: 'iconfont icon-hero'}
+        { path: '/heros', name: 'HEROES', icon: 'iconfont icon-hero'}
       ]
     }
   }

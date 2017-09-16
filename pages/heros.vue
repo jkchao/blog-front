@@ -10,7 +10,7 @@
       <h3 class="name">{{ list.name }}</h3>
       <p class="content">{{ list.content }}</p>
       <div class="info">
-        <span class="time"><i class="iconfont icon-time"></i>{{ list.time | dateFormat('yyyy-MM-dd hh:mm')}}</span>
+        <span class="time"><i class="iconfont icon-time"></i>{{ list.create_time | dateFormat('yyyy-MM-dd hh:mm')}}</span>
         <span class="icon">
           <a :href="list.github" target="_blank" v-show="list.github !== ''"><i class="iconfont icon-github"></i></a>
           <a :href="list.blog"  target="_blank" v-show="list.blog !== ''"><i class="iconfont icon-boke"></i></a>
@@ -22,7 +22,7 @@
       <form>
         <div class="dialog-item name" >
           <span>大名：</span>
-          <input type="text" v-model="form.name" maxlength="40" class="form-item" />
+          <input type="text" v-model="form.name" maxlength="20" class="form-item" />
         </div>
         <div class="dialog-item github" >
           <span>GITHUB：</span>
@@ -75,7 +75,6 @@ export default {
       }
     }
   },
-
   computed: {
 
     mobileLayout () {
@@ -99,11 +98,11 @@ export default {
     },
 
     async submit () {
-      if (this.name === '') {
+      if (this.form.name === '') {
         window.alert('姓名必填')
         return
       }
-      if (this.content === '') {
+      if (this.form.content === '') {
         window.alert('说点什么？')
         return
       }

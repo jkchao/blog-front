@@ -21,7 +21,7 @@ export default {
   transition: 'fade',
 
   fetch ({ store }) {
-    return store.dispatch('getArtList', { type: 'code' })
+    return store.dispatch('getArtList')
   },
 
   data () {
@@ -97,12 +97,22 @@ export default {
         z-index: 999;
         cursor: pointer;
       }
+
+      img {
+        height: 280px;
+      }
     }
   }
 
   .carrousel.mobile {
     min-height: 8rem;
     height: auto;
+
+    img {
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+    }
   }
 }
 

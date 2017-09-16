@@ -33,7 +33,7 @@
       </div>
       <div class="user-box">
         <div class="user">
-          <img src="~static/images/userFace.png" alt="" width="100%">
+          <img :src="user.gravatar" alt="" width="100%">
         </div>
       </div>
     </div>
@@ -65,6 +65,10 @@ export default {
   computed: {
     mobileLayout () {
       return this.$store.state.options.mobileLayout
+    },
+
+    user () {
+      return this.$store.state.options.adminInfo
     }
   }
 }

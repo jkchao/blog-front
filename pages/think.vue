@@ -28,7 +28,7 @@ export default {
   transition: 'fade',
 
   fetch ({ store }) {
-    return store.dispatch('getArtList', { type: 'think' })
+    return store.dispatch('getArtList', { type: 2 })
   },
 
   data () {
