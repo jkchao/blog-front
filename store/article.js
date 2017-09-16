@@ -3,13 +3,13 @@ export const state = () => ({
   // 热门文章
   hotArt: {
     pagination: {},
-    list: {}
+    list: []
   },
 
   // 列表文章
   art: {
     pagination: {},
-    list: {}
+    list: []
   },
 
   // 文章详情

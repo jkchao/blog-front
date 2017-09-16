@@ -84,7 +84,6 @@ export default {
   .carrousel {
     height: 20rem;
 
-
     .swiper-slide {
       text-align: center;
       position: relative;
@@ -93,25 +92,29 @@ export default {
         position: absolute;
         right: $normal-pad;
         top: $normal-pad;
+        padding: $normal-pad / 2;
+        // background: lighten($module-hover-bg, 60%);
         color: $black;
         z-index: 999;
         cursor: pointer;
-      }
 
-      img {
-        height: 280px;
+        &:hover {
+          background: $module-hover-bg;
+        }
       }
     }
   }
 
   .carrousel.mobile {
-    min-height: 8rem;
-    height: auto;
+    height: 10rem;
 
-    img {
-      width: 100%;
-      height: auto;
-      vertical-align: middle;
+    .swiper-title {
+      position: absolute;
+      right: $normal-pad/2;
+      top: $normal-pad/2;
+      color: $black;
+      z-index: 999;
+      cursor: pointer;
     }
   }
 }

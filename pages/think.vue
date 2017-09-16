@@ -59,7 +59,8 @@ export default {
   methods: {
     loadMore () {
       this.$store.dispatch('getArtList', {
-        current_page: this.$store.state.article.art.pagination.current_page + 1
+        current_page: this.$store.state.article.art.pagination.current_page + 1,
+        type: 2
       })
     }
   }

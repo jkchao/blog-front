@@ -9,7 +9,9 @@ module.exports = {
     vendor: [
       'axios',
       'particles.js',
-      'swiper'
+      'swiper',
+      'marked',
+      'highlight.js'
     ],
     // postcss
     postcss: [
@@ -66,14 +68,16 @@ module.exports = {
     { src: '~plugins/swiper.js', ssr: false },
     { src: '~plugins/clickOutside.js', ssr: false },
     { src: '~plugins/filter.js' },
-    { src: '~plugins/finally.js' }
+    { src: '~plugins/finally.js' },
+    { src: '~plugins/marked.js' }
   ],
   /*
   ** Global CSS
   */
   css: [
     'swiper/dist/css/swiper.css',
-    { src: '~assets/scss/index.scss', lang: 'scss' }
+    { src: '~assets/scss/index.scss', lang: 'scss' },
+    'highlight.js/styles/atom-one-dark.css'
   ],
   /*
   ** Customize the progress-bar color

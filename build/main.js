@@ -80,7 +80,7 @@ module.exports = {
   },
   build: {
     // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
-    vendor: ['axios', 'particles.js', 'swiper'],
+    vendor: ['axios', 'particles.js', 'swiper', 'marked', 'highlight.js'],
     // postcss
     postcss: [__webpack_require__(5)(), __webpack_require__(6)(), __webpack_require__(4)()],
     // babel
@@ -113,11 +113,11 @@ module.exports = {
     // }
   },
   // plugins
-  plugins: [{ src: '~plugins/swiper.js', ssr: false }, { src: '~plugins/clickOutside.js', ssr: false }, { src: '~plugins/filter.js' }, { src: '~plugins/finally.js' }],
+  plugins: [{ src: '~plugins/swiper.js', ssr: false }, { src: '~plugins/clickOutside.js', ssr: false }, { src: '~plugins/filter.js' }, { src: '~plugins/finally.js' }, { src: '~plugins/marked.js' }],
   /*
   ** Global CSS
   */
-  css: ['swiper/dist/css/swiper.css', { src: '~assets/scss/index.scss', lang: 'scss' }],
+  css: ['swiper/dist/css/swiper.css', { src: '~assets/scss/index.scss', lang: 'scss' }, 'highlight.js/styles/atom-one-dark.css'],
   /*
   ** Customize the progress-bar color
   */

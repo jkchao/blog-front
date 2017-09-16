@@ -17,6 +17,9 @@
         </span>
       </div>
     </div>
+    <div class="loading-more " key="-2" v-if="!haveMore">
+      <a href="javascript:;" @click="loadMore">加载更多</a>
+    </div>
 
     <dialog-com :visible.sync = "show" :class="{'dialog-mobile': mobileLayout}">
       <form>
@@ -83,6 +86,11 @@ export default {
 
     items () {
       return this.$store.state.heros.data.list
+    },
+
+    haveMore () {
+      return this.$store.state.heros.data.pagination.current_page
+              === this.$store.state.heros.data.pagination.total_page
     }
   },
 
@@ -95,6 +103,12 @@ export default {
         content: ''
       })
       this.show = true
+    },
+
+    loadMore () {
+      this.$store('getHero', {
+        current_page: this.$store.state.heros.data.pagination.current_page + 1
+      })
     },
 
     async submit () {
@@ -248,6 +262,15 @@ export default {
         }
       }
     }
+  }
+
+  >.loading-more {
+    grid-column: 1 / 4;
+    margin-bottom: $normal-pad;
+    padding: $md-pad;
+    background: $module-bg;
+    text-align: center;
+    color: $black;
   }
 }
 

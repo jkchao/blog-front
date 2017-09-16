@@ -1,16 +1,273 @@
 <template>
-  <div class="article">
-    <h3>文章详情</h3>
+  <div class="article-list" :class="{'mobile': mobileLayout}">
+    <div class="article-cont">
+      <h3 class="font-futura">{{ article.title }}</h3>
+      <div class="article-thumb">
+        <img :src="article.thumb" alt="">
+      </div>
+      <div class="content" v-html="articleContent"></div>
+    </div>
+    <div class="item">分享</div>
+    <div class="item comment">评论</div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'article'
+import marked from '~/plugins/marked'
 
+export default {
+  name: 'article',
+
+  transition: 'fade',
+
+  fetch ({ store, params }) {
+    return store.dispatch('getArt', params)
+  },
+
+  head () {
+    return { title: `${this.$store.state.article.details.title}` }
+  },
+
+  computed: {
+    mobileLayout () {
+      return this.$store.state.options.mobileLayout
+    },
+
+    article () {
+      return this.$store.state.article.details
+    },
+
+    articleContent () {
+      return marked(this.article.content)
+    }
+  }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scope>
+@import '~assets/scss/variable.scss';
+@import '~assets/scss/mixin.scss';
+
+
+.article-list {
+  margin: auto;
+  width: 50rem;
+
+  >.article-cont {
+    padding: $lg-pad;
+    background: $module-bg;
+
+    >h3 {
+      font-size: 1.3rem;
+    }
+
+    >.article-thumb {
+      margin: $lg-pad 0;
+      img {
+        max-width: 100%;
+      }
+    }
+
+    .content {
+
+      a {
+        font-weight: bold;
+        margin: 0 .1em;
+
+        &.image-link {
+          margin: 0;
+        }
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      img {
+        max-width: 100%;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+        border-radius: $radius;
+        transition: all .25s;
+        opacity: .9;
+        cursor: pointer;
+      }
+
+      p {
+        line-height: 1.8em;
+        text-indent: 2em;
+        margin-bottom: 1em;
+
+        &.text-center {
+          text-align: center;
+        }
+
+        &.text-right {
+          text-align: right;
+        }
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 1.5rem 0;
+        padding-left: 0;
+        line-height: 1.8em;
+        font-weight: 700;
+        text-indent: 0;
+      }
+
+      blockquote {
+  
+        padding: 0 1em;
+        margin-bottom: 1em;
+        color: #6a737d;
+        border-left: 0.25em solid #dfe2e5;
+  
+        p {
+          text-indent: 0em;
+
+          &:first-child {
+            margin-top: 0;
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      ul {
+        list-style-type: square;
+      }
+
+      ul,
+      ol {
+        padding-left: 2em;
+
+        >li {
+          line-height: 1.8em;
+          padding: .5em;
+          list-style-type: disc;
+
+
+          >p {
+            text-indent: 0;
+          }
+
+          >ul {
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+
+      ul {
+        list-style: disc;
+      }
+
+      code {
+        padding: .2em .4em;
+        margin: 0;
+        font-size: 85%;
+        border-radius: $radius;
+        background-color: $module-hover-bg;
+      }
+
+      pre {
+        overflow: auto;
+        font-size: 85%;
+        line-height: 1.45;
+        background-color: rgba(0,0,0,.8);
+        border-radius: 3px;
+        margin-bottom: 1em;
+
+        >.code-lines {
+          position: absolute;
+          left: 0;
+          top: 2.8em;
+          margin: 0;
+          padding: 1em 0;
+          width: 2.5em;
+          height: calc(100% - 2.8em);
+          text-align: center;
+          background-color: rgba(0, 0, 0, 0.2);
+
+          >.code-line-number {
+            padding: 0;
+            position: relative;
+            list-style-type: none;
+            line-height: 1.6em;
+            transition: background-color .05s;
+
+            &:hover {
+              &:before {
+                display: block;
+                opacity: 1;
+                visibility: visible;
+              }
+            }
+
+            &:before {
+              content: '';
+              height: 1.6em;
+              position: absolute;
+              top: 0;
+              left: 2.5em;
+              width: 66em;
+              background-color: rgba(154, 154, 154, 0.2);
+              display: none;
+              visibility: hidden;
+              opacity: 0;
+            }
+          }
+        }
+
+        >code {
+          margin: 0;
+          padding: 1em;
+          float: left;
+          width: 100%;
+          height: 100%;
+          display: block;
+          line-height: 1.6em;
+          color: rgba(255, 255, 255, 0.87);
+          background-color: transparent;
+        }
+      }
+    }
+  }
+  >.item {
+    margin-top: 1rem;
+    padding: $lg-pad;
+    background: $module-bg;
+  }
+}
+
+.article-list.mobile {
+  .article-cont {
+    padding: .5rem;
+
+    .content {
+
+      ul,
+      ol {
+        padding-left: .8rem;
+      }
+
+      a {
+        word-break: break-all;
+      }
+    }
+  }
+  .item {
+    padding: .5rem;
+  }
+}
 
 </style>

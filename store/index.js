@@ -29,35 +29,38 @@ export const actions = {
   // 获取博主用户信息
   async getAdminInfo ({ commit }) {
     const res = await service.getAuth()
-    if (res.code === 1) commit('options/SET_ADMIN_INFO', res.result)
+    commit('options/SET_ADMIN_INFO', res.result || {})
   },
 
   // 获取网站信息
   async getOpt ({ commit }) {
     const res = await service.getOpt()
-    if (res.code === 1) commit('options/SET_WEB_OPTION', res.result)
+    commit('options/SET_WEB_OPTION', res.result || {})
   },
 
   // 获取文章
   async getArtList ({ commit }, params = { current_page: 1 }) {
     const res = await service.getArts(params)
-    if (res.code === 1) commit('article/SET_ART', res.result)
+    commit('article/SET_ART', res.result || { pagination: {}, list: [] })
   },
 
   // 获取最热文章列表
   async getHotArt ({ commit }) {
     const res = await service.getArts({ hot: true })
-    if (res.code === 1) commit('article/SET_HOT_ART', res.result)
+    commit('article/SET_HOT_ART', res.result || { pagination: {}, list: [] })
   },
 
   // 获取标签
   async getTag ({ commit }) {
     const res = await service.getTag({ page_size: 100 })
-    if (res.code === 1) commit('tag/SET_TAG', res.result)
+    commit('tag/SET_TAG', res.result || { pagination: {}, list: [] })
   },
 
   // 文章详情
-  async getArt () {},
+  async getArt ({ commit }, data) {
+    const res = await service.getArt(data)
+    commit('article/SET_DETAILS', res.result || {})
+  },
 
   // 喜欢文章
   async likeArt () {},
@@ -65,7 +68,7 @@ export const actions = {
   // 英雄版
   async getHero ({ commit }, data) {
     const res = await service.getHero({ current_page: 1 })
-    if (res.code === 1) commit('heros/SET_HERO', res.result)
+    commit('heros/SET_HERO', res.result || { pagination: {}, list: [] })
   },
 
   // 添加英雄版

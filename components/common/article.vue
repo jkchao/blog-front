@@ -5,7 +5,8 @@
         class="article-item"
         v-for="item in articleList"
         :key="item._id"
-        :class="{'mobile-article': mobileLayout}">
+        :class="{'mobile-article': mobileLayout}"
+        @click="$router.push(`/article/${item._id}`)">
         <div class="content">
           <p class="title">{{ item.title }}</p>
           <nuxt-link to="" v-if="mobileLayout">
@@ -13,7 +14,7 @@
           </nuxt-link>
           <p class="abstrack">{{ item.descript }}</p>
           <div class="meta">
-            <span class="tag"><i class="iconfont icon-tag"></i>
+            <span class="tag" v-if="!mobileLayout"><i class="iconfont icon-tag"></i>
               <span v-for="list in item.tag" class="tag-list" :key="list._id">{{ list.name }}</span>
             </span>
             <span class="time"><i class="iconfont icon-time"></i>
