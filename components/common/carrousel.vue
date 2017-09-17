@@ -6,7 +6,7 @@
           <img :src="mobileLayout ? list.thumb + '?imageView2/2/w/370/h/140' : list.thumb + '?imageView2/2/w/680/h/280'"  v-if="type === 'banner'" />
           <nuxt-link :to="`/article/${list._id}`" class="swiper-title" v-if="type === 'banner'">{{ list.title }}</nuxt-link>
           <p class="saying-content" v-if="type === 'text'">{{ list.content }}</p>
-          <p class="saying-author" v-if="type === 'text'">{{ list.author }}</p>
+          <p class="saying-author" v-if="type === 'text'">{{ list.auth }}</p>
         </div>
       </div>
       <div class="swiper-pagination swiper-pagination-white"></div> 

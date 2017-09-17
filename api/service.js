@@ -12,6 +12,12 @@ export function getOpt () {
         .then(res => res.data)
 }
 
+// 网易云热评
+export function getHotReview (params) {
+  return ax.get('/hotReview', { params })
+        .then(res => res.data)
+}
+
 // 英雄版列表
 export function getHero (params) {
   return ax.get('/hero', { params })

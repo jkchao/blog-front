@@ -23,7 +23,7 @@
               }}
             </span>
             <span class="read"><i class="iconfont icon-icon"></i> {{ item.meta.views }}</span>
-            <span class="comments"><i class="iconfont icon-comments"></i> {{ item.meta.comments }}</span>
+            <!-- <span class="comments"><i class="iconfont icon-comments"></i> {{ item.meta.comments }}</span> -->
             <span class="like"><i class="iconfont icon-like"></i> {{ item.meta.likes }}</span>
           </div>
         </div>

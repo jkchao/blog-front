@@ -28,7 +28,6 @@
 <script>
 
 import carrousel from '~components/common/carrousel.vue'
-import saying from '~assets/saying/index.js'
 
 export default {
   name: 'header',
@@ -43,7 +42,6 @@ export default {
         { path: '/about', name: 'ABOUT', icon: 'iconfont icon-user'},
         { path: '/heros', name: 'HEROES', icon: 'iconfont icon-hero'}
       ],
-      saying,
       swiperOption: {
         direction: 'vertical',
         loop: true,
@@ -59,7 +57,15 @@ export default {
       }
     }
   },
+
+  computed: {
+    saying () {
+      return this.$store.state.hotReview.data.list
+    }
+  },
+
   components: { carrousel },
+
   directives: {
     fix: {
       inserted (el) {

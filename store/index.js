@@ -21,6 +21,7 @@ export const actions = {
 
     if (!isMobile) {
       initAppData.push(store.dispatch('getHotArt'))
+      initAppData.push(store.dispatch('getHotReview'))
     }
 
     return Promise.all(initAppData)
@@ -30,6 +31,12 @@ export const actions = {
   async getAdminInfo ({ commit }) {
     const res = await service.getAuth()
     commit('options/SET_ADMIN_INFO', res.result || {})
+  },
+
+  // 获取网易云热评
+  async getHotReview ({ commit }) {
+    const res = await service.getHotReview()
+    commit('hotReview/SET_HOT_REVIEW', res.result || {})
   },
 
   // 获取网站信息
