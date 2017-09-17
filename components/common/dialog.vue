@@ -6,7 +6,10 @@
           <div class="dialog-head">
             <a href="javascript:;" @click="hide"><i class="iconfont icon-close"></i></a>
           </div>
-          <div class="dialog-content"><slot></slot></div>
+          <div class="dialog-content">
+            <slot></slot>
+            <img :src="img" alt="" v-if="img" class="close" v-click-outside="hide" @click="hide">
+          </div>
           <div class="dialog-foot">
             <slot name="foot"></slot>
           </div>
@@ -29,7 +32,7 @@ export default {
     }
   },
 
-  props: ['visible'],
+  props: ['visible', 'img'],
 
   computed: {
     dialogVisible () {
@@ -63,14 +66,11 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style  lang="scss">
 @import '~assets/scss/variable.scss';
 @import '~assets/scss/mixin.scss';
 
 .dialog {
-  display: grid;
-  justify-content: center;
-  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -80,9 +80,11 @@ export default {
   z-index: 999;
 
   >.dialog-body {
+    position: absolute;
+    left: calc(50% - 17rem);
+    top: 10rem;
     width: 34rem;
     // height: 24rem;
-    margin-bottom: 20rem;
     padding: 1rem;
     background: $white;
     @include border-radius(.5rem);
@@ -102,6 +104,7 @@ export default {
     >.dialog-body {
       width: 24rem;
       margin-bottom: 5rem;
+      left: calc(50% - 12rem);      
 
       .dialog-item {
         grid-template-columns: 100%;

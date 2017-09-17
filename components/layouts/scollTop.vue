@@ -76,7 +76,7 @@ export default {
 
 .scoll-aside {
   position: fixed;
-  right: 10rem;
+  right: 6rem;
   bottom: 5rem;
 
   >.scoll-btn {

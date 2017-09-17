@@ -34,7 +34,10 @@
   </div>
 </template>
 
+<script id="dsq-count-scr" src="https://jkchao-1.disqus.com/count.js" async></script>
+
 <script>
+
 import myFooter from '~components/layouts/footer.vue'
 import myHeader from '~components/layouts/header.vue'
 import background from '~components/layouts/background.vue'

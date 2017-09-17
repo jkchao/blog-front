@@ -24,8 +24,7 @@ const imageParse = (src, title, alt) => {
   return `<img 
             src="${src}" 
             title="${title || alt || 'jkchao.cn'}" 
-            class="img-pop"/>
-            onClick="viewPic"`.replace(/\s+/g, ' ').replace('\n', '')
+            class="img-pop"/>`.replace(/\s+/g, ' ').replace('\n', '')
 }
 
 // 外链

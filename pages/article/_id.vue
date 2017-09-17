@@ -6,6 +6,7 @@
         <span class="time">{{ article.create_at | dateFormat('yyyy.MM.dd hh:mm') }}</span>
         <span class="num">字数 {{ article.content.length }}</span>
         <span class="view">阅读 {{ article.meta.views }}</span>
+        <span class="count">评论 <i class="disqus-comment-count" :data-disqus-identifier="article._id"></i></span>
         <span class="view">喜欢 {{ article.meta.likes }}</span>
       </div>
       <div class="article-thumb">
@@ -42,13 +43,26 @@
         <share class="article-share"></share>
       </div>
     </div>
-    <div class="item comment">评论</div>
+    <div class="item comment">
+      <comments
+        shortname="jkchao-1"
+        :identifier="article._id"></comments>
+    </div>
+
+    <dialog-com 
+      :visible.sync="showDialog" 
+      :class="{'dialog-mobile': mobileLayout}"
+      :img="img">
+    </dialog-com>
   </div>
 </template>
 
 <script>
-import marked from '~/plugins/marked'
-import share from '~/components/layouts/share'
+import marked from '~plugins/marked'
+import share from '~components/layouts/share'
+import dialogCom from '~components/common/dialog'
+import comments from '~components/common/comments'
+
 export default {
   name: 'article',
 
@@ -64,11 +78,13 @@ export default {
 
   data () {
     return {
-      likeArticles: []
+      likeArticles: [],
+      showDialog: false,
+      img: ''
     }
   },
 
-  components: { share },
+  components: { share, dialogCom, comments },
 
   computed: {
     mobileLayout () {
@@ -102,16 +118,33 @@ export default {
 
     init () {
       this.likeArticles = JSON.parse(window.localStorage.getItem('LIKE_ARTICLS') || '[]')
+    },
+
+    hide () {
+      this.showDialog = false
+    },
+
+    initEvent () {
+      const list = document.querySelectorAll('.img-pop')
+      let _this = this
+      for (let i = 0; i < list.length; i++) {
+        list[i].addEventListener('click', (e) => {
+          e.stopPropagation()
+          this.showDialog = true
+          this.img = list[i].getAttribute('src')
+        })
+      }      
     }
   },
 
   mounted () {
     this.init ()
+    this.initEvent()
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scope>
 @import '~assets/scss/variable.scss';
 @import '~assets/scss/mixin.scss';
 
@@ -170,7 +203,7 @@ export default {
         opacity: .9;
 
         &.img-pop {
-          cursor: url('~assets/img/view.png'), auto;
+          cursor: zoom-in;
         }
       }
 
@@ -373,6 +406,35 @@ export default {
     }
     >.share {
       margin-top: 1rem;
+    }
+  }
+
+  .dialog {
+
+    >.dialog-body {
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100%;
+      background: transparent;
+
+      >.dialog-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        img {
+          display: block;
+          margin: 0 auto;
+          max-width: 90%;
+          max-height: 90%;
+          cursor: zoom-out;
+        }
+      }
     }
   }
 }
