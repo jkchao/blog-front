@@ -124,6 +124,10 @@ body.mobile {
     }
   }
 
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 ::-webkit-input-placeholder {
   /* WebKit browsers */
   color: $disabled;
@@ -151,7 +155,7 @@ body.mobile {
 
 ::-webkit-scrollbar {
   width: .5rem;
-  height: .8rem;
+  height: .5rem;
   background: hsla(0, 0%, 100%, 0.6);
 }
 

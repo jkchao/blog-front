@@ -16,11 +16,22 @@
     <div class="item">
       <div class="info">
         <div class="info-left">
-          <i
-            :class="{'is-liked': isLiked}"
-            class="iconfont icon-like like"
-            @click="like"></i>
-            <span>{{ article.meta.likes || 0}}</span>
+          <span>
+            <i
+              :class="{'is-liked': isLiked}"
+              class="iconfont icon-like like"
+              @click="like"></i>
+              <span>{{ article.meta.likes || 0}}</span>
+          </span>
+
+          <span class="tag" v-if="!mobileLayout">
+            <i class="iconfont icon-tag"></i>
+            <nuxt-link 
+              v-for="list in article.tag" 
+              class="tag-list" 
+              :key="list._id"
+              :to="`/tag/${list._id}`"> {{ list.name }}</nuxt-link>
+          </span>
         </div>
         <div>版权信息：
           <a href="https://creativecommons.org/licenses/by-nc/3.0/cn/deed.zh"
@@ -100,7 +111,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scope>
+<style lang="scss">
 @import '~assets/scss/variable.scss';
 @import '~assets/scss/mixin.scss';
 
@@ -151,13 +162,16 @@ export default {
 
       img {
         max-width: 100%;
-        margin: 0 auto;
+        margin: .5em auto;
         display: block;
         text-align: center;
         border-radius: $radius;
         transition: all .25s;
         opacity: .9;
-        cursor: pointer;
+
+        &.img-pop {
+          cursor: url('~assets/img/view.png'), auto;
+        }
       }
 
       p {
@@ -185,6 +199,12 @@ export default {
         line-height: 1.8em;
         font-weight: 700;
         text-indent: 0;
+      }
+
+      hr {
+        height: 0.1em;
+        background: #e1e4e8;
+        border: 0;
       }
 
       blockquote {
@@ -330,6 +350,20 @@ export default {
 
         .is-liked {
           color: $red;
+        }
+
+
+        .tag {
+          margin-left: 4rem;
+
+          a {
+            margin: 0 .5rem;
+            text-decoration: underline;
+
+            &:last-child {
+              margin: 0;
+            }
+          }
         }
       }
 

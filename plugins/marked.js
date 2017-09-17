@@ -19,6 +19,15 @@ marked.setOptions({
 // 段落解析
 const paragraphParse = text => `<p>${text}</p>`
 
+// 对图片进行弹窗处理
+const imageParse = (src, title, alt) => {
+  return `<img 
+            src="${src}" 
+            title="${title || alt || 'jkchao.cn'}" 
+            class="img-pop"/>
+            onClick="viewPic"`.replace(/\s+/g, ' ').replace('\n', '')
+}
+
 // 外链
 const linkParse = (href, title, text) => {
   return `<a href="${href}" 
@@ -27,6 +36,7 @@ const linkParse = (href, title, text) => {
 
 renderer.link = linkParse
 renderer.paragraph = paragraphParse
+renderer.image = imageParse
 
 export default (content, tags, parseHtml = false) => {
   if (typeof content !== 'string') {

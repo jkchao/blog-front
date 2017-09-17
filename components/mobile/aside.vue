@@ -1,7 +1,7 @@
 <template>
   <div class="mobile-aside">
     <div class="user-head">
-      <img src="~static/images/muserFace.jpeg" />
+      <img :src="user.gravatar + '?imageView2/1/w/200/h/200'" />
       <p>三毛</p>
     </div>
       <nav>
@@ -35,8 +35,13 @@ export default {
         { path: '/heros', name: 'HEROES', icon: 'iconfont icon-hero'}
       ]
     }
-  }
+  },
 
+  computed: {
+    user () {
+      return this.$store.state.options.adminInfo
+    }
+  }
 }
 </script>
 

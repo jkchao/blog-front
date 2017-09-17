@@ -30,6 +30,7 @@
       </transition-group>
       <my-footer></my-footer>
     </div>
+    <scoll-top></scoll-top>
   </div>
 </template>
 
@@ -38,6 +39,7 @@ import myFooter from '~components/layouts/footer.vue'
 import myHeader from '~components/layouts/header.vue'
 import background from '~components/layouts/background.vue'
 import asideView from '~components/layouts/aside.vue'
+import scollTop from '~components/layouts/scollTop.vue'
 
 import mobileSide from '~components/mobile/aside.vue'
 import mobileHeader from '~components/mobile/header.vue'
@@ -57,7 +59,8 @@ export default {
     myHeader,
     background,
     asideView,
-    mobileSide
+    mobileSide,
+    scollTop
   },
 
   computed: {

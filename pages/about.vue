@@ -28,7 +28,23 @@
             <a href="https://segmentfault.com/u/sanmao_58e1f28560e06" target="_blank"><i class="iconfont icon-sf"></i></a>
             <a href="" target="_blank"><i class="iconfont icon-stackoverflow"></i></a>
             <a href="" target="_blank"><i class="iconfont icon-zhihu"></i></a>
+            <a href="mailto:jkchaom@gmail.com" target="_blank"><i class="iconfont icon-email"></i></a>
+            <a 
+            href="javascript:;" 
+            class="wechat"
+            @mouseover="showBox = true"
+            @mouseleave="showBox = false"><i class="iconfont icon-wechat"></i></a>
           </span>
+          <transition name="fade">
+            <div 
+            class="wechat-box" 
+            v-show="showBox"
+            @mouseover="showBox = true"
+            @mouseleave="showBox = false">
+              <img src="../static/images/code.jpeg" alt="code" width="150px">
+              <span class="arrow"></span>
+            </div>
+          </transition>
         </div>
       </div>
       <div class="user-box">
@@ -47,6 +63,15 @@
         <p>All of me in the code and music.</p>
       </div>
     </div>
+
+    <div 
+      class="foot" 
+      v-if="!mobileLayout">
+        <div class="foot-box">
+          <p>我走过山时，山不说话。</p>
+          <p>我路过海时，海不说话。</p>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -60,6 +85,12 @@ export default {
 
   head: {
     title: 'About'
+  },
+
+  data () {
+    return {
+      showBox: false
+    }
   },
 
   computed: {
@@ -94,6 +125,7 @@ export default {
       background: $module-bg;
 
       >.list {
+        position: relative;
         display: grid;
         grid-template-columns: 1rem auto;
         grid-gap: 1.5rem;
@@ -122,6 +154,30 @@ export default {
               font-size: 1.3rem;
               color: $black;
             }
+          }
+        }
+
+        >.wechat-box {
+          position: absolute;
+          right: 4.8rem;
+          top: 2.4rem;
+          padding: .5rem;
+          background: lighten($module-hover-bg, 30%);
+
+          >.arrow {
+            position: absolute;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-width: 7px;
+            border-style: dashed dashed solid;
+            border-color: transparent transparent lighten($module-hover-bg, 30%);
+            overflow: hidden;
+            font-size: 0;
+            line-height: 0;
+            vertical-align: top;
+            top: -14px;
+            left: calc(50% - 3.5px);
           }
         }
       }
@@ -167,17 +223,31 @@ export default {
       padding: 1rem;
     }
   }
-}
 
-.text-box {
-  margin-top: 1rem;
+  >.text-box {
+    margin-top: 1rem;
 
-  >.text {
-    padding: 5rem 10rem;
-    background: $module-bg;
-    color: $black;
-    line-height: 2rem;
+    >.text {
+      padding: 5rem 10rem;
+      background: $module-bg;
+      color: $black;
+      line-height: 2rem;
+    }
+  }
 
+  >.foot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    height: 390px;
+    background: url('http://ovshyp9zv.bkt.clouddn.com/bg.jpg?imageView2/2/w/700') no-repeat center;
+    color: $white;
+    font-size: 1.3rem;
+
+    p {
+      line-height: 2rem;
+    }
   }
 }
 

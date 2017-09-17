@@ -20,7 +20,6 @@
 
 <script>
 
-import banner4 from '~static/images/banner4.png'
 import articleView from '~components/common/article.vue'
 
 export default {
