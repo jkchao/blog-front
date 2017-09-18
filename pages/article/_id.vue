@@ -6,8 +6,10 @@
         <span class="time">{{ article.create_at | dateFormat('yyyy.MM.dd hh:mm') }}</span>
         <span class="num">字数 {{ article.content.length }}</span>
         <span class="view">阅读 {{ article.meta.views }}</span>
-        <!-- <span class="count">评论 <i class="disqus-comment-count" :data-disqus-identifier="article._id"></i></span> -->
         <span class="view">喜欢 {{ article.meta.likes }}</span>
+        <span class="count">
+          <span class="disqus-comment-count" :data-disqus-identifier="article._id"></span>
+        </span>
       </div>
       <div class="article-thumb">
         <img :src="article.thumb" alt="">

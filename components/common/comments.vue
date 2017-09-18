@@ -70,7 +70,6 @@
         window.disqus_config = function() {
           this.page.identifier = (self.identifier || self.$route.path || window.location.pathname)
           this.page.url = (self.url || self.$el.baseURI)
-          console.log(this.page.identifier)
           if (self.title){
             this.page.title = self.title;
           }

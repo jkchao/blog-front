@@ -47,7 +47,14 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
-    script: [],
+    script: [
+      {
+        async: 'async',
+        type: 'text/javascript',
+        src: '//jkchao-1.disqus.com/count.js',
+        id: 'dsq-count-scr'
+      }
+    ],
     noscript: [
       { innerHTML: 'This website requires JavaScript.' }
     ]
