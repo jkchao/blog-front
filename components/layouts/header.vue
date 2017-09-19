@@ -37,8 +37,8 @@ export default {
       open: false,
       nav: [
         { path: '/', name: 'HOME', icon: 'iconfont icon-home'},
+        { path: '/code', name: 'CODE', icon: 'iconfont icon-code'},
         { path: '/think', name: 'THINK', icon: 'iconfont icon-read'},
-        { path: '/music', name: 'MUSIC', icon: 'iconfont icon-music'},
         { path: '/about', name: 'ABOUT', icon: 'iconfont icon-user'},
         { path: '/heros', name: 'HEROES', icon: 'iconfont icon-hero'}
       ],
