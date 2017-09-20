@@ -33,7 +33,7 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
  
 ## TODO
 
-- ～logo～
+- ~logo~
 
 - HTTPS
 
@@ -42,6 +42,8 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 - 谷歌统计分析脚本
 
 - ~连接不上 Disqus 时，出现评论区空白~
+
+- 手机端 uc 浏览器无法点击头部。
 
 
 ## Build Setup
