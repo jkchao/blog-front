@@ -1,6 +1,6 @@
 <template>
 
-    <transition-group tag="div" name="list" class="article-box">
+    <transition-group tag="div" name="list" class="article-box" :class="{'mobile': mobileLayout}">
       <div
         class="article-item"
         v-for="item in articleList"
@@ -159,6 +159,13 @@ export default {
     background: $module-bg;
     text-align: center;
     color: $black;
+  }
+
+  &.mobile {
+
+    >.end-article {
+      margin-bottom: 0;
+    }
   }
 }
 

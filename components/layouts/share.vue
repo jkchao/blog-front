@@ -53,7 +53,7 @@ export default {
 
   computed: {
     url () {
-      return `https://jkchao.cn${this.$route.fullPath}`
+      return `http://jkchao.cn${this.$route.fullPath}`
     },
     mobileLayout () {
       return this.$store.state.options.mobileLayout
