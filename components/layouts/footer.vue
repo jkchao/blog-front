@@ -1,8 +1,7 @@
 <template>
-  <footer>
+  <footer :class="{'mobile': mobileLayout}">
     <div
-      class="container clearfix font-futura"
-      :class="{'mobile': mobileLayout}">
+      class="container clearfix font-futura">
       ©{{new Date().getFullYear()}}
       <nuxt-link to="/about">{{ user.name }}</nuxt-link>
     </div>
@@ -45,8 +44,12 @@ footer {
     text-align: center;
   }
 
-  >.container.mobile {
-    width: 100%;
+  &.mobile {
+    margin-top: 0;
+
+    >.container {
+      widows: 100%;;
+    }
   }
 }
 </style>
