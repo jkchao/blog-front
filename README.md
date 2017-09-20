@@ -1,10 +1,10 @@
 # vue-blog (http://jkchao.cn)
 
-FRONT: https://github.com/jkchao/vue-blog
+FRONT: [vue-blog](https://github.com/jkchao/vue-blog)
 
-ADMIN: https://github.com/jkchao/vue-admin
+ADMIN: [vue-admin](https://github.com/jkchao/vue-admin)
 
-SERVICE: https://github.com/jkchao/node-koa
+SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 ---
 
@@ -52,6 +52,7 @@ npm run dev
 # build for production
 npm run build
 npm start
+
 ```
 
 
