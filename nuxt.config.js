@@ -51,7 +51,7 @@ module.exports = {
       {
         async: 'async',
         type: 'text/javascript',
-        src: '//jkchao-1.disqus.com/count.js',
+        src: '//jkchao.disqus.com/count.js',
         id: 'dsq-count-scr'
       }
     ],

@@ -48,7 +48,7 @@ footer {
     margin-top: 0;
 
     >.container {
-      widows: 100%;;
+      width: 100%;
     }
   }
 }

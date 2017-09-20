@@ -23,7 +23,9 @@
         <a href="javascript:;" @click.stop.prevent="toggleSidebar(!mobileSidebar)"><i class="iconfont icon-list"></i></a>
       </div>
       <div class="name">
-        <nuxt-link to="/">三毛</nuxt-link>
+        <nuxt-link to="/">
+          <img src="~static/images/logo.png" alt="" width="30">
+        </nuxt-link>
       </div>
       <div>
         <a href="javascript" @click.stop.prevent="search = !search"><i class="iconfont icon-search"></i></a>

@@ -1,5 +1,5 @@
 <template>
-  <div id="disqus_thread"></div>
+  <div id="disqus_thread" :class="{'mobile': mobileLayout}" v-if="state"></div>
 </template>
 
 <script>
@@ -35,6 +35,19 @@
         required: false
       }
     },
+
+    data () {
+      return {
+        state: true
+      }
+    },
+
+    computed: {
+      mobileLayout () {
+        return this.$store.state.options.mobileLayout
+      }
+    },
+
     mounted () {
       if (window.DISQUS) {
         this.reset(window.DISQUS)
@@ -42,6 +55,7 @@
       }
       this.init()
     },
+
     methods: {
       reset (dsq) {
         const self = this
@@ -91,9 +105,29 @@
           s.setAttribute('id', 'embed-disqus')
           s.setAttribute('data-timestamp', +new Date())
           s.src = `//${this.shortname}.disqus.com/embed.js`
+          // s.onload = () => {
+          //   this.state = true
+          // }
+          // s.onerror = () => {
+          //   this.state = false
+          // }
           ;(d.head || d.body).appendChild(s)
         }, 0)
       }
     }
   }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/scss/variable.scss';
+#disqus_thread {
+  margin-top: 1rem;
+  padding: $lg-pad;
+  background: $module-bg;
+
+  &.mobile {
+    padding: .5rem;
+    font-size: .8rem;
+  }
+}
+</style>

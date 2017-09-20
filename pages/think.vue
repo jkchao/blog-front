@@ -1,7 +1,7 @@
 <template>
   <section  class="think" >
     <div class="head" :class="{'mobile': mobileLayout}">
-      <img src="~static/images/head1.png">
+      <img src="~static/images/head.png">
     </div>
     <div class="article">
       <articleView

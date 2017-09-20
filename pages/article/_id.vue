@@ -8,7 +8,7 @@
         <span class="view">阅读 {{ article.meta.views }}</span>
         <span class="view">喜欢 {{ article.meta.likes }}</span>
         <span class="count">
-          <span class="disqus-comment-count" :data-disqus-identifier="article._id"></span>
+          <!-- <span class="disqus-comment-count" :data-disqus-identifier="article._id"></span> -->
         </span>
       </div>
       <div class="article-thumb">
@@ -45,7 +45,7 @@
         <share class="article-share"></share>
       </div>
     </div>
-    <div class="item comment">
+    <div class="comment">
       <comments
         shortname="jkchao"
         :identifier="article._id"></comments>
