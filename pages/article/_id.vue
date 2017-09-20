@@ -47,7 +47,7 @@
     </div>
     <div class="item comment">
       <comments
-        shortname="jkchao-1"
+        shortname="jkchao"
         :identifier="article._id"></comments>
     </div>
 
