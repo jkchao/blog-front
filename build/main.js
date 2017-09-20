@@ -252,8 +252,8 @@ var start = function () {
               };
             }());
 
-            app.listen(port, host);
-            console.log('Server listening on ' + host + ':' + port); // eslint-disable-line no-console
+            app.listen(port);
+            console.log('Server listening on ' + port); // eslint-disable-line no-console
 
           case 18:
           case 'end':

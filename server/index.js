@@ -27,8 +27,8 @@ async function start () {
     await nuxt.render(ctx.req, ctx.res)
   })
 
-  app.listen(port, host)
-  console.log('Server listening on ' + host + ':' + port) // eslint-disable-line no-console
+  app.listen(port)
+  console.log('Server listening on ' + port) // eslint-disable-line no-console
 }
 
 start()
