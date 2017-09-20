@@ -1,5 +1,8 @@
 <template>
-  <div id="disqus_thread" :class="{'mobile': mobileLayout}" v-if="state"></div>
+  <div 
+  id="disqus_thread" 
+  :class="{'mobile': mobileLayout, 'load': state}"
+  ref="disqus"></div>
 </template>
 
 <script>
@@ -38,7 +41,7 @@
 
     data () {
       return {
-        state: true
+        state: false
       }
     },
 
@@ -105,12 +108,15 @@
           s.setAttribute('id', 'embed-disqus')
           s.setAttribute('data-timestamp', +new Date())
           s.src = `//${this.shortname}.disqus.com/embed.js`
-          // s.onload = () => {
-          //   this.state = true
-          // }
-          // s.onerror = () => {
-          //   this.state = false
-          // }
+          s.onload = () => {
+            this.state = true
+          }
+          s.onerror = () => {
+            this.state = false
+          }
+          setTimeout(() => {
+            if (!this.state) this.$refs.disqus.style.display = 'none'
+          }, 3000)
           ;(d.head || d.body).appendChild(s)
         }, 0)
       }
@@ -121,13 +127,15 @@
 <style lang="scss" scoped>
 @import '~assets/scss/variable.scss';
 #disqus_thread {
-  margin-top: 1rem;
-  padding: $lg-pad;
-  background: $module-bg;
+  &.load {
+    margin-top: 1rem;
+    padding: $lg-pad;
+    background: $module-bg;
 
-  &.mobile {
-    padding: .5rem;
-    font-size: .8rem;
+    &.mobile {
+      padding: .5rem;
+      font-size: .8rem;
+    }
   }
 }
 </style>
