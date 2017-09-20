@@ -1,7 +1,7 @@
 <template>
   <section  class="think" >
     <div class="head" :class="{'mobile': mobileLayout}">
-      <img src="~static/images/head1.png">
+      <p class="font-futura">CREATE ART WITH CODE.</p>
     </div>
     <div class="article">
       <articleView
@@ -85,9 +85,8 @@ export default {
   color: $black;
   background: $module-bg;
   // background: $module-bg url() no-repeat center 55%;  
+  p {
 
-  img {
-    max-width: 100%;
   }
 }
 
