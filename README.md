@@ -33,13 +33,17 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
  
 ## TODO
 
+- ~logo~
+
 - HTTPS
 
 - 网易云音乐
 
 - 谷歌统计分析脚本
 
-- 连接不上 Disqus 时，出现评论区空白
+- ~连接不上 Disqus 时，出现评论区空白~
+
+- 手机端 uc 浏览器无法点击头部。
 
 
 ## Build Setup
