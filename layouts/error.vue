@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <img src="../assets/img/logo.png" alt="Nuxt.js Logo" />
+    <img src="~static/images/logo.png" alt="Logo" width="200"/>
     <h1 class="title">
       {{ error.statusCode }}
     </h1>

@@ -103,7 +103,7 @@ export default {
 
     >.dialog-body {
       width: 24rem;
-      margin-bottom: 5rem;
+      top: 8rem;
       left: calc(50% - 12rem);      
 
       .dialog-item {
