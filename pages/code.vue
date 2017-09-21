@@ -1,7 +1,7 @@
 <template>
   <section  class="think" >
     <div class="head" :class="{'mobile': mobileLayout}">
-      <p class="font-futura">CREATE ART WITH CODE.</p>
+      <p class="font-futura">CREATE ART WITH CODE</p>
     </div>
     <div class="article">
       <articleView
@@ -15,7 +15,6 @@
 <script>
 
 const articleView = () => import('~components/common/article.vue')
-
 
 export default {
 
@@ -48,7 +47,7 @@ export default {
 
     haveMoreArt () {
       return this.$store.state.article.art.pagination.current_page
-              === this.$store.state.article.art.pagination.total_page
+              !== this.$store.state.article.art.pagination.total_page
     }
   },
 
@@ -60,7 +59,7 @@ export default {
     loadMore () {
       this.$store.dispatch('getArtList', {
         current_page: this.$store.state.article.art.pagination.current_page + 1,
-        type: 1
+        type: 1,
       })
     }
   }

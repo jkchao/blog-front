@@ -31,11 +31,12 @@
           <img :src="item.thumb" alt="" width="180"/>
         </nuxt-link>
       </div>
-      <div class="end-article" v-if="!haveMorArt" key="-1">
+      <div class="end-article" v-if="!haveMoreArt" key="-1">
         无更多文章
       </div>
-      <div class="loading-more end-article " v-if="haveMorArt" key="-2">
-        <a href="javascript:;" @click="$emit('loadMore')">加载更多</a>
+      <div class="loading-more end-article " v-if="haveMoreArt" key="-2">
+        <a href="javascript:;" @click="$emit('loadMore')" v-if="!fetch" class="allow">加载更多</a>
+        <a href="javascript:;" v-if="fetch" class="not-allow">加载中</a>
       </div>
     </transition-group>
 
@@ -45,9 +46,13 @@
 export default {
   name: 'article-box',
 
-  props: ['articleList', 'haveMorArt'],
+  props: ['articleList', 'haveMoreArt'],
 
   computed: {
+    fetch () {
+      return this.$store.state.article.fetch
+    },
+
     mobileLayout () {
       return this.$store.state.options.mobileLayout
     }
@@ -86,6 +91,7 @@ export default {
     }
 
     &.mobile-article {
+
       &:hover {
         background: $module-bg;
       }
@@ -165,6 +171,7 @@ export default {
 
     >.end-article {
       margin-bottom: 0;
+      padding: 1rem;
     }
   }
 }

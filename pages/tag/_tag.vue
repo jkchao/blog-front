@@ -58,7 +58,7 @@ export default {
 
     haveMoreArt () {
       return this.$store.state.article.art.pagination.current_page
-              === this.$store.state.article.art.pagination.total_page
+              !== this.$store.state.article.art.pagination.total_page
     }
   },
 

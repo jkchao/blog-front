@@ -6,19 +6,24 @@
         <a href="javascript:;" class="join"  @click.stop="open">JOIN!</a>
       </div>
     </div>
-    <div class="list" v-for="(list, index) in items" :key="index">
-      <h3 class="name">{{ list.name }}</h3>
-      <p class="content">{{ list.content }}</p>
-      <div class="info">
-        <span class="time"><i class="iconfont icon-time"></i>{{ list.create_time | dateFormat('yyyy-MM-dd hh:mm')}}</span>
-        <span class="icon">
-          <a :href="list.github" target="_blank" v-show="list.github !== ''"><i class="iconfont icon-github"></i></a>
-          <a :href="list.blog"  target="_blank" v-show="list.blog !== ''"><i class="iconfont icon-boke"></i></a>
-        </span>
+
+    <transition-group name="slide-down" tag="div" class="list-box">
+      <div class="list" v-for="(list, index) in items" :key="list._id">
+        <h3 class="name">{{ list.name }}</h3>
+        <p class="content">{{ list.content }}</p>
+        <div class="info">
+          <span class="time"><i class="iconfont icon-time"></i>{{ list.create_time | dateFormat('yyyy-MM-dd hh:mm')}}</span>
+          <span class="icon">
+            <a :href="list.github" target="_blank" v-show="list.github !== ''"><i class="iconfont icon-github"></i></a>
+            <a :href="list.blog"  target="_blank" v-show="list.blog !== ''"><i class="iconfont icon-boke"></i></a>
+          </span>
+        </div>
       </div>
-    </div>
+    </transition-group>
+
     <div class="loading-more " key="-2" v-if="!haveMore">
-      <a href="javascript:;" @click="loadMore">加载更多</a>
+      <a href="javascript:;" @click="loadMore" v-if="!fetch" class="allow">加载更多</a>
+      <a href="javascript:;" v-if="fetch" class="not-allow">加载中</a>
     </div>
 
     <dialog-com :visible.sync = "show" :class="{'dialog-mobile': mobileLayout}">
@@ -80,6 +85,10 @@ export default {
   },
   computed: {
 
+    fetch () {
+      return this.$store.state.heros.fetch
+    },
+
     mobileLayout () {
       return this.$store.state.options.mobileLayout
     },
@@ -106,7 +115,7 @@ export default {
     },
 
     loadMore () {
-      this.$store('getHero', {
+      this.$store.dispatch('getHero', {
         current_page: this.$store.state.heros.data.pagination.current_page + 1
       })
     },
@@ -136,17 +145,22 @@ export default {
 @import '~assets/scss/mixin.scss';
 
 .heroes {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem;
   margin-bottom: 1rem;
 
   &.heroes-mobile {
-    grid-template-columns: auto;
+    margin-bottom: 0;
+
+    >.list-box {
+      grid-template-columns: auto;
+    }
 
     >.head {
       grid-column: 1 / 1;
       height: 10rem;
+    }
+
+    >.loading-more {
+      padding: 1rem;
     }
   }
 
@@ -203,61 +217,68 @@ export default {
     }
   }
 
-  >.list {
-    position: relative;
-    left: 0;
-    top: 0;
-    padding: $normal-pad;
-    height: 14rem;
-    background: $module-bg;
-    margin: 0;
-    @include css3-prefix('transition', 'all .3s');
+  .list-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    margin: 1rem 0 0 0;
 
-    &:hover {
-      left: -4px;
-      top: -4px;
-      box-shadow: 4px 4px 10px 0 rgba(0,0,0,.2);
-      color: $black;
-      background: $white;
-    }
+    >.list {
+      position: relative;
+      left: 0;
+      top: 0;
+      padding: $normal-pad;
+      height: 14rem;
+      background: $module-bg;
+      margin: 0;
+      @include css3-prefix('transition', 'all .3s');
 
-    >.name {
-      @include text-overflow();
-      max-width: 20rem;
-      font-weight: normal;
-    }
-
-    >.content {
-      margin: 1rem 0;
-      height: 60%;
-      text-indent: 2em;
-    }
-
-    >.info {
-      display: flex;
-      justify-content: space-between;
-      height: 1rem;
-      font-size: $font-size-small;
-      line-height: 1rem;
-
-      >.time>i {
-        margin-right: .3rem;
-        vertical-align: text-top;
+      &:hover {
+        left: -4px;
+        top: -4px;
+        box-shadow: 4px 4px 10px 0 rgba(0,0,0,.2);
+        color: $black;
+        background: $white;
       }
 
-      a {
-        margin: .3rem;
-        color: #555;
+      >.name {
+        @include text-overflow();
+        max-width: 20rem;
+        font-weight: normal;
+      }
 
-        >i {
-          @include transition(all .5s ease);
+      >.content {
+        margin: 1rem 0;
+        height: 60%;
+        text-indent: 2em;
+      }
+
+      >.info {
+        display: flex;
+        justify-content: space-between;
+        height: 1rem;
+        font-size: $font-size-small;
+        line-height: 1rem;
+
+        >.time>i {
+          margin-right: .3rem;
+          vertical-align: text-top;
         }
 
-        &:hover {
-          color: $black;
+        a {
+          margin: .3rem;
+          color: #555;
 
-          i {
-            font-size: 1.35rem;
+          >i {
+            @include transition(all .5s ease);
+          }
+
+          &:hover {
+            color: $black;
+
+            i {
+              font-size: 1.35rem;
+            }
           }
         }
       }
@@ -265,12 +286,23 @@ export default {
   }
 
   >.loading-more {
-    grid-column: 1 / 4;
-    margin-bottom: $normal-pad;
+    margin-top: 1rem;
     padding: $md-pad;
     background: $module-bg;
     text-align: center;
     color: $black;
+
+    &:hover {
+      background: lighten($module-hover-bg, 60%);
+    }
+
+    >.allow {
+      cursor: pointer;
+    }
+
+    >.not-allow {
+      cursor: not-allowed;
+    }
   }
 }
 

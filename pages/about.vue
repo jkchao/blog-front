@@ -4,7 +4,7 @@
       <div class="info font-futura">
         <p class="list">
           <i class="iconfont icon-user"></i>
-          <span class="list-content">Guo Wenchao, a 90s boy, Web Engineer.</span>
+          <span class="list-content">Guo Wenchao, <span v-if="!mobileLayout">a 90s boy,</span> Web Engineer.</span>
         </p>
         <div class="list">
           <i class="iconfont icon-like"></i>
@@ -23,13 +23,13 @@
           <span class="list-content icons">
             <a href="https://github.com/jkchao" target="_blank"><i class="iconfont icon-github"></i></a>
             <a href="https://juejin.im/user/5858c896128fe1006b86cb51" target="_blank"><i class="iconfont icon-juejin"></i></a>
-            <a href="" target="_blank"><i class="iconfont icon-weibo"></i></a>
+            <a href="https://weibo.com/5329847417/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank"><i class="iconfont icon-weibo"></i></a>
             <a href="" target="_blank"><i class="iconfont icon-twitter"></i></a>
             <a href="https://segmentfault.com/u/sanmao_58e1f28560e06" target="_blank"><i class="iconfont icon-sf"></i></a>
-            <a href="" target="_blank"><i class="iconfont icon-stackoverflow"></i></a>
-            <a href="" target="_blank"><i class="iconfont icon-zhihu"></i></a>
+            <!-- <a href="" target="_blank"><i class="iconfont icon-stackoverflow"></i></a> -->
+            <!-- <a href="" target="_blank"><i class="iconfont icon-zhihu"></i></a> -->
             <a href="mailto:jkchaom@gmail.com" target="_blank"><i class="iconfont icon-email"></i></a>
-            <a 
+            <a
             href="javascript:;" 
             class="wechat"
             @mouseover="showBox = true"
@@ -56,16 +56,16 @@
     <div class="text-box font-futura">
       <div class="text">
         <p>Too young too simple, sometimes native.</p>
-        <p>Have so many new ideas, maybe i will go to relize it.</p>
-        <p>Sometimes writing art, but most of the time writing shit.</p>
+        <p>Have so many new ideas, <br v-if="mobileLayout"/>maybe i will go to relize it.</p>
+        <p>Sometimes create art, <br v-if="mobileLayout"/>but most of the time create shit.</p>
         <p>Enjoy the present.</p>
         <p>Always on the road.</p>
         <p>All of me in the code and music.</p>
       </div>
     </div>
 
-    <div 
-      class="foot" 
+    <div
+      class="foot"
       v-if="!mobileLayout">
         <div class="foot-box">
           <p>我走过山时，山不说话。</p>
@@ -89,7 +89,7 @@ export default {
 
   data () {
     return {
-      showBox: false
+      showBox:  false
     }
   },
 
@@ -121,11 +121,11 @@ export default {
     grid-gap: 1rem;
 
     >.info {
+      position: relative;
       padding: $normal-pad $lg-pad;
       background: $module-bg;
 
       >.list {
-        position: relative;
         display: grid;
         grid-template-columns: 1rem auto;
         grid-gap: 1.5rem;
@@ -159,8 +159,8 @@ export default {
 
         >.wechat-box {
           position: absolute;
-          right: 4.8rem;
-          top: 2.4rem;
+          right: 11rem;
+          bottom: -10rem;
           padding: .5rem;
           background: lighten($module-hover-bg, 30%);
 
@@ -209,10 +209,14 @@ export default {
         grid-row: 2 / 3;
 
         >.list {
-          width: 100%;
           padding: 0;
-          @include text-overflow();
           grid-gap: 1rem;
+          @include text-overflow();
+
+
+          >.wechat-box {
+            right: 2.6rem;
+          }
         }
       }
       >.user-box {
@@ -239,7 +243,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1rem;
+    margin: 1rem 0;
     height: 390px;
     background: url('http://ovshyp9zv.bkt.clouddn.com/bg.jpg?imageView2/2/w/700') no-repeat center;
     color: $white;

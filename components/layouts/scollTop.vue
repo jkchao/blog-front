@@ -3,7 +3,7 @@
     <a class="scoll-btn" @click="scrollTop" v-if="showScroll" key="1">
       <i class="iconfont icon-arrow-up"></i>
     </a>
-    <a class="scoll-btn email" href="mailto:jkchaom@gmail.com" target="_blank" key="2">
+    <a class="scoll-btn email" href="mailto:jkchaom@gmail.com" target="_blank" key="2" v-if="!mobileLayout">
       <i class="iconfont icon-email"></i>
     </a>
   </transition-group>
@@ -101,8 +101,8 @@ export default {
 
   &.mobile {
     width: 3rem;
-    right: .5rem;
-    bottom: .5rem;
+    right: 0rem;
+    bottom: 3rem;
 
     >.scoll-btn {
       width: 2rem;

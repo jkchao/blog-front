@@ -11,7 +11,7 @@ export const actions = {
     const initAppData = [
       // 获取信息
       store.dispatch('getAdminInfo'),
-      
+
       // 网站信息
       store.dispatch('getOpt'),
 
@@ -46,9 +46,18 @@ export const actions = {
   },
 
   // 获取文章
-  async getArtList ({ commit }, params = { current_page: 1 }) {
-    const res = await service.getArts(params)
-    commit('article/SET_ART', res.result || { pagination: {}, list: [] })
+  async getArtList ({ commit, state }, data = { current_page: 1 }) {
+    commit('article/FETCH_ART')
+    const res = await service.getArts(data)
+    if (res.code === 1) {
+      let list
+      if (res.result.pagination.current_page === 1) list = res.result.list
+      else list = [...state.article.art.list, ...res.result.list]
+      commit('article/SET_ART_SUCCESS', {
+        list,
+        pagination: res.result.pagination
+      })
+    } else commit('article/SET_ART_FILE')
   },
 
   // 获取最热文章列表
@@ -76,9 +85,18 @@ export const actions = {
   },
 
   // 英雄版
-  async getHero ({ commit }, data) {
-    const res = await service.getHero({ current_page: 1 })
-    commit('heros/SET_HERO', res.result || { pagination: {}, list: [] })
+  async getHero ({ commit, state }, data = { current_page: 1 }) {
+    commit('heros/FETCH_HERO')
+    const res = await service.getHero(data)
+    if (res.code === 1) {
+      let list
+      if (res.result.pagination.current_page === 1) list = res.result.list
+      else list = [...state.heros.data.list, ...res.result.list]
+      commit('heros/SET_HERO_SUCCESS', {
+        list,
+        pagination: res.result.pagination
+      })
+    } else commit('heros/SET_HERO_FILE')
   },
 
   // 添加英雄版
