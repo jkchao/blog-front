@@ -49,6 +49,8 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - 加载优化
 
+- 尾部信息优化
+
 
 ## Build Setup
 
