@@ -26,6 +26,8 @@ export default {
 
   transition: 'slide-down',
 
+  scrollToTop: true,
+
   head() {
     return { title: `${this.keyword} | keyword` }
   },

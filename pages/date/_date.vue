@@ -28,6 +28,8 @@ export default {
 
   transition: 'slide-down',
 
+  scrollToTop: true,
+
   fetch ({ store, params }) {
     return store.dispatch('getArtList', params)
   },

@@ -145,7 +145,6 @@ export default {
 @import '~assets/scss/mixin.scss';
 
 .heroes {
-  margin-bottom: 1rem;
 
   &.heroes-mobile {
     margin-bottom: 0;

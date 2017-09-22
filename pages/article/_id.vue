@@ -70,6 +70,8 @@ export default {
 
   transition: 'fade',
 
+  scrollToTop: true,
+
   fetch ({ store, params }) {
     return store.dispatch('getArt', params)
   },

@@ -160,7 +160,7 @@ export default {
   }
 
   .end-article {
-    margin-bottom: $normal-pad;
+    // margin-bottom: $normal-pad;
     padding: $md-pad;
     background: $module-bg;
     text-align: center;

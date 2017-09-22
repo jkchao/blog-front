@@ -106,19 +106,14 @@ module.exports = {
     }],
     noscript: [{ innerHTML: 'This website requires JavaScript.' }]
   },
+  // plugins
+  plugins: [{ src: '~plugins/swiper.js', ssr: false }, { src: '~plugins/clickOutside.js', ssr: false }, { src: '~plugins/filter.js' }, { src: '~plugins/finally.js' }, { src: '~plugins/marked.js' }],
+
   // router
   router: {
     middleware: ['layout'],
     linkActiveClass: 'link-active'
-    // scrollBehavior: (to, from, savedPosition) => {
-    //   return { x: 0, y: 0 }
-    // }
-    // scrollBehavior (to, from, savedPosition) {
-    //   return { x: 0, y: 0 }
-    // }
   },
-  // plugins
-  plugins: [{ src: '~plugins/swiper.js', ssr: false }, { src: '~plugins/clickOutside.js', ssr: false }, { src: '~plugins/filter.js' }, { src: '~plugins/finally.js' }, { src: '~plugins/marked.js' }],
   /*
   ** Global CSS
   */

@@ -19,7 +19,7 @@
           }">
           <nuxt></nuxt>
         </div>
-        <div 
+        <div
         class="content-right" 
         v-if="isAsdiePage && !mobileLayout" 
         key="2">
@@ -28,7 +28,7 @@
           </keep-alive>
         </div>
       </transition-group>
-      <my-footer></my-footer>
+      <my-footer v-if="!isError"></my-footer>
     </div>
     <scoll-top></scoll-top>
   </div>
@@ -70,11 +70,17 @@ export default {
     isAsdiePage () {
       return this.$store.state.options.isAsidePage
     },
+
     mobileLayout () {
       return this.$store.state.options.mobileLayout
     },
+
     mobileSidebar () {
       return this.$store.state.options.mobileSidebar
+    },
+
+    isError () {
+      return this.$store.state.options.isError
     }
   },
 

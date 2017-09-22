@@ -68,7 +68,7 @@
       class="foot"
       v-if="!mobileLayout">
         <div class="foot-box">
-          <p>我走过山时，山不说话。</p>
+          <p>我走过山时，山不说话，</p>
           <p>我路过海时，海不说话。</p>
         </div>
     </div>
@@ -243,7 +243,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1rem 0;
+    margin: 1rem 0 0 0;
     height: 390px;
     background: url('http://ovshyp9zv.bkt.clouddn.com/bg.jpg?imageView2/2/w/700') no-repeat center;
     color: $white;

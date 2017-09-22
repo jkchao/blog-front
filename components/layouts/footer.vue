@@ -35,6 +35,7 @@ export default {
 @import '~assets/scss/variable.scss';
 
 footer {
+  margin-top: $normal-pad;
   height: $header-height;
   line-height: $header-height;
   background: $module-bg;

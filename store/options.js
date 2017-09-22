@@ -3,6 +3,9 @@ export const state = () => {
     // 是否有侧栏
     isAsidePage: false,
 
+    // 错误页面
+    isError: false,
+
     // 是否为移动端
     mobileLayout: false,
 
@@ -50,9 +53,10 @@ export const mutations = {
   // 网站信息
   SET_WEB_OPTION (state, data) {
     state.option = data
-  }
-}
+  },
 
-export const getters = {
-  mobileLayout: state => state.mobileLayout
+  // 错误页面
+  SET_ERROR_PAGE (state, data) {
+    state.isError = data
+  }
 }

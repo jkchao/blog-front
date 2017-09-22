@@ -1,6 +1,6 @@
 export default function ({ store, route }, next) {
-  const unside = ['about', 'music', 'heros', 'article-id']
-  const isAsidePage = !unside.includes(route.name)
+  const isSide = ['index', 'code', 'think', 'date-date', 'tag-tag', 'search-keyword']
+  const isAsidePage = isSide.includes(route.name)
   if (!Object.is(store.state.options.isAsidePage, isAsidePage)) {
     store.commit('options/CHANGE_ASIDE_PAGE', isAsidePage)
   }

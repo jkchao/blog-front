@@ -255,6 +255,7 @@ export default {
   }
 
   .aside-tag {
+    margin-bottom: 0;
 
     >.tag {
       padding: .85rem;

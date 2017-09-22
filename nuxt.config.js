@@ -59,17 +59,6 @@ module.exports = {
       { innerHTML: 'This website requires JavaScript.' }
     ]
   },
-  // router
-  router: {
-    middleware: ['layout'],
-    linkActiveClass: 'link-active'
-    // scrollBehavior: (to, from, savedPosition) => {
-    //   return { x: 0, y: 0 }
-    // }
-    // scrollBehavior (to, from, savedPosition) {
-    //   return { x: 0, y: 0 }
-    // }
-  },
   // plugins
   plugins: [
     { src: '~plugins/swiper.js', ssr: false },
@@ -78,6 +67,12 @@ module.exports = {
     { src: '~plugins/finally.js' },
     { src: '~plugins/marked.js' }
   ],
+
+  // router
+  router: {
+    middleware: ['layout'],
+    linkActiveClass: 'link-active'
+  },
   /*
   ** Global CSS
   */
