@@ -51,8 +51,9 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - 尾部信息优化
 
-- 手机端 about 页面 点击微信图标的bug
+- ~手机端 about 页面 点击微信图标的bug~
 
+- 错误页面
 
 ## Build Setup
 
