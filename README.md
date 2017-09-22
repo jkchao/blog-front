@@ -16,10 +16,6 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 ![](https://github.com/jkchao/vue-blog/raw/master/images/4.png)
 
-![](https://github.com/jkchao/vue-blog/raw/master/images/5.png)
-
-![](https://github.com/jkchao/vue-blog/raw/master/images/6.png)
-
 
 
 ## 主要插件
