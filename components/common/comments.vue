@@ -61,6 +61,7 @@
 
     methods: {
       reset (dsq) {
+        this.state = true
         const self = this
         dsq.reset({
           reload: true,
@@ -106,7 +107,7 @@
           s.type = 'text/javascript'
           s.async = true
           s.setAttribute('id', 'embed-disqus')
-          s.setAttribute('data-timestamp', +new Date())
+          s.setAttribute('data-timestamp', + new Date())
           s.src = `//${this.shortname}.disqus.com/embed.js`
           s.onload = () => {
             this.state = true
