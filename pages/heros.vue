@@ -339,6 +339,10 @@ export default {
 
   &.dialog-mobile {
 
+    .dialog-body {
+      top: 4rem;
+    }
+
     .dialog-item {
       grid-template-columns: 100%;
       margin: 0;
@@ -349,9 +353,9 @@ export default {
       }
     }
 
-    .dialog-item.content {
-      height: 8rem;
-    }
+    // .dialog-item.content {
+    //   height: 8rem;
+    // }
     .footer {
       margin-top: 1rem;
       padding-right: 1rem;

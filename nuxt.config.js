@@ -47,14 +47,14 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
-    script: [
-      {
-        async: 'async',
-        type: 'text/javascript',
-        src: '//jkchao.disqus.com/count.js',
-        id: 'dsq-count-scr'
-      }
-    ],
+    // script: [
+    //   {
+    //     async: 'async',
+    //     type: 'text/javascript',
+    //     src: '//jkchao.disqus.com/count.js',
+    //     id: 'dsq-count-scr'
+    //   }
+    // ],
     noscript: [
       { innerHTML: 'This website requires JavaScript.' }
     ]
@@ -63,6 +63,7 @@ module.exports = {
   plugins: [
     { src: '~plugins/swiper.js', ssr: false },
     { src: '~plugins/clickOutside.js', ssr: false },
+    { src: '~/plugins/ga.js', ssr: false },
     { src: '~plugins/filter.js' },
     { src: '~plugins/finally.js' },
     { src: '~plugins/marked.js' }

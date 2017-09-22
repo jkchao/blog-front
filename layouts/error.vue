@@ -19,7 +19,7 @@ export default {
   },
 
   beforeDestroy () {
-    this.$stroe.commit('options/SET_ERROR_PAGE', false)
+    this.$store.commit('options/SET_ERROR_PAGE', false)
   }
 }
 </script>

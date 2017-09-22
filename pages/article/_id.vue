@@ -416,8 +416,8 @@ export default {
   .dialog {
 
     >.dialog-body {
-      top: 0;
-      left: 0;
+      top: 0 !important;
+      left: 0 !important;
       width: 100% !important;
       height: 100%;
       background: transparent;

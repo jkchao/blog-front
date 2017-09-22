@@ -28,7 +28,7 @@
         </nuxt-link>
       </div>
       <div>
-        <a href="javascript" @click.stop.prevent="search = !search"><i class="iconfont icon-search"></i></a>
+        <a href="javascript:;" @click.stop.prevent="search = !search"><i class="iconfont icon-search"></i></a>
       </div>
     </nav>
   </header>
