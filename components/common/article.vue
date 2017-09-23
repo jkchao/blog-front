@@ -9,7 +9,7 @@
         @click="$router.push(`/article/${item._id}`)">
         <div class="content">
           <p class="title">{{ item.title }}</p>
-          <nuxt-link to="" v-if="mobileLayout">
+          <nuxt-link :to="`/article/${item._id}`" v-if="mobileLayout">
             <img :src="item.thumb" alt="" width="100%" class="mobil-img"/>
           </nuxt-link>
           <p class="abstrack">{{ item.descript }}</p>
@@ -27,7 +27,7 @@
             <span class="like"><i class="iconfont icon-like"></i> {{ item.meta.likes }}</span>
           </div>
         </div>
-        <nuxt-link to="" v-if="!mobileLayout">
+        <nuxt-link :to="`/article/${item._id}`" v-if="!mobileLayout">
           <img :src="item.thumb" alt="" width="180"/>
         </nuxt-link>
       </div>
@@ -100,7 +100,6 @@ export default {
         width: 100%;
         margin: 0;
         >a {
-
           display: block;
           margin-bottom: .5rem;
           width: 100%;
@@ -123,6 +122,12 @@ export default {
 
     >.content {
       margin-right: 1.3rem;
+
+      >.title {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
 
       >.abstrack {
         min-height: 3rem;

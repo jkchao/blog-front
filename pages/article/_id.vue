@@ -19,11 +19,11 @@
     <div class="item">
       <div class="info">
         <div class="info-left">
-          <span>
+          <span class="likeing" @click="like">
             <i
               :class="{'is-liked': isLiked}"
               class="iconfont icon-like like"
-              @click="like"></i>
+              ></i>
               <span>{{ article.meta.likes || 0}}</span>
           </span>
 
@@ -155,7 +155,7 @@ export default {
 
 .article-list {
   margin: auto;
-  width: 50rem;
+  width: 48.5rem;
 
   >.article-cont {
     padding: $lg-pad;
@@ -380,6 +380,16 @@ export default {
         display: flex;
         align-items: center;
 
+        >.likeing {
+          i {
+            vertical-align: middle;
+          }
+
+          span {
+            margin-left: .4rem;
+            vertical-align: middle;
+          }
+        }
         .like {
           cursor: pointer;
           margin-right: .3rem;
