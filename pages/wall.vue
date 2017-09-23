@@ -183,6 +183,7 @@ export default {
       position: relative;
       padding: .5rem 1rem;
       color: $black;
+      text-decoration: underline;
       @include border-radius($xs-pad);
       @include transition(all .5s ease);
       @include transform(perspective(1px) translateZ(0));
