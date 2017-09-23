@@ -1,9 +1,7 @@
 <template>
   <footer :class="{'mobile': mobileLayout}">
     <div
-      class="container clearfix font-futura">
-      <span v-if="mobileLayout">©{{new Date().getFullYear()}}</span>
-      <span v-else></span>
+      class="container clearfix font-futura">©{{new Date().getFullYear()}}
       <nuxt-link to="/about">{{ user.name }}</nuxt-link>
     </div>
   </footer>
