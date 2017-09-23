@@ -2,18 +2,17 @@
   <footer :class="{'mobile': mobileLayout}">
     <div
       class="container clearfix font-futura">
-      ©{{new Date().getFullYear()}}
+      <span v-if="mobileLayout">©{{new Date().getFullYear()}}</span>
+      <span v-else></span>
       <nuxt-link to="/about">{{ user.name }}</nuxt-link>
     </div>
   </footer>
 </template>
-
 <script>
 export default {
   name: 'footer',
 
   computed: {
-
     mobileLayout () {
       return this.$store.state.options.mobileLayout
     },
@@ -26,7 +25,6 @@ export default {
       return this.$store.state.options.adminInfo
     }
   }
-
 }
 </script>
 

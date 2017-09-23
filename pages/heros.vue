@@ -2,7 +2,7 @@
   <div class="heroes" :class="{'heroes-mobile': mobileLayout}">
     <div class="head font-futura">
       <div class="box">
-        <p>EVERYONE IS A HERO.</p>
+        <p>WANT TO SAY SOMETHIND？</p>
         <a href="javascript:;" class="join"  @click.stop="open">JOIN!</a>
       </div>
     </div>

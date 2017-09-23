@@ -34,7 +34,6 @@
   </div>
 </template>
 
-<script id="dsq-count-scr" src="https://jkchao-1.disqus.com/count.js" async></script>
 
 <script>
 

@@ -41,7 +41,7 @@ export default {
         { path: '/code', name: 'CODE', icon: 'iconfont icon-code'},
         { path: '/think', name: 'THINK', icon: 'iconfont icon-read'},
         { path: '/about', name: 'ABOUT', icon: 'iconfont icon-user'},
-        { path: '/heros', name: 'HEROES', icon: 'iconfont icon-hero'}
+        { path: '/heros', name: 'WALL', icon: 'iconfont icon-message'}
       ],
       swiperOption: {
         direction: 'vertical',
