@@ -35,7 +35,7 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - 网易云音乐
 
-- 谷歌统计分析脚本
+- ~谷歌统计分析脚本~
 
 - ~连接不上 Disqus 时，出现评论区空白~
 
