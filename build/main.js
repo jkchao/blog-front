@@ -89,7 +89,7 @@ module.exports = {
       plugins: ['transform-async-to-generator', 'transform-runtime']
     }
   },
-  dev: "production" !== 'production',
+  dev: "development" !== 'production',
   /*
   ** Headers of the page
   */

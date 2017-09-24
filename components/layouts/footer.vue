@@ -1,8 +1,13 @@
 <template>
   <footer :class="{'mobile': mobileLayout}">
     <div
-      class="container clearfix font-futura">©{{new Date().getFullYear()}}
-      <nuxt-link to="/about">{{ user.name }}</nuxt-link>
+      class="container clearfix font-futura">
+      <span v-if="mobileLayout">©{{new Date().getFullYear()}}</span>
+      <span v-else>BASE ON NUXT + NODE + MONGODB</span>
+      <span> BY
+        <nuxt-link to="/about">{{ user.name }}</nuxt-link>
+      </span>
+      
     </div>
   </footer>
 </template>
