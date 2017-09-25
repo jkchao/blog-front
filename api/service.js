@@ -52,3 +52,18 @@ export function likeArt (data) {
   return ax.post(`/like`, data)
           .then(res => res.data)
 }
+
+export function getComment (params) {
+  return ax.get('/comment', { params })
+          .then(res => res.data)
+}
+
+export function postComment (data) {
+  return ax.post('/comment', data)
+          .then(res => res.data)
+}
+
+export function likeComment (data) {
+  return ax.post(`/like`, data)
+          .then(res => res.data)
+}

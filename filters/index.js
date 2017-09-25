@@ -1,9 +1,11 @@
+
 /**
  *
  * @export
- * @returns
+ * @param {any} time 输入需要转化的时间参数
+ * @param {any} format 需要转化的格式
+ * @returns 返回处理后的时间格式
  */
-
 export function dateFormat (time, format) {
   const between = (Date.now() - Number(time)) / 1000
   if (between < 3600 && ((between / 60) < 1)) {

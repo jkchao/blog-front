@@ -328,6 +328,10 @@ export default {
       &:hover {
         border-color: $form-hover;
       }
+
+      &:focus {
+        border-color: $black;
+      }
     }
   }
   .footer {

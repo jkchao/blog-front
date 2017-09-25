@@ -1,5 +1,5 @@
 import marked from 'marked'
-import Hljs from 'highlight.js'
+import Hljs from '~/plugins/highlight.js'
 const renderer = new marked.Renderer()
 
 marked.setOptions({
@@ -41,6 +41,8 @@ export default (content, tags, parseHtml = false) => {
   if (typeof content !== 'string') {
     return ''
   }
+
+  marked.setOptions({ sanitize: !parseHtml })
 
   // 返回解析内容
   return marked(content, { renderer })

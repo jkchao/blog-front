@@ -7,6 +7,7 @@
         <span class="num">字数 {{ article.content.length }}</span>
         <span class="view">阅读 {{ article.meta.views }}</span>
         <span class="view">喜欢 {{ article.meta.likes }}</span>
+        <span class="comment">评论 {{ article.meta.comments }}</span>
         <span class="count">
           <!-- <span class="disqus-comment-count" :data-disqus-identifier="article._id"></span> -->
         </span>
@@ -46,9 +47,7 @@
       </div>
     </div>
     <div class="comment">
-      <comments
-        shortname="jkchao"
-        :identifier="article._id"></comments>
+      <comments :post-id="article.id" v-if="article.title"></comments>
     </div>
 
     <dialog-com 

@@ -1,11 +1,10 @@
-
 @font-face {
   font-family: 'iconfont';  /* project id 376001 */
-  src: url('//at.alicdn.com/t/font_376001_d154kpglv140wwmi.eot');
-  src: url('//at.alicdn.com/t/font_376001_d154kpglv140wwmi.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_376001_d154kpglv140wwmi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_376001_d154kpglv140wwmi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_376001_d154kpglv140wwmi.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_376001_oig09ch8jgntrzfr.eot');
+  src: url('//at.alicdn.com/t/font_376001_oig09ch8jgntrzfr.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_376001_oig09ch8jgntrzfr.woff') format('woff'),
+  url('//at.alicdn.com/t/font_376001_oig09ch8jgntrzfr.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_376001_oig09ch8jgntrzfr.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -124,8 +123,22 @@
 
 .icon-code:before { content: "\e6e8"; }
 
+.icon-image:before { content: "\e614"; }
 
+.icon-emoji:before { content: "\e613"; }
 
+.icon-eye:before { content: "\e615"; }
 
+.icon-zan:before { content: "\e65e"; }
+
+.icon-reply:before { content: "\e61f"; }
+
+.icon-cancel:before { content: "\e61d"; }
+
+.icon-release:before { content: "\e723"; }
+
+.icon-setting:before { content: "\e8bd"; }
+
+.icon-success:before { content: "\e62a"; }
 
 

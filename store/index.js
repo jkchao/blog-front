@@ -80,7 +80,41 @@ export const actions = {
 
   // 喜欢文章
   async likeArt ({ commit }, data) {
-    const res = await service.likeArt(data)
+    const res = await service.likeArt({ ...data, type: 0 })
+    return res
+  },
+
+  // 根据post-id获取评论列表
+  async loadCommentsByPostId ({ commit }, data) {
+    data.sort = data.sort || -1
+    data.current_page = data.current_page || 1
+    data.page_size = data.page_size || 50
+    if (Object.is(data.current_page, 1)) {
+      commit('comment/CLEAR_LIST')
+    }
+    commit('comment/REQUEST_LIST')
+    console.log(data)
+    const res = await service.getComment(data)
+    if (res.code === 1) {
+      if (Object.is(data.sort, -1)) res.result.data.reverse()
+      commit('comment/GET_LIST_SUCCESS', res)
+    } else commit('comment/GET_LIST_FAILURE')
+    return res
+  },
+
+  // 发布评论
+  async postComment ({ commit }, comment) {
+    commit('comment/POST_ITEM')
+    const res = await service.postComment(comment)
+    if (res.code === 1) commit('comment/POST_ITEM_SUCCESS', res)
+    else commit('comment/POST_ITEM_FAILURE')
+    return res
+  },
+
+  // 为某条回复点赞
+  async likeComment ({ commit }, data) {
+    const res = await service.likeComment(data)
+    if (res.code === 1) commit('comment/LIKE_ITEM', data)
     return res
   },
 
@@ -97,6 +131,7 @@ export const actions = {
         pagination: res.result.pagination
       })
     } else commit('heros/SET_HERO_FILE')
+    return res
   },
 
   // 添加英雄版
