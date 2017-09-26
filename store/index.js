@@ -106,8 +106,10 @@ export const actions = {
   async postComment ({ commit }, comment) {
     commit('comment/POST_ITEM')
     const res = await service.postComment(comment)
-    if (res.code === 1) commit('comment/POST_ITEM_SUCCESS', res)
-    else commit('comment/POST_ITEM_FAILURE')
+    if (res.code === 1) {
+      commit('comment/POST_ITEM_SUCCESS', res)
+      commit('article/ADD_COMMENT')
+    } else commit('comment/POST_ITEM_FAILURE')
     return res
   },
 

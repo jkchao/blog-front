@@ -39,5 +39,9 @@ export const mutations = {
 
   SET_DETAILS (state, data) {
     state.details = data
+  },
+
+  ADD_COMMENT (state) {
+    state.details.meta.comments += 1
   }
 }
