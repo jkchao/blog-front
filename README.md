@@ -24,7 +24,7 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
  - marked + highlight.js
  
- - Disqus (科学上网)
+ - ~Disqus (科学上网)~
 
  
 ## TODO
@@ -33,7 +33,7 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - ~HTTPS~
 
-- ～~写~抄个评论～
+- ~抄个评论~
 
 - 网易云音乐
 
@@ -41,7 +41,7 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - ~连接不上 Disqus 时，出现评论区空白~
 
-- Disqus 国内 ？
+- ~Disqus 国内 ~
 
 - 安卓 uc 浏览器无法点击头部。
 
