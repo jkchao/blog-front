@@ -59,16 +59,16 @@
                 <div v-html="marked(comment.content)"></div>
               </div>
               <div class="cm-footer">
-                <a href="" class="reply" @click.stop.prevent="replyComment(comment)">
-                  <i class="iconfont icon-reply"></i>
-                  <span>回复</span>
-                </a>
                 <a href="" 
                    class="like" 
                    :class="{ liked: commentLiked(comment._id), actived: !!comment.likes }"
                    @click.stop.prevent="likeComment(comment)">
                   <i class="iconfont icon-zan"></i>
                   <span>顶&nbsp;({{ comment.likes }})</span></a>
+                <a href="" class="reply" @click.stop.prevent="replyComment(comment)">
+                  <i class="iconfont icon-reply"></i>
+                  <span>回复</span>
+                </a>
               </div>
             </div>
           </li>
@@ -516,6 +516,7 @@
           this.userCacheMode = true
           this.cancelCommentReply()
           this.clearCommentContent()
+          scrollTo(document.querySelector('#post-box'), 200, { offset: 0 })
           localStorage.setItem('BLOG_USER', JSON.stringify(this.user))
         } else alert('操作失败')
       }
@@ -595,6 +596,12 @@
 
             > .cm-body {
               padding: .6em;
+
+              >.cm-footer {
+                >.reply {
+                  display: block !important;
+                }
+              }
             }
           }
         }
@@ -787,6 +794,19 @@
                   margin-right: .2em;
                 }
               }
+
+              >.reply {
+                display: none;
+
+                &:hover {
+                  color: $green;
+                }
+              }
+            }
+          }
+          &:hover {
+            .cm-body > .cm-footer > .reply {
+              display: block;
             }
           }
         }
