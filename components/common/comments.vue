@@ -607,6 +607,11 @@
         }
       }
 
+      >.empty-box {
+        height: 5rem;
+        line-height: 5rem;
+      }
+
       > .post-box {
 
         > .user {
@@ -680,8 +685,8 @@
     > .empty-box {
       font-weight: bold;
       text-align: center;
-      height: 5rem;
-      line-height: 5rem;
+      height: 7rem;
+      line-height: 7rem;
     }
 
     > .list-box {
