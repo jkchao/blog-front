@@ -4,7 +4,7 @@
       <h3 class="font-futura">{{ article.title }}</h3>
       <div class="meta">
         <span class="time">{{ article.create_at | dateFormat('yyyy.MM.dd hh:mm') }}</span>
-        <span class="num">字数 {{ article.content.length }}</span>
+        <span class="num" v-if="!mobileLayout">字数 {{ article.content.length }}</span>
         <span class="view">阅读 {{ article.meta.views }}</span>
         <span class="view">喜欢 {{ article.meta.likes }}</span>
         <span class="comment">评论 {{ article.meta.comments }}</span>

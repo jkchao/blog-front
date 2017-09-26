@@ -52,7 +52,7 @@
                     <strong v-if="fondReplyParent(comment.pid)">{{ fondReplyParent(comment.pid) }}</strong>
                   </a>
                 </span>
-                <span class="flool">{{ comment.create_at | dateFormat('yyyy-MM-dd hh:mm')}}</span>
+                <span class="flool" v-if="!mobileLayout">{{ comment.create_at | dateFormat('yyyy.MM.dd hh:mm')}}</span>
               </div>
               <div class="cm-content">
                 </p>
@@ -68,6 +68,9 @@
                 <a href="" class="reply" @click.stop.prevent="replyComment(comment)">
                   <i class="iconfont icon-reply"></i>
                   <span>回复</span>
+                </a>
+                <a class="create_at" v-if="mobileLayout">
+                  <span>{{ comment.create_at | dateFormat('yyyy.MM.dd hh:mm')}}</span>
                 </a>
               </div>
             </div>
@@ -202,7 +205,8 @@
                    type="text" 
                    name="name"
                    placeholder="name *" 
-                   v-model="user.name">
+                   v-model="user.name"
+                   maxlength="10">
           </div>
           <div class="email">
             <input required
@@ -769,6 +773,8 @@
 
             > .cm-footer {
               display: flex;
+              align-items: center;
+              position: relative;
 
               > .create_at,
               > .reply,
@@ -778,6 +784,9 @@
               }
 
               > .create_at {
+                position: absolute;
+                right: 0;
+                margin: 0;
                 color: $disabled;
               }
 

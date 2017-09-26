@@ -1,6 +1,7 @@
 import service from '../api'
 
 export const actions = {
+
   nuxtServerInit (store, { params, route, isServer, req }) {
     // 设备检查类型
     const userAgent = isServer ? req.headers['user-agent'] : navigator.userAgent
@@ -93,7 +94,6 @@ export const actions = {
       commit('comment/CLEAR_LIST')
     }
     commit('comment/REQUEST_LIST')
-    console.log(data)
     const res = await service.getComment(data)
     if (res.code === 1) {
       if (Object.is(data.sort, -1)) res.result.data.reverse()
