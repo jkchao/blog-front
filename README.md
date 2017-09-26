@@ -41,7 +41,7 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - ~连接不上 Disqus 时，出现评论区空白~
 
-- ~Disqus 国内 ~
+- ~Disqus 国内~
 
 - 安卓 uc 浏览器无法点击头部。
 
@@ -53,7 +53,7 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - ~错误页面~
 
-- 接入 one
+- ~接入 one (会涉及版权问题，放弃)~
 
 ## Build Setup
 
