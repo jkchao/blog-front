@@ -154,23 +154,16 @@
                     <li class="item" @click="insertEmoji('😌')">😌</li>
                     <li class="item" @click="insertEmoji('😔')">😔</li>
                     <li class="item" @click="insertEmoji('😓')">😓</li>
-                    <li class="item" @click="insertEmoji('😢')">😢</li>
-                    <li class="item" @click="insertEmoji('😍')">😍</li>
                     <li class="item" @click="insertEmoji('😘')">😘</li>
-                    <li class="item" @click="insertEmoji('😜')">😜</li>
                     <li class="item" @click="insertEmoji('😡')">😡</li>
                     <li class="item" @click="insertEmoji('😭')">😭</li>
                     <li class="item" @click="insertEmoji('😱')">😱</li>
                     <li class="item" @click="insertEmoji('😳')">😳</li>
                     <li class="item" @click="insertEmoji('😵')">😵</li>
                     <li class="item" @click="insertEmoji('🌚')">🌚</li>
-                    <li class="item" @click="insertEmoji('🙏')">🙏</li>
-                    <li class="item" @click="insertEmoji('👌')">👌</li>
                     <li class="item" @click="insertEmoji('👍')">👍</li>
                     <li class="item" @click="insertEmoji('👎')">👎</li>
                     <li class="item" @click="insertEmoji('💪')">💪</li>
-                    <li class="item" @click="insertEmoji('👏')">👏</li>
-                    <li class="item" @click="insertEmoji('🌻')">🌻</li>
                     <li class="item" @click="insertEmoji('🌹')">🌹</li>
                     <li class="item" @click="insertEmoji('💊')">💊</li>
                     <li class="item" @click="insertEmoji('🇨🇳')">🇨🇳</li>
@@ -641,7 +634,6 @@
             margin: 0;
           }
           .emoji-box {
-            bottom: -9rem !important;
             width: 200px !important;
           }
         }
@@ -844,12 +836,12 @@
       padding-top: 1rem;
 
       > .user {
+        display: flex;
+        padding-left: 4rem;
+        margin-top: .3rem;
         width: 100%;
         height: 2em;
         line-height: 2em;
-        display: flex;
-        margin-top: 1rem;
-        padding-left: 4rem;
 
         > .edit {
           flex-grow: 1;
@@ -891,7 +883,7 @@
               z-index: 99;
 
               li {
-                padding: .5rem 1rem;
+                padding: 0 1rem;
 
                 &:hover {
                   background: rgba(0, 0, 0, 0.12);
@@ -1009,7 +1001,7 @@
 
             > .markdown-editor {
               min-height: 6em;
-              max-height: 36em;
+              max-height: 30em;
               overflow: auto;
               outline: none;
               padding: .5em;
@@ -1069,7 +1061,7 @@
               > .emoji-box {
                 display: none;
                 position: absolute;
-                bottom: -9em;
+                bottom: -7em;
                 left: 0;
                 width: 250px;
                 padding: .5rem;

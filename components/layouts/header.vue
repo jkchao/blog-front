@@ -71,7 +71,7 @@ export default {
     fix: {
       inserted (el) {
         window.addEventListener('scroll', _ => {
-          const top = document.body.scrollTop
+          const top = window.pageYOffset
           if (top > 64) el.classList.add('draken')
           else el.classList.remove('draken')
         })
