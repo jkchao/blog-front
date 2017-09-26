@@ -6,10 +6,11 @@
 </template>
 
 <script>
+
   export default {
     name: 'background',
     mounted () {
-      // this.buildBackground()
+      this.buildBackground()
     },
     methods: {
       buildBackground () {
