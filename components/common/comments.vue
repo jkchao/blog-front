@@ -1017,6 +1017,7 @@
               font-size: .95em;
               line-height: 1.8em;
               border: 1px solid #dbdfe4;
+              border-radius: 4px;
 
               &:hover {
                 border-color: $form-hover;
