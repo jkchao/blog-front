@@ -43,7 +43,13 @@
                    target="_blank" 
                    rel="external nofollow"
                    :href="comment.author.site" 
-                   @click.stop="clickUser($event, comment.author)">{{ comment.author.name }}</a>
+                   @click.stop="clickUser($event, comment.author)">
+                    <img :alt="comment.author.name || '匿名用户'"
+                        :src="gravatar(comment.author.email) || '/images/anonymous.jpg'" 
+                        v-if="mobileLayout"
+                        width="24px">
+                    {{ comment.author.name }}
+                   </a>
 
                 <span class="reply" v-if="!!comment.pid">
                   <span>回复 </span>
@@ -542,7 +548,7 @@
   .markdown-preview {
     font-size: 1em;
     line-height: 2em;
-    margin: .5em 0;
+    margin: .8em 0;
     word-wrap: break-word;
 
     a {
@@ -708,7 +714,7 @@
 
         > .comment-item {
           position: relative;
-          padding: .6em 0 .6em 4em;
+          padding: .6em 0 .6em 3.6em;
           border-bottom: 1px solid #f0f2f7;
 
           &:last-child {
@@ -747,12 +753,24 @@
 
               > .user-name {
                 font-weight: bold;
-                margin-right: .5em;
+                margin-right: .3rem;
                 font-family: Microsoft YaHei,Arial,Helvetica,sans-serif;
+
+                img {
+                  border-radius: 50%;
+                  margin-right: .2rem;
+                }
 
                 &:hover {
                   text-decoration: underline;
                 } 
+              }
+
+              >.reply {
+                a {
+                  font-weight: bold;
+                  margin-left: .3rem;
+                }
               }
 
               > .flool {
