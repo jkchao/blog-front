@@ -23,7 +23,7 @@
       <div class="empty-box" v-if="!comment.data.data.length && !comment.fetching">暂无评论</div>
       <!-- <loading-box v-else-if="comment.fetching"></loading-box> -->
       <div class="list-box" v-else>
-        <transition-group name="slide-down" tag="ul" class="comment-list">
+        <transition-group name="list" tag="ul" class="comment-list">
           <li class="comment-item"
               v-for="(comment, index) in comment.data.data"
               :id="`comment-item-${comment.id}`"
@@ -86,7 +86,7 @@
                class="pagination-btn" 
                :class="{ 'actived disabled': Object.is(item, comment.data.pagination.current_page) }"
                @click.stop.prevent="Object.is(item, comment.data.pagination.current_page) 
-               ? false 
+               ? false
                : loadComemntList({ current_page: item })">{{ item }}</a>
           </li>
         </ul>
@@ -214,10 +214,16 @@
                    name="email"
                    placeholder="email *" 
                    v-model="user.email" 
-                   @blur="upadteUserGravatar">
+                   @blur="upadteUserGravatar"
+                   maxlength="20">
           </div>
           <div class="site">
-            <input type="url" name="url" placeholder="site" v-model="user.site">
+            <input 
+              type="url" 
+              name="url" 
+              placeholder="site" 
+              v-model="user.site"
+              maxlength="20">
           </div>
           <div class="save" v-if="userCacheEditing">
             <button type="submit" @click="updateUserCache($event)">
@@ -828,7 +834,7 @@
     }
 
     > .pagination-box {
-      margin-top: .5rem;
+      margin: .5rem;
 
       > .pagination-list {
         margin: 0;
