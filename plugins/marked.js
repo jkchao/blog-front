@@ -19,10 +19,10 @@ marked.setOptions({
 // 段落解析
 const paragraphParse = text => `<p>${text}</p>`
 
-// 对图片进行弹窗处理
+// 对图片进行弹窗处理, 及懒加载处理
 const imageParse = (src, title, alt) => {
   return `<img 
-            src="${src}" 
+            data-src="${src}"
             title="${title || alt || 'jkchao.cn'}" 
             class="img-pop"/>`.replace(/\s+/g, ' ').replace('\n', '')
 }

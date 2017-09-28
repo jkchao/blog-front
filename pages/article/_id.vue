@@ -63,7 +63,7 @@ import marked from '~plugins/marked'
 import share from '~components/layouts/share'
 import dialogCom from '~components/common/dialog'
 import comments from '~components/common/comments'
-
+import lazyImg from '../../utils/lazyImg'
 export default {
   name: 'article',
 
@@ -141,6 +141,7 @@ export default {
   },
 
   mounted () {
+    lazyImg('.img-pop')
     this.init ()
     this.initEvent()
   }

@@ -14,8 +14,12 @@
           </nuxt-link>
           <p class="abstrack">{{ item.descript }}</p>
           <div class="meta">
-            <span class="tag" v-if="!mobileLayout"><i class="iconfont icon-tag"></i>
-              <span v-for="list in item.tag" class="tag-list" :key="list._id"> {{ list.name }}</span>
+            <span class="tag" v-if="!mobileLayout"><i class="iconfont icon-category"></i>
+              {{
+                  item.type === 1
+                  ? 'Code'
+                  : 'Think'
+                }}
             </span>
             <span class="time"><i class="iconfont icon-time"></i>
               {{ 
@@ -150,13 +154,13 @@ export default {
           }
         }
 
-        .tag-list {
-          margin-right: .5rem;
-        }
+        // .tag-list {
+        //   margin-right: .5rem;
+        // }
 
-        .tag-list:last-child {
-          margin: 0;
-        }
+        // .tag-list:last-child {
+        //   margin: 0;
+        // }
       }
     }
     >a {
