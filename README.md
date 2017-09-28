@@ -1,6 +1,6 @@
 # vue-blog (http://jkchao.cn)
 
-FRONT: [vue-blog](https://github.com/jkchao/vue-blog)
+CLIENT: [vue-blog](https://github.com/jkchao/vue-blog)
 
 ADMIN: [vue-admin](https://github.com/jkchao/vue-admin)
 
