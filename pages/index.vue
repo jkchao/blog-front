@@ -82,7 +82,8 @@ export default {
 @import '~assets/scss/mixin.scss';
 .main {
   .carrousel {
-    height: 20rem;
+    width: 48.5rem;
+    margin: 0 auto 1rem auto;
 
     .swiper-slide {
       text-align: center;
@@ -106,6 +107,7 @@ export default {
   }
 
   .carrousel.mobile {
+    width: 100%;
     height: 10rem;
 
     .swiper-title {

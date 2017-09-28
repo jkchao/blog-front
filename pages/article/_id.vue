@@ -63,7 +63,7 @@ import marked from '~plugins/marked'
 import share from '~components/layouts/share'
 import dialogCom from '~components/common/dialog'
 import comments from '~components/common/comments'
-import lazyImg from '../../utils/lazyImg'
+// import lazyImg from '../../utils/lazyImg'
 export default {
   name: 'article',
 
@@ -128,6 +128,7 @@ export default {
     },
 
     initEvent () {
+      // lazyImg('.img-pop')
       const list = document.querySelectorAll('.img-pop')
       let _this = this
       for (let i = 0; i < list.length; i++) {
@@ -136,12 +137,11 @@ export default {
           this.showDialog = true
           this.img = list[i].getAttribute('src')
         })
-      }      
+      }
     }
   },
 
   mounted () {
-    lazyImg('.img-pop')
     this.init ()
     this.initEvent()
   }

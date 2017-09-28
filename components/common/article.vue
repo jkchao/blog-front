@@ -70,6 +70,8 @@ export default {
 @import '~assets/scss/mixin.scss';
 
 .article-box {
+  width: 48.5rem;
+  margin: 0 auto;
 
   >.article-item {
     display: flex;
@@ -177,6 +179,7 @@ export default {
   }
 
   &.mobile {
+    width: 100%;
 
     >.end-article {
       margin-bottom: 0;

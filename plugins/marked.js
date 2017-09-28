@@ -22,7 +22,7 @@ const paragraphParse = text => `<p>${text}</p>`
 // 对图片进行弹窗处理, 及懒加载处理
 const imageParse = (src, title, alt) => {
   return `<img 
-            data-src="${src}"
+            src="${src}"
             title="${title || alt || 'jkchao.cn'}" 
             class="img-pop"/>`.replace(/\s+/g, ' ').replace('\n', '')
 }
