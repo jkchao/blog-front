@@ -55,6 +55,8 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - ~接入 one (会涉及版权问题，放弃)~
 
+- ~图片懒加载~
+
 ## Build Setup
 
 ``` bash
