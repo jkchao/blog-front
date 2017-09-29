@@ -1,7 +1,6 @@
 <template>
   <div class="global-background">
-      <div class="background-image"></div>
-     <div id="particles-background" class="background-canvas"></div>
+    <canvas id="canvas"></canvas>
   </div>
 </template>
 
@@ -10,121 +9,48 @@
   export default {
     name: 'background',
     mounted () {
-      this.buildBackground()
-    },
-    methods: {
-      buildBackground () {
-        particlesJS ('particles-background', {
-          "particles": {
-            "number": {
-              "value": 16,
-              "density": {
-                "enable": true,
-                "value_area": 1000
-              }
-            },
-            "color": {
-              "value": "#bebebe"
-            },
-            "shape": {
-              "type": "circle",
-              "stroke": {
-                "width": 0,
-                "color": "#ffffff"
-              },
-              "polygon": {
-                "nb_sides": 5
-              },
-              "image": {
-                "src": "img/github.svg",
-                "width": 100,
-                "height": 100
-              }
-            },
-            "opacity": {
-              "value": 0.3
-              // "random": false,
-              // "anim": {
-              //   "enable": true,
-              //   "speed": 0.8,
-              //   "opacity_min": 0.1,
-              //   "sync": false
-              // }
-            },
-            "size": {
-              "value": 15,
-              "random": true,
-              "anim": {
-                "enable": false,
-                "speed": 40,
-                "size_min": 0.1,
-                "sync": false
-              }
-            },
-            "line_linked": {
-              "enable": true,
-              "distance": 300,
-              "color": "#c5c5c5",
-              "opacity": 0.4,
-              "width": 1
-            },
-            "move": {
-              "enable": true,
-              "speed": .5,
-              "direction": "none",
-              "random": true,
-              "straight": false,
-              "out_mode": "out",
-              "bounce": false,
-              "attract": {
-                "enable": false,
-                "rotateX": 600,
-                "rotateY": 1200
-              }
-            }
-          },
-          "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-              "onhover": {
-                "enable": false,
-                "mode": "repulse"
-              },
-              "onclick": {
-                "enable": false,
-                "mode": "push"
-              },
-              "resize": true
-            },
-            "modes": {
-              "grab": {
-                "distance": 400,
-                "line_linked": {
-                  "opacity": 1
-                }
-              },
-              "bubble": {
-                "distance": 400,
-                "size": 40,
-                "duration": 2,
-                "opacity": 0.8471528471528471,
-                "speed": 3
-              },
-              "repulse": {
-                "distance": 200,
-                "duration": 0.4
-              },
-              "push": {
-                "particles_nb": 4
-              },
-              "remove": {
-                "particles_nb": 2
-              }
-            }
-          },
-          "retina_detect": true
-        })
+      var c = document.getElementById('canvas'),
+        x = c.getContext('2d'),
+        pr = window.devicePixelRatio || 1,
+        w = window.innerWidth,
+        h = window.innerHeight,
+        f = 90,
+        q,
+        m = Math,
+        r = 0,
+        u = m.PI * 2,
+        v = m.cos,
+        z = m.random
+      c.width = w * pr
+      c.height = h * pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
+      function i() {
+        x.clearRect(0, 0, w, h)
+        q = [{ x: 0, y: h * .7 + f }, { x: 0, y: h * .7 - f }]
+        while (q[1].x < w + f) d(q[0], q[1])
       }
+      function d(i, j) {
+        x.beginPath()
+        x.moveTo(i.x, i.y)
+        x.lineTo(j.x, j.y)
+        var k = j.x + (z() * 2 - 0.25) * f,
+          n = y(j.y)
+        x.lineTo(k, n)
+        x.closePath()
+        r -= u / -50
+        x.fillStyle = '#' + (v(r) * 127 + 128 << 16 | v(r + u / 3) * 127 + 128 << 8 | v(r + u / 3 * 2) * 127 + 128).toString(16)
+        x.fill()
+        q[0] = q[1]
+        q[1] = { x: k, y: n }
+      }
+      function y(p) {
+        var t = p + (z() * 2 - 1.1) * f
+        return (t > h || t < 0) ? y(p) : t
+      }
+      document.onclick = i
+      document.ontouchstart = i
+      i()
     }
   }
 </script>
@@ -141,16 +67,10 @@
     z-index: -1;
     background-color: #eee;
 
-    >.background-image {
+    canvas {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: .4;
-      background: url(~static/images/background.png);
-    }
-
-    >.background-canvas {
-      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
     }
