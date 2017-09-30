@@ -89,7 +89,7 @@ export const actions = {
   async loadCommentsByPostId ({ commit }, data) {
     data.sort = data.sort || -1
     data.current_page = data.current_page || 1
-    data.page_size = data.page_size || 8
+    data.page_size = data.page_size || 20
     if (Object.is(data.current_page, 1)) {
       commit('comment/CLEAR_LIST')
     }
@@ -120,7 +120,7 @@ export const actions = {
     return res
   },
 
-  // 英雄版
+  // 留言版
   async getHero ({ commit, state }, data = { current_page: 1 }) {
     commit('heros/FETCH_HERO')
     const res = await service.getHero(data)
@@ -136,7 +136,7 @@ export const actions = {
     return res
   },
 
-  // 添加英雄版
+  // 留言版
   async postHero ({ commit }, data) {
     const res = await service.postHero(data)
     return res
