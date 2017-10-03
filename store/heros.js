@@ -4,7 +4,8 @@ export const state = () => ({
     pagination: {}
   },
 
-  fetch: false
+  fetch: false,
+  posting: false
 })
 
 export const mutations = {
