@@ -52,7 +52,6 @@
         :disabled="posting">{{ posting ? '提交中...' : '确定'}}</button>
       </div>
     </dialog-com>
-
   </div>
 </template>
 

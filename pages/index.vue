@@ -83,6 +83,7 @@ export default {
 .main {
   .carrousel {
     width: 48.5rem;
+    height: 20rem;
     margin: 0 auto 1rem auto;
 
     .swiper-slide {

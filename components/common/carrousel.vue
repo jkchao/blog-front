@@ -4,7 +4,9 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide item" v-for="list in con" :key="list">
           <img 
-          :src="mobileLayout ? list.thumb + '?imageView2/2/w/390/h/140' : list.thumb + '?imageView2/2/w/679/h/280'"  
+          :src="mobileLayout
+          ? list.thumb + '?imageView2/1/w/390/h/140'
+          : list.thumb + '?imageView2/1/w/679/h/280'"
           v-if="type === 'banner'" />
           <nuxt-link :to="`/article/${list._id}`" class="swiper-title" v-if="type === 'banner'">{{ list.title }}</nuxt-link>
           <p class="saying-content" v-if="type === 'text'">{{ list.content }}</p>
