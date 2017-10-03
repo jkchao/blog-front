@@ -13,13 +13,13 @@ export const mutations = {
   FETCH_HERO (state) {
     state.fetch = true
   },
-  
+
   // 成功
   SET_HERO_SUCCESS (state, data) {
     state.data = data
     state.fetch = false
   },
-  
+
   // 失败
   SET_HERO_FILE (state, data) {
     state.data = { list: [], pagination: {} }
@@ -31,13 +31,7 @@ export const mutations = {
     state.posting = true
   },
 
-  POST_ITEM_SUCCESS (state, action) {
+  POST_ITEM_FINAL (state, action) {
     state.posting = false
-    state.data.pagination.total += 1
-    state.data.list.push(action.result)
-  },
-
-  POST_ITEM_FAILURE (state) {
-    state.posting = false
-  },
+  }
 }

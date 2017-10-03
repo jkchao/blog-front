@@ -47,7 +47,9 @@
       </form>
       <div class="footer" slot="foot">
         <button @click="show = false">取消</button>
-        <button @click="submit">确定</button>
+        <button 
+        @click="submit" 
+        :disabled="posting">{{ posting ? '提交中...' : '确定'}}</button>
       </div>
     </dialog-com>
 
@@ -80,6 +82,10 @@ export default {
         github: '',
         blog: '',
         content: ''
+      },
+
+      regexs: {
+        url: /^((https|http):\/\/)+[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/
       }
     }
   },
@@ -95,6 +101,10 @@ export default {
 
     items () {
       return this.$store.state.heros.data.list
+    },
+
+    posting () {
+      return this.$store.state.heros.posting
     },
 
     haveMore () {
@@ -129,11 +139,17 @@ export default {
         window.alert('说点什么？')
         return
       }
+      if (!!this.form.github && !this.regexs.url.test(this.form.github)) {
+        return alert('github不合法')
+      }
+      if (!!this.form.blog && !this.regexs.url.test(this.form.blog)) {
+        return alert('blog不合法')
+      }
       const res = await this.$store.dispatch('postHero', { ...this.form })
+      window.alert(res.message)
       if (res.code === 1) {
-        window.alert(res.message)
         this.show = false
-      } else window.alert(res.message)
+      }
     }
   }
 }

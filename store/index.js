@@ -136,9 +136,11 @@ export const actions = {
     return res
   },
 
-  // 留言版
+  // 提交留言版
   async postHero ({ commit }, data) {
+    commit('heros/POST_ITEM')
     const res = await service.postHero(data)
+    commit('heros/POST_ITEM_FINAL')
     return res
   }
 }
