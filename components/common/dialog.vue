@@ -35,10 +35,13 @@ export default {
   props: ['visible', 'img'],
 
   computed: {
+
     dialogVisible () {
       if (this.visible) this.lockBody()
+      else this.unLockBody()
       return this.visible
     },
+
     mobileLayout () {
       return this.$store.state.options.mobileLayout
     }

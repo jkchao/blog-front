@@ -78,8 +78,9 @@ export default {
   display: grid;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 48.5rem;
   height: 20rem;
+  margin: 0 auto $normal-pad auto;
   margin-bottom: $normal-pad;
   font-size: 1.3rem;
   color: $black;
