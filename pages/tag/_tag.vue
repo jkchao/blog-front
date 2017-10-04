@@ -76,6 +76,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 @import '~assets/scss/variable.scss';
 @import '~assets/scss/mixin.scss';
 
@@ -83,9 +84,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 48.5rem;
   height: 20rem;
-  margin-bottom: 1rem;
+  margin: 0 auto $normal-pad auto;
   font-size: 3rem;
   color: $black;
   background: $module-bg;
@@ -103,6 +104,7 @@ export default {
 .head.mobile {
   height: 10rem;
   font-size: 2rem;
+  width: 100%;
 
   p {
     line-height: 2.5rem;

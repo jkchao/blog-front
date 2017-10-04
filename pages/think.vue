@@ -81,7 +81,6 @@ export default {
   width: 48.5rem;
   height: 20rem;
   margin: 0 auto $normal-pad auto;
-  margin-bottom: $normal-pad;
   font-size: 1.3rem;
   color: $black;
   background: $module-bg;

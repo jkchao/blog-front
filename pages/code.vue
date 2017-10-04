@@ -83,10 +83,6 @@ export default {
   font-size: 1.3rem;
   color: $black;
   background: $module-bg;
-  // background: $module-bg url() no-repeat center 55%;  
-  p {
-
-  }
 }
 
 .head.mobile {
