@@ -94,5 +94,6 @@ export default {
 
 .head.mobile {
   height: 10rem;
+  width: 100%;
 }
 </style>
