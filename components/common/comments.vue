@@ -221,7 +221,7 @@
                    placeholder="email *" 
                    v-model="user.email" 
                    @blur="upadteUserGravatar"
-                   maxlength="20">
+                   maxlength="30">
           </div>
           <div class="site">
             <input 

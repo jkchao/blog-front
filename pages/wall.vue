@@ -59,12 +59,12 @@
 import dialogCom from '~components/common/dialog.vue'
 
 export default {
-  name: 'heroes',
+  name: 'wall',
 
   transition: 'fade',
 
   head: {
-    title: 'Heroes'
+    title: 'wall'
   },
 
   fetch ({ store }) {
