@@ -183,6 +183,7 @@ export default {
     }
 
     .content {
+      color: $black;
 
       a {
         font-weight: bold;
