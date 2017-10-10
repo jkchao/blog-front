@@ -41,3 +41,9 @@ export function dateFormat (times, format) {
 function pluralize (time, label) {
   return time + label + '以前'
 }
+
+// 文字长度
+export function text (text, length = text.lenth) {
+  const cansub = text && text.length > length
+  return cansub ? text.substr(0, length) + '...' : text
+}

@@ -22,7 +22,7 @@
           <p v-for="(list, index) in hotArt" :key="list._id" class="list">
             <nuxt-link :to="`/article/${list._id}`">
               <span class="list-num">{{ index + 1}}</span>
-              <span class="list-name">{{ list.title }}</span>
+              <span class="list-name">{{ list.title | text(23) }}</span>
             </nuxt-link>
           </p>
         </transition-group>
