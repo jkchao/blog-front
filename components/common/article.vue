@@ -12,7 +12,7 @@
           <nuxt-link :to="`/article/${item._id}`" v-if="mobileLayout">
             <img :src="item.thumb" alt="" width="100%" class="mobil-img"/>
           </nuxt-link>
-          <p class="abstrack">{{ item.descript }}</p>
+          <p class="abstrack">{{ item.descript | text(200)}}</p>
           <div class="meta">
             <span class="tag" v-if="!mobileLayout"><i class="iconfont icon-category"></i>
               {{
