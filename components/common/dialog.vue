@@ -57,7 +57,8 @@ export default {
     },
 
     unLockBody () {
-      if (!global.document) return
+      console.log(typeof window)
+      if (typeof window === 'undefined') return
       document.body.style.height = this.back.height
       document.body.style.overflow = this.back.overflow
     },
