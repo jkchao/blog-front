@@ -48,21 +48,25 @@ export function getArt (data) {
         .then(res => res.data)
 }
 
+// 文章点赞
 export function likeArt (data) {
   return ax.post(`/like`, data)
           .then(res => res.data)
 }
 
+// 获取评价
 export function getComment (params) {
   return ax.get('/comment', { params })
           .then(res => res.data)
 }
 
+// 提交评价
 export function postComment (data) {
   return ax.post('/comment', data)
           .then(res => res.data)
 }
 
+// 评论点赞
 export function likeComment (data) {
   return ax.post(`/like`, data)
           .then(res => res.data)
