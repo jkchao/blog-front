@@ -62,7 +62,12 @@
               </div>
               <div class="cm-content">
                 <div class="reply-box" v-if="!!comment.pid">
-                  <p class="reply-name">{{ fondReplyParent(comment.pid) }} ：</p>
+                  <p class="reply-name">
+                    <a href="" @click.stop.prevent="toSomeAnchorById(`comment-item-${comment.pid}`)">
+                      <span></span>
+                      <strong v-if="fondReplyParent(comment.pid)">{{ fondReplyParent(comment.pid) }}</strong>
+                    </a>
+                  </p>
                   <div v-html="fondReplyParentContent(comment.pid)" class="reply-content"></div>
                 </div>
                 <div v-html="marked(comment.content)"></div>
@@ -809,6 +814,14 @@
                   margin-bottom: .5rem;
                   font-weight: bold;
                   font-family: Microsoft YaHei,Arial,Helvetica,sans-seri;
+
+                  a {
+                    text-decoration: none;
+
+                    &:hover {
+                      text-decoration: underline;
+                    }
+                  }
                 }
               }
             }
