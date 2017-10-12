@@ -186,7 +186,7 @@ export default {
       background: $module-bg;
 
       .user {
-        margin: 1rem;
+        padding: 1rem;
         overflow: hidden;
 
         img {
@@ -220,10 +220,14 @@ export default {
       }
       >.user-box {
         grid-row: 1 / 2;
+
+        >.user {
+          padding: 1.5rem;
+        }
       }
     }
     .text-box .text {
-      padding: 1rem;
+      padding: 1.5rem;
     }
   }
 

@@ -184,6 +184,7 @@ export default {
 
     .content {
       color: $black;
+      word-wrap: break-word;
 
       a {
         font-weight: bold;
