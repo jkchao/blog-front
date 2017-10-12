@@ -472,7 +472,7 @@ export default {
     }
   }
   .item {
-    padding: .5rem;
+    padding: 1rem;
     font-size: .8rem;
 
     >.info {

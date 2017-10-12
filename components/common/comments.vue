@@ -51,17 +51,20 @@
                     {{ comment.author.name }}
                    </a>
 
-                <span class="reply" v-if="!!comment.pid">
+                <!-- <span class="reply" v-if="!!comment.pid">
                   <span>回复 </span>
                   <a href="" @click.stop.prevent="toSomeAnchorById(`comment-item-${comment.pid}`)">
                     <span></span>
                     <strong v-if="fondReplyParent(comment.pid)">{{ fondReplyParent(comment.pid) }}</strong>
                   </a>
-                </span>
-                <span class="flool" v-if="!mobileLayout">{{ comment.create_at | dateFormat('yyyy.MM.dd hh:mm')}}</span>
+                </span> -->
+                <span class="flool">{{ comment.create_at | dateFormat('yyyy.MM.dd hh:mm')}}</span>
               </div>
               <div class="cm-content">
-                </p>
+                <div class="reply-box" v-if="!!comment.pid">
+                  <p class="reply-name">{{ fondReplyParent(comment.pid) }} ：</p>
+                  <div v-html="fondReplyParentContent(comment.pid)" class="reply-content"></div>
+                </div>
                 <div v-html="marked(comment.content)"></div>
               </div>
               <div class="cm-footer">
@@ -74,9 +77,6 @@
                 <a href="" class="reply" @click.stop.prevent="replyComment(comment)">
                   <i class="iconfont icon-reply"></i>
                   <span>回复</span>
-                </a>
-                <a class="create_at" v-if="mobileLayout">
-                  <span>{{ comment.create_at | dateFormat('yyyy.MM.dd hh:mm')}}</span>
                 </a>
               </div>
             </div>
@@ -481,6 +481,14 @@
         const parent = this.comment.data.data.find(comment => Object.is(comment.id, pid))
         return parent ? parent.author.name : null
       },
+
+      // 回复来源内容
+      fondReplyParentContent (pid) {
+        const parent = this.comment.data.data.find(comment => Object.is(comment.id, pid))
+        const content = parent ? parent.content : null
+        return this.marked(content)
+      },
+
       // 点赞某条评论
       likeComment(comment) {
         if (this.commentLiked(comment._id)) return false
@@ -515,9 +523,8 @@
         if (this.user.site && !this.regexs.url.test(this.user.site)) return alert('链接不合法')
         if(!this.comemntContentText || !this.comemntContentText.replace(/\s/g, '')) return alert('内容？')
         const lineOverflow = this.comemntContentText.split('\n').length > 36
-        const lengthOverflow = this.comemntContentText.length > 2000
-        if(lineOverflow || lengthOverflow) return alert('内容需要在2000字/36行以内')
-        // 使用服务单配置的黑名单在本地校验邮箱和关键字
+        const lengthOverflow = this.comemntContentText.length > 1000
+        if(lineOverflow || lengthOverflow) return alert('内容需要在1000字/36行以内')
 
         if (!this.user.site) delete this.user.site
         console.log(this.user)
@@ -607,11 +614,17 @@
         > .comment-list {
 
           > .comment-item {
-            padding: 0;
-            margin-bottom: 1rem;
+            padding: .4rem 0;
 
             > .cm-body {
-              padding: .6em;
+              padding: .6em 0;
+
+              >.cm-content {
+
+                .reply-name {
+                  margin-bottom: .3rem !important;
+                }
+              }
 
               >.cm-footer {
                 >.reply {
@@ -652,11 +665,15 @@
             right: 0;
             width: 10%;
             height: 2rem;
-            border: 1px solid #dbdfe4;
+            border: 1px solid $border-color;
           }
         }
 
         > .editor-box {
+
+          >.editor {
+            max-width: 100%;
+          }
 
           > .user {
             margin: 0;
@@ -681,9 +698,6 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid $module-hover-bg;
-      margin-bottom: .6em;
-
-
 
       > .sort {
 
@@ -715,7 +729,7 @@
         > .comment-item {
           position: relative;
           padding: .6em 0 .6em 3.6em;
-          border-bottom: 1px solid #f0f2f7;
+          border-bottom: 1px solid $border-color;
 
           &:last-child {
             border: 0;
@@ -736,7 +750,7 @@
                 width: 100%;
                 height: 100%;
                 transition: transform .5s ease-out;
-                border-radius: 4px;
+                border-radius: 50%;
               }
             }
           }
@@ -745,7 +759,7 @@
             display: block;
             width: 100%;
             height: 100%;
-            padding: .5rem;
+            padding: 1.3rem .5rem .5rem .5rem;
 
             > .cm-header {
               display: block;
@@ -763,15 +777,15 @@
 
                 &:hover {
                   text-decoration: underline;
-                } 
-              }
-
-              >.reply {
-                a {
-                  font-weight: bold;
-                  margin-left: .3rem;
                 }
               }
+
+              // >.reply {
+              //   a {
+              //     font-weight: bold;
+              //     margin-left: .3rem;
+              //   }
+              // }
 
               > .flool {
                 float: right;
@@ -785,12 +799,16 @@
             > .cm-content {
               font-size: .95em;
 
-              > .reply {
-                color: $disabled;
-                font-weight: bold;
+              > .reply-box {
+                padding: .8rem;
+                margin-bottom: .8rem;
+                border: 1px solid $border-color;
+                border-radius: 4px;
 
-                > a {
-                  text-decoration: none;
+                >.reply-name {
+                  margin-bottom: .5rem;
+                  font-weight: bold;
+                  font-family: Microsoft YaHei,Arial,Helvetica,sans-seri;
                 }
               }
             }
@@ -800,19 +818,10 @@
               align-items: center;
               position: relative;
 
-              > .create_at,
               > .reply,
               > .like {
                 font-size: .8em;
                 margin-right: 1em;
-              }
-
-              > .create_at {
-                position: absolute;
-                right: 0;
-                top: .2rem;
-                margin: 0;
-                color: $disabled;
               }
 
               > .reply,
@@ -980,7 +989,7 @@
             height: 2em;
             padding: .5rem;
             background: transparent;
-            border: 1px solid #dbdfe4;
+            border: 1px solid $border-color;
             border-radius: 4px;
 
 
@@ -1025,6 +1034,7 @@
         > .editor {
           flex-grow: 1;
           position: relative;
+          max-width: calc(100% - 56px);
 
           > .will-reply {
             font-size: .95em;
@@ -1037,7 +1047,7 @@
               padding: 0 1rem;
               height: 2.6em;
               line-height: 2.6em;
-              border: 1px solid #dbdfe4;
+              border: 1px solid $border-color;
 
               .cancel {
                 &:hover {
@@ -1050,7 +1060,7 @@
               max-height: 10em;
               overflow: auto;
               padding: 1rem;
-              border: 1px solid #dbdfe4;
+              border: 1px solid $border-color;
             }
           }
 
@@ -1067,7 +1077,7 @@
               cursor: auto;
               font-size: .95em;
               line-height: 1.8em;
-              border: 1px solid #dbdfe4;
+              border: 1px solid $border-color;
               border-radius: 4px;
 
               &:hover {
