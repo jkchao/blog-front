@@ -31,18 +31,21 @@ export const actions = {
   // 获取博主用户信息
   async getAdminInfo ({ commit }) {
     const res = await service.getAuth()
+                      .catch(err => console.error(err))
     commit('options/SET_ADMIN_INFO', res.result || {})
   },
 
   // 获取网易云热评
   async getHotReview ({ commit }) {
     const res = await service.getHotReview()
+                      .catch(err => console.error(err))
     commit('hotReview/SET_HOT_REVIEW', res.result || {})
   },
 
   // 获取网站信息
   async getOpt ({ commit }) {
     const res = await service.getOpt()
+                      .catch(err => console.error(err))
     commit('options/SET_WEB_OPTION', res.result || {})
   },
 
@@ -50,7 +53,8 @@ export const actions = {
   async getArtList ({ commit, state }, data = { current_page: 1 }) {
     commit('article/FETCH_ART')
     const res = await service.getArts(data)
-    if (res.code === 1) {
+                      .catch(err => console.error(err))
+    if (res && res.code === 1) {
       let list
       if (res.result.pagination.current_page === 1) list = res.result.list
       else list = [...state.article.art.list, ...res.result.list]
@@ -61,27 +65,40 @@ export const actions = {
     } else commit('article/SET_ART_FILE')
   },
 
+  // 全部文章列表 sitemap
+  async getSitemap ({ commit }, data = { current_page: 1 }) {
+    commit('sitemap/FETCH_ART')
+    const res = await service.getArts(data)
+                        .catch(err => console.error(err))
+    if (res && res.code === 1) commit('sitemap/SET_ART_SUCCESS', res.result)
+    else commit('sitemap/SET_ART_FILE')
+  },
+
   // 获取最热文章列表
   async getHotArt ({ commit }) {
     const res = await service.getArts({ hot: true })
+                      .catch(err => console.error(err))
     commit('article/SET_HOT_ART', res.result || { pagination: {}, list: [] })
   },
 
   // 获取标签
   async getTag ({ commit }) {
     const res = await service.getTag({ page_size: 100 })
+                      .catch(err => console.error(err))
     commit('tag/SET_TAG', res.result || { pagination: {}, list: [] })
   },
 
   // 文章详情
   async getArt ({ commit }, data) {
     const res = await service.getArt(data)
+                      .catch(err => console.error(err))
     commit('article/SET_DETAILS', res.result || {})
   },
 
   // 喜欢文章
   async likeArt ({ commit }, data) {
     const res = await service.likeArt({ ...data, type: 0 })
+                      .catch(err => console.error(err))
     return res
   },
 
@@ -95,7 +112,8 @@ export const actions = {
     }
     commit('comment/REQUEST_LIST')
     const res = await service.getComment(data)
-    if (res.code === 1) {
+                      .catch(err => console.error(err))
+    if (res && res.code === 1) {
       if (Object.is(data.sort, -1)) res.result.data.reverse()
       commit('comment/GET_LIST_SUCCESS', res)
     } else commit('comment/GET_LIST_FAILURE')
@@ -106,7 +124,8 @@ export const actions = {
   async postComment ({ commit }, comment) {
     commit('comment/POST_ITEM')
     const res = await service.postComment(comment)
-    if (res.code === 1) {
+                      .catch(err => console.error(err))
+    if (res && res.code === 1) {
       commit('comment/POST_ITEM_SUCCESS', res)
       commit('article/ADD_COMMENT')
     } else commit('comment/POST_ITEM_FAILURE')
@@ -116,15 +135,17 @@ export const actions = {
   // 为某条回复点赞
   async likeComment ({ commit }, data) {
     const res = await service.likeComment(data)
-    if (res.code === 1) commit('comment/LIKE_ITEM', data)
+                        .catch(err => console.error(err))
+    if (res && res.code === 1) commit('comment/LIKE_ITEM', data)
     return res
   },
 
-  // 留言版
+  // 留言墙
   async getHero ({ commit, state }, data = { current_page: 1 }) {
     commit('heros/FETCH_HERO')
     const res = await service.getHero(data)
-    if (res.code === 1) {
+                      .catch(err => console.error(err))
+    if (res && res.code === 1) {
       let list
       if (res.result.pagination.current_page === 1) list = res.result.list
       else list = [...state.heros.data.list, ...res.result.list]
@@ -136,10 +157,11 @@ export const actions = {
     return res
   },
 
-  // 提交留言版
+  // 提交留言墙
   async postHero ({ commit }, data) {
     commit('heros/POST_ITEM')
     const res = await service.postHero(data)
+                .catch(err => console.error(err))
     commit('heros/POST_ITEM_FINAL')
     return res
   }

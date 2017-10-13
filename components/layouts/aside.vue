@@ -17,7 +17,12 @@
         </div>
       </div>
       <div class="aside-item hot-article" key="2">
-        <h3 class="title">热门文章</h3>
+        <h3 class="title">
+          <span>热门文章</span>
+          <nuxt-link to="/sitemap">
+            <i class="iconfont icon-sitemap"></i>
+          </nuxt-link>
+        </h3>
         <transition-group tag="div" class="hot-article-list" name="list">
           <p v-for="(list, index) in hotArt" :key="list._id" class="list">
             <nuxt-link :to="`/article/${list._id}`">
@@ -223,11 +228,21 @@ export default {
 
 
     >.title {
-      padding: 0 $sm-pad;
-      line-height: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      padding: $sm-pad $normal-pad;
+      line-height: 1.5rem;
       font-size: 1rem;
       font-weight: normal;
       border-bottom: 1px solid #eee;
+
+      > a {
+        padding: 0 .8rem;
+
+        &:hover {
+          background: $light-dark;
+        }
+      }
     }
 
     >.hot-article-list {

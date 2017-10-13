@@ -79,7 +79,6 @@ export default {
 <style lang="scss">
 
 @import '~assets/scss/variable.scss';
-@import '~assets/scss/mixin.scss';
 .main {
   .carrousel {
     width: 48.5rem;
