@@ -2,10 +2,10 @@
   <div class="about" :class="{'mobile': mobileLayout}">
     <div class="info-box" :class="{'info-mobile': mobileLayout}">
       <div class="info font-futura">
-        <p class="list">
+        <div class="list">
           <i class="iconfont icon-user"></i>
           <span class="list-content">Guo Wenchao, <span v-if="!mobileLayout">a 90s boy,</span> Web Engineer.</span>
-        </p>
+        </div>
         <div class="list">
           <i class="iconfont icon-like"></i>
           <span class="list-content">Code, read, and music.</span>
@@ -115,19 +115,23 @@ export default {
   width: $container-min-width;
 
   >.info-box {
-    display: grid;
-    grid-template-columns: auto 14rem;
-    grid-gap: 1rem;
+    // display: grid;
+    // grid-template-columns: auto 14rem;
+    // grid-gap: 1rem;
+    display: flex;
+    justify-content: space-between;
 
     >.info {
       position: relative;
+      width: calc(100% - 14rem - 1rem);
       padding: $normal-pad $lg-pad;
       background: $module-bg;
 
       >.list {
-        display: grid;
-        grid-template-columns: 1rem auto;
-        grid-gap: 1.5rem;
+        display: flex;
+        // display: grid;
+        // grid-template-columns: 1rem auto;
+        // grid-gap: 1.5rem;
         margin: .5rem;
         padding: 0 1rem;
         height: 36px;
@@ -135,6 +139,10 @@ export default {
 
         i {
           color: $dividers;
+        }
+
+        >.list-content {
+          margin-left: 1rem;
         }
 
 
@@ -184,6 +192,7 @@ export default {
 
     >.user-box {
       background: $module-bg;
+      width: 14rem;
 
       .user {
         padding: 1rem;
@@ -201,15 +210,17 @@ export default {
     width: 100%;
 
     >.info-box {
-      grid-template-columns: 100%;
+      // grid-template-columns: 100%;
+      width: 100%;
+      flex-direction: column-reverse;
 
       >.info {
         padding: 1rem;
-        grid-row: 2 / 3;
+        width: 100%;
 
         >.list {
           padding: 0;
-          grid-gap: 1rem;
+          // grid-gap: 1rem;
           @include text-overflow();
 
 
@@ -219,7 +230,9 @@ export default {
         }
       }
       >.user-box {
-        grid-row: 1 / 2;
+        // grid-row: 1 / 2;
+        width: 100%;
+        margin-bottom: 1rem;
 
         >.user {
           padding: 1.5rem;

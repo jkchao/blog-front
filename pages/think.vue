@@ -75,7 +75,7 @@ export default {
 
 
 .head {
-  display: grid;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 48.5rem;

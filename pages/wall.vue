@@ -1,5 +1,5 @@
 <template>
-  <div class="heroes" :class="{'heroes-mobile': mobileLayout}">
+  <div class="walls" :class="{'walls-mobile': mobileLayout}">
     <div class="head font-futura">
       <div class="box">
         <p>WANT TO SAY SOMETHING?</p>
@@ -159,17 +159,21 @@ export default {
 @import '~assets/scss/variable.scss';
 @import '~assets/scss/mixin.scss';
 
-.heroes {
+.walls {
 
-  &.heroes-mobile {
+  &.walls-mobile {
     margin-bottom: 0;
 
     >.list-box {
-      grid-template-columns: auto;
+      // grid-template-columns: auto;
+
+      >.list {
+        width: 100%;
+      }
     }
 
     >.head {
-      grid-column: 1 / 1;
+      // grid-column: 1 / 1;
       height: 10rem;
     }
 
@@ -179,10 +183,11 @@ export default {
   }
 
   >.head {
-    display: grid;
+    // display: grid;
+    display: flex;
     justify-content: center;
     align-items: center;
-    grid-column: 1 / 4;
+    // grid-column: 1 / 4;
     width: 100%;
     height: 20rem;
     font-size: 1.3rem;
@@ -233,10 +238,13 @@ export default {
   }
 
   .list-box {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
-    margin: 1rem 0 0 0;
+    // display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    // grid-gap: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    // margin: 1rem 0 0 0;
 
     >.list {
       position: relative;
@@ -244,8 +252,9 @@ export default {
       top: 0;
       padding: $normal-pad;
       height: 14rem;
+      width: calc(100%/3 - 2rem/3);
       background: $module-bg;
-      margin: 0;
+      margin: 1rem 0 0 0;
       @include css3-prefix('transition', 'all .3s');
 
       &:hover {
@@ -323,18 +332,21 @@ export default {
 
 .dialog {
   .dialog-item {
-    display: grid;
-    grid-template-columns: 80px auto;
+    // display: grid;
+    // grid-template-columns: 80px auto;
+    display: flex;
     margin: .8rem 1.5rem 1rem 0;
 
     >span {
       display: inline-block;
       height: 30px;
+      width: 80px;
       line-height: 30px;
       text-align: right;
     }
 
     >.form-item {
+      width: calc(100% - 80px);
       padding: .3rem .5rem;
       border: 1px solid $border-color;
       color: $black;
@@ -364,12 +376,18 @@ export default {
     }
 
     .dialog-item {
-      grid-template-columns: 100%;
+      // grid-template-columns: 100%;
+      flex-wrap: wrap;
+      width: 100%;
       margin: 0;
       padding: 0 1rem;
 
       > span {
         text-align: left;
+      }
+
+      >.form-item {
+        width: 100%;
       }
     }
 
