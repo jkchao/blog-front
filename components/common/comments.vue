@@ -764,14 +764,16 @@
             display: block;
             width: 100%;
             height: 100%;
-            padding: 1.3rem .5rem .5rem .5rem;
+            padding: .5rem;
 
             > .cm-header {
               display: block;
               position: relative;
 
               > .user-name {
+                color: $secondary;
                 font-weight: bold;
+                font-size: $font-size-small;
                 margin-right: .3rem;
                 font-family: Microsoft YaHei,Arial,Helvetica,sans-serif;
 
@@ -795,14 +797,15 @@
               > .flool {
                 float: right;
                 color: $dividers;
-                font-weight: 900;
-                font-size: .8em;
+                font-size: $font-size-small;
+                font-family: Arial;
                 display: inline-block;
               }
             }
 
             > .cm-content {
-              font-size: .95em;
+              font-size: 1rem;
+              color: $black;
 
               > .reply-box {
                 padding: .8rem;
@@ -811,8 +814,10 @@
                 border-radius: 4px;
 
                 >.reply-name {
-                  margin-bottom: .5rem;
+                  color: $secondary;
                   font-weight: bold;
+                  font-size: $font-size-small;
+                  margin-bottom: .5rem;
                   font-family: Microsoft YaHei,Arial,Helvetica,sans-seri;
 
                   a {
@@ -1061,6 +1066,7 @@
               height: 2.6em;
               line-height: 2.6em;
               border: 1px solid $border-color;
+              border-radius: 4px;
 
               .cancel {
                 &:hover {
@@ -1074,6 +1080,7 @@
               overflow: auto;
               padding: 1rem;
               border: 1px solid $border-color;
+              border-radius: 4px;
             }
           }
 
