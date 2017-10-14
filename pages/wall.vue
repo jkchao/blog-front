@@ -9,7 +9,14 @@
 
     <transition-group name="slide-down" tag="div" class="list-box">
       <div class="list" v-for="(list, index) in items" :key="list._id">
-        <h3 class="name">{{ list.name }}</h3>
+        <h3 class="user">
+          <img :alt="list.name || '匿名用户'"
+                :src="gravatar(list.email) || 'http://ovshyp9zv.bkt.clouddn.com/gravatar.jpg'"
+                class="user-head">
+          <span class="user-name">
+            {{ list.name }}
+          </span>
+        </h3>
         <p class="content">{{ list.content }}</p>
         <div class="info">
           <span class="time"><i class="iconfont icon-time"></i>{{ list.create_time | dateFormat('yyyy.MM.dd hh:mm')}}</span>
@@ -30,7 +37,17 @@
       <form>
         <div class="dialog-item name" >
           <span>大名：</span>
-          <input type="text" v-model="form.name" maxlength="20" class="form-item" />
+          <input type="text" placeholder="name *" v-model="form.name" maxlength="20" class="form-item" />
+        </div>
+        <div class="dialog-item email">
+          <span>EMAIL：</span>
+          <input
+              type="email"
+              name="email"
+              placeholder="email *" 
+              v-model="form.email"
+              maxlength="30"
+              class="form-item">
         </div>
         <div class="dialog-item github" >
           <span>GITHUB：</span>
@@ -42,7 +59,7 @@
         </div>
         <div class="dialog-item content">
           <span>说点啥？</span>
-          <textarea v-model="form.content" maxlength="200" resize="none" rows="6" placeholder="曾经有一个 BUG 摆在我的面前......" class="form-item" />
+          <textarea v-model="form.content" maxlength="160" resize="none" rows="4" placeholder="曾经有一个 BUG 摆在我的面前......" class="form-item" />
         </div>
       </form>
       <div class="footer" slot="foot">
@@ -57,7 +74,7 @@
 
 <script>
 import dialogCom from '~components/common/dialog.vue'
-
+  import gravatar from '~/plugins/gravatar'
 export default {
   name: 'wall',
 
@@ -80,14 +97,17 @@ export default {
         name: '',
         github: '',
         blog: '',
-        content: ''
+        content: '',
+        email: ''
       },
 
       regexs: {
+        email: /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/,
         url: /^((https|http):\/\/)+[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/
       }
     }
   },
+
   computed: {
 
     fetch () {
@@ -123,6 +143,18 @@ export default {
       this.show = true
     },
 
+    // 头像服务
+    gravatar(email) {
+      if (!this.regexs.email.test(email)) return null
+      let gravatar_url = gravatar.url(email, {
+        // size: '96', 
+        // rating: 'pg',
+        // default: 'https://gravatar.surmon.me/anonymous.jpg', 
+        protocol: 'https'
+      });
+      return gravatar_url
+    },
+
     loadMore () {
       this.$store.dispatch('getHero', {
         current_page: this.$store.state.heros.data.pagination.current_page + 1
@@ -130,20 +162,12 @@ export default {
     },
 
     async submit () {
-      if (this.form.name === '') {
-        window.alert('姓名必填')
-        return
-      }
-      if (this.form.content === '') {
-        window.alert('说点什么？')
-        return
-      }
-      if (!!this.form.github && !this.regexs.url.test(this.form.github)) {
-        return alert('github不合法')
-      }
-      if (!!this.form.blog && !this.regexs.url.test(this.form.blog)) {
-        return alert('blog不合法')
-      }
+      if (this.form.name === '') return alert('姓名必填')
+      if (this.form.content === '') return alert('说点什么？')
+      if (!this.form.email) return alert('邮箱？')
+      if (!this.regexs.email.test(this.form.email)) return alert('邮箱不合法')
+      if (!!this.form.github && !this.regexs.url.test(this.form.github)) return alert('github不合法')
+      if (!!this.form.blog && !this.regexs.url.test(this.form.blog)) return alert('blog不合法')
       const res = await this.$store.dispatch('postHero', { ...this.form })
       window.alert(res.message)
       if (res.code === 1) {
@@ -169,6 +193,7 @@ export default {
 
       >.list {
         width: 100%;
+        margin-right: 0;
       }
     }
 
@@ -242,7 +267,7 @@ export default {
     // grid-template-columns: repeat(3, 1fr);
     // grid-gap: 1rem;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     flex-wrap: wrap;
     // margin: 1rem 0 0 0;
 
@@ -254,8 +279,12 @@ export default {
       height: 14rem;
       width: calc(100%/3 - 2rem/3);
       background: $module-bg;
-      margin: 1rem 0 0 0;
+      margin: 1rem 1rem 0 0;
       @include css3-prefix('transition', 'all .3s');
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
 
       &:hover {
         left: -4px;
@@ -265,16 +294,27 @@ export default {
         background: $white;
       }
 
-      >.name {
-        @include text-overflow();
-        max-width: 20rem;
-        font-weight: normal;
+      >.user {
+
+        >.user-head {
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: 50%;
+        }
+
+        >.user-name {
+          margin-left: 1rem;
+          max-width: 20rem;
+          font-weight: normal;
+          font-size: .85rem;
+
+          @include text-overflow();
+        }
       }
 
       >.content {
         margin: 1rem 0;
-        height: 60%;
-        text-indent: 2em;
+        height: 55%;
       }
 
       >.info {
@@ -282,6 +322,7 @@ export default {
         justify-content: space-between;
         height: 1rem;
         font-size: $font-size-small;
+        color: $dividers;
         line-height: 1rem;
 
         >.time>i {
