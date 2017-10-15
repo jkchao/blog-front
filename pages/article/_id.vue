@@ -311,6 +311,7 @@ export default {
         background-color: rgba(0,0,0,.8);
         border-radius: 3px;
         margin-bottom: 1em;
+        word-wrap: normal;
 
         >.code-lines {
           position: absolute;

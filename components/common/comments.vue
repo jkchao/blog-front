@@ -47,8 +47,9 @@
                     <img :alt="comment.author.name || '匿名用户'"
                         :src="gravatar(comment.author.email) || '/images/anonymous.jpg'" 
                         v-if="mobileLayout"
-                        width="24px">
-                    {{ comment.author.name }}
+                        width="24px"
+                        style="margin-right: 10px;">
+                    <span>{{ comment.author.name }}</span>
                    </a>
 
                 <!-- <span class="reply" v-if="!!comment.pid">
@@ -767,7 +768,8 @@
             padding: .5rem;
 
             > .cm-header {
-              display: block;
+              display: flex;
+              justify-content: space-between;
               position: relative;
 
               > .user-name {
@@ -795,7 +797,6 @@
               // }
 
               > .flool {
-                float: right;
                 color: $dividers;
                 font-size: $font-size-small;
                 font-family: Arial;
