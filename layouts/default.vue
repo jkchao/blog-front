@@ -9,7 +9,7 @@
         <my-header v-else></my-header>
       </div>
       <background v-if="!mobileLayout"></background>
-      <transition-group tag="div" class="container clearfix" name="slide-up" :class="{ 'mobile': mobileLayout }">
+      <transition-group tag="div" class="container clearfix main-container" name="slide-up" :class="{ 'mobile': mobileLayout }">
         <div
           class="content-left" 
           key="1" 
@@ -128,6 +128,14 @@ export default {
 
   >.app-main {
     @include transition(all .3s ease-out);
+
+    >.main-container {
+      min-height: calc(100vh - 142px);
+    }
+
+    >.main-container.mobile {
+      min-height: calc(100vh - 56px);
+    }
   }
 
   >.app-main.open {
