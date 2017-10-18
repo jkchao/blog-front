@@ -1,4 +1,5 @@
 import service from '../api'
+import EventBus from '~/utils/event-bus'
 
 export const actions = {
 
@@ -22,7 +23,6 @@ export const actions = {
 
     if (!isMobile) {
       initAppData.push(store.dispatch('getHotArt'))
-      initAppData.push(store.dispatch('getHotReview'))
     }
 
     return Promise.all(initAppData)
@@ -33,13 +33,6 @@ export const actions = {
     const res = await service.getAuth()
                       .catch(err => console.error(err))
     commit('options/SET_ADMIN_INFO', res.result || {})
-  },
-
-  // 获取网易云热评
-  async getHotReview ({ commit }) {
-    const res = await service.getHotReview()
-                      .catch(err => console.error(err))
-    commit('hotReview/SET_HOT_REVIEW', res.result || {})
   },
 
   // 获取网站信息
@@ -164,5 +157,23 @@ export const actions = {
                 .catch(err => console.error(err))
     commit('heros/POST_ITEM_FINAL')
     return res
+  },
+
+  async getMusicList ({ commit }) {
+    EventBus.REQUEST_LIST()
+    const res = await service.getMusicLst()
+                        .catch(err => console.error(err))
+    if (res && res.code === 1) {
+      EventBus.GET_LIST_SUCCESS(res)
+      EventBus.INIT_PLAYER()
+    } else EventBus.GET_LIST_FAILURE()
+  },
+
+  async getMusicDetail ({ commit }, para = {}) {
+    EventBus.REQUEST_SONG()
+    const res = await service.getMusicDetail(para)
+                        .catch(err => console.error(err))
+    if (res && res.code === 1) EventBus.GET_SONG_SUCCESS(res)
+    else EventBus.GET_SONG_FAILURE()
   }
 }

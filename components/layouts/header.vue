@@ -19,16 +19,42 @@
             </nuxt-link>
           </nav>
         </div>
-      <div class="saying">
-        <carrousel :option="swiperOption" type="text" :con="saying"></carrousel>
-      </div>
+        <div class="player">
+          <div class="panel">
+            <button class="prev-song btn" @click="prevSong" :disabled="!playerState.ready">
+              <i class="iconfont icon-music-prev"></i>
+            </button>
+            <button class="toggle-play btn" @click="togglePlay" :disabled="!playerState.ready">
+              <i class="iconfont" :class="[playerState.playing ? 'icon-music-pause' : 'icon-music-play']"></i>
+            </button>
+            <button class="next-song btn" @click="nextSong" :disabled="!playerState.ready">
+              <i class="iconfont icon-music-next"></i>
+            </button>
+            <button class="muted-toggle btn" @click="toggleMuted" :disabled="!playerState.ready">
+              <i class="iconfont" :class="[playerState.muted ? 'icon-music-muted' : 'icon-music-volume']"></i>
+            </button>
+          </div>
+          <div class="song" v-if="currentSong">
+            <nuxt-link to="/" 
+                       class="link" 
+                       :title="`${currentSong.name} / ${currentSong.album.name || 'unknow'}`">
+              <span>{{ currentSong.name }}</span>
+              <span> By </span>
+              <span v-for="(artist, index) in currentSong.artists" :key="index">{{ artist.name }}</span>
+              <span> / </span>
+              <span>{{ currentSong.album.name || 'unknow' }}</span>
+            </nuxt-link>
+          </div>
+          <div class="song" v-else>Music is the eye of ear.</div>
+        </div>
     </div> 
   </header>
 </template>
 
 <script>
 
-import carrousel from '~components/common/carrousel.vue'
+// import carrousel from '~components/common/carrousel.vue'
+import EventBus from '~/utils/event-bus'
 
 export default {
   name: 'header',
@@ -42,30 +68,43 @@ export default {
         { path: '/think', name: 'THINK', icon: 'iconfont icon-read'},
         { path: '/about', name: 'ABOUT', icon: 'iconfont icon-user'},
         { path: '/wall', name: 'WALL', icon: 'iconfont icon-comments'}
-      ],
-      swiperOption: {
-        direction: 'vertical',
-        loop: true,
-        autoplay: 5000,
-        setWrapperSize: true,
-        autoHeight: true,
-        paginationClickable: true,
-        autoplayDisableOnInteraction: false,
-        observeParents: true,
-        grabCursor: true,
-        spaceBetween: 30,
-        mousewheelControl: true
-      }
+      ]
     }
   },
 
   computed: {
-    saying () {
-      return this.$store.state.hotReview.data.list
+    player () {
+      return EventBus.player.player
+    },
+    playerState () {
+      return EventBus.player.playerState
+    },
+    currentSong () {
+      return EventBus.currentSong
     }
   },
-
-  components: { carrousel },
+  methods: {
+    togglePlay() {
+      if (this.playerState.ready) {
+        this.player.togglePlay()
+      }
+    },
+    toggleMuted() {
+      if (this.playerState.ready) {
+        this.player.toggleMuted()
+      }
+    },
+    prevSong() {
+      if (this.playerState.ready) {
+        this.player.prevSong()
+      }
+    },
+    nextSong() {
+      if (this.playerState.ready) {
+        this.player.nextSong()
+      }
+    }
+  },
 
   directives: {
     fix: {
@@ -79,6 +118,25 @@ export default {
       unbind () {
         window.onscroll = null
       }
+    }
+  },
+
+  mounted () {
+    if (process.browser) {
+      const self = this
+      const player = EventBus.player
+      const play = () => {
+        if (player.playerState.ready && player.player && player.player.play) {
+          player.player.play()
+        } else {
+          setTimeout(play, 1666)
+        }
+      }
+      window.addEventListener('load', event => {
+        window.setTimeout(() => {
+          play()
+        }, 1666)
+      })
     }
   }
 }
@@ -147,36 +205,81 @@ header {
     }
   }
 
-  .saying {
-    width: 20.3rem;
+  .player {
+    width: 13rem;
+    display: flex;
+    flex-direction: column;
+    align-items: inherit;
+    justify-content: center;
     font-size: $font-size-small;
     line-height: $normal-pad;
-    overflow: hidden;
+    @include text-overflow();
+    opacity: .4;
+  
+    &:hover {
+      opacity: 1;
+    }
 
-    .swiper {
-      height: $header-height;
-      color: $dividers;
+    > .panel {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: .2rem;
 
-      .item {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100%;
+      > .btn {
+        margin-right: 1em;
+        padding: 0;
+        border: 0;
 
-        >.saying-content {
-          text-align: left;
+        &:hover {
+
+          > .iconfont {
+            color: darken($text, 20%);
+          }
         }
-
-        >.saying-author {
-          margin-top: .3rem;
-          text-align: right;
-        }
-      }
-
-      &:hover {
-        color: $black;
       }
     }
+    > .song {
+      margin-top: .3rem;
+      font-size: .8rem;
+      @include text-overflow();
+
+      > .link {
+        color: $dividers;
+
+        &:hover {
+          color: darken($text, 20%);
+        }
+      }
+    }
+
+    .iconfont {
+      color: $dividers;
+    }
+
+    // .swiper {
+    //   height: $header-height;
+    //   color: $dividers;
+
+    //   .item {
+    //     display: flex;
+    //     flex-direction: column;
+    //     justify-content: center;
+    //     height: 100%;
+
+    //     >.saying-content {
+    //       text-align: left;
+    //     }
+
+    //     >.saying-author {
+    //       margin-top: .3rem;
+    //       text-align: right;
+    //     }
+    //   }
+
+    //   &:hover {
+    //     color: $black;
+    //   }
+    // }
   }
 }
 </style>

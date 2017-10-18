@@ -80,7 +80,7 @@ module.exports = {
   },
   build: {
     // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
-    vendor: ['axios', 'swiper', 'marked', 'gravatar', 'highlight.js'],
+    vendor: ['axios', 'howler', 'swiper', 'marked', 'gravatar', 'highlight.js'],
     // postcss
     postcss: [__webpack_require__(5)(), __webpack_require__(6)(), __webpack_require__(4)()],
     // babel

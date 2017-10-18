@@ -87,6 +87,12 @@ export default {
     hideSide () {
       this.$store.commit('options/SET_MOBILE_SIDEBAR', false)
     }
+  },
+
+  mounted () {
+    if (!this.mobileLayout) {
+      this.$store.dispatch('getMusicList')
+    }
   }
 }
 </script>
@@ -146,7 +152,6 @@ export default {
 .content-left {
   width: 48.5rem;
   float: left;
-  // @include css3-prefix(transition, width .4s linear -0.4s);
   @include css3-prefix(transition, all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0));
 }
 

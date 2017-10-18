@@ -12,12 +12,6 @@ export function getOpt () {
           .then(res => res.data)
 }
 
-// 网易云热评
-export function getHotReview (params) {
-  return ax.get('/hotReview', { params })
-          .then(res => res.data)
-}
-
 // 英雄版列表
 export function getHero (params) {
   return ax.get('/hero', { params })
@@ -69,5 +63,23 @@ export function postComment (data) {
 // 评论点赞
 export function likeComment (data) {
   return ax.post(`/like`, data)
+          .then(res => res.data)
+}
+
+// 音乐列表
+export function getMusicLst (data) {
+  return ax.get('/music/list/962562705')
+          .then(res => res.data)
+}
+
+// 音乐详情
+export function getMusicDetail (para) {
+  return ax.get(`/music/song/${para.song_id}`)
+          .then(res => res.data)
+}
+
+// 音乐地址
+export function getMusicUrl (para) {
+  return ax.get(`/music/url/${para.id}`)
           .then(res => res.data)
 }
