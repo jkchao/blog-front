@@ -57,7 +57,7 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - ~图片懒加载~
 
-- 归档
+- ~归档~
 
 ## Build Setup
 
