@@ -1,6 +1,6 @@
 <template>
   <section  class="clearfix main">
-    <carrousel :option="swiperOption" type="banner" :con="banners" :class="{ mobile: mobileLayout }"></carrousel>
+    <carrousel :option="swiperOption" :con="banners" :class="{ mobile: mobileLayout }"></carrousel>
     <div class="article">
       <articleView
         :articleList = "list"

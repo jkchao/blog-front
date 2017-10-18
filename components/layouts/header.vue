@@ -35,7 +35,7 @@
             </button>
           </div>
           <div class="song" v-if="currentSong">
-            <nuxt-link to="/" 
+            <a href="javascript:;"
                        class="link" 
                        :title="`${currentSong.name} / ${currentSong.album.name || 'unknow'}`">
               <span>{{ currentSong.name }}</span>
@@ -43,7 +43,7 @@
               <span v-for="(artist, index) in currentSong.artists" :key="index">{{ artist.name }}</span>
               <span> / </span>
               <span>{{ currentSong.album.name || 'unknow' }}</span>
-            </nuxt-link>
+            </a>
           </div>
           <div class="song" v-else>Music is the eye of ear.</div>
         </div>
@@ -214,15 +214,10 @@ header {
     font-size: $font-size-small;
     line-height: $normal-pad;
     @include text-overflow();
-    opacity: .4;
-  
-    &:hover {
-      opacity: 1;
-    }
 
     > .panel {
       display: flex;
-      justify-content: flex-start;
+      justify-content: flex-end;
       margin-bottom: .2rem;
 
       > .btn {
@@ -233,21 +228,23 @@ header {
         &:hover {
 
           > .iconfont {
-            color: darken($text, 20%);
+            color: $black;
           }
         }
       }
     }
+
     > .song {
       margin-top: .3rem;
       font-size: .8rem;
+      text-align: right;
       @include text-overflow();
 
       > .link {
         color: $dividers;
 
         &:hover {
-          color: darken($text, 20%);
+          color: $black;
         }
       }
     }
@@ -255,31 +252,6 @@ header {
     .iconfont {
       color: $dividers;
     }
-
-    // .swiper {
-    //   height: $header-height;
-    //   color: $dividers;
-
-    //   .item {
-    //     display: flex;
-    //     flex-direction: column;
-    //     justify-content: center;
-    //     height: 100%;
-
-    //     >.saying-content {
-    //       text-align: left;
-    //     }
-
-    //     >.saying-author {
-    //       margin-top: .3rem;
-    //       text-align: right;
-    //     }
-    //   }
-
-    //   &:hover {
-    //     color: $black;
-    //   }
-    // }
   }
 }
 </style>

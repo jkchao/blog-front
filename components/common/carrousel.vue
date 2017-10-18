@@ -6,11 +6,8 @@
           <img 
           :src="mobileLayout
           ? list.thumb + '?imageView2/1/w/380/h/140'
-          : list.thumb + '?imageView2/1/w/679/h/280'"
-          v-if="type === 'banner'" />
-          <nuxt-link :to="`/article/${list._id}`" class="swiper-title" v-if="type === 'banner'">{{ list.title }}</nuxt-link>
-          <p class="saying-content" v-if="type === 'text'">{{ list.content }}</p>
-          <p class="saying-author" v-if="type === 'text'">{{ list.auth }}</p>
+          : list.thumb + '?imageView2/1/w/679/h/280'"/>
+          <nuxt-link :to="`/article/${list._id}`" class="swiper-title">{{ list.title }}</nuxt-link>
         </div>
       </div>
       <div class="swiper-pagination swiper-pagination-white"></div> 
@@ -22,7 +19,7 @@
 export default {
   name: 'carrousel',
 
-  props: ['option', 'type', 'con'],
+  props: ['option', 'con'],
 
   data () {
     return {}

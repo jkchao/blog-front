@@ -176,7 +176,6 @@ export default state => {
           state.playerState.ready = false;
           const res = await service.getMusicUrl(song)
                               .catch(err => console.error(err))
-          console.log(res)
           if (res && res.code === 1) {
             song.src = res.result.data[0].url;
             if (song.id === playerList[state.playerState.targetIndex].id) {
@@ -250,7 +249,6 @@ export default state => {
       nextSong () {
         // let index = state.playerState.index + 1
         let index = state.playerState.targetIndex + 1
-        console.log(index)
         index = index >= playerList.length ? 0 : index
         state.player.skipToSong(index)
       }
