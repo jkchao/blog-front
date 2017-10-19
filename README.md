@@ -35,7 +35,7 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - ~抄个评论~
 
-- 网易云音乐
+- ~网易云音乐~
 
 - ~谷歌统计分析脚本~
 
