@@ -25,7 +25,9 @@
         </h3>
         <transition-group tag="div" class="hot-article-list" name="list">
           <p v-for="(list, index) in hotArt" :key="list._id" class="list">
-            <nuxt-link :to="`/article/${list._id}`">
+            <nuxt-link 
+            :to="`/article/${list._id}`"
+            :title="list.title">
               <span class="list-num">{{ index + 1}}</span>
               <span class="list-name">{{ list.title | text(23) }}</span>
             </nuxt-link>

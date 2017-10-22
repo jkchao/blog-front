@@ -17,7 +17,9 @@ input[type="number"],
 input[type="search"],
 input[type="tel"],
 select,
-textarea {
+textarea,
+ {
+    caret-color: $black;
     background: $white;
     color: $text;
     display: inline-block;
@@ -26,6 +28,10 @@ textarea {
     border: none;
     outline: none;
     -webkit-appearance: none;
+}
+
+[contenteditable] {
+    caret-color: $black;
 }
 
 input[type="color"],

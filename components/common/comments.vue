@@ -99,7 +99,7 @@
                :class="{ 'actived disabled': Object.is(item, comment.data.pagination.current_page) }"
                @click.stop.prevent="Object.is(item, comment.data.pagination.current_page) 
                ? false
-               : loadComemntList({ current_page: item })">{{ item }}</a>
+               : pageLoad({ current_page: item })">{{ item }}</a>
           </li>
         </ul>
         <ul class="pagination-list" v-else>
@@ -112,7 +112,7 @@
                :class="{ 'actived disabled': paginationReverseActive(item) }"
                @click.stop.prevent="paginationReverseActive(item)
                   ? false 
-                  : loadComemntList({ 
+                  : pageLoad({ 
                       current_page: comment.data.pagination.total_page + 1 - item 
                   })">{{ item }}</a>
           </li>
@@ -437,10 +437,13 @@
       },
 
       // 评论排序
-      sortComemnts(sort) {
+      async sortComemnts (sort) {
         if (!Object.is(this.sortMode, sort)) {
           this.sortMode = sort
-          this.loadComemntList()
+          await this.loadComemntList()
+          setTimeout(() => {
+            this.toSomeAnchorById('comment-box')
+          }, 300)
         }
       },
       // 翻页反向计算
@@ -459,7 +462,7 @@
         const targetDom = document.getElementById(id)
         if (targetDom) {
           let isToEditor = Object.is(id, 'post-box')
-          scrollTo(targetDom, 200, { offset: isToEditor ? 0 : -300 })
+          scrollTo(targetDom, 500, { offset: isToEditor ? 0 : -300 })
           // 如果是进入编辑模式，则需要激活光标
           if (isToEditor) {
             let p = this.$refs.markdown
@@ -519,6 +522,14 @@
           post_id: this.postId
         })
       },
+
+      async pageLoad (params = {}) {
+        await this.loadComemntList(params)
+        setTimeout(() => {
+          this.toSomeAnchorById('comment-box')
+        }, 500)
+      },
+
       // 提交评论
       async submitComment(event) {
         // 为了使用原生表单拦截，不使用事件修饰符
@@ -533,7 +544,6 @@
         if(lineOverflow || lengthOverflow) return alert('内容需要在1000字/36行以内')
 
         if (!this.user.site) delete this.user.site
-        console.log(this.user)
         const res = await this.$store.dispatch('postComment', {
           pid: this.pid,
           post_id: this.postId,
@@ -609,6 +619,7 @@
   }
 
   #comment-box {
+    position: relative;
     background-color: $module-bg;
     padding: 1rem;
     margin-top: 1rem;

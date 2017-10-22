@@ -4,7 +4,8 @@
     <div class="head font-futura" :class="{'mobile': mobileLayout}">
       <div>
         <p><i class="iconfont icon-tag"></i></p>
-        <p> {{ tagName }} </p>
+        <p> {{ tag.name }} </p>
+        <!-- <p>{{ tag.descript }}</p> -->
       </div>
     </div>
 
@@ -49,9 +50,9 @@ export default {
       return this.$store.state.options.mobileLayout
     },
 
-    tagName () {
+    tag () {
       const _id = this.$route.params.tag
-      return this.$store.state.tag.data.list.find(item => item._id === _id).name
+      return this.$store.state.tag.data.list.find(item => item._id === _id)
     },
 
     list () {
