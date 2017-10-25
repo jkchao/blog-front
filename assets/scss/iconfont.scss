@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'iconfont';  /* project id 376001 */
-  src: url('//at.alicdn.com/t/font_376001_nvvcnnjfx4oyldi.eot');
-  src: url('//at.alicdn.com/t/font_376001_nvvcnnjfx4oyldi.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_376001_nvvcnnjfx4oyldi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_376001_nvvcnnjfx4oyldi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_376001_nvvcnnjfx4oyldi.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_376001_1rnznysdv1oo5hfr.eot');
+  src: url('//at.alicdn.com/t/font_376001_1rnznysdv1oo5hfr.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_376001_1rnznysdv1oo5hfr.woff') format('woff'),
+  url('//at.alicdn.com/t/font_376001_1rnznysdv1oo5hfr.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_376001_1rnznysdv1oo5hfr.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -156,4 +156,6 @@
 .icon-music-volume:before { content: "\e65d"; }
 
 .icon-music-muted:before { content: "\e659"; }
+
+.icon-download:before { content: "\e626"; }
 

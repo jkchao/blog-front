@@ -14,7 +14,7 @@
               :key="index"
               :to="list.path"
               exact>
-                <i :class="list.icon"></i>
+                <!-- <i :class="list.icon"></i> -->
                 <span>{{ list.name }}</span>
             </nuxt-link>
           </nav>
@@ -67,7 +67,8 @@ export default {
         { path: '/code', name: 'CODE', icon: 'iconfont icon-code'},
         { path: '/think', name: 'THINK', icon: 'iconfont icon-read'},
         { path: '/about', name: 'ABOUT', icon: 'iconfont icon-user'},
-        { path: '/wall', name: 'WALL', icon: 'iconfont icon-comments'}
+        { path: '/wall', name: 'WALL', icon: 'iconfont icon-comments'},
+        { path: '/download', name: 'DOWNLOAD', icon: 'iconfont icon-download'}
       ]
     }
   },
@@ -187,7 +188,7 @@ header {
     margin-left: 2rem;
 
     >a {
-      margin-right: 2rem;
+      margin-right: 2.25rem;
       padding: .5rem;
       color: $disabled;
 
