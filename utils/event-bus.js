@@ -70,12 +70,12 @@ export default new Vue({
     REQUEST_SONG () {
       this.player.song.fetching = true
     },
-  
+
     GET_SONG_FAILURE () {
       this.player.song.data = null
       this.player.song.fetching = false
     },
-  
+
     GET_SONG_SUCCESS (action) {
       console.log(action)
       this.player.song.data = action.result

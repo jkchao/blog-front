@@ -4,7 +4,7 @@
       Download <a href="https://admin.jkchao.cn" target="_blank">vue-admin</a> client.
     </div>
     <div class="download-img">
-      <img src="https://static.jkchao.cn/vue-electron-1.png" alt="" width="800px">
+      <img src="https://static.jkchao.cn/electron.png" alt="" width="800px">
     </div>
     <div class="item">
       <div class="list mac">
