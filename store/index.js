@@ -101,7 +101,7 @@ export const actions = {
     data.current_page = data.current_page || 1
     data.page_size = data.page_size || 20
     if (Object.is(data.current_page, 1)) {
-      commit('comment/CLEAR_LIST')
+      // commit('comment/CLEAR_LIST')
     }
     commit('comment/REQUEST_LIST')
     const res = await service.getComment(data)

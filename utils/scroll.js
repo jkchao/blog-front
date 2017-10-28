@@ -35,7 +35,7 @@ exports.easing = {
 exports.scrollTo = (element, duration = 500, options) => {
 
 	options = options || {}
-	options.easing = exports.easing["ease"] 
+	options.easing = exports.easing["ease-in-out"] 
 
   if (typeof element === "string") {
       element = _.$(element)
