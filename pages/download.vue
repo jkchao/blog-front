@@ -9,15 +9,15 @@
     <div class="item">
       <div class="list mac">
         <div class="logo"></div>
-        <a href="https://github.com/jkchao/vue-electron/releases/download/0.0.3-bate/vue-electron-mac-x64.zip" target="_blank" class="download-button">Download</a>
+        <a href="https://github.com/jkchao/vue-electron/releases/download/0.0.3-bate/electron-mac-x64.zip" target="_blank" class="download-button">Download</a>
       </div>
       <div class="list linux">
         <div class="logo"></div>
-        <a href="https://github.com/jkchao/vue-electron/releases/download/0.0.3-bate/vue-electron-linux-x64.zip" target="_blank" class="download-button">Download</a>
+        <a href="https://github.com/jkchao/vue-electron/releases/download/0.0.3-bate/electron-linux-x64.zip" target="_blank" class="download-button">Download</a>
       </div>
       <div class="list windows">
         <div class="logo"></div>
-        <a href="https://github.com/jkchao/vue-electron/releases/download/0.0.3-bate/vue-electron-win32-x64.zip" target="_blank" class="download-button">Download</a>
+        <a href="https://github.com/jkchao/vue-electron/releases/download/0.0.3-bate/electron-win32-x64.zip" target="_blank" class="download-button">Download</a>
       </div>
     </div>
   </div>
