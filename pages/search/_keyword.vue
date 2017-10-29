@@ -24,7 +24,7 @@ export default {
 
   name: 'keyword',
 
-  transition: 'slide-down',
+  transition: 'fade',
 
   scrollToTop: true,
 

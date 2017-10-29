@@ -25,7 +25,7 @@ export default {
 
   name: 'tag',
 
-  transition: 'slide-down',
+  transition: 'fade',
 
   scrollToTop: true,
 

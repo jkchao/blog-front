@@ -462,7 +462,8 @@
         const targetDom = document.getElementById(id)
         if (targetDom) {
           let isToEditor = Object.is(id, 'post-box')
-          scrollTo(targetDom, 500, { offset: isToEditor ? 0 : -300 })
+          let isCommentBox = Object.is(id, 'comment-box')
+          scrollTo(targetDom, 500, { offset: isToEditor ? 110 : isCommentBox ? -70 : -300 })
           // 如果是进入编辑模式，则需要激活光标
           if (isToEditor) {
             let p = this.$refs.markdown

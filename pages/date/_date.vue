@@ -26,7 +26,7 @@ export default {
 
   name: 'date',
 
-  transition: 'slide-down',
+  transition: 'fade',
 
   scrollToTop: true,
 
