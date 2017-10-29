@@ -29,7 +29,7 @@
             :to="`/article/${list._id}`"
             :title="list.title">
               <span class="list-num">{{ index + 1}}</span>
-              <span class="list-name">{{ list.title | text(23) }}</span>
+              <span class="list-name">{{ list.title | text(16) }}</span>
             </nuxt-link>
           </p>
         </transition-group>
