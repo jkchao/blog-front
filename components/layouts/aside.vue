@@ -29,7 +29,7 @@
             :to="`/article/${list._id}`"
             :title="list.title">
               <span class="list-num">{{ index + 1}}</span>
-              <span class="list-name">{{ list.title | text(16) }}</span>
+              <span class="list-name">{{ list.title }}</span>
             </nuxt-link>
           </p>
         </transition-group>
@@ -254,8 +254,9 @@ export default {
 
         >a {
           display: block;
-          padding: $sm-pad $normal-pad;
           color: $secondary;
+          padding: $sm-pad $normal-pad;
+          @include text-overflow();
 
           &:hover {
             color: $black;
