@@ -11,8 +11,8 @@
       <div class="sort">
         <a href="" 
            class="sort-btn"
-           :class="{ actived: Object.is(sortMode, -1) }" 
-           @click.stop.prevent="sortComemnts(-1)">最新</a>
+           :class="{ actived: Object.is(sortMode, 1) }" 
+           @click.stop.prevent="sortComemnts(1)">最新</a>
         <a href="" 
            class="sort-btn"
            :class="{ actived: Object.is(sortMode, 2) }" 
@@ -90,7 +90,7 @@
         </transition-group>
       </div>
     </transition>
-    <transition name="module">
+    <!-- <transition name="module">
       <div class="pagination-box" v-if="comment.data.pagination.total_page > 1">
         <ul class="pagination-list" v-if="Object.is(sortMode, 2)">
           <li class="item" v-for="(item, index) in comment.data.pagination.total_page" :key="index">
@@ -121,7 +121,7 @@
           </li>
         </ul>
       </div>
-    </transition>
+    </transition> -->
     <form class="post-box" name="comment" id="post-box">
       <div class="editor-box">
         <div class="user">
@@ -266,6 +266,7 @@
   import marked from '~/plugins/marked'
   import gravatar from '~/plugins/gravatar'
   import { scrollTo } from '~/utils/scroll'
+  import _ from '~/utils/underscore'
   export default {
     name: 'comment',
     data() {
@@ -273,7 +274,7 @@
         // 父级评论
         pid: 0,
         // 评论排序
-        sortMode: -1,
+        sortMode: 1,
         // 编辑器相关
         comemntContentHtml: '',
         comemntContentText: '',
@@ -288,6 +289,7 @@
           site: '',
           gravatar: null
         },
+        loadComment: false,
         // 用户历史数据
         likeComments: [],
         regexs: {
@@ -314,15 +316,46 @@
 
       mobileLayout () {
         return this.$store.state.options.mobileLayout
+      },
+
+      haveMore () {
+        return this.$store.state.comment.data.pagination.current_page
+                !== this.$store.state.comment.data.pagination.total_page
       }
     },
-    mounted() {
+
+    mounted () {
       this.initUser()
-      if (!this.comment.data.pagination.total_page) {
-        this.loadComemntList()
-      }
+
+      window.onscroll = _.throttle(async () => {
+        if (!this.loadComment) {
+          // 窗口高度
+          let windowHeight = window.innerHeight
+
+          // 评论框是否出现在视窗内
+          let eleToTop = document.getElementById('comment-box').offsetTop - document.documentElement.scrollTop
+          if (eleToTop <= windowHeight) {
+            if (!this.comment.data.pagination.total_page) {
+              await this.loadComemntList()
+              this.loadComment = true
+            }
+          }
+          return
+        }
+        if (this.haveMore && this.loadComment) {
+          let windowHeight = window.innerHeight
+          // 评论框是否出现在视窗内
+          let eleToTop = document.getElementById('post-box').offsetTop + document.getElementById('comment-box').offsetTop - document.documentElement.scrollTop
+          if (eleToTop < windowHeight) {
+            this.loadComemntList({
+              current_page: this.comment.data.pagination.current_page + 1
+            })
+          }
+        }
+      }, 400)
     },
     destroyed() {
+      window.onscroll = null
       this.$store.commit('comment/CLEAR_LIST')
     },
     methods: {
@@ -446,11 +479,11 @@
           }, 300)
         }
       },
-      // 翻页反向计算
-      paginationReverseActive(index) {
-        const pagination = this.comment.data.pagination
-        return Object.is(index, pagination.total_page + 1 - pagination.current_page)
-      },
+      // // 翻页反向计算
+      // paginationReverseActive(index) {
+      //   const pagination = this.comment.data.pagination
+      //   return Object.is(index, pagination.total_page + 1 - pagination.current_page)
+      // },
 
       // 点击用户
       clickUser(event, user) {
@@ -515,6 +548,7 @@
       commentLiked(comment_id) {
         return this.likeComments.includes(comment_id)
       },
+
       // 获取评论列表
       async loadComemntList(params = {}) {
         params.sort = this.sortMode
@@ -524,12 +558,12 @@
         })
       },
 
-      async pageLoad (params = {}) {
-        await this.loadComemntList(params)
-        setTimeout(() => {
-          this.toSomeAnchorById('comment-box')
-        }, 500)
-      },
+      // async pageLoad (params = {}) {
+      //   await this.loadComemntList(params)
+      //   setTimeout(() => {
+      //     this.toSomeAnchorById('comment-box')
+      //   }, 500)
+      // },
 
       // 提交评论
       async submitComment(event) {

@@ -96,7 +96,7 @@ export const actions = {
   },
 
   // 根据post-id获取评论列表
-  async loadCommentsByPostId ({ commit }, data) {
+  async loadCommentsByPostId ({ commit, state }, data) {
     data.sort = data.sort || -1
     data.current_page = data.current_page || 1
     data.page_size = data.page_size || 20
@@ -107,8 +107,14 @@ export const actions = {
     const res = await service.getComment(data)
                       .catch(err => console.error(err))
     if (res && res.code === 1) {
-      if (Object.is(data.sort, -1)) res.result.data.reverse()
-      commit('comment/GET_LIST_SUCCESS', res)
+      let list
+      if (res.result.pagination.current_page === 1) list = res.result.data
+      else list = [...state.comment.data.data, ...res.result.data]
+      // if (Object.is(data.sort, -1)) res.result.data.reverse()
+      commit('comment/GET_LIST_SUCCESS', {
+        data: list,
+        pagination: res.result.pagination
+      })
     } else commit('comment/GET_LIST_FAILURE')
     return res
   },

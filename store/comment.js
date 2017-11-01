@@ -31,7 +31,7 @@ export const mutations = {
 
   GET_LIST_SUCCESS (state, action) {
     state.fetching = false
-    state.data = action.result
+    state.data = action
   },
 
   GET_LIST_FAILURE (state) {
