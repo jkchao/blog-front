@@ -90,38 +90,6 @@
         </transition-group>
       </div>
     </transition>
-    <!-- <transition name="module">
-      <div class="pagination-box" v-if="comment.data.pagination.total_page > 1">
-        <ul class="pagination-list" v-if="Object.is(sortMode, 2)">
-          <li class="item" v-for="(item, index) in comment.data.pagination.total_page" :key="index">
-            <a href="" 
-               class="pagination-btn" 
-               :class="{ 'actived disabled': Object.is(item, comment.data.pagination.current_page) }"
-               @click.stop.prevent="Object.is(item, comment.data.pagination.current_page) 
-               ? false
-               : pageLoad({ current_page: item })">{{ item }}</a>
-          </li>
-        </ul>
-        <ul class="pagination-list" v-else>
-          <li class="item">
-            <a href="" class="pagination-btn prev disabled" @click.stop.prevent>— old</a>
-          </li>
-          <li class="item" v-for="(item, index) in comment.data.pagination.total_page" :key="index">
-            <a href="" 
-               class="pagination-btn" 
-               :class="{ 'actived disabled': paginationReverseActive(item) }"
-               @click.stop.prevent="paginationReverseActive(item)
-                  ? false 
-                  : pageLoad({ 
-                      current_page: comment.data.pagination.total_page + 1 - item 
-                  })">{{ item }}</a>
-          </li>
-          <li class="item">
-            <a href="" class="pagination-btn next disabled" @click.stop.prevent>new —</a>
-          </li>
-        </ul>
-      </div>
-    </transition> -->
     <form class="post-box" name="comment" id="post-box">
       <div class="editor-box">
         <div class="user">
