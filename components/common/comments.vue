@@ -21,7 +21,7 @@
     </div>
     <transition name="module" mode="out-in">
       <div class="empty-box" v-if="!comment.data.data.length && !comment.fetching">暂无评论</div>
-      <!-- <loading-box v-else-if="comment.fetching"></loading-box> -->
+      <div class="loading" v-else-if="comment.fetching">loading...</div>
       <div class="list-box" v-else>
         <transition-group name="list" tag="ul" class="comment-list">
           <li class="comment-item"
@@ -99,8 +99,8 @@
           </div>
         </div>
         <div class="editor">
-          <transition name="module">
-            <div class="will-reply" v-if="!!pid">
+          <transition-group tag="div" name="list">
+            <div class="will-reply" v-if="!!pid" key="1">
               <div class="reply-user">
                 <span>
                   <span>回复 </span>
@@ -112,69 +112,69 @@
               </div>
               <div class="reply-preview" v-html="marked(replyCommentSlef.content)"></div>
             </div>
-          </transition>
-          <div class="markdown">
-            <div class="markdown-editor" 
-                 ref="markdown"
-                 contenteditable="true"
-                 placeholder="写下你的评论..."
-                 @keyup="commentContentChange($event)">
+            <div class="markdown" key="2">
+              <div class="markdown-editor" 
+                  ref="markdown"
+                  contenteditable="true"
+                  placeholder="写下你的评论..."
+                  @keyup="commentContentChange($event)">
+              </div>
+              <div class="markdown-preview" 
+                  :class="{ actived: previewMode }"
+                  v-html="previewContent"></div>
             </div>
-            <div class="markdown-preview" 
-                 :class="{ actived: previewMode }"
-                 v-html="previewContent"></div>
-          </div>
-          <div class="editor-tools">
-            <a href="" class="emoji" title="emoji" @click.stop.prevent>
-              <i class="iconfont icon-emoji"></i>
-              <transition name="fade">
-                <div class="emoji-box">
-                  <ul class="emoji-list">
-                    <li class="item" @click="insertEmoji('😃')">😃</li>
-                    <li class="item" @click="insertEmoji('😂')">😂</li>
-                    <li class="item" @click="insertEmoji('😅')">😅</li>
-                    <li class="item" @click="insertEmoji('😉')">😉</li>
-                    <li class="item" @click="insertEmoji('😌')">😌</li>
-                    <li class="item" @click="insertEmoji('😔')">😔</li>
-                    <li class="item" @click="insertEmoji('😓')">😓</li>
-                    <li class="item" @click="insertEmoji('😘')">😘</li>
-                    <li class="item" @click="insertEmoji('😡')">😡</li>
-                    <li class="item" @click="insertEmoji('😭')">😭</li>
-                    <li class="item" @click="insertEmoji('😱')">😱</li>
-                    <li class="item" @click="insertEmoji('😳')">😳</li>
-                    <li class="item" @click="insertEmoji('😵')">😵</li>
-                    <li class="item" @click="insertEmoji('🌚')">🌚</li>
-                    <li class="item" @click="insertEmoji('👍')">👍</li>
-                    <li class="item" @click="insertEmoji('👎')">👎</li>
-                    <li class="item" @click="insertEmoji('💪')">💪</li>
-                    <li class="item" @click="insertEmoji('🌹')">🌹</li>
-                    <li class="item" @click="insertEmoji('💊')">💊</li>
-                    <li class="item" @click="insertEmoji('🇨🇳')">🇨🇳</li>
-                    <li class="item" @click="insertEmoji('🇺🇸')">🇺🇸</li>
-                  </ul>
-                </div>
-              </transition>
-            </a>
-            <a href="" class="image" title="image" @click.stop.prevent="insertContent('image')">
-              <i class="iconfont icon-image"></i>
-            </a>
-            <a href="" class="link" title="link" @click.stop.prevent="insertContent('link')">
-              <i class="iconfont icon-link"></i>
-            </a>
-            <a href="" class="code" title="code" @click.stop.prevent="insertContent('code')">
-              <i class="iconfont icon-code"></i>
-            </a>
-            <a href="" class="preview" title="preview" @click.stop.prevent="togglePreviewMode">
-              <i class="iconfont icon-eye"></i>
-            </a>
-            <button type="submit" 
-                    class="submit" 
-                    :disabled="comment.posting"
-                    @click="submitComment($event)">
-              <span>{{ comment.posting ? '发布中...' : '发布' }}</span>
-              <i class="iconfont icon-release"></i>
-            </button>
-          </div>
+            <div class="editor-tools" key="3">
+              <a href="" class="emoji" title="emoji" @click.stop.prevent>
+                <i class="iconfont icon-emoji"></i>
+                <transition name="fade">
+                  <div class="emoji-box">
+                    <ul class="emoji-list">
+                      <li class="item" @click="insertEmoji('😃')">😃</li>
+                      <li class="item" @click="insertEmoji('😂')">😂</li>
+                      <li class="item" @click="insertEmoji('😅')">😅</li>
+                      <li class="item" @click="insertEmoji('😉')">😉</li>
+                      <li class="item" @click="insertEmoji('😌')">😌</li>
+                      <li class="item" @click="insertEmoji('😔')">😔</li>
+                      <li class="item" @click="insertEmoji('😓')">😓</li>
+                      <li class="item" @click="insertEmoji('😘')">😘</li>
+                      <li class="item" @click="insertEmoji('😡')">😡</li>
+                      <li class="item" @click="insertEmoji('😭')">😭</li>
+                      <li class="item" @click="insertEmoji('😱')">😱</li>
+                      <li class="item" @click="insertEmoji('😳')">😳</li>
+                      <li class="item" @click="insertEmoji('😵')">😵</li>
+                      <li class="item" @click="insertEmoji('🌚')">🌚</li>
+                      <li class="item" @click="insertEmoji('👍')">👍</li>
+                      <li class="item" @click="insertEmoji('👎')">👎</li>
+                      <li class="item" @click="insertEmoji('💪')">💪</li>
+                      <li class="item" @click="insertEmoji('🌹')">🌹</li>
+                      <li class="item" @click="insertEmoji('💊')">💊</li>
+                      <li class="item" @click="insertEmoji('🇨🇳')">🇨🇳</li>
+                      <li class="item" @click="insertEmoji('🇺🇸')">🇺🇸</li>
+                    </ul>
+                  </div>
+                </transition>
+              </a>
+              <a href="" class="image" title="image" @click.stop.prevent="insertContent('image')">
+                <i class="iconfont icon-image"></i>
+              </a>
+              <a href="" class="link" title="link" @click.stop.prevent="insertContent('link')">
+                <i class="iconfont icon-link"></i>
+              </a>
+              <a href="" class="code" title="code" @click.stop.prevent="insertContent('code')">
+                <i class="iconfont icon-code"></i>
+              </a>
+              <a href="" class="preview" title="preview" @click.stop.prevent="togglePreviewMode">
+                <i class="iconfont icon-eye"></i>
+              </a>
+              <button type="submit" 
+                      class="submit" 
+                      :disabled="comment.posting"
+                      @click="submitComment($event)">
+                <span>{{ comment.posting ? '发布中...' : '发布' }}</span>
+                <i class="iconfont icon-release"></i>
+              </button>
+            </div>
+          </transition-group>
         </div>
       </div>
       <!-- 用户编辑部分 -->
@@ -295,10 +295,17 @@
     mounted () {
       this.initUser()
 
+      // 移动端直接加载评论
+      if (!!this.mobileLayout) {
+        this.loadComemntList({ page_size: 100 })
+        return
+      }
+
       window.onscroll = _.throttle(async () => {
         if (!this.loadComment) {
           // 窗口高度
           let windowHeight = window.innerHeight
+
 
           // 评论框是否出现在视窗内
           let eleToTop = document.getElementById('comment-box').offsetTop - document.documentElement.scrollTop
@@ -656,7 +663,8 @@
         }
       }
 
-      >.empty-box {
+      >.empty-box,
+      >.loading {
         height: 5rem;
         line-height: 5rem;
       }
@@ -691,11 +699,11 @@
 
         > .editor-box {
 
-          >.editor {
+          .editor {
             max-width: 100%;
           }
 
-          > .user {
+           .user {
             margin: 0;
           }
           .emoji-box {
@@ -732,7 +740,8 @@
       }
     }
 
-    > .empty-box {
+    > .empty-box,
+    > .loading {
       font-weight: bold;
       text-align: center;
       height: 7rem;
@@ -1069,7 +1078,7 @@
           position: relative;
           max-width: calc(100% - 56px);
 
-          > .will-reply {
+          .will-reply {
             font-size: .95em;
             margin-bottom: 1em;
 
@@ -1099,7 +1108,7 @@
             }
           }
 
-          > .markdown {
+          .markdown {
             position: relative;
             overflow: hidden;
 
@@ -1155,7 +1164,7 @@
             }
           }
 
-          > .editor-tools {
+          .editor-tools {
             height: 2rem;
             line-height: 2rem;
             margin-top: .4rem;

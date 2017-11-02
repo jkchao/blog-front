@@ -38,7 +38,7 @@
 .list-leave-active { transition: all .2s ease; opacity: 0;}
 .list-enter { transform: translateY(20px); opacity: 0;}
 .list-move { transition: all .5s;}
-.slide-down-leave-active { position: absolute; width: 100%;}
+.list-leave-active { position: absolute; width: 100%;}
 
 
 .fade-enter-active, .fade-leave-active { transition: opacity .3s; }
