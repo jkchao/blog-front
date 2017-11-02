@@ -10,7 +10,7 @@
 .slide-down-leave-active { transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);}
 .slide-down-enter, .slide-down-leave-active { transform: translateY(20px); opacity: 0;}
 .slide-down-move { transition: all .4s;}
-// .slide-down-leave-active { position: absolute; }
+.slide-down-leave-active { position: absolute; width: 100%;}
 
 // up
 .slide-up-enter-active { transition: all .5s ease .3s;}
