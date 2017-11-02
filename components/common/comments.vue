@@ -21,7 +21,7 @@
     </div>
     <transition name="module" mode="out-in">
       <div class="empty-box" v-if="!comment.data.data.length && !comment.fetching">暂无评论</div>
-      <div class="loading" v-else-if="comment.fetching">loading...</div>
+      <div class="loading" v-else-if="!comment.data.data.length && comment.fetching">loading...</div>
       <div class="list-box" v-else>
         <transition-group name="list" tag="ul" class="comment-list">
           <li class="comment-item"
