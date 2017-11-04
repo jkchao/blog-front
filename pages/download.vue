@@ -1,10 +1,10 @@
 <template>
   <div class="download">
     <div class="title">
-      Download <a href="https://admin.jkchao.cn" target="_blank">vue-admin</a> client.
+      Download <a href="https://admin.jkchao.cn" target="_blank">blog</a> client.
     </div>
     <div class="download-img">
-      <img src="https://static.jkchao.cn/electron.png" alt="" width="800px">
+      <img src="https://static.jkchao.cn/electron.png" alt="blog" width="600">
     </div>
     <div class="item">
       <div class="list mac">
@@ -41,7 +41,7 @@ export default {
 @import '~assets/scss/mixin.scss';
 
 .download {
-  width: 800px;
+  width: 600px;
   margin: 1rem auto;
 
   >.title {
