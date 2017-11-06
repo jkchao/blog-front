@@ -69,7 +69,11 @@
                       <strong v-if="fondReplyParent(comment.pid)">{{ fondReplyParent(comment.pid) }}</strong>
                     </a>
                   </p>
-                  <div v-html="fondReplyParentContent(comment.pid)" class="reply-content"></div>
+                  <div 
+                  class="reply-content"
+                  v-html="fondReplyParentContent(comment.pid).length > 150
+                  ? fondReplyParentContent(comment.pid).slice(0, 150) + '...'
+                  : fondReplyParentContent(comment.pid)" ></div>
                 </div>
                 <div v-html="marked(comment.content)"></div>
               </div>
@@ -110,7 +114,10 @@
                 </span>
                 <a href="" class="cancel iconfont icon-cancel" @click.stop.prevent="cancelCommentReply"></a>
               </div>
-              <div class="reply-preview" v-html="marked(replyCommentSlef.content)"></div>
+              <div class="reply-preview" 
+                    v-html="marked(replyCommentSlef.content).length > 100
+                    ? marked(replyCommentSlef.content).slice(0, 100) + '...'
+                    : marked(replyCommentSlef.content)"></div>
             </div>
             <div class="markdown" key="2">
               <div class="markdown-editor" 
@@ -330,7 +337,6 @@
       }, 400)
     },
     destroyed() {
-      window.onscroll = null
       this.$store.commit('comment/CLEAR_LIST')
     },
     methods: {
