@@ -337,6 +337,7 @@
       }, 400)
     },
     destroyed() {
+      window.onscroll = null
       this.$store.commit('comment/CLEAR_LIST')
     },
     methods: {
