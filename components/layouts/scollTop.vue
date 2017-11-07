@@ -42,30 +42,30 @@ export default {
   },
 
   mounted () {
-  // 滚动条在Y轴上的滚动距离
-  function getScrollTop () {
-    let scrollTop = 0
-    let bodyScrollTop = 0
-    let documentScrollTop = 0
-    if (document.body) {
-      bodyScrollTop = document.body.scrollTop
+    // 滚动条在Y轴上的滚动距离
+    function getScrollTop () {
+      let scrollTop = 0
+      let bodyScrollTop = 0
+      let documentScrollTop = 0
+      if (document.body) {
+        bodyScrollTop = document.body.scrollTop
+      }
+      if (document.documentElement) {
+        documentScrollTop = document.documentElement.scrollTop
+      }
+      scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop
+      return scrollTop
     }
-    if (document.documentElement) {
-      documentScrollTop = document.documentElement.scrollTop
+    // 浏览器视口的高度
+    function getWindowHeight () {
+      let windowHeight = window.innerWidth
+      return windowHeight
     }
-    scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop
-    return scrollTop
-  }
-  // 浏览器视口的高度
-  function getWindowHeight () {
-    let windowHeight = window.innerWidth
-    return windowHeight
-  }
-  window.onscroll = () => {
-      if (getScrollTop()*2 > getWindowHeight()) {
+    window.addEventListener('scroll', () => {
+      if (getScrollTop() * 2 > getWindowHeight()) {
         this.showScroll = true
       } else this.showScroll = false
-    }
+    })
   }
 }
 </script>
