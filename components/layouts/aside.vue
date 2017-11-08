@@ -48,18 +48,19 @@
         </ul>
       </div>
 
-      <transition name="slide-up" mode="">
-        <div class="aside-item aside-tag font-futura aside-fix"  key="5" v-if="showSide">
-          <ul class="tag clearfix">
-            <li class="tag-item" v-for="item in tag" :key="item.id">
-              <nuxt-link :to="`/tag/${item._id}`">
-                {{ item.name }}
-                <span>({{ item.count }})</span>
-              </nuxt-link>
-            </li>
-          </ul>
-        </div>       
-      </transition>
+      <div 
+      class="aside-item aside-tag font-futura aside-fix"  
+      key="5"
+      v-fix>
+        <ul class="tag clearfix">
+          <li class="tag-item" v-for="item in tag" :key="item.id">
+            <nuxt-link :to="`/tag/${item._id}`">
+              {{ item.name }}
+              <span>({{ item.count }})</span>
+            </nuxt-link>
+          </li>
+        </ul>
+      </div>       
 
     </div>
 </template>
@@ -71,7 +72,6 @@ export default {
   data () {
     return {
       open : false,
-      showSide: false,
       keyword: ''
     }
   },
@@ -107,12 +107,19 @@ export default {
     }
   },
 
-  mounted () {
-    window.addEventListener('scroll', () => {
-      let scrollTop = document.documentElement.scrollTop
-      if (scrollTop > 1200) this.showSide = true
-      else this.showSide = false
-    })
+  directives: {
+    fix: {
+      inserted (el) {
+        window.addEventListener('scroll', _ => {
+          const scrollTop = document.documentElement.scrollTop
+          if (scrollTop > 1100) el.classList.add('fixed')
+          else el.classList.remove('fixed')
+        })
+      },
+      unbind () {
+        window.onscroll = null
+      }
+    }
   }
 }
 </script>
@@ -324,6 +331,13 @@ export default {
   .aside-fix {
     position: fixed;
     width: 20.5rem;
-    top: 5rem;
+    top: 1rem;
+    transition: all .2s;
+    opacity: 0;
+
+    &.fixed {
+      top: 5rem;
+      opacity: 1;
+    }
   }
 </style>
