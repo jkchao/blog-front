@@ -32,7 +32,9 @@
           </div>
         </div>
         <nuxt-link :to="`/article/${item._id}`" v-if="!mobileLayout">
-          <img :src="item.thumb" alt="" width="180"/>
+          <div class="pc-thumb">
+            <img :src="item.thumb" alt="" width="180"/>
+          </div>
         </nuxt-link>
       </div>
       <div class="end-article" v-if="!haveMoreArt" key="-1">
@@ -168,9 +170,13 @@ export default {
     >a {
       display: block;
       width: 12.8rem;
-      height: 6rem;
       overflow: hidden;
 
+      >.pc-thumb {
+        width: 100%;
+        height: 6rem;
+        overflow: hidden;
+      }
     }
   }
 

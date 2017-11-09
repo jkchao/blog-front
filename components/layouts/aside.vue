@@ -28,7 +28,6 @@
             <nuxt-link 
             :to="`/article/${list._id}`"
             :title="list.title">
-              <span class="list-num">{{ index + 1}}</span>
               <span class="list-name">{{ list.title }}</span>
             </nuxt-link>
           </p>
@@ -292,11 +291,6 @@ export default {
           &:hover {
             color: $black;
             background: $module-hover-bg;
-          }
-
-          >.list-num {
-            margin-right: $normal-pad;
-            
           }
         }
       }
