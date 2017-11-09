@@ -170,7 +170,6 @@ export default {
     >a {
       display: block;
       width: 12.8rem;
-      overflow: hidden;
 
       >.pc-thumb {
         width: 100%;
