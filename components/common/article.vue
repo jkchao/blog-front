@@ -166,7 +166,11 @@ export default {
       }
     }
     >a {
-      width: 180px;
+      display: block;
+      width: 12.8rem;
+      height: 6rem;
+      overflow: hidden;
+
     }
   }
 

@@ -3,11 +3,13 @@
     <div v-swiper:mySwiper="option" class="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide item" v-for="list in con" :key="list">
-          <img 
-          :src="mobileLayout
-          ? list.thumb + '?imageView2/1/w/380/h/140'
-          : list.thumb + '?imageView2/1/w/679/h/280'"/>
-          <nuxt-link :to="`/article/${list._id}`" class="swiper-title">{{ list.title }}</nuxt-link>
+          <div class="swiper-content">
+            <img 
+            :src="mobileLayout
+            ? list.thumb + '?imageView2/1/w/380/h/140'
+            : list.thumb + '?imageView2/1/w/679/h/280'"/>
+            <nuxt-link :to="`/article/${list._id}`" class="swiper-title">{{ list.title }}</nuxt-link>
+          </div>
         </div>
       </div>
       <div class="swiper-pagination swiper-pagination-white"></div> 
