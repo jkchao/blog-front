@@ -334,10 +334,14 @@ export default {
     top: 1rem;
     transition: all .2s;
     opacity: 0;
+    z-index: -1;
+    pointer-events: none;
 
     &.fixed {
       top: 5rem;
       opacity: 1;
+      z-index: 5;
+      pointer-events: all;
     }
   }
 </style>
