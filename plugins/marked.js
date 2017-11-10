@@ -17,14 +17,20 @@ marked.setOptions({
 })
 
 // 段落解析
-const paragraphParse = text => `<p>${text}</p>`
+const paragraphParse = text => {
+  const textIsImage = text.includes('<img')
+  if (textIsImage) return `<div class="image-package">${text}</div>`
+  return `<p>${text}</pp>`
+}
 
 // 对图片进行弹窗处理, 及懒加载处理
 const imageParse = (src, title, alt) => {
   return `<img 
             src="${src}"
             title="${title || alt || 'jkchao.cn'}" 
-            class="img-pop"/>`.replace(/\s+/g, ' ').replace('\n', '')
+            class="img-pop"/>
+          <span class="img-caption">${title || alt}</span>
+          `
 }
 
 // 外链

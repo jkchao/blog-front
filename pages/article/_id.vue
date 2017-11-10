@@ -199,6 +199,28 @@ export default {
         }
       }
 
+      .image-package {
+        text-align: center;
+        margin-bottom: 1em;
+
+        .img-caption {
+          min-width: 10%;
+          max-width: 80%;
+          min-height: 22px;
+          display: inline-block;
+          padding: 10px;
+          margin: 0 auto;
+          border-bottom: 1px solid #d9d9d9;
+          font-size: 14px;
+          color: #969696;
+          line-height: 1.2;
+
+          &::empty {
+            display: none;
+          }
+        }
+      }
+
       img {
         max-width: 100%;
         margin: .5em auto;
