@@ -29,7 +29,7 @@ const imageParse = (src, title, alt) => {
             src="${src}"
             title="${title || alt || 'jkchao.cn'}" 
             class="img-pop"/>
-          <span class="img-caption">${title || alt}</span>
+          <div class="img-caption">${title || alt || ''}</div>
           `
 }
 

@@ -215,7 +215,7 @@ export default {
           color: #969696;
           line-height: 1.2;
 
-          &::empty {
+          &:empty {
             display: none;
           }
         }
