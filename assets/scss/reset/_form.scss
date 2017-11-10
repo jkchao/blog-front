@@ -114,15 +114,15 @@ textarea[readonly] {
 input:focus:invalid,
 textarea:focus:invalid,
 select:focus:invalid {
-    // border-color: darken($red, 10);
+    border-color: lighten($red, 10%) !important;
     // color: $red;
 }
 
-input[type="file"]:focus:invalid:focus,
-input[type="radio"]:focus:invalid:focus,
-input[type="checkbox"]:focus:invalid:focus {
-    // outline-color: $red;
-}
+// input[type="file"]:focus:invalid:focus,
+// input[type="radio"]:focus:invalid:focus,
+// input[type="checkbox"]:focus:invalid:focus {
+//     outline-color: $red;
+// }
 
 input:-webkit-autofill,
 textarea:-webkit-autofill,

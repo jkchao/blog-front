@@ -174,6 +174,7 @@ export default {
       >.pc-thumb {
         width: 100%;
         height: 6rem;
+        line-height: 6rem;
         overflow: hidden;
       }
     }
