@@ -208,7 +208,7 @@ export default {
           max-width: 80%;
           min-height: 22px;
           display: inline-block;
-          padding: 10px;
+          padding: 6px;
           margin: 0 auto;
           border-bottom: 1px solid #d9d9d9;
           font-size: 14px;
