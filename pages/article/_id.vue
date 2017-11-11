@@ -202,6 +202,8 @@ export default {
       .image-package {
         text-align: center;
         margin-bottom: 1em;
+        width: 92%;
+        margin: auto;
 
         .img-caption {
           min-width: 10%;
