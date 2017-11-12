@@ -5,10 +5,9 @@
         class="article-item"
         v-for="item in articleList"
         :key="item._id"
-        :class="{'mobile-article': mobileLayout}"
-        @click="$router.push(`/article/${item._id}`)">
+        :class="{'mobile-article': mobileLayout}">
         <div class="content">
-          <p class="title">{{ item.title }}</p>
+          <p class="title"><nuxt-link :to="`/article/${item._id}`">{{ item.title }}</nuxt-link></p>
           <nuxt-link :to="`/article/${item._id}`" v-if="mobileLayout">
             <img :src="item.thumb" alt="" width="100%" class="mobil-img"/>
           </nuxt-link>
@@ -21,12 +20,12 @@
                   : 'Think'
                 }}
             </span> -->
-            <span class="time">
+            <span class="time" v-if="!mobileLayout">
               {{ 
                 item.create_at | dateFormat('yyyy.MM.dd hh:mm')
               }}
             </span>
-            <span class="hr"></span>
+            <span class="hr" v-if="!mobileLayout"></span>
             <span class="read"> {{ item.meta.views }} 人阅读</span>
             <span class="hr"></span>
             <span class="comments"> {{ item.meta.comments }} 条评论</span>
@@ -36,7 +35,7 @@
         </div>
         <nuxt-link :to="`/article/${item._id}`" v-if="!mobileLayout">
           <div class="pc-thumb">
-            <img :src="item.thumb" alt="" width="180"/>
+            <img :src="item.thumb" alt="" width="140"/>
           </div>
         </nuxt-link>
       </div>
@@ -82,7 +81,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: $normal-pad 0;
+    padding: 1.5rem 0 1rem;
     cursor: pointer;
     color: $black;
     border-bottom: 1px solid $border-color;
@@ -107,13 +106,8 @@ export default {
           width: 100%;
         }
 
-        .meta {
-          
+        .meta {      
           color: #969696;
-          
-          span {
-            margin: 0;
-          }
         }
 
         .mobil-img {
@@ -133,7 +127,7 @@ export default {
       }
 
       >.abstrack {
-        min-height: 5rem;
+        min-height: 4rem;
         line-height: 1.8rem;
         color: #555555;
       }
@@ -151,7 +145,7 @@ export default {
     }
     >a {
       display: block;
-      width: 12.8rem;
+      width: 10rem;
 
       >.pc-thumb {
         width: 100%;
