@@ -1,8 +1,6 @@
 <template>
   <section  class="think" >
-    <div class="head" :class="{'mobile': mobileLayout}">
-      <img src="~static/images/head.png">
-    </div>
+    <p class="title">最新文章</p>
     <div class="article">
       <articleView
         :articleList = "list"
@@ -73,26 +71,15 @@ export default {
 @import '~assets/scss/variable.scss';
 @import '~assets/scss/mixin.scss';
 
-
-.head {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 48.5rem;
-  height: 20rem;
-  margin: 0 auto $normal-pad auto;
-  font-size: 1.3rem;
-  color: $black;
-  background: $module-bg;
-  // background: $module-bg url() no-repeat center 55%;  
-
-  img {
-    max-width: 100%;
+.think {
+  >.title {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0rem;
+    line-height: 1.5rem;
+    font-size: 1rem;
+    font-weight: normal;
+    border-bottom: 1px solid $border-color;
   }
-}
-
-.head.mobile {
-  height: 10rem;
-  width: 100%;
 }
 </style>

@@ -263,13 +263,8 @@ export default {
   }
 
   .list-box {
-    // display: grid;
-    // grid-template-columns: repeat(3, 1fr);
-    // grid-gap: 1rem;
     display: flex;
-    // justify-content: space-between;
     flex-wrap: wrap;
-    // margin: 1rem 0 0 0;
 
     >.list {
       position: relative;
@@ -280,6 +275,7 @@ export default {
       width: calc(100%/3 - 2rem/3);
       background: $module-bg;
       margin: 1rem 1rem 0 0;
+      border: 1px solid $border-color;
       @include css3-prefix('transition', 'all .3s');
 
       &:nth-child(3n) {

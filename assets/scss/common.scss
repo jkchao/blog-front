@@ -18,7 +18,7 @@ body {
 body.mobile {
   overflow-x: hidden;
   padding: 0;
-  background: $mobile-bg;
+  background: $white;
 }
 
 @font-face {
@@ -86,44 +86,16 @@ body.mobile {
         }
       }
     }
-  
-    &.sidebar-share {
-      position: fixed;
-      top: 25%;
-      left: 0;
-      width: 4em;
-  
-      > .share-box {
-        opacity: .4;
-  
-        &:hover {
-          opacity: 1;
-        }
-  
-        > .share-link {
-          width: 3em;
-          height: 2.5em;
-          line-height: 2.6em;
-  
-          > .iconfont {
-            font-size: 1.3em;
-          }
-  
-          &.renren,
-          &.evernote,
-          &.google-plus,
-          &.linkedin,
-          &.mail {
-            display: none;
-          }
-  
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-    }
   }
+
+.hr {
+  display: inline-block;
+  width: 2px;
+  height: 2px;
+  background: #AAB2BD;
+  margin: 4px .8rem;
+}
+
 a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }

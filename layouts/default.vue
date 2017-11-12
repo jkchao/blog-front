@@ -151,7 +151,7 @@ export default {
 
 .content-left {
   position: relative;
-  width: 48.5rem;
+  width: 48rem;
   float: left;
   @include css3-prefix(transition, all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0));
 }
@@ -170,7 +170,7 @@ export default {
 }
 
 .content-right {
-  width: 20.5rem;
+  width: 20rem;
   float: right;
 }
 

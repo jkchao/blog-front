@@ -63,14 +63,14 @@
       </div>
     </div>
 
-    <div
+    <!-- <div
       class="foot"
       v-if="!mobileLayout">
         <div class="foot-box">
           <p>我走过山时，山不说话，</p>
           <p>我路过海时，海不说话。</p>
         </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -125,7 +125,6 @@ export default {
       position: relative;
       width: calc(100% - 14rem - 1rem);
       padding: $normal-pad $lg-pad;
-      background: $module-bg;
 
       >.list {
         display: flex;
@@ -248,9 +247,7 @@ export default {
     margin-top: 1rem;
 
     >.text {
-      padding: 5rem 10rem;
-      background: $module-bg;
-      color: $black;
+      padding: 3rem;
       line-height: 2rem;
     }
   }

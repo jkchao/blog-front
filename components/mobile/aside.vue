@@ -13,7 +13,6 @@
           <nuxt-link
             :to="list.path"
             exact>
-              <i :class="list.icon"></i>
               <span>{{ list.name }}</span>
           </nuxt-link>
         </li>
@@ -28,11 +27,9 @@ export default {
   data () {
     return {
       nav: [
-        { path: '/', name: 'HOME', icon: 'iconfont icon-home'},
-        { path: '/code', name: 'CODE', icon: 'iconfont icon-code'},
-        { path: '/think', name: 'THINK', icon: 'iconfont icon-read'},
-        { path: '/about', name: 'ABOUT', icon: 'iconfont icon-user'},
-        { path: '/wall', name: 'WALL', icon: 'iconfont icon-comments'}
+        { path: '/', name: '码农', icon: 'iconfont icon-home'},
+        { path: '/think', name: '读书', icon: 'iconfont icon-read'},
+        { path: '/fack', name: '民谣', icon: 'iconfont icon-read'}
       ]
     }
   },
@@ -69,7 +66,8 @@ export default {
   }
   nav {
     .nav-list {
-      padding: 1rem 1rem 1rem 4rem;
+      padding: 1rem 1rem 1rem 2.5rem;
+      text-align: center;
     }
     a {
       margin-right: 2rem;

@@ -14,21 +14,24 @@
           </nuxt-link>
           <p class="abstrack">{{ item.descript | text(200)}}</p>
           <div class="meta">
-            <span class="tag" v-if="!mobileLayout"><i class="iconfont icon-category"></i>
+            <!-- <span class="tag" v-if="!mobileLayout"><i class="iconfont icon-category"></i>
               {{
                   item.type === 1
                   ? 'Code'
                   : 'Think'
                 }}
-            </span>
-            <span class="time"><i class="iconfont icon-time"></i>
+            </span> -->
+            <span class="time">
               {{ 
                 item.create_at | dateFormat('yyyy.MM.dd hh:mm')
               }}
             </span>
-            <span class="read"><i class="iconfont icon-icon"></i> {{ item.meta.views }}</span>
-            <span class="comments"><i class="iconfont icon-comments"></i> {{ item.meta.comments }}</span>
-            <span class="like"><i class="iconfont icon-like"></i> {{ item.meta.likes }}</span>
+            <span class="hr"></span>
+            <span class="read"> {{ item.meta.views }} 人阅读</span>
+            <span class="hr"></span>
+            <span class="comments"> {{ item.meta.comments }} 条评论</span>
+            <span class="hr"></span>
+            <span class="like"> {{ item.meta.likes }} 人喜欢</span>
           </div>
         </div>
         <nuxt-link :to="`/article/${item._id}`" v-if="!mobileLayout">
@@ -38,11 +41,11 @@
         </nuxt-link>
       </div>
       <div class="end-article" v-if="!haveMoreArt" key="-1">
-        无更多文章
+        <i>end</i>
       </div>
       <div class="loading-more end-article " v-if="haveMoreArt" key="-2">
-        <a href="javascript:;" @click="$emit('loadMore')" v-if="!fetch" class="allow">加载更多</a>
-        <a href="javascript:;" v-if="fetch" class="not-allow">加载中</a>
+        <a href="javascript:;" @click="$emit('loadMore')" v-if="!fetch" class="allow"><i>more</i></a>
+        <a href="javascript:;" v-if="fetch" class="not-allow"><i>loading...</i></a>
       </div>
     </transition-group>
 
@@ -72,26 +75,17 @@ export default {
 @import '~assets/scss/mixin.scss';
 
 .article-box {
-  width: 48.5rem;
+  width: 48rem;
   margin: 0 auto;
 
   >.article-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: $normal-pad;
-    padding: $normal-pad;
-    background: $module-bg;
+    padding: $normal-pad 0;
     cursor: pointer;
-
-    &:hover {
-      color: $black;
-      background: lighten($module-hover-bg, 60%);
-
-      .title {
-        color: $black;
-      }
-    }
+    color: $black;
+    border-bottom: 1px solid $border-color;
 
     .title {
       margin-bottom: $sm-pad;
@@ -114,7 +108,8 @@ export default {
         }
 
         .meta {
-          justify-content: space-between;
+          
+          color: #969696;
           
           span {
             margin: 0;
@@ -138,33 +133,20 @@ export default {
       }
 
       >.abstrack {
-        min-height: 3rem;
+        min-height: 5rem;
+        line-height: 1.8rem;
+        color: #555555;
       }
 
       >.meta {
         display: flex;
         flex-wrap: nowrap;
+        align-items: center;
         margin-top: $sm-pad;
         height: 1rem;
         line-height: 1rem;
         font-size: $font-size-small;
-
-        >span {
-          margin-right: 1rem;
-
-          >i {
-            margin-right: .2rem;
-            vertical-align: text-bottom;
-          }
-        }
-
-        // .tag-list {
-        //   margin-right: .5rem;
-        // }
-
-        // .tag-list:last-child {
-        //   margin: 0;
-        // }
+        color: #969696;
       }
     }
     >a {
@@ -181,10 +163,7 @@ export default {
   }
 
   .end-article {
-    // margin-bottom: $normal-pad;
-    padding: $md-pad;
-    background: $module-bg;
-    text-align: center;
+    padding: $md-pad 0;
     color: $black;
   }
 
@@ -193,7 +172,7 @@ export default {
 
     >.end-article {
       margin-bottom: 0;
-      padding: 1rem;
+      padding: 1rem 0;
     }
   }
 }

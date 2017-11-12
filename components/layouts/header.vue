@@ -5,7 +5,6 @@
           <div class="logo">
             <nuxt-link to="/">
               <img src="~static/images/logo.png" alt="" width="36">
-              三毛
             </nuxt-link>
           </div> 
           <nav>
@@ -19,7 +18,28 @@
             </nuxt-link>
           </nav>
         </div>
-        <div class="player">
+
+      <div class="header-right">
+        <div
+          class="search-box"
+          @click="open = true"
+          v-click-outside="hide"
+          key="1">
+          <div class="search" :class="{'open': open}">
+            <input
+              type="text"
+              v-model="keyword"
+              placeholder="search..."
+              ref="search"
+              @keyup.enter="search" 
+              :maxlength="10"/>
+            <div class="eks" @click.stop="search"></div>
+          </div>
+        </div>
+      </div>
+
+
+        <!-- <div class="player">
           <div class="panel">
             <button class="prev-song btn" @click="prevSong" :disabled="!playerState.ready">
               <i class="iconfont icon-music-prev"></i>
@@ -46,7 +66,7 @@
             </a>
           </div>
           <div class="song" v-else>Music is the eye of ear.</div>
-        </div>
+        </div> -->
     </div> 
   </header>
 </template>
@@ -63,12 +83,12 @@ export default {
       keyword: '',
       open: false,
       nav: [
-        { path: '/', name: 'HOME', icon: 'iconfont icon-home'},
-        { path: '/code', name: 'CODE', icon: 'iconfont icon-code'},
-        { path: '/think', name: 'THINK', icon: 'iconfont icon-read'},
-        { path: '/about', name: 'ABOUT', icon: 'iconfont icon-user'},
-        { path: '/wall', name: 'WALL', icon: 'iconfont icon-comments'},
-        { path: '/download', name: 'DOWNLOAD', icon: 'iconfont icon-download'}
+        { path: '/', name: '码农', icon: 'iconfont icon-home'},
+        // { path: '/code', name: 'CODE', icon: 'iconfont icon-code'},
+        { path: '/think', name: '读书', icon: 'iconfont icon-read'},
+        { path: '/fack', name: '民谣', icon: 'iconfont icon-user'},
+        // { path: '/wall', name: 'WALL', icon: 'iconfont icon-comments'},
+        // { path: '/download', name: 'DOWNLOAD', icon: 'iconfont icon-download'}
       ]
     }
   },
@@ -84,7 +104,31 @@ export default {
       return EventBus.currentSong
     }
   },
+
+  watch: {
+    open (val) {
+      if (val) {
+        this.$refs.search.focus()
+      }
+    }
+  },
+
   methods: {
+
+    hide () {
+      this.open = false
+    },
+
+    search () {
+      if (!this.open) {
+        this.open = true
+        return
+      }
+      this.$router.push(`/search/${this.keyword}`)
+      this.open = false
+      this.keyword = ''
+    },
+
     togglePlay() {
       if (this.playerState.ready) {
         this.player.togglePlay()
@@ -124,20 +168,20 @@ export default {
 
   mounted () {
     if (process.browser) {
-      const self = this
-      const player = EventBus.player
-      const play = () => {
-        if (player.playerState.ready && player.player && player.player.play) {
-          player.player.play()
-        } else {
-          setTimeout(play, 1666)
-        }
-      }
-      window.addEventListener('load', event => {
-        window.setTimeout(() => {
-          play()
-        }, 1666)
-      })
+      // const self = this
+      // const player = EventBus.player
+      // const play = () => {
+      //   if (player.playerState.ready && player.player && player.player.play) {
+      //     player.player.play()
+      //   } else {
+      //     setTimeout(play, 1666)
+      //   }
+      // }
+      // window.addEventListener('load', event => {
+      //   window.setTimeout(() => {
+      //     play()
+      //   }, 1666)
+      // })
     }
   }
 }
@@ -168,6 +212,7 @@ header {
   >.header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: $header-height;
     line-height: $header-height;
 
@@ -206,53 +251,184 @@ header {
     }
   }
 
-  .player {
-    width: 13rem;
+  .header-right {
+    width: 200px;
+  }
+
+  .search-box {
     display: flex;
-    flex-direction: column;
-    align-items: inherit;
-    justify-content: center;
-    font-size: $font-size-small;
-    line-height: $normal-pad;
-    @include text-overflow();
+    align-items: center;
+    justify-content: flex-end;
+    padding: .5rem;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
 
-    > .panel {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: .2rem;
+    >.search {
+      position: relative;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid $dividers;
+      @include transition (all .3s ease .15s);
+      @include border-radius(.9rem);
+      cursor: pointer;
 
-      > .btn {
-        margin-right: 1em;
-        padding: 0;
-        border: 0;
+      &::after {
+        top: 90%;
+        left: 100%;
+        width: 5px;
+        height: 2px;
+        background-color: $dividers;
+        border-radius: 1px;
+        @include def;        
+        @include transition(width .15s ease .45s);
+        @include transform(rotate(45deg));
+        @include transform-origin(top left);
+      }
 
-        &:hover {
+      >input {
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+        line-height: 38px;
+        opacity: 0;
+        background-color: transparent;
+        color: $text;
+        @include transition(opacity .15s ease);
+      }
 
-          > .iconfont {
-            color: $black;
-          }
+      >.eks {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 2px;
+        z-index: 20;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;	
+        @include transform(translateY(-50%));
+
+        &:before, &:after {
+          @include def;
+          right: 1px;
+          height: 2px;
+          width: 0px;
+          border-radius: 1px;
+          @include transition(all .25s ease);
+        }
+
+        &:before {
+          top: 0px;
+          background-color: $black;
+          @include transform(rotate(-45deg));
+          @include transform-origin(top right);
+          @include transition-delay(.1s);
+        }
+
+        &:after {
+          bottom: 0px;
+          background-color: $black;
+          @include transform(rotate(45deg));
+          @include transform-origin(bottom right);
+          @include transition-delay(0s);
         }
       }
-    }
-
-    > .song {
-      margin-top: .3rem;
-      font-size: .8rem;
-      text-align: right;
-      @include text-overflow();
-
-      > .link {
-        color: $dividers;
-
-        &:hover {
-          color: $black;
-        }
-      }
-    }
-
-    .iconfont {
-      color: $dividers;
     }
   }
+
+  .search.open {
+    width: 100%;
+    border: none;
+    @include transition-delay(.1s);
+
+    &:after {
+      width: 0px;
+      @include transition-delay(0s);
+    }
+
+    >input {
+      position: absolute;
+      padding: .5rem 2.5rem .5rem .5rem; 
+      line-height: 1rem;     
+      // background: $light-dark;
+      opacity: 1;
+      @include transition-delay(.05s);
+    }
+
+    >.eks {
+      right: 10px;
+
+      &:before, &:after {
+        width: 15px;
+      }
+
+      &:before {
+        top: 2px;
+        right: 0;
+        @include transition-delay(.25s);
+      }
+
+      &:after {
+        right: 10px;
+        bottom: 2px;
+        width: 8px;
+        @include transition-delay(.3s);
+      }
+    }
+  }
+
+  // .player {
+  //   width: 13rem;
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: inherit;
+  //   justify-content: center;
+  //   font-size: $font-size-small;
+  //   line-height: $normal-pad;
+  //   @include text-overflow();
+
+  //   > .panel {
+  //     display: flex;
+  //     justify-content: flex-end;
+  //     margin-bottom: .2rem;
+
+  //     > .btn {
+  //       margin-right: 1em;
+  //       padding: 0;
+  //       border: 0;
+
+  //       &:hover {
+
+  //         > .iconfont {
+  //           color: $black;
+  //         }
+  //       }
+  //     }
+  //   }
+
+  //   > .song {
+  //     margin-top: .3rem;
+  //     font-size: .8rem;
+  //     text-align: right;
+  //     @include text-overflow();
+
+  //     > .link {
+  //       color: $dividers;
+
+  //       &:hover {
+  //         color: $black;
+  //       }
+  //     }
+  //   }
+
+  //   .iconfont {
+  //     color: $dividers;
+  //   }
+  // }
 }
 </style>

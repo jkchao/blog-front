@@ -1,12 +1,7 @@
 <template>
   <div class="keyword">
 
-    <div class="head font-futura" :class="{'mobile': mobileLayout}">
-      <div>
-        <p><i class="iconfont icon-search"></i></p>
-        <p> {{ keyword }} </p>
-      </div>
-    </div>
+    <p class="title font-futura"><i class="iconfont icon-search"></i>{{ keyword }}</p>
 
     <div class="article">
       <articleView
@@ -76,40 +71,18 @@ export default {
 
 <style scoped lang="scss">
 @import '~assets/scss/variable.scss';
-@import '~assets/scss/mixin.scss';
 
-.head {
+.keyword>.title {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 48.5rem;
-  height: 20rem;
-  margin: 0 auto $normal-pad auto;
-  font-size: 3rem;
-  color: $black;
-  background: $module-bg;
-  text-align: center;
-
-  P {
-    line-height: 3.5rem;
-  }
+  padding: 0.5rem 0rem;
+  line-height: 1.5rem;
+  font-size: 1rem;
+  font-weight: normal;
+  border-bottom: 1px solid $border-color;
 
   i {
-    font-size: 3.5rem;    
-  }
-}
-
-.head.mobile {
-  height: 10rem;
-  font-size: 2rem;
-  width: 100%;
-
-  p {
-    line-height: 2.5rem;
-  }
-
-  i {
-    font-size: 2.5rem;
+    margin-right: .5rem;
   }
 }
 </style>

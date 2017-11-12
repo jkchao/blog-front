@@ -1,6 +1,7 @@
 <template>
   <section  class="clearfix main">
-    <carrousel :option="swiperOption" :con="banners" :class="{ mobile: mobileLayout }"></carrousel>
+    <!-- <carrousel :option="swiperOption" :con="banners" :class="{ mobile: mobileLayout }"></carrousel> -->
+    <p class="title">最新文章</p>
     <div class="article">
       <articleView
         :articleList = "list"
@@ -21,7 +22,7 @@ export default {
   transition: 'fade',
 
   fetch ({ store }) {
-    return store.dispatch('getArtList')
+    return store.dispatch('getArtList', { type: 1 })
   },
 
   data () {
@@ -80,51 +81,60 @@ export default {
 
 @import '~assets/scss/variable.scss';
 .main {
-  .carrousel {
-    width: 48.5rem;
-    height: 20rem;
-    margin: 0 auto 1rem auto;
-
-    .swiper-slide {
-      text-align: center;
-      position: relative;
-
-      .swiper-content {
-        width: 100%;
-        height: 20rem;
-        overflow: hidden;
-      }
-
-      .swiper-title {
-        position: absolute;
-        right: $normal-pad;
-        top: $normal-pad;
-        padding: $normal-pad / 2;
-        // background: lighten($module-hover-bg, 60%);
-        color: $black;
-        z-index: 999;
-        cursor: pointer;
-
-        &:hover {
-          background: $module-hover-bg;
-        }
-      }
-    }
+  >.title {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0rem;
+    line-height: 1.5rem;
+    font-size: 1rem;
+    font-weight: normal;
+    border-bottom: 1px solid $border-color;
   }
+  // .carrousel {
+  //   width: 48.5rem;
+  //   height: 20rem;
+  //   margin: 0 auto 1rem auto;
 
-  .carrousel.mobile {
-    width: 100%;
-    height: 10rem;
+  //   .swiper-slide {
+  //     text-align: center;
+  //     position: relative;
 
-    .swiper-title {
-      position: absolute;
-      right: $normal-pad/2;
-      top: $normal-pad/2;
-      color: $black;
-      z-index: 999;
-      cursor: pointer;
-    }
-  }
+  //     .swiper-content {
+  //       width: 100%;
+  //       height: 20rem;
+  //       overflow: hidden;
+  //     }
+
+  //     .swiper-title {
+  //       position: absolute;
+  //       right: $normal-pad;
+  //       top: $normal-pad;
+  //       padding: $normal-pad / 2;
+  //       // background: lighten($module-hover-bg, 60%);
+  //       color: $black;
+  //       z-index: 999;
+  //       cursor: pointer;
+
+  //       &:hover {
+  //         background: $module-hover-bg;
+  //       }
+  //     }
+  //   }
+  // }
+
+  // .carrousel.mobile {
+  //   width: 100%;
+  //   height: 10rem;
+
+  //   .swiper-title {
+  //     position: absolute;
+  //     right: $normal-pad/2;
+  //     top: $normal-pad/2;
+  //     color: $black;
+  //     z-index: 999;
+  //     cursor: pointer;
+  //   }
+  // }
 }
 
 </style>

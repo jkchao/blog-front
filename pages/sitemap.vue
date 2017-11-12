@@ -1,6 +1,6 @@
 <template>
   <div class="sitemap" :class="{'mobile': mobileLayout}">
-    <h3 class="font-futura">Articles</h3>
+    <h3 class="font-futura title">所有文章</h3>
     <ul class="sitemap-list">
       <li
         class="sitemap-item"
@@ -52,10 +52,19 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 @import '~assets/scss/variable.scss';
 .sitemap {
-  background: $module-bg;
-  padding: 4rem 2rem 4rem 4rem;
+
+  >.title {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0rem;
+    line-height: 1.5rem;
+    font-size: 1rem;
+    font-weight: normal;
+    border-bottom: 1px solid $border-color;
+  }
 
   &.mobile {
     padding: $lg-pad;
@@ -70,7 +79,7 @@ export default {
   }
 
   >.sitemap-list {
-    padding:  0 $lg-pad;
+    padding: 2rem;
 
     >.sitemap-item {
       padding: 1rem;

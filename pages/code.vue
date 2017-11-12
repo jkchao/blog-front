@@ -77,7 +77,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 48.5rem;
+  width: 48rem;
   height: 20rem;
   margin: 0 auto $normal-pad auto;
   font-size: 1.3rem;

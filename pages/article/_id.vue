@@ -155,11 +155,9 @@ export default {
 
 .article-list {
   margin: auto;
-  width: 48.5rem;
+  width: 48rem;
 
   >.article-cont {
-    padding: $lg-pad;
-    background: $module-bg;
 
     >.meta {
       margin-top: .3rem;
@@ -392,10 +390,9 @@ export default {
     }
   }
   >.item {
-    margin-top: 1rem;
-    padding: $lg-pad;
-    background: $module-bg;
-    // font-size: .8rem;
+    margin: 3rem 0;
+    padding: $lg-pad 0;
+    border-bottom: 1px solid $border-color;
 
     >.info {
       display: flex;
@@ -481,7 +478,6 @@ export default {
 
 .article-list.mobile {
   .article-cont {
-    padding: 1rem;
 
     .content {
 
@@ -496,7 +492,6 @@ export default {
     }
   }
   .item {
-    padding: 1rem;
     font-size: .8rem;
 
     >.info {

@@ -637,8 +637,7 @@
 
   #comment-box {
     position: relative;
-    background-color: $module-bg;
-    padding: 1rem;
+    padding: 1rem 0;
     margin-top: 1rem;
 
     &.mobile {
@@ -732,7 +731,12 @@
       padding-top: 0;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid $module-hover-bg;
+      border-bottom: 1px solid $border-color;
+
+      >.total {
+        color: $black;
+        font-weight: 500;
+      }
 
       > .sort {
 
@@ -949,7 +953,7 @@
 
     > .post-box {
       display: block;
-      border-top: 1px dashed darken($module-hover-bg, 30%);
+      border-top: 1px dashed $border-color;
       padding-top: 1rem;
 
       > .user {

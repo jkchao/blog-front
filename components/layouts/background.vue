@@ -65,7 +65,7 @@
     top: 0;
     left: 0;
     z-index: -1;
-    background-color: #eee;
+    // background-color: #eee;
 
     canvas {
       position: absolute;
