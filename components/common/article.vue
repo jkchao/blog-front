@@ -82,7 +82,6 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 0 1rem;
-    cursor: pointer;
     color: $black;
     border-bottom: 1px solid $border-color;
 

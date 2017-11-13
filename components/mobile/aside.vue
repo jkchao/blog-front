@@ -29,7 +29,7 @@ export default {
       nav: [
         { path: '/', name: '码农', icon: 'iconfont icon-home'},
         { path: '/think', name: '读书', icon: 'iconfont icon-read'},
-        { path: '/fack', name: '民谣', icon: 'iconfont icon-read'}
+        { path: '/fuck', name: '民谣', icon: 'iconfont icon-read'}
       ]
     }
   },

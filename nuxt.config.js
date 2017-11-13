@@ -9,7 +9,6 @@ module.exports = {
     vendor: [
       'axios',
       'howler',
-      'swiper',
       'marked',
       'gravatar',
       'highlight.js'
@@ -65,7 +64,6 @@ module.exports = {
     { src: '~plugins/marked.js' },
     { src: '~/plugins/highlight.js' },
     { src: '~/plugins/gravatar.js' },
-    { src: '~plugins/swiper.js', ssr: false },
     { src: '~plugins/clickOutside.js', ssr: false },
     { src: '~/plugins/ga.js', ssr: false },
     { src: '~plugins/filter.js' },
@@ -81,7 +79,6 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'swiper/dist/css/swiper.css',
     { src: '~assets/scss/index.scss', lang: 'scss' },
     'highlight.js/styles/atom-one-dark.css'
   ],

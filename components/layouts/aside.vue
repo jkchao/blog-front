@@ -114,7 +114,7 @@ export default {
       inserted (el) {
         window.addEventListener('scroll', _ => {
           const scrollTop = document.documentElement.scrollTop
-          if (scrollTop > 1100) el.classList.add('fixed')
+          if (scrollTop > 900) el.classList.add('fixed')
           else el.classList.remove('fixed')
         })
       },

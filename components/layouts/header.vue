@@ -86,7 +86,7 @@ export default {
         { path: '/', name: '码农', icon: 'iconfont icon-home'},
         // { path: '/code', name: 'CODE', icon: 'iconfont icon-code'},
         { path: '/think', name: '读书', icon: 'iconfont icon-read'},
-        { path: '/fack', name: '民谣', icon: 'iconfont icon-user'},
+        { path: '/fuck', name: '民谣', icon: 'iconfont icon-user'},
         // { path: '/wall', name: 'WALL', icon: 'iconfont icon-comments'},
         // { path: '/download', name: 'DOWNLOAD', icon: 'iconfont icon-download'}
       ]
