@@ -80,7 +80,7 @@ module.exports = {
   },
   build: {
     // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
-    vendor: ['axios', 'howler', 'swiper', 'marked', 'gravatar', 'highlight.js'],
+    vendor: ['axios', 'howler', 'marked', 'gravatar', 'highlight.js'],
     // postcss
     postcss: [__webpack_require__(5)(), __webpack_require__(6)(), __webpack_require__(4)()],
     // babel
@@ -109,7 +109,7 @@ module.exports = {
     noscript: [{ innerHTML: 'This website requires JavaScript.' }]
   },
   // plugins
-  plugins: [{ src: '~plugins/marked.js' }, { src: '~/plugins/highlight.js' }, { src: '~/plugins/gravatar.js' }, { src: '~plugins/swiper.js', ssr: false }, { src: '~plugins/clickOutside.js', ssr: false }, { src: '~/plugins/ga.js', ssr: false }, { src: '~plugins/filter.js' }, { src: '~plugins/finally.js' }],
+  plugins: [{ src: '~plugins/marked.js' }, { src: '~/plugins/highlight.js' }, { src: '~/plugins/gravatar.js' }, { src: '~plugins/clickOutside.js', ssr: false }, { src: '~/plugins/ga.js', ssr: false }, { src: '~plugins/filter.js' }, { src: '~plugins/finally.js' }],
 
   // router
   router: {
@@ -119,7 +119,7 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['swiper/dist/css/swiper.css', { src: '~assets/scss/index.scss', lang: 'scss' }, 'highlight.js/styles/atom-one-dark.css'],
+  css: [{ src: '~assets/scss/index.scss', lang: 'scss' }, 'highlight.js/styles/atom-one-dark.css'],
   /*
   ** Customize the progress-bar color
   */

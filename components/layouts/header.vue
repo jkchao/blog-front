@@ -73,7 +73,6 @@
 
 <script>
 
-// import carrousel from '~components/common/carrousel.vue'
 import EventBus from '~/utils/event-bus'
 
 export default {

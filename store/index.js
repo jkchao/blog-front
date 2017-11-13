@@ -126,7 +126,7 @@ export const actions = {
                       .catch(err => console.error(err))
     if (res && res.code === 1) {
       commit('comment/POST_ITEM_SUCCESS', res)
-      commit('article/ADD_COMMENT')
+      if (comment.post_id !== 0) commit('article/ADD_COMMENT')
     } else commit('comment/POST_ITEM_FAILURE')
     return res
   },

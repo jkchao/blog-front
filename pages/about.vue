@@ -1,10 +1,11 @@
 <template>
   <div class="about" :class="{'mobile': mobileLayout}">
+    <p class="title" v-if="!mobileLayout">关于我</p>
     <div class="info-box" :class="{'info-mobile': mobileLayout}">
       <div class="info font-futura">
         <div class="list">
           <i class="iconfont icon-user"></i>
-          <span class="list-content">Guo Wenchao, <span v-if="!mobileLayout">a 90s boy,</span> Web Engineer.</span>
+          <span class="list-content">JK chao, <span v-if="!mobileLayout">a 90s boy,</span> Web Engineer.</span>
         </div>
         <div class="list">
           <i class="iconfont icon-like"></i>
@@ -53,6 +54,8 @@
         </div>
       </div>
     </div>
+
+    <p class="title more" v-if="!mobileLayout">More</p>
     <div class="text-box font-futura">
       <div class="text">
         <p>Too young too simple, sometimes native.</p>
@@ -63,18 +66,23 @@
       </div>
     </div>
 
-    <!-- <div
-      class="foot"
-      v-if="!mobileLayout">
-        <div class="foot-box">
-          <p>我走过山时，山不说话，</p>
-          <p>我路过海时，海不说话。</p>
-        </div>
-    </div> -->
+    <p class="title" v-if="!mobileLayout">还想知道什么？</p>
+    <div class="last" v-if="!mobileLayout">
+      <p></p>
+      <p>哦，对了，可以看看这篇文章
+        <i><a href="https://jkchao.cn/article/5a03f6ec0a7b41779c672afa" target="_blank">来，喝酒吧！</a></i>这都是我乱说的。
+      </p>
+    </div>
+
+    <div class="comment">
+      <comments :post-id="0"></comments>
+    </div>
   </div>
 </template>
 
 <script>
+
+import comments from '~components/common/comments'
 
 export default {
 
@@ -100,7 +108,9 @@ export default {
     user () {
       return this.$store.state.options.adminInfo
     }
-  }
+  },
+
+  components: { comments }
 }
 
 </script>
@@ -114,17 +124,36 @@ export default {
   margin: 0 auto;
   width: $container-min-width;
 
+  >.title {
+    padding: 0.5rem 0rem;
+    line-height: 1.5rem;
+    color: $black;
+    font-size: 1rem;
+    font-weight: normal;
+    border-bottom: 1px solid $border-color;
+  }
+
+  >.title.more {
+    margin-top: 2rem;
+  }
+
+  >.last {
+    padding: 2rem;
+    border: 0;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
   >.info-box {
-    // display: grid;
-    // grid-template-columns: auto 14rem;
-    // grid-gap: 1rem;
     display: flex;
     justify-content: space-between;
 
     >.info {
       position: relative;
-      width: calc(100% - 14rem - 1rem);
-      padding: $normal-pad $lg-pad;
+      width: calc(100% - 16rem - 1rem);
+      padding: $normal-pad 0;
 
       >.list {
         display: flex;
@@ -190,8 +219,8 @@ export default {
     }
 
     >.user-box {
-      background: $module-bg;
-      width: 14rem;
+      width: 16rem;
+      padding-right: 2rem;
 
       .user {
         padding: 1rem;
@@ -231,7 +260,7 @@ export default {
       >.user-box {
         // grid-row: 1 / 2;
         width: 100%;
-        margin-bottom: 1rem;
+        padding-right: 0;
 
         >.user {
           padding: 1.5rem;
@@ -240,6 +269,7 @@ export default {
     }
     .text-box .text {
       padding: 1.5rem;
+      text-align: left;
     }
   }
 
@@ -249,21 +279,7 @@ export default {
     >.text {
       padding: 3rem;
       line-height: 2rem;
-    }
-  }
-
-  >.foot {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem 0 0 0;
-    height: 390px;
-    background: url('http://ovshyp9zv.bkt.clouddn.com/bg.jpg?imageView2/2/w/700') no-repeat center;
-    color: $white;
-    font-size: 1.3rem;
-
-    p {
-      line-height: 2rem;
+      text-align: center;
     }
   }
 }

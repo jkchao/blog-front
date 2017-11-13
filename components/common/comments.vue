@@ -19,81 +19,6 @@
            @click.stop.prevent="sortComemnts(2)">最热</a>
       </div>
     </div>
-    <transition name="module" mode="out-in">
-      <div class="empty-box" v-if="!comment.data.data.length && !comment.fetching">暂无评论</div>
-      <div class="loading" v-else-if="!comment.data.data.length && comment.fetching">loading...</div>
-      <div class="list-box" v-else>
-        <transition-group name="list" tag="ul" class="comment-list">
-          <li class="comment-item"
-              v-for="(comment, index) in comment.data.data"
-              :id="`comment-item-${comment.id}`"
-              :key="comment.id">
-            <div class="cm-avatar" v-if="!mobileLayout">
-              <a target="_blank"
-                 rel="external nofollow"
-                 :href="comment.author.site"
-                 @click.stop="clickUser($event, comment.author)">
-                <img :alt="comment.author.name || '匿名用户'"
-                     :src="gravatar(comment.author.email) || '/images/anonymous.jpg'">
-              </a>
-            </div>
-            <div class="cm-body">
-              <div class="cm-header">
-                <a class="user-name" 
-                   target="_blank" 
-                   rel="external nofollow"
-                   :href="comment.author.site" 
-                   @click.stop="clickUser($event, comment.author)">
-                    <img :alt="comment.author.name || '匿名用户'"
-                        :src="gravatar(comment.author.email) || '/images/anonymous.jpg'" 
-                        v-if="mobileLayout"
-                        width="24px"
-                        style="margin-right: 10px;">
-                    <span>{{ comment.author.name }}</span>
-                   </a>
-
-                <!-- <span class="reply" v-if="!!comment.pid">
-                  <span>回复 </span>
-                  <a href="" @click.stop.prevent="toSomeAnchorById(`comment-item-${comment.pid}`)">
-                    <span></span>
-                    <strong v-if="fondReplyParent(comment.pid)">{{ fondReplyParent(comment.pid) }}</strong>
-                  </a>
-                </span> -->
-                <span class="flool">{{ comment.create_at | dateFormat('yyyy.MM.dd hh:mm')}}</span>
-              </div>
-              <div class="cm-content">
-                <div class="reply-box" v-if="!!comment.pid">
-                  <p class="reply-name">
-                    <a href="" @click.stop.prevent="toSomeAnchorById(`comment-item-${comment.pid}`)">
-                      <span></span>
-                      <strong v-if="fondReplyParent(comment.pid)">{{ fondReplyParent(comment.pid) }}</strong>
-                    </a>
-                  </p>
-                  <div 
-                  class="reply-content"
-                  v-html="fondReplyParentContent(comment.pid).length > 150
-                  ? fondReplyParentContent(comment.pid).slice(0, 150) + '...'
-                  : fondReplyParentContent(comment.pid)" ></div>
-                </div>
-                <div v-html="marked(comment.content)"></div>
-              </div>
-              <div class="cm-footer">
-                <a href="" 
-                   class="like" 
-                   :class="{ liked: commentLiked(comment._id), actived: !!comment.likes }"
-                   @click.stop.prevent="likeComment(comment)">
-                  <i class="iconfont icon-zan"></i>
-                  <span>顶&nbsp;({{ comment.likes }})</span></a>
-                <a href="" class="reply" @click.stop.prevent="replyComment(comment)">
-                  <i class="iconfont icon-reply"></i>
-                  <span>回复</span>
-                </a>
-              </div>
-            </div>
-          </li>
-        </transition-group>
-      </div>
-    </transition>
     <form class="post-box" name="comment" id="post-box">
       <div class="editor-box">
         <div class="user">
@@ -234,6 +159,83 @@
         </div>
       </transition>
     </form>
+
+    <transition name="module" mode="out-in">
+      <!-- <div class="empty-box" v-if="!comment.data.data.length && !comment.fetching">暂无评论</div> -->
+      <!-- <div class="loading" v-if="!comment.data.data.length && comment.fetching">loading...</div> -->
+      <div class="list-box" v-if="comment.data.data.length && comment.data.data.length !== 0">
+        <transition-group name="list" tag="ul" class="comment-list">
+          <li class="comment-item"
+              v-for="(comment, index) in comment.data.data"
+              :id="`comment-item-${comment.id}`"
+              :key="comment.id">
+            <div class="cm-avatar" v-if="!mobileLayout">
+              <a target="_blank"
+                 rel="external nofollow"
+                 :href="comment.author.site"
+                 @click.stop="clickUser($event, comment.author)">
+                <img :alt="comment.author.name || '匿名用户'"
+                     :src="gravatar(comment.author.email) || '/images/anonymous.jpg'">
+              </a>
+            </div>
+            <div class="cm-body">
+              <div class="cm-header">
+                <a class="user-name" 
+                   target="_blank" 
+                   rel="external nofollow"
+                   :href="comment.author.site" 
+                   @click.stop="clickUser($event, comment.author)">
+                    <img :alt="comment.author.name || '匿名用户'"
+                        :src="gravatar(comment.author.email) || '/images/anonymous.jpg'" 
+                        v-if="mobileLayout"
+                        width="24px"
+                        style="margin-right: 10px;">
+                    <span>{{ comment.author.name }}</span>
+                   </a>
+
+                <!-- <span class="reply" v-if="!!comment.pid">
+                  <span>回复 </span>
+                  <a href="" @click.stop.prevent="toSomeAnchorById(`comment-item-${comment.pid}`)">
+                    <span></span>
+                    <strong v-if="fondReplyParent(comment.pid)">{{ fondReplyParent(comment.pid) }}</strong>
+                  </a>
+                </span> -->
+                <span class="flool">{{ comment.create_at | dateFormat('yyyy.MM.dd hh:mm')}}</span>
+              </div>
+              <div class="cm-content">
+                <div class="reply-box" v-if="!!comment.pid">
+                  <p class="reply-name">
+                    <a href="" @click.stop.prevent="toSomeAnchorById(`comment-item-${comment.pid}`)">
+                      <span></span>
+                      <strong v-if="fondReplyParent(comment.pid)">{{ fondReplyParent(comment.pid) }}</strong>
+                    </a>
+                  </p>
+                  <div 
+                  class="reply-content"
+                  v-html="fondReplyParentContent(comment.pid).length > 150
+                  ? fondReplyParentContent(comment.pid).slice(0, 150) + '...'
+                  : fondReplyParentContent(comment.pid)" ></div>
+                </div>
+                <div v-html="marked(comment.content)"></div>
+              </div>
+              <div class="cm-footer">
+                <a href="" 
+                   class="like" 
+                   :class="{ liked: commentLiked(comment._id), actived: !!comment.likes }"
+                   @click.stop.prevent="likeComment(comment)">
+                  <i class="iconfont icon-zan"></i>
+                  <span>顶&nbsp;({{ comment.likes }})</span></a>
+                <a href="" class="reply" @click.stop.prevent="replyComment(comment)">
+                  <i class="iconfont icon-reply"></i>
+                  <span>回复</span>
+                </a>
+              </div>
+            </div>
+          </li>
+        </transition-group>
+      </div>
+    </transition>
+
   </div>
 </template>
 
@@ -478,7 +480,7 @@
         if (targetDom) {
           let isToEditor = Object.is(id, 'post-box')
           let isCommentBox = Object.is(id, 'comment-box')
-          scrollTo(targetDom, 500, { offset: isToEditor ? 110 : isCommentBox ? -70 : -300 })
+          scrollTo(targetDom, 500, { offset: isToEditor ? -110 : isCommentBox ? -70 : -300 })
           // 如果是进入编辑模式，则需要激活光标
           if (isToEditor) {
             let p = this.$refs.markdown
@@ -572,7 +574,9 @@
           this.userCacheMode = true
           this.cancelCommentReply()
           this.clearCommentContent()
-          scrollTo(document.querySelector('#post-box'), 200, { offset: 0 })
+          this.$nextTick(() => {
+            scrollTo(document.querySelector(`#comment-item-${res.result.id}`), 200, { offset: 0 })
+          })
           localStorage.setItem('BLOG_USER', JSON.stringify(this.user))
         } else alert('操作失败')
       }
@@ -760,6 +764,8 @@
     }
 
     > .list-box {
+      border-top: 1px solid $border-color;
+      margin-top: 1rem;
 
       > .comment-list {
         padding: 0;
@@ -953,7 +959,7 @@
 
     > .post-box {
       display: block;
-      border-top: 1px dashed $border-color;
+      // border-bottom: 1px solid $border-color;
       padding-top: 1rem;
 
       > .user {
