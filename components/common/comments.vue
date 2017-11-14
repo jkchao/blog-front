@@ -51,9 +51,6 @@
                   placeholder="写下你的评论..."
                   @keyup="commentContentChange($event)">
               </div>
-              <div class="markdown-preview" 
-                  :class="{ actived: previewMode }"
-                  v-html="previewContent"></div>
             </div>
             <div class="editor-tools" key="3">
               <a href="" class="emoji" title="emoji" @click.stop.prevent>
@@ -94,9 +91,6 @@
               </a>
               <a href="" class="code" title="code" @click.stop.prevent="insertContent('code')">
                 <i class="iconfont icon-code"></i>
-              </a>
-              <a href="" class="preview" title="preview" @click.stop.prevent="togglePreviewMode">
-                <i class="iconfont icon-eye"></i>
               </a>
               <button type="submit" 
                       class="submit" 
@@ -162,7 +156,6 @@
 
     <transition name="module" mode="out-in">
       <!-- <div class="empty-box" v-if="!comment.data.data.length && !comment.fetching">暂无评论</div> -->
-      <!-- <div class="loading" v-if="!comment.data.data.length && comment.fetching">loading...</div> -->
       <div class="list-box" v-if="comment.data.data.length && comment.data.data.length !== 0">
         <transition-group name="list" tag="ul" class="comment-list">
           <li class="comment-item"
@@ -193,13 +186,6 @@
                     <span>{{ comment.author.name }}</span>
                    </a>
 
-                <!-- <span class="reply" v-if="!!comment.pid">
-                  <span>回复 </span>
-                  <a href="" @click.stop.prevent="toSomeAnchorById(`comment-item-${comment.pid}`)">
-                    <span></span>
-                    <strong v-if="fondReplyParent(comment.pid)">{{ fondReplyParent(comment.pid) }}</strong>
-                  </a>
-                </span> -->
                 <span class="flool">{{ comment.create_at | dateFormat('yyyy.MM.dd hh:mm')}}</span>
               </div>
               <div class="cm-content">
@@ -233,6 +219,7 @@
             </div>
           </li>
         </transition-group>
+      <div class="loading" v-if="comment.fetching">loading...</div>
       </div>
     </transition>
 
@@ -266,7 +253,6 @@
           site: '',
           gravatar: null
         },
-        loadComment: false,
         // 用户历史数据
         likeComments: [],
         regexs: {
@@ -310,27 +296,20 @@
         return
       }
 
-      window.onscroll = _.throttle(async () => {
-        if (!this.loadComment) {
-          // 窗口高度
-          let windowHeight = window.innerHeight
+      window.onscroll = _.throttle(() => {
+        // 总高度
+        let scrollHeight = document.documentElement.scrollHeight
 
+        // 滚动距离
+        let scrolleTop = document.documentElement.scrollTop
 
-          // 评论框是否出现在视窗内
-          let eleToTop = document.getElementById('comment-box').offsetTop - document.documentElement.scrollTop
-          if (eleToTop <= windowHeight) {
-            if (!this.comment.data.pagination.total_page) {
-              await this.loadComemntList()
-              this.loadComment = true
-            }
-          }
-          return
-        }
-        if (this.haveMore && this.loadComment) {
-          let windowHeight = window.innerHeight
-          // 评论框是否出现在视窗内
-          let eleToTop = document.getElementById('post-box').offsetTop + document.getElementById('comment-box').offsetTop - document.documentElement.scrollTop
-          if (eleToTop < windowHeight) {
+        // 窗口高度
+        let windowHeight = window.innerHeight
+
+        if (scrollHeight -  scrolleTop - windowHeight <= 600) {
+          if (!this.comment.data.pagination.total_page) {
+            this.loadComemntList()
+          } else if (this.haveMore && !this.comment.fetching) {
             this.loadComemntList({
               current_page: this.comment.data.pagination.current_page + 1
             })
@@ -447,11 +426,11 @@
         this.updateCommentContent({ end: emoji })
       },
 
-      // 切换预览模式
-      togglePreviewMode() {
-        this.previewContent = this.marked(this.comemntContentText)
-        this.previewMode = !this.previewMode
-      },
+      // // 切换预览模式
+      // togglePreviewMode() {
+      //   this.previewContent = this.marked(this.comemntContentText)
+      //   this.previewMode = !this.previewMode
+      // },
 
       // 评论排序
       async sortComemnts (sort) {
@@ -463,11 +442,6 @@
           }, 300)
         }
       },
-      // // 翻页反向计算
-      // paginationReverseActive(index) {
-      //   const pagination = this.comment.data.pagination
-      //   return Object.is(index, pagination.total_page + 1 - pagination.current_page)
-      // },
 
       // 点击用户
       clickUser(event, user) {
@@ -588,8 +562,7 @@
   @import '~assets/scss/mixin';
   @import '~assets/scss/variable';
   .cm-content,
-  .reply-preview,
-  .markdown-preview {
+  .reply-preview {
     font-size: 1em;
     line-height: 2em;
     margin: .8em 0;
@@ -673,10 +646,10 @@
         }
       }
 
-      >.empty-box,
-      >.loading {
+      .loading {
         height: 5rem;
         line-height: 5rem;
+        border-top: 1px solid $border-color;
       }
 
       > .post-box {
@@ -755,12 +728,13 @@
       }
     }
 
-    > .empty-box,
-    > .loading {
+    // > .empty-box,
+    .loading {
       font-weight: bold;
       text-align: center;
       height: 7rem;
       line-height: 7rem;
+      border-top: 1px solid $border-color;
     }
 
     > .list-box {
@@ -1157,26 +1131,6 @@
 
               &:focus{
                 content:none;
-              }
-            }
-
-            > .markdown-preview {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 0;
-              overflow: auto;
-              margin: 0;
-              padding: .5em;
-              @include css3-prefix(transform, translateY(-100%));
-              background-color: rgba(235, 235, 235, 0.85);
-              transition: transform .2s;
-
-              &.actived {
-                height: 100%;
-                transition: transform .2s;
-                @include css3-prefix(transform, translateY(0));
               }
             }
           }

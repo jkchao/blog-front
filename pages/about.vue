@@ -1,11 +1,11 @@
 <template>
   <div class="about" :class="{'mobile': mobileLayout}">
-    <p class="title" v-if="!mobileLayout">关于我</p>
+    <p class="title" >关于我</p>
     <div class="info-box" :class="{'info-mobile': mobileLayout}">
       <div class="info font-futura">
         <div class="list">
           <i class="iconfont icon-user"></i>
-          <span class="list-content">JK chao, <span v-if="!mobileLayout">a 90s boy,</span> Web Engineer.</span>
+          <span class="list-content">三毛 (JK chao), <span >a 90s boy,</span> Web Engineer.</span>
         </div>
         <div class="list">
           <i class="iconfont icon-like"></i>
@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <p class="title more" v-if="!mobileLayout">More</p>
+    <p class="title more" :class="{'title-mobile': mobileLayout}">More</p>
     <div class="text-box font-futura">
       <div class="text">
         <p>Too young too simple, sometimes native.</p>
@@ -66,8 +66,8 @@
       </div>
     </div>
 
-    <p class="title" v-if="!mobileLayout">还想知道什么？</p>
-    <div class="last" v-if="!mobileLayout">
+    <p class="title more">还有啥？</p>
+    <div class="last">
       <p></p>
       <p>哦，对了，可以看看这篇文章
         <i><a href="https://jkchao.cn/article/5a03f6ec0a7b41779c672afa" target="_blank">来，喝酒吧！</a></i>这都是我乱说的。
@@ -135,6 +135,10 @@ export default {
 
   >.title.more {
     margin-top: 2rem;
+  }
+
+  >.title-mobile {
+    margin-top: 0;
   }
 
   >.last {
@@ -232,6 +236,10 @@ export default {
         }
       }
     }
+  }
+
+  >.comment {
+    margin-top: 2rem;
   }
 
   &.mobile {

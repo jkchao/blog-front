@@ -1,22 +1,6 @@
 <template>
     <div tag="div" class="aside" >
-      <!-- <div
-        class="aside-item search-box"
-        @click="open = true"
-        v-click-outside="hide"
-        key="1">
-        <div class="search" :class="{'open': open}">
-          <input
-            type="text"
-            v-model="keyword"
-            placeholder="search..."
-            ref="search"
-            @keyup.enter="search" 
-            :maxlength="10"/>
-          <div class="eks" @click.stop="search"></div>
-        </div>
-      </div> -->
-      <div class="aside-item hot-article" key="2">
+      <div class="aside-item hot-article" key="1">
         <h3 class="title">
           <span>热门文章</span>
           <nuxt-link to="/sitemap">
@@ -33,10 +17,7 @@
           </p>
         </transition-group>
       </div>
-      <!-- <div class="aside-item calendar" key="3">
-        <calendar></calendar>
-      </div> -->
-      <div class="aside-item aside-tag font-futura" key="4">
+      <div class="aside-item aside-tag font-futura" key="2">
         <h3 class="title">
           <span>标签</span>
         </h3>
@@ -68,7 +49,7 @@
 </template>
 
 <script>
-import calendar from '~components/common/calendar.vue'
+
 export default {
   name: 'aside',
   data () {
@@ -86,8 +67,6 @@ export default {
       return this.$store.state.article.hotArt.list
     }
   },
-
-  components: { calendar },
 
   watch: {
     open (val) {
@@ -182,12 +161,9 @@ export default {
           display: block;
           padding: .4rem;
           color: $secondary;
-          // background: $light-dark;
 
           &:hover {
             color: $black;
-            // background: $light-dark;
-            // text-decoration: underline;
           }
         }
       }

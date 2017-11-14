@@ -9,23 +9,21 @@
         <div class="content">
           <p class="title"><nuxt-link :to="`/article/${item._id}`">{{ item.title }}</nuxt-link></p>
           <nuxt-link :to="`/article/${item._id}`" v-if="mobileLayout">
-            <img :src="item.thumb" alt="" width="100%" class="mobil-img"/>
+            <img :src="item.thumb + '?imageView2/1/w/350/h/180'" alt="" width="100%" class="mobil-img"/>
           </nuxt-link>
           <p class="abstrack">{{ item.descript | text(200)}}</p>
           <div class="meta">
-            <!-- <span class="tag" v-if="!mobileLayout"><i class="iconfont icon-category"></i>
-              {{
-                  item.type === 1
-                  ? 'Code'
-                  : 'Think'
-                }}
-            </span> -->
             <span class="time" v-if="!mobileLayout">
               {{ 
                 item.create_at | dateFormat('yyyy.MM.dd hh:mm')
               }}
             </span>
-            <span class="hr" v-if="!mobileLayout"></span>
+            <span class="time" v-else>
+              {{ 
+                item.create_at | dateFormat('yyyy.MM.dd')
+              }}
+            </span>
+            <span class="hr" v-if="mobileLayout"></span>
             <span class="read"> {{ item.meta.views }} 人阅读</span>
             <span class="hr"></span>
             <span class="comments"> {{ item.meta.comments }} 条评论</span>

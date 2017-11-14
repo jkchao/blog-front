@@ -110,9 +110,6 @@ export default {
       top: 4rem;
       left: calc(50% - 12rem);      
 
-      // .dialog-item {
-      //   grid-template-columns: 100%;
-      // }
     }
   }
 }
