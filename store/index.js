@@ -1,5 +1,6 @@
 import service from '../api'
 import EventBus from '~/utils/event-bus'
+import { setTimeout } from 'timers'
 
 export const actions = {
 
@@ -104,19 +105,21 @@ export const actions = {
       // commit('comment/CLEAR_LIST')
     }
     commit('comment/REQUEST_LIST')
-    const res = await service.getComment(data)
-                      .catch(err => console.error(err))
-    if (res && res.code === 1) {
-      let list
-      if (res.result.pagination.current_page === 1) list = res.result.data
-      else list = [...state.comment.data.data, ...res.result.data]
-      // if (Object.is(data.sort, -1)) res.result.data.reverse()
-      commit('comment/GET_LIST_SUCCESS', {
-        data: list,
-        pagination: res.result.pagination
-      })
-    } else commit('comment/GET_LIST_FAILURE')
-    return res
+    setTimeout(async () => {
+      const res = await service.getComment(data)
+                        .catch(err => console.error(err))
+      if (res && res.code === 1) {
+        let list
+        if (res.result.pagination.current_page === 1) list = res.result.data
+        else list = [...state.comment.data.data, ...res.result.data]
+        // if (Object.is(data.sort, -1)) res.result.data.reverse()
+        commit('comment/GET_LIST_SUCCESS', {
+          data: list,
+          pagination: res.result.pagination
+        })
+      } else commit('comment/GET_LIST_FAILURE')
+      return res
+    }, 500)
   },
 
   // 发布评论

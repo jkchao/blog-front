@@ -154,9 +154,9 @@
       </transition>
     </form>
 
-    <transition name="module" mode="out-in">
+    <transition-group name="list" tag="span">
       <!-- <div class="empty-box" v-if="!comment.data.data.length && !comment.fetching">暂无评论</div> -->
-      <div class="list-box" v-if="comment.data.data.length && comment.data.data.length !== 0">
+      <div class="list-box" v-if="comment.data.data.length && comment.data.data.length !== 0" key="1">
         <transition-group name="list" tag="ul" class="comment-list">
           <li class="comment-item"
               v-for="(comment, index) in comment.data.data"
@@ -219,9 +219,11 @@
             </div>
           </li>
         </transition-group>
-      <div class="loading" v-if="comment.fetching">loading...</div>
       </div>
-    </transition>
+      <div class="loading" v-if="comment.fetching" key="2">
+        <loadingCom></loadingCom>
+      </div>
+    </transition-group>
 
   </div>
 </template>
@@ -230,10 +232,12 @@
   import marked from '~/plugins/marked'
   import gravatar from '~/plugins/gravatar'
   import { scrollTo } from '~/utils/scroll'
+  import loadingCom from '~components/common/loading'
   import _ from '~/utils/underscore'
   export default {
     name: 'comment',
-    data() {
+
+    data () {
       return {
         // 父级评论
         pid: 0,
@@ -267,6 +271,9 @@
         required: true
       }
     },
+
+    components: { loadingCom },
+
     computed: {
 
       comment() {
@@ -297,17 +304,18 @@
       }
 
       window.onscroll = _.throttle(() => {
+
         // 总高度
-        let scrollHeight = document.documentElement.scrollHeight
+        let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight
 
         // 滚动距离
-        let scrolleTop = document.documentElement.scrollTop
+        let scrolleTop = document.documentElement.scrollTop || document.body.scrollTop
 
         // 窗口高度
         let windowHeight = window.innerHeight
 
-        if (scrollHeight -  scrolleTop - windowHeight <= 600) {
-          if (!this.comment.data.pagination.total_page) {
+        if (scrollHeight -  scrolleTop - windowHeight <= 200) {
+          if (!this.comment.data.pagination.total_page && !this.comment.fetching) {
             this.loadComemntList()
           } else if (this.haveMore && !this.comment.fetching) {
             this.loadComemntList({
@@ -619,7 +627,7 @@
 
     &.mobile {
 
-      > .list-box {
+      .list-box {
 
         > .comment-list {
 
@@ -649,7 +657,6 @@
       .loading {
         height: 5rem;
         line-height: 5rem;
-        border-top: 1px solid $border-color;
       }
 
       > .post-box {
@@ -734,10 +741,9 @@
       text-align: center;
       height: 7rem;
       line-height: 7rem;
-      border-top: 1px solid $border-color;
     }
 
-    > .list-box {
+    .list-box {
       border-top: 1px solid $border-color;
       margin-top: 1rem;
 
