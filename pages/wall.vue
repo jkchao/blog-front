@@ -2,28 +2,24 @@
   <div class="walls" :class="{'walls-mobile': mobileLayout}">
     <div class="head font-futura">
       <div class="box">
-        <p>WANT TO SAY SOMETHING?</p>
-        <a href="javascript:;" class="join"  @click.stop="open">COME ON!</a>
+        <a href="javascript:;" class="join"  @click.stop="open">我要上墙</a>
       </div>
     </div>
 
     <transition-group name="slide-down" tag="div" class="list-box">
-      <div class="list" v-for="(list, index) in items" :key="list._id">
+      <div 
+        class="list" 
+        v-for="(list, index) in items" 
+        :key="list._id"
+        :style="{backgroundColor: `rgb(${colors[parseInt(20*Math.random())]})`}">
         <h3 class="user">
-          <img :alt="list.name || '匿名用户'"
-                :src="gravatar(list.email) || 'http://ovshyp9zv.bkt.clouddn.com/gravatar.jpg'"
-                class="user-head">
           <span class="user-name">
-            {{ list.name }}
+            {{ list.create_time | dateFormat('yyyy.MM.dd hh:mm')}}
           </span>
         </h3>
         <p class="content">{{ list.content }}</p>
         <div class="info">
-          <span class="time"><i class="iconfont icon-time"></i>{{ list.create_time | dateFormat('yyyy.MM.dd hh:mm')}}</span>
-          <span class="icon">
-            <a :href="list.github" target="_blank" v-show="list.github !== ''"><i class="iconfont icon-github"></i></a>
-            <a :href="list.blog"  target="_blank" v-show="list.blog !== ''"><i class="iconfont icon-boke"></i></a>
-          </span>
+          <span class="time">{{ list.name }}</span>
         </div>
       </div>
     </transition-group>
@@ -36,26 +32,8 @@
     <dialog-com :visible.sync = "show" :class="{'dialog-mobile': mobileLayout}">
       <form>
         <div class="dialog-item name" >
-          <span>大名：</span>
-          <input type="text" placeholder="name *" v-model="form.name" maxlength="20" class="form-item" />
-        </div>
-        <div class="dialog-item email">
-          <span>EMAIL：</span>
-          <input
-              type="email"
-              name="email"
-              placeholder="email *" 
-              v-model="form.email"
-              maxlength="30"
-              class="form-item">
-        </div>
-        <div class="dialog-item github" >
-          <span>GITHUB：</span>
-          <input type="text" v-model="form.github" maxlength="40" placeholder="http:// or https://" class="form-item" />
-        </div>
-        <div class="dialog-item blog" >
-          <span>BLOG：</span>
-          <input type="text" v-model="form.blog" maxlength="40" placeholder="http:// or https://" class="form-item" />
+          <span>名字：</span>
+          <input type="text" placeholder="name" v-model="form.name" maxlength="20" class="form-item" />
         </div>
         <div class="dialog-item content">
           <span>说点啥？</span>
@@ -74,7 +52,6 @@
 
 <script>
 import dialogCom from '~components/common/dialog.vue'
-  import gravatar from '~/plugins/gravatar'
 export default {
   name: 'wall',
 
@@ -100,6 +77,29 @@ export default {
         content: '',
         email: ''
       },
+      colors: [
+        '179, 151, 217',
+        '128, 212, 224',
+        '242, 178, 211',
+        '114, 97, 181',
+        '237, 197, 198',
+        '123, 194, 172',
+        '228, 113, 111',
+        '220, 152, 174',
+        '149, 130, 224',
+        '229, 162, 110',
+        '148, 194, 165',
+        '218, 189, 153',
+        '102, 200, 207',
+        '233, 147, 117',
+        '147, 138, 228',
+        '203, 198, 225',
+        '158, 191, 242',
+        '203, 198, 225',
+        '203, 198, 225',
+        '203, 198, 225'        
+      ],
+      
 
       regexs: {
         email: /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/,
@@ -143,18 +143,6 @@ export default {
       this.show = true
     },
 
-    // 头像服务
-    gravatar(email) {
-      if (!this.regexs.email.test(email)) return null
-      let gravatar_url = gravatar.url(email, {
-        // size: '96', 
-        // rating: 'pg',
-        // default: 'https://gravatar.surmon.me/anonymous.jpg', 
-        protocol: 'https'
-      });
-      return gravatar_url
-    },
-
     loadMore () {
       this.$store.dispatch('getHero', {
         current_page: this.$store.state.heros.data.pagination.current_page + 1
@@ -162,12 +150,7 @@ export default {
     },
 
     async submit () {
-      if (this.form.name === '') return alert('姓名必填')
       if (this.form.content === '') return alert('说点什么？')
-      if (!this.form.email) return alert('邮箱？')
-      if (!this.regexs.email.test(this.form.email)) return alert('邮箱不合法')
-      if (!!this.form.github && !this.regexs.url.test(this.form.github)) return alert('github不合法')
-      if (!!this.form.blog && !this.regexs.url.test(this.form.blog)) return alert('blog不合法')
       const res = await this.$store.dispatch('postHero', { ...this.form })
       window.alert(res.message)
       if (res.code === 1) {
@@ -213,12 +196,14 @@ export default {
     justify-content: center;
     align-items: center;
     // grid-column: 1 / 4;
-    width: 100%;
-    height: 20rem;
+    margin: 1rem auto;
+    width: 12rem;
+    height: 5rem;
     font-size: 1.3rem;
     color: $black;
     text-align: center;
-    background: $module-bg;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
 
     p {
       margin-bottom: .7rem;
@@ -232,33 +217,34 @@ export default {
       @include border-radius($xs-pad);
       @include transition(all .5s ease);
       @include transform(perspective(1px) translateZ(0));
+      animation: defaultBtnBg 10s ease infinite alternate;
 
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
-        @include border-radius($xs-pad);
-        @include transform(scaleY(0));
-        @include transform-origin(50% 0px 0px);
-        transition-property: transform;
-        transition-duration: 0.5s;
-        transition-timing-function: ease-out;
-        background: $black;
-      }
+      // &::after {
+      //   content: '';
+      //   position: absolute;
+      //   top: 0;
+      //   left: 0;
+      //   right: 0;
+      //   bottom: 0;
+      //   z-index: -1;
+      //   @include border-radius($xs-pad);
+      //   @include transform(scaleY(0));
+      //   @include transform-origin(50% 0px 0px);
+      //   transition-property: transform;
+      //   transition-duration: 0.5s;
+      //   transition-timing-function: ease-out;
+      //   background: $black;
+      // }
 
       &:hover {
         color: white;
         // background: $black;
       }
 
-      &:hover::after {
-        transform: scaleY(1);
-        transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
-      }
+      // &:hover::after {
+      //   transform: scaleY(1);
+      //   transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+      // }
     }
   }
 
@@ -275,7 +261,7 @@ export default {
       width: calc(100%/3 - 2rem/3);
       background: $module-bg;
       margin: 1rem 1rem 0 0;
-      border: 1px solid $border-color;
+      color: white;
       @include css3-prefix('transition', 'all .3s');
 
       &:nth-child(3n) {
@@ -286,23 +272,15 @@ export default {
         left: -4px;
         top: -4px;
         box-shadow: 4px 4px 10px 0 rgba(0,0,0,.2);
-        color: $black;
         background: $white;
       }
 
       >.user {
 
-        >.user-head {
-          width: 2.5rem;
-          height: 2.5rem;
-          border-radius: 50%;
-        }
-
         >.user-name {
-          margin-left: 1rem;
           max-width: 20rem;
           font-weight: normal;
-          font-size: .85rem;
+          font-size: 1rem;
 
           @include text-overflow();
         }
@@ -311,37 +289,14 @@ export default {
       >.content {
         margin: 1rem 0;
         height: 55%;
+        font-size: .85rem;
       }
 
       >.info {
-        display: flex;
-        justify-content: space-between;
         height: 1rem;
         font-size: $font-size-small;
-        color: $dividers;
         line-height: 1rem;
-
-        >.time>i {
-          margin-right: .3rem;
-          vertical-align: text-top;
-        }
-
-        a {
-          margin: .3rem;
-          color: #555;
-
-          >i {
-            @include transition(all .5s ease);
-          }
-
-          &:hover {
-            color: $black;
-
-            i {
-              font-size: 1.35rem;
-            }
-          }
-        }
+        text-align: right;
       }
     }
   }
@@ -440,5 +395,41 @@ export default {
     }
   }
 }
+
+@keyframes defaultBtnBg {
+  0%   {
+    color: white;
+    background: rgb(179, 151, 217);
+  }
+  12%  {
+    color: white;
+    background: rgb(128, 212, 224);
+  }
+  24%  {
+    color: white;
+    background: rgb(242, 141, 160);
+  }
+  36%  {
+    color: white;
+    background: rgb(97, 95, 245);
+  }
+  60% {
+    color: white;
+    background: rgb(133, 181, 240);
+  }
+  72% {
+    color: white;
+    background: rgb(229, 262, 110);
+  }
+  86% {
+    color: white;
+    background: rgb(148, 194, 165);
+  }
+  100% {
+    color: white;
+    background: rgb(123, 194, 172);
+  }
+}
+
 
 </style>
