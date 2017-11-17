@@ -3,8 +3,8 @@
     <div class="container">
       <p class="mune">
         <nuxt-link to="/about">关于博主</nuxt-link>
-        <!-- <span class="hr"></span>
-        <nuxt-link to="/wall">留言墙</nuxt-link> -->
+        <span class="hr"></span>
+        <nuxt-link to="/wall">留言墙</nuxt-link>
       </p>
       <div
         class="clearfix font-futura">

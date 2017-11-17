@@ -10,8 +10,7 @@
       <div 
         class="list" 
         v-for="(list, index) in items" 
-        :key="list._id"
-        :style="{backgroundColor: `rgb(${colors[parseInt(20*Math.random())]})`}">
+        :key="list._id">
         <h3 class="user">
           <span class="user-name">
             {{ list.create_time | dateFormat('yyyy.MM.dd hh:mm')}}
@@ -77,29 +76,6 @@ export default {
         content: '',
         email: ''
       },
-      colors: [
-        '179, 151, 217',
-        '128, 212, 224',
-        '242, 178, 211',
-        '114, 97, 181',
-        '237, 197, 198',
-        '123, 194, 172',
-        '228, 113, 111',
-        '220, 152, 174',
-        '149, 130, 224',
-        '229, 162, 110',
-        '148, 194, 165',
-        '218, 189, 153',
-        '102, 200, 207',
-        '233, 147, 117',
-        '147, 138, 228',
-        '203, 198, 225',
-        '158, 191, 242',
-        '203, 198, 225',
-        '203, 198, 225',
-        '203, 198, 225'        
-      ],
-      
 
       regexs: {
         email: /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/,
@@ -191,11 +167,9 @@ export default {
   }
 
   >.head {
-    // display: grid;
     display: flex;
     justify-content: center;
     align-items: center;
-    // grid-column: 1 / 4;
     margin: 1rem auto;
     width: 12rem;
     height: 5rem;
@@ -218,23 +192,6 @@ export default {
       @include transition(all .5s ease);
       @include transform(perspective(1px) translateZ(0));
       animation: defaultBtnBg 10s ease infinite alternate;
-
-      // &::after {
-      //   content: '';
-      //   position: absolute;
-      //   top: 0;
-      //   left: 0;
-      //   right: 0;
-      //   bottom: 0;
-      //   z-index: -1;
-      //   @include border-radius($xs-pad);
-      //   @include transform(scaleY(0));
-      //   @include transform-origin(50% 0px 0px);
-      //   transition-property: transform;
-      //   transition-duration: 0.5s;
-      //   transition-timing-function: ease-out;
-      //   background: $black;
-      // }
 
       &:hover {
         color: white;
@@ -259,9 +216,9 @@ export default {
       padding: $normal-pad;
       height: 14rem;
       width: calc(100%/3 - 2rem/3);
-      background: $module-bg;
       margin: 1rem 1rem 0 0;
-      color: white;
+      color: $black;
+      border: 1px solid $border-color;
       @include css3-prefix('transition', 'all .3s');
 
       &:nth-child(3n) {
