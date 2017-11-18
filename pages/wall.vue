@@ -1,6 +1,6 @@
 <template>
   <div class="walls" :class="{'walls-mobile': mobileLayout}">
-    <div class="head font-futura">
+    <div class="head ">
       <div class="box">
         <a href="javascript:;" class="join"  @click.stop="open">我要上墙</a>
       </div>

@@ -2,7 +2,7 @@
   <div class="about" :class="{'mobile': mobileLayout}">
     <p class="title" >关于我</p>
     <div class="info-box" :class="{'info-mobile': mobileLayout}">
-      <div class="info font-futura">
+      <div class="info ">
         <div class="list">
           <i class="iconfont icon-user"></i>
           <span class="list-content">三毛 (JK chao), <span >a 90s boy,</span> Web Engineer.</span>
@@ -56,7 +56,7 @@
     </div>
 
     <p class="title more" :class="{'title-mobile': mobileLayout}">More</p>
-    <div class="text-box font-futura">
+    <div class="text-box ">
       <div class="text">
         <p>Too young too simple, sometimes native.</p>
         <p>Have so many new ideas, <br v-if="mobileLayout"/>maybe i will go to relize it.</p>

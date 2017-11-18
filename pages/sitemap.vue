@@ -1,6 +1,6 @@
 <template>
   <div class="sitemap" :class="{'mobile': mobileLayout}">
-    <h3 class="font-futura title">所有文章</h3>
+    <h3 class=" title">所有文章</h3>
     <ul class="sitemap-list">
       <li
         class="sitemap-item"

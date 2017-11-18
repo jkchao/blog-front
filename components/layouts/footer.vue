@@ -7,7 +7,7 @@
         <nuxt-link to="/wall">留言墙</nuxt-link>
       </p>
       <div
-        class="clearfix font-futura">
+        class="clearfix">
         <span v-if="mobileLayout">©{{new Date().getFullYear()}}</span>
         <span v-else>BASE ON NUXT + NODE + MONGODB</span>
         <span> BY

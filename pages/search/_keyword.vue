@@ -1,7 +1,7 @@
 <template>
   <div class="keyword">
 
-    <p class="title font-futura"><i class="iconfont icon-search"></i>{{ keyword }}</p>
+    <p class="title "><i class="iconfont icon-search"></i>{{ keyword }}</p>
 
     <div class="article">
       <articleView

@@ -1,7 +1,7 @@
 <template>
   <div class="article-list" :class="{'mobile': mobileLayout}">
     <div class="article-cont">
-      <h3 class="font-futura">{{ article.title }}</h3>
+      <h3 class="">{{ article.title }}</h3>
       <div class="meta">
         <span class="time">{{ article.create_at | dateFormat('yyyy.MM.dd hh:mm') }}</span>
         <span class="num" v-if="!mobileLayout">字数 {{ article.content.length }}</span>

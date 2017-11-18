@@ -1,6 +1,6 @@
 <template>
   <header v-fix>
-    <div class="container header font-futura">
+    <div class="container header">
         <div class="header-left">
           <div class="logo">
             <nuxt-link to="/">

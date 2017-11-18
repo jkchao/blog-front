@@ -2,7 +2,7 @@
   <header class="mobile-head">
 
     <form 
-      class="search font-futura" 
+      class="search " 
       :class="{'active': search}"
       @submit.stop.prevent="searchTo">
 

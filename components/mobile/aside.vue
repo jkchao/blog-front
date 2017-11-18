@@ -8,7 +8,7 @@
         <li
         v-for="(list, index) in nav"
         :key="index"
-        class="nav-list font-futura"
+        class="nav-list "
         >
           <nuxt-link
             :to="list.path"

@@ -17,7 +17,7 @@
           </p>
         </transition-group>
       </div>
-      <div class="aside-item aside-tag font-futura" key="2">
+      <div class="aside-item aside-tag " key="2">
         <h3 class="title">
           <span>标签</span>
         </h3>
@@ -32,7 +32,7 @@
       </div>
 
       <div 
-      class="aside-item aside-tag font-futura aside-fix"  
+      class="aside-item aside-tag aside-fix"  
       key="5"
       v-fix>
         <ul class="tag clearfix">
