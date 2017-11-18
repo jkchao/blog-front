@@ -158,7 +158,7 @@ export default {
 
     >.head {
       // grid-column: 1 / 1;
-      height: 10rem;
+      height: 5rem;
     }
 
     >.loading-more {
@@ -281,8 +281,6 @@ export default {
 
 .dialog {
   .dialog-item {
-    // display: grid;
-    // grid-template-columns: 80px auto;
     display: flex;
     margin: .8rem 1.5rem 1rem 0;
 
@@ -292,6 +290,16 @@ export default {
       width: 80px;
       line-height: 30px;
       text-align: right;
+    }
+
+    &.content {
+      >span {
+        &::before {
+          content: "*";
+          color: #fa5555;
+          margin-right: 4px;
+        }
+      }
     }
 
     >.form-item {
