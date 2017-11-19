@@ -317,6 +317,30 @@ export default {
         list-style: disc;
       }
 
+    table {
+      font-size: .8em;
+      max-width: 100%;
+      overflow: auto;
+      border: 1px solid #f6f6f6;
+      border-collapse: collapse;
+      border-spacing: 0;
+
+      thead {
+        background: #f6f6f6;
+        color: #000;
+        text-align: left;
+      }
+
+      th, td {
+        padding: .8em .5em;
+        line-height: 1.5em;
+      }
+
+      td {
+        min-width: 7.5em;
+      }
+    }
+
       code {
         padding: .2em .4em;
         margin: 0;
