@@ -321,19 +321,22 @@ export default {
       font-size: .8em;
       max-width: 100%;
       overflow: auto;
-      border: 1px solid #f6f6f6;
+      border: 1px solid $border-color;
       border-collapse: collapse;
       border-spacing: 0;
 
       thead {
-        background: #f6f6f6;
-        color: #000;
+        background: $module-bg;
         text-align: left;
       }
 
       th, td {
         padding: .8em .5em;
         line-height: 1.5em;
+      }
+
+      tr:nth-child(2n) {
+        background: $module-bg;
       }
 
       td {
