@@ -8,7 +8,6 @@
         <mobile-header v-if="mobileLayout"></mobile-header>
         <my-header v-else></my-header>
       </div>
-      <background v-if="!mobileLayout"></background>
       <transition-group tag="div" class="container clearfix main-container" name="slide-up" :class="{ 'mobile': mobileLayout }">
         <div
           class="content-left" 
@@ -39,7 +38,6 @@
 
 import myFooter from '~components/layouts/footer.vue'
 import myHeader from '~components/layouts/header.vue'
-import background from '~components/layouts/background.vue'
 import asideView from '~components/layouts/aside.vue'
 import scollTop from '~components/layouts/scollTop.vue'
 
@@ -59,7 +57,6 @@ export default {
     mobileHeader,
     myFooter,
     myHeader,
-    background,
     asideView,
     mobileSide,
     scollTop
