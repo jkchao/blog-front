@@ -110,7 +110,7 @@
             <input required
                    type="text" 
                    name="name"
-                   placeholder="name *" 
+                   placeholder="称呼（必填）" 
                    v-model="user.name"
                    maxlength="10">
           </div>
@@ -118,16 +118,16 @@
             <input required
                    type="email"
                    name="email"
-                   placeholder="email *" 
+                   placeholder="邮箱（必填，不会公开）" 
                    v-model="user.email" 
                    @blur="upadteUserGravatar"
                    maxlength="30">
           </div>
           <div class="site">
             <input 
-              type="url" 
-              name="url" 
-              placeholder="site" 
+              type="url"
+              name="url"
+              placeholder="网站（http, https:// 开头，非必填）" 
               v-model="user.site"
               maxlength="20">
           </div>

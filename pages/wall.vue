@@ -32,11 +32,11 @@
       <form>
         <div class="dialog-item name" >
           <span>名字：</span>
-          <input type="text" placeholder="name" v-model="form.name" maxlength="20" class="form-item" />
+          <input type="text" placeholder="称呼（非必填）" v-model="form.name" maxlength="20" class="form-item" />
         </div>
         <div class="dialog-item content">
           <span>说点啥？</span>
-          <textarea v-model="form.content" maxlength="160" resize="none" rows="4" placeholder="曾经有一个 BUG 摆在我的面前......" class="form-item" />
+          <textarea v-model="form.content" maxlength="160" resize="none" rows="4" placeholder="曾经有一个 BUG 摆在我的面前......（必填）" class="form-item" />
         </div>
       </form>
       <div class="footer" slot="foot">
