@@ -9,7 +9,10 @@
         <div class="content">
           <p class="title"><nuxt-link :to="`/article/${item._id}`">{{ item.title }}</nuxt-link></p>
           <nuxt-link :to="`/article/${item._id}`" v-if="mobileLayout">
-            <img :src="item.thumb + '?imageView2/1/w/350/h/180'" alt="" width="100%" class="mobil-img"/>
+            <img :src="item.thumb + '?imageView2/1/w/350/h/180/watermark/2/text/amtjaGFvLmNu/font/Y2FuZGFyYQ==/fontsize/400/fill/I0ZGRkZGRg=='"
+            alt=""
+            width="100%"
+            class="mobil-img"/>
           </nuxt-link>
           <p class="abstrack">{{ item.descript | text(200)}}</p>
           <div class="meta">
@@ -33,7 +36,7 @@
         </div>
         <nuxt-link :to="`/article/${item._id}`" v-if="!mobileLayout">
           <div class="pc-thumb">
-            <img :src="item.thumb" alt="" width="140"/>
+            <img :src="item.thumb + '?watermark/2/text/amtjaGFvLmNu/font/Y2FuZGFyYQ==/fontsize/400/fill/I0ZGRkZGRg=='" alt="" width="140"/>
           </div>
         </nuxt-link>
       </div>

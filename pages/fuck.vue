@@ -1,6 +1,6 @@
 <template>
   <div class="fack">
-    没完成
+    fuck
   </div>
 </template>
 

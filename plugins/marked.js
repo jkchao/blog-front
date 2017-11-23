@@ -25,9 +25,10 @@ const paragraphParse = text => {
 
 // 对图片进行弹窗处理, 及懒加载处理
 const imageParse = (src, title, alt) => {
-  return `<img 
-            src="${src}"
-            title="${title || alt || 'jkchao.cn'}" 
+  return `<img
+            src="${src} + ?watermark/2/text/amtjaGFvLmNu/font/Y2FuZGFyYQ==/fontsize/400/fill/I0ZGRkZGRg=="
+            title="${title || alt || 'jkchao.cn'}"
+            data-src="${src} + ?watermark/2/text/amtjaGFvLmNu/font/Y2FuZGFyYQ==/fontsize/400/fill/I0ZGRkZGRg=="
             class="img-pop"/>
           <div class="img-caption">${title || alt || ''}</div>
           `
