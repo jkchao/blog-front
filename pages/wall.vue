@@ -292,16 +292,6 @@ export default {
       text-align: right;
     }
 
-    &.content {
-      >span {
-        &::before {
-          content: "*";
-          color: #fa5555;
-          margin-right: 4px;
-        }
-      }
-    }
-
     >.form-item {
       width: calc(100% - 80px);
       padding: .3rem .5rem;
