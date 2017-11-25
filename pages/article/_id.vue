@@ -236,7 +236,6 @@ export default {
 
       p {
         line-height: 1.8em;
-        text-indent: 2em;
         margin-bottom: 1em;
 
         &.text-center {
