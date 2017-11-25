@@ -61,6 +61,10 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - ~过渡效果优化~
 
+- tag lick-active
+
+- 归档优化
+
 ## Build Setup
 
 ``` bash
