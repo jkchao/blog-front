@@ -265,6 +265,7 @@ export default {
 
       iframe {
         margin-bottom: 1rem;
+        background: #000;
       }
 
       h1,
