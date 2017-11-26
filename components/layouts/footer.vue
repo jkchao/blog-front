@@ -20,6 +20,7 @@
   </footer>
 </template>
 <script>
+
 export default {
   name: 'footer',
 
@@ -37,6 +38,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style scoped lang="scss">
@@ -53,6 +55,13 @@ footer {
   >.container {
     display: flex;
     justify-content: space-between;    
+
+    .mune {
+
+      >a.link-active {
+        color: $black;
+      }
+    }
   }
 
   &.mobile {

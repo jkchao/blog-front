@@ -90,7 +90,6 @@ export default {
   }
 
   &.mobile {
-    padding: $lg-pad;
     width: 100%;
     transform: translate(0);
 
