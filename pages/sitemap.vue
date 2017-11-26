@@ -20,12 +20,8 @@
           <time>
             {{ item.create_at | dateFormat('yyyy.MM.dd') }}
           </time>
-          <br/>
-          <nuxt-link :to="`/article/${item._id}`" v-if="mobileLayout">
-            {{ item.title | text(20)}}
-          </nuxt-link>
-          <nuxt-link :to="`/article/${item._id}`" v-else>
-            {{ item.title | text(40)}}
+          <nuxt-link :to="`/article/${item._id}`">
+            {{ item.title }}
           </nuxt-link>
         </article>
       </li>
@@ -71,6 +67,7 @@ export default {
 <style scoped lang="scss">
 
 @import '~assets/scss/variable.scss';
+@import '~assets/scss/mixin.scss';
 
 .sitemap {
   width: $container-min-width;
@@ -121,6 +118,7 @@ export default {
         display: flex;
         align-items: center;
         height: 20px;
+        line-height: 20px;
 
         &::before {
           content: " ";
@@ -138,11 +136,13 @@ export default {
           margin-left: $md-pad;
           color: $dividers;
           font-size: $font-size-small;
+
         }
 
         >a {
           margin-left: $md-pad;
           color: $black;
+          @include text-overflow();
         }
       }
     }
