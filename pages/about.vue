@@ -121,8 +121,9 @@ export default {
 @import '~assets/scss/mixin.scss';
 
 .about {
-  margin: 0 auto;
   width: $container-min-width;
+  transform: translateX(($container-width - $container-min-width)/2);
+
 
   >.title {
     padding: 0.5rem 0rem;
@@ -244,6 +245,7 @@ export default {
 
   &.mobile {
     width: 100%;
+    transform: translate(0);
 
     >.info-box {
       // grid-template-columns: 100%;

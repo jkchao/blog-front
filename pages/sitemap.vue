@@ -1,6 +1,16 @@
 <template>
   <div class="sitemap" :class="{'mobile': mobileLayout}">
-    <h3 class=" title">所有文章</h3>
+    <h3 class="title">标签</h3>
+    <ul class="tag clearfix">
+      <li class="tag-item" v-for="item in tag" :key="item.id">
+        <nuxt-link :to="`/tag/${item._id}`">
+          {{ item.name }}
+          <span>({{ item.count }})</span>
+        </nuxt-link>
+      </li>
+    </ul>
+
+    <h3 class="title sitemap-article">文章</h3>
     <ul class="sitemap-list">
       <li
         class="sitemap-item"
@@ -40,6 +50,10 @@ export default {
   },
 
   computed: {
+    tag () {
+      return this.$store.state.tag.data.list
+    },
+
     mobileLayout () {
       return this.$store.state.options.mobileLayout
     },
@@ -54,7 +68,10 @@ export default {
 <style scoped lang="scss">
 
 @import '~assets/scss/variable.scss';
+
 .sitemap {
+  width: $container-min-width;
+  transform: translateX(($container-width - $container-min-width)/2);
 
   >.title {
     display: flex;
@@ -65,22 +82,32 @@ export default {
     font-size: 1rem;
     font-weight: normal;
     border-bottom: 1px solid $border-color;
+
+    &.sitemap-article {
+      margin-top: 1rem;
+    }
   }
 
   &.mobile {
     padding: $lg-pad;
+    width: 100%;
+    transform: translate(0);
 
     >.sitemap-list {
-      padding: 0 .8rem;
+      padding: .8rem;
 
       >.sitemap-item {
         padding: .8rem;
       }
     }
+
+    >.tag {
+      padding: .8rem;
+    }
   }
 
   >.sitemap-list {
-    padding: 2rem;
+    padding: 1rem 2rem;
 
     >.sitemap-item {
       padding: 1rem;
@@ -111,6 +138,25 @@ export default {
           margin-left: $md-pad;
           color: $black;
           text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  >.tag {
+    padding: 1rem 2rem;
+
+    >.tag-item {
+      float: left;
+      margin: .3rem;
+
+      >a {
+        display: block;
+        padding: .4rem;
+        color: $secondary;
+
+        &:hover {
+          color: $black;
         }
       }
     }

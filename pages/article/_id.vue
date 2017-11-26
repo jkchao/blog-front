@@ -55,11 +55,13 @@
       :class="{'dialog-mobile': mobileLayout}"
       :img="img">
     </dialog-com>
+
+    <!-- <div class="toc" v-html="toc"></div> -->
   </div>
 </template>
 
 <script>
-import marked from '~plugins/marked'
+import markdown from '~plugins/marked'
 import share from '~components/layouts/share'
 import dialogCom from '~components/common/dialog'
 import comments from '~components/common/comments'
@@ -83,7 +85,8 @@ export default {
     return {
       likeArticles: [],
       showDialog: false,
-      img: ''
+      img: '',
+      scroll: ''
     }
   },
 
@@ -99,7 +102,20 @@ export default {
     },
 
     articleContent () {
-      return marked(this.article.content)
+      console.log(markdown(this.article.content).toc)
+      return markdown(this.article.content).html
+    },
+
+    toc () {
+      let tochtml = `<h2 class="toc-title">目录</h2>\n<ul>`
+      let toc = markdown(this.article.content).toc
+      toc.forEach(item => {
+        tochtml += `<li class="toc-item">
+                      <a href="${item.anchor}">${item.text}</a>
+                    </li>`
+      })
+      tochtml += '</ul>'
+      return tochtml
     },
 
     isLiked () {
@@ -154,8 +170,8 @@ export default {
 
 
 .article-list {
-  margin: auto;
-  width: 48rem;
+  width: $container-min-width;
+  transform: translateX(($container-width - $container-min-width)/2);
 
   >.article-cont {
 
@@ -186,7 +202,7 @@ export default {
 
       a {
         font-weight: bold;
-        margin: 0 .1em;
+        margin: 0 .1rem;
 
         &.image-link {
           margin: 0;
@@ -200,7 +216,7 @@ export default {
       .image-package {
         text-align: center;
         width: 92%;
-        margin: 0 auto 1em auto;
+        margin: 0 auto 1rem auto;
 
         .img-caption {
           min-width: 10%;
@@ -222,7 +238,7 @@ export default {
 
       img {
         max-width: 100%;
-        margin: .5em auto;
+        margin: .5rem auto;
         display: block;
         text-align: center;
         border-radius: $radius;
@@ -235,8 +251,8 @@ export default {
       }
 
       p {
-        line-height: 1.8em;
-        margin-bottom: 1em;
+        line-height: 1.8rem;
+        margin-bottom: 1rem;
 
         &.text-center {
           text-align: center;
@@ -255,26 +271,30 @@ export default {
       h6 {
         margin: 1.5rem 0;
         padding-left: 0;
-        line-height: 1.8em;
+        line-height: 1.8rem;
         font-weight: 700;
         text-indent: 0;
+
+        &:target{
+          padding-top: 4.5rem;
+        }
       }
 
       hr {
-        height: 0.1em;
+        height: 0.1rem;
         background: #e1e4e8;
         border: 0;
       }
 
       blockquote {
   
-        padding: 0 1em;
-        margin-bottom: 1em;
+        padding: 0 1rem;
+        margin-bottom: 1rem;
         color: #6a737d;
-        border-left: 0.25em solid #dfe2e5;
+        border-left: 0.25rem solid #dfe2e5;
   
         p {
-          text-indent: 0em;
+          text-indent: 0rem;
 
           &:first-child {
             margin-top: 0;
@@ -291,11 +311,12 @@ export default {
 
       ul,
       ol {
-        padding-left: 2em;
+        padding-left: 2rem;
+        margin-bottom: 1rem;
 
         >li {
-          line-height: 1.8em;
-          padding: .5em;
+          line-height: 1.8rem;
+          padding: .5rem;
           list-style-type: disc;
 
 
@@ -304,6 +325,10 @@ export default {
           }
 
           >ul {
+
+            li {
+              list-style-type: circle;
+            }
 
             &:last-child {
               margin-bottom: 0;
@@ -317,7 +342,7 @@ export default {
       }
 
     table {
-      font-size: .8em;
+      font-size: .8rem;
       max-width: 100%;
       overflow: auto;
       border: 1px solid $border-color;
@@ -330,8 +355,8 @@ export default {
       }
 
       th, td {
-        padding: .8em .5em;
-        line-height: 1.5em;
+        padding: .8rem .5rem;
+        line-height: 1.5rem;
       }
 
       tr:nth-child(2n) {
@@ -339,12 +364,12 @@ export default {
       }
 
       td {
-        min-width: 7.5em;
+        min-width: 7.5rem;
       }
     }
 
       code {
-        padding: .2em .4em;
+        padding: .2rem .4rem;
         margin: 0;
         font-size: 85%;
         border-radius: $radius;
@@ -357,17 +382,17 @@ export default {
         line-height: 1.45;
         background-color: rgba(0,0,0,.8);
         border-radius: 3px;
-        margin-bottom: 1em;
+        margin-bottom: 1rem;
         word-wrap: normal;
 
         >.code-lines {
           position: absolute;
           left: 0;
-          top: 2.8em;
+          top: 2.8rem;
           margin: 0;
-          padding: 1em 0;
-          width: 2.5em;
-          height: calc(100% - 2.8em);
+          padding: 1rem 0;
+          width: 2.5rem;
+          height: calc(100% - 2.8rem);
           text-align: center;
           background-color: rgba(0, 0, 0, 0.2);
 
@@ -375,7 +400,7 @@ export default {
             padding: 0;
             position: relative;
             list-style-type: none;
-            line-height: 1.6em;
+            line-height: 1.6rem;
             transition: background-color .05s;
 
             &:hover {
@@ -388,11 +413,11 @@ export default {
 
             &:before {
               content: '';
-              height: 1.6em;
+              height: 1.6rem;
               position: absolute;
               top: 0;
-              left: 2.5em;
-              width: 66em;
+              left: 2.5rem;
+              width: 66rem;
               background-color: rgba(154, 154, 154, 0.2);
               display: none;
               visibility: hidden;
@@ -403,12 +428,12 @@ export default {
 
         >code {
           margin: 0;
-          padding: 1em;
+          padding: 1rem;
           float: left;
           width: 100%;
           height: 100%;
           display: block;
-          line-height: 1.6em;
+          line-height: 1.6rem;
           color: rgba(255, 255, 255, 0.87);
           background-color: transparent;
         }
@@ -503,6 +528,7 @@ export default {
 }
 
 .article-list.mobile {
+  transform: translate(0);
   .article-cont {
 
     .content {
@@ -524,6 +550,12 @@ export default {
       line-height: 20px;
     }
   }
+}
+
+.toc {
+  position: fixed;
+  top: 100px;
+  right: -10rem;
 }
 
 </style>

@@ -5,6 +5,8 @@
         <nuxt-link to="/about">关于博主</nuxt-link>
         <span class="hr"></span>
         <nuxt-link to="/wall">留言墙</nuxt-link>
+        <span class="hr"></span>
+        <nuxt-link to="/sitemap">归档</nuxt-link>
       </p>
       <div
         class="clearfix">

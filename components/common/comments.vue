@@ -229,7 +229,7 @@
 </template>
 
 <script>
-  import marked from '~/plugins/marked'
+  import markdown from '~/plugins/marked'
   import gravatar from '~/plugins/gravatar'
   import { scrollTo } from '~/utils/scroll'
   import loadingCom from '~components/common/loading'
@@ -332,7 +332,7 @@
     methods: {
       // markdown解析服务
       marked(content) {
-        return marked(content, null, false)
+        return markdown(content, null, false).html
       },
       // 头像服务
       gravatar(email) {

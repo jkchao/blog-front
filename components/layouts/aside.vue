@@ -165,6 +165,10 @@ export default {
           &:hover {
             color: $black;
           }
+
+          &.link-active {
+            color: $black;
+          }
         }
       }
     }
