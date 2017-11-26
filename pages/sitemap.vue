@@ -71,7 +71,8 @@ export default {
 
 .sitemap {
   width: $container-min-width;
-  transform: translateX(($container-width - $container-min-width)/2);
+  // transform: translateX(($container-width - $container-min-width)/2);
+  margin: 0 auto;
 
   >.title {
     display: flex;
