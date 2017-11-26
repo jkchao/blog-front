@@ -102,8 +102,7 @@ export default {
     },
 
     articleContent () {
-      console.log(markdown(this.article.content).toc)
-      return markdown(this.article.content).html
+      return markdown(this.article.content, false, true).html
     },
 
     toc () {
