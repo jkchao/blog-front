@@ -21,7 +21,10 @@
             {{ item.create_at | dateFormat('yyyy.MM.dd') }}
           </time>
           <br/>
-          <nuxt-link :to="`/article/${item._id}`">
+          <nuxt-link :to="`/article/${item._id}`" v-if="mobileLayout">
+            {{ item.title | text(20)}}
+          </nuxt-link>
+          <nuxt-link :to="`/article/${item._id}`" v-else>
             {{ item.title | text(40)}}
           </nuxt-link>
         </article>
@@ -115,6 +118,9 @@ export default {
 
       >article {
         position: relative;
+        display: flex;
+        align-items: center;
+        height: 20px;
 
         &::before {
           content: " ";
@@ -130,15 +136,13 @@ export default {
 
         >time {
           margin-left: $md-pad;
+          color: $dividers;
           font-size: $font-size-small;
         }
 
         >a {
-          display: inline-block;
-          margin-top: .5rem;
           margin-left: $md-pad;
           color: $black;
-          text-decoration: underline;
         }
       }
     }
