@@ -254,7 +254,7 @@ export default {
       >.content {
         margin: 1rem 0;
         min-height: 7rem;
-        max-height: 15rem;
+        max-height: 20rem;
         font-size: .85rem;
         word-break: break-all;
         overflow: hidden;

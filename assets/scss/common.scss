@@ -130,6 +130,7 @@ body.mobile {
     border-radius: $radius;
     transition: all .25s;
     opacity: .9;
+    cursor: none;
 
     &.img-pop {
       cursor: zoom-in;
