@@ -16,7 +16,7 @@
             {{ list.create_time | dateFormat('yyyy.MM.dd hh:mm')}}
           </span>
         </h3>
-        <p class="content">{{ list.content | fitertHtml }}</p>
+        <div class="content" v-html="marked(list.content)"></div>
         <div class="info">
           <span class="time">{{ list.name }}</span>
         </div>
@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import markdown from '~/plugins/marked'
 import dialogCom from '~components/common/dialog.vue'
 export default {
   name: 'wall',
@@ -109,6 +110,11 @@ export default {
   },
 
   methods: {
+    // markdown解析服务
+    marked(content) {
+      return markdown(content, null, true).html
+    },
+
     open () {
       this.form = Object.assign({}, {
         name: '',

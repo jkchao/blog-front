@@ -47,8 +47,3 @@ export function text (text, length = text.lenth) {
   const cansub = text && text.length > length
   return cansub ? text.substr(0, length) + '...' : text
 }
-
-// textarea /r /n
-export function filterHtml (text) {
-  return text.replace('/\r\n/g', '<br>').replace(/\s/g, '&nbsp;')
-}

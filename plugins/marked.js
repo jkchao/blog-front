@@ -20,7 +20,7 @@ marked.setOptions({
 const paragraphParse = text => {
   const textIsImage = text.includes('<img')
   if (textIsImage) return `<div class="image-package">${text}</div>`
-  return `<p>${text}</pp>`
+  return `<p>${text}</p>`
 }
 
 // 对图片进行弹窗处理, 及懒加载处理
