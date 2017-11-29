@@ -105,20 +105,7 @@ body.mobile {
     margin: 0 auto .5rem auto;
 
     .img-caption {
-      min-width: 10%;
-      max-width: 80%;
-      min-height: 22px;
-      display: inline-block;
-      padding: 6px;
-      margin: 0 auto;
-      border-bottom: 1px solid #d9d9d9;
-      font-size: 14px;
-      color: #969696;
-      line-height: 1.2;
-
-      &:empty {
-        display: none;
-      }
+      display: none;
     }
   }
 
@@ -130,7 +117,7 @@ body.mobile {
     border-radius: $radius;
     transition: all .25s;
     opacity: .9;
-    cursor: none;
+    cursor: none !important;
 
     &.img-pop {
       cursor: zoom-in;

@@ -6,21 +6,78 @@
       </div>
     </div>
 
-    <transition-group name="slide-down" tag="div" class="list-box">
-      <div 
-        class="list" 
-        v-for="(list, index) in items" 
-        :key="list._id">
-        <h3 class="user">
-          <span class="user-name">
-            {{ list.create_time | dateFormat('yyyy.MM.dd hh:mm')}}
-          </span>
-        </h3>
-        <div class="content markdown-content" v-html="marked(list.content)"></div>
-        <div class="info">
-          <span class="time">{{ list.name }}</span>
+    <transition-group name="slide-down" tag="div" class="list-box" v-if="!mobileLayout">
+      <div class="column" key="1">
+        <div
+          class="list"
+          v-for="(list, index) in list0" 
+          :key="list._id">
+          <h3 class="user">
+            <span class="user-name">
+              {{ list.create_time | dateFormat('yyyy.MM.dd hh:mm')}}
+            </span>
+          </h3>
+          <div class="content markdown-content" v-html="marked(list.content)"></div>
+          <div class="info">
+            <span class="time">{{ list.name }}</span>
+          </div>
         </div>
       </div>
+
+      <div class="column" key="2">
+        <div
+          class="list"
+          v-for="(list, index) in list1" 
+          :key="list._id">
+          <h3 class="user">
+            <span class="user-name">
+              {{ list.create_time | dateFormat('yyyy.MM.dd hh:mm')}}
+            </span>
+          </h3>
+          <div class="content markdown-content" v-html="marked(list.content)"></div>
+          <div class="info">
+            <span class="time">{{ list.name }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="column" key="3">
+        <div
+          class="list"
+          v-for="(list, index) in list2" 
+          :key="list._id">
+          <h3 class="user">
+            <span class="user-name">
+              {{ list.create_time | dateFormat('yyyy.MM.dd hh:mm')}}
+            </span>
+          </h3>
+          <div class="content markdown-content" v-html="marked(list.content)"></div>
+          <div class="info">
+            <span class="time">{{ list.name }}</span>
+          </div>
+        </div>
+      </div>
+
+    </transition-group>
+
+      <transition-group name="slide-down" tag="div" class="list-box" v-else>
+        <div class="column" key="1">
+          <div
+            class="list"
+            v-for="(list, index) in items" 
+            :key="list._id">
+            <h3 class="user">
+              <span class="user-name">
+                {{ list.create_time | dateFormat('yyyy.MM.dd hh:mm')}}
+              </span>
+            </h3>
+            <div class="content markdown-content" v-html="marked(list.content)"></div>
+            <div class="info">
+              <span class="time">{{ list.name }}</span>
+            </div>
+          </div>
+        </div>
+
     </transition-group>
 
     <div class="loading-more " key="-2" v-if="!haveMore">
@@ -70,6 +127,7 @@ export default {
   data () {
     return {
       show: false,
+
       form: {
         name: '',
         github: '',
@@ -97,6 +155,18 @@ export default {
 
     items () {
       return this.$store.state.heros.data.list
+    },
+
+    list0 () {
+      return this.items.filter((item, n) => n % 3 === 0)
+    },
+
+    list1 () {
+      return this.items.filter((item, n) => n % 3 === 1)
+    },
+
+    list2 () {
+      return this.items.filter((item, n) => n % 3 === 2)
     },
 
     posting () {
@@ -157,7 +227,7 @@ export default {
     >.list-box {
       // grid-template-columns: auto;
 
-      >.list {
+      >.column {
         width: 100%;
         margin-right: 0;
       }
@@ -214,24 +284,28 @@ export default {
 
   .list-box {
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
 
-    >.list {
+    >.column {
+      display: flex;
+      flex-direction: column;
+      width: calc(100%/3 - 2rem/3);
+    }
+
+    .list {
       position: relative;
       left: 0;
       top: 0;
-      align-self: flex-start;
+      // align-self: flex-start;
       padding: $normal-pad;
       min-height: 14rem;
-      width: calc(100%/3 - 2rem/3);
-      margin: 1rem 1rem 0 0;
+      margin-bottom: 1rem;
+      // width: calc(100%/3 - 2rem/3);
+      // margin: 1rem 1rem 0 0;
       color: $black;
       border: 1px solid $border-color;
       @include css3-prefix('transition', 'all .3s');
-
-      &:nth-child(3n) {
-        margin-right: 0;
-      }
 
       &:hover {
         left: -4px;
