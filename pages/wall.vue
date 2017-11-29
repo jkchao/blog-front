@@ -16,7 +16,7 @@
             {{ list.create_time | dateFormat('yyyy.MM.dd hh:mm')}}
           </span>
         </h3>
-        <div class="content" v-html="marked(list.content)"></div>
+        <div class="content markdown-content" v-html="marked(list.content)"></div>
         <div class="info">
           <span class="time">{{ list.name }}</span>
         </div>
@@ -36,7 +36,7 @@
         </div>
         <div class="dialog-item content">
           <span>说点啥？</span>
-          <textarea v-model="form.content" maxlength="160" resize="none" rows="4" placeholder="曾经有一个 BUG 摆在我的面前......（必填）" class="form-item" />
+          <textarea v-model="form.content" maxlength="160" resize="none" rows="4" placeholder="曾经有一个 BUG 摆在我的面前......（支持部分 markdown，必填）" class="form-item" />
         </div>
       </form>
       <div class="footer" slot="foot">
@@ -112,7 +112,7 @@ export default {
   methods: {
     // markdown解析服务
     marked(content) {
-      return markdown(content, null, true).html
+      return markdown(content, null, false).html
     },
 
     open () {
@@ -133,7 +133,7 @@ export default {
 
     async submit () {
       if (this.form.content === '') return alert('说点什么？')
-      if (this.form.content.split('\n').length > 5) return alert('内容需在5行以内')
+      if (this.form.content.split('\n').length > 12) return alert('内容需在12行以内')
       const res = await this.$store.dispatch('postHero', { ...this.form })
       window.alert(res.message)
       if (res.code === 1) {
@@ -220,8 +220,9 @@ export default {
       position: relative;
       left: 0;
       top: 0;
+      align-self: flex-start;
       padding: $normal-pad;
-      height: 14rem;
+      min-height: 14rem;
       width: calc(100%/3 - 2rem/3);
       margin: 1rem 1rem 0 0;
       color: $black;
@@ -252,8 +253,11 @@ export default {
 
       >.content {
         margin: 1rem 0;
-        height: 55%;
+        min-height: 7rem;
+        max-height: 15rem;
         font-size: .85rem;
+        word-break: break-all;
+        overflow: hidden;
       }
 
       >.info {

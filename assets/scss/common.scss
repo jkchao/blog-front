@@ -85,6 +85,149 @@ body.mobile {
     }
   }
 
+.markdown-content {
+  a {
+    font-weight: bold;
+    margin: 0 .1rem;
+
+    &.image-link {
+      margin: 0;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .image-package {
+    text-align: center;
+    width: 92%;
+    margin: 0 auto .5rem auto;
+
+    .img-caption {
+      min-width: 10%;
+      max-width: 80%;
+      min-height: 22px;
+      display: inline-block;
+      padding: 6px;
+      margin: 0 auto;
+      border-bottom: 1px solid #d9d9d9;
+      font-size: 14px;
+      color: #969696;
+      line-height: 1.2;
+
+      &:empty {
+        display: none;
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+    margin: .3rem auto;
+    display: block;
+    text-align: center;
+    border-radius: $radius;
+    transition: all .25s;
+    opacity: .9;
+
+    &.img-pop {
+      cursor: zoom-in;
+    }
+  }
+
+  p {
+    line-height: 1.4rem;
+    margin-bottom: .3rem;
+
+    &.text-center {
+      text-align: center;
+    }
+
+    &.text-right {
+      text-align: right;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: .3rem 0;
+    padding-left: 0;
+    line-height: 1.4rem;
+    font-weight: 700;
+    text-indent: 0;
+
+    &:target{
+      padding-top: 4.5rem;
+    }
+  }
+
+  hr {
+    height: 0.1rem;
+    background: #e1e4e8;
+    border: 0;
+  }
+
+  blockquote {
+
+    padding: 0 1rem;
+    margin-bottom: .3rem;
+    color: #6a737d;
+    border-left: 0.25rem solid #dfe2e5;
+
+    p {
+      text-indent: 0rem;
+
+      &:first-child {
+        margin-top: 0;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  ul {
+    list-style-type: square;
+  }
+
+  ul,
+  ol {
+    padding-left: 2rem;
+    margin-bottom: .3rem;
+
+    >li {
+      line-height: 1.4rem;
+      padding: .5rem;
+      list-style-type: disc;
+
+
+      >p {
+        text-indent: 0;
+      }
+
+      >ul {
+
+        li {
+          list-style-type: circle;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  ul {
+    list-style: disc;
+  }
+}
+
 .hr {
   display: inline-block;
   width: 2px;
