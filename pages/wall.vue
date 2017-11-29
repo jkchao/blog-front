@@ -16,7 +16,7 @@
             {{ list.create_time | dateFormat('yyyy.MM.dd hh:mm')}}
           </span>
         </h3>
-        <p class="content">{{ list.content }}</p>
+        <p class="content">{{ list.content | fitertHtml }}</p>
         <div class="info">
           <span class="time">{{ list.name }}</span>
         </div>
@@ -127,6 +127,7 @@ export default {
 
     async submit () {
       if (this.form.content === '') return alert('说点什么？')
+      if (this.form.content.split('\n').length > 5) return alert('内容需在5行以内')
       const res = await this.$store.dispatch('postHero', { ...this.form })
       window.alert(res.message)
       if (res.code === 1) {
