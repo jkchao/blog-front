@@ -3,9 +3,6 @@
     <a class="scoll-btn" @click="scrollTop" v-if="showScroll" key="1">
       <i class="iconfont icon-arrow-up"></i>
     </a>
-    <a class="scoll-btn email" href="mailto:jkchaom@gmail.com" target="_blank" key="2" v-if="!mobileLayout">
-      <i class="iconfont icon-email"></i>
-    </a>
   </transition-group>
 </template>
 
