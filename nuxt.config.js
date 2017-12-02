@@ -66,6 +66,7 @@ module.exports = {
     { src: '~/plugins/gravatar.js' },
     { src: '~plugins/clickOutside.js', ssr: false },
     { src: '~/plugins/ga.js', ssr: false },
+    { src: '~plugins/baidu-seo-push.js', ssr: false },
     { src: '~plugins/filter.js' },
     { src: '~plugins/finally.js' }
   ],
