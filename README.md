@@ -65,6 +65,10 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - ~归档优化~
 
+- TypeScript 重构
+
+- 支持 PWA
+
 ## Build Setup
 
 ``` bash
