@@ -26,8 +26,8 @@
                 item.create_at | dateFormat('yyyy.MM.dd')
               }}
             </span>
-            <!-- <span class="hr"></span>
-            <span class="read"> {{ item.meta.views }} 次阅读</span> -->
+            <span class="hr"></span>
+            <span class="read"> {{ item.meta.views }} 次阅读</span>
             <span class="hr"></span>
             <span class="comments"> {{ item.meta.comments }} 条评论</span>
             <span class="hr"></span>
