@@ -346,32 +346,32 @@ export default {
         list-style: disc;
       }
 
-    table {
-      font-size: .8rem;
-      max-width: 100%;
-      overflow: auto;
-      border: 1px solid $border-color;
-      border-collapse: collapse;
-      border-spacing: 0;
+      table {
+        font-size: .8rem;
+        max-width: 100%;
+        overflow: auto;
+        border: 1px solid $border-color;
+        border-collapse: collapse;
+        border-spacing: 0;
 
-      thead {
-        background: $module-bg;
-        text-align: left;
-      }
+        thead {
+          background: $module-bg;
+          text-align: left;
+        }
 
-      th, td {
-        padding: .8rem .5rem;
-        line-height: 1.5rem;
-      }
+        th, td {
+          padding: .8rem .5rem;
+          line-height: 1.5rem;
+        }
 
-      tr:nth-child(2n) {
-        background: $module-bg;
-      }
+        tr:nth-child(2n) {
+          background: $module-bg;
+        }
 
-      td {
-        min-width: 7.5rem;
+        td {
+          min-width: 7.5rem;
+        }
       }
-    }
 
       code {
         padding: .2rem .4rem;

@@ -37,7 +37,13 @@ const imageParse = (src, title, alt) => {
 // 外链
 const linkParse = (href, title, text) => {
   return `<a href="${href}" 
-             target="_blank" >${text.slice(0, 20) + '...'}</a>`.replace(/\s+/g, ' ').replace('\n', '')
+             target="_blank" >
+             ${
+               text.length > 20
+               ? text.slice(0, 20) + '...'
+               : text
+              }
+          </a>`.replace(/\s+/g, ' ').replace('\n', '')
 }
 
 renderer.link = linkParse
