@@ -4,9 +4,6 @@ module.exports = {
     max: 1000,
     maxAge: 900000
   },
-  modules: [
-    '@nuxtjs/component-cache'
-  ],
   build: {
     // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
     vendor: [
