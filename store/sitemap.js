@@ -1,8 +1,5 @@
 export const state = () => ({
-  art: {
-    list: [],
-    pagination: {}
-  },
+  art: [],
 
   fetch: false
 })
@@ -17,8 +14,8 @@ export const mutations = {
     state.fetch = false
   },
 
-  SET_ART_FAIL (state) {
-    state.art = { pagination: {}, list: [] }
+  SET_ART_FILE (state) {
+    state.art = []
     state.fetch = false
   }
 }

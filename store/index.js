@@ -60,9 +60,9 @@ export const actions = {
   },
 
   // 全部文章列表 sitemap
-  async getSitemap ({ commit }, data = { current_page: 1 }) {
+  async getSitemap ({ commit }) {
     commit('sitemap/FETCH_ART')
-    const res = await service.getArts(data)
+    const res = await service.getallArts()
                         .catch(err => console.error(err))
     if (res && res.code === 1) commit('sitemap/SET_ART_SUCCESS', res.result)
     else commit('sitemap/SET_ART_FILE')
