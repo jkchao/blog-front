@@ -86,5 +86,5 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#24292e' }
+  loading: '~components/layouts/pageLoading.vue'
 }
