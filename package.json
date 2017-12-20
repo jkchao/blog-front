@@ -41,7 +41,7 @@
     "eslint-plugin-html": "^2.0.3",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^3.0.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.7.2",
     "nodemon": "^1.11.0",
     "sass-loader": "^4.1.1",
     "scmp": "^2.0.0"

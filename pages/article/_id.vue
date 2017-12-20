@@ -297,6 +297,12 @@ export default {
         margin-bottom: 1rem;
         color: #6a737d;
         border-left: 0.25rem solid #dfe2e5;
+
+        .hljs-comment,
+        .hljs-quote {
+          color: #808080;
+          font-style: italic;
+        }
   
         p {
           text-indent: 0rem;
