@@ -167,12 +167,6 @@ body.mobile {
     color: #6a737d;
     border-left: 0.25rem solid #dfe2e5;
 
-    .hljs-comment,
-    .hljs-quote {
-      color: #808080;
-      font-style: italic;
-    }
-
     p {
       text-indent: 0rem;
 
@@ -228,6 +222,12 @@ body.mobile {
   height: 2px;
   background: #AAB2BD;
   margin: 4px .6rem;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #808080 !important;
+  font-style: italic;
 }
 
 a {
