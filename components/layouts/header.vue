@@ -6,7 +6,7 @@
             <nuxt-link to="/">
               <img src="~static/images/logo.png" alt="" width="36">
             </nuxt-link>
-          </div> 
+          </div>
           <nav>
             <nuxt-link
               v-for="(list, index) in nav"
@@ -37,36 +37,6 @@
           </div>
         </div>
       </div>
-
-
-        <!-- <div class="player">
-          <div class="panel">
-            <button class="prev-song btn" @click="prevSong" :disabled="!playerState.ready">
-              <i class="iconfont icon-music-prev"></i>
-            </button>
-            <button class="toggle-play btn" @click="togglePlay" :disabled="!playerState.ready">
-              <i class="iconfont" :class="[playerState.playing ? 'icon-music-pause' : 'icon-music-play']"></i>
-            </button>
-            <button class="next-song btn" @click="nextSong" :disabled="!playerState.ready">
-              <i class="iconfont icon-music-next"></i>
-            </button>
-            <button class="muted-toggle btn" @click="toggleMuted" :disabled="!playerState.ready">
-              <i class="iconfont" :class="[playerState.muted ? 'icon-music-muted' : 'icon-music-volume']"></i>
-            </button>
-          </div>
-          <div class="song" v-if="currentSong">
-            <a href="javascript:;"
-                       class="link" 
-                       :title="`${currentSong.name} / ${currentSong.album.name || 'unknow'}`">
-              <span>{{ currentSong.name }}</span>
-              <span> By </span>
-              <span v-for="(artist, index) in currentSong.artists" :key="index">{{ artist.name }}</span>
-              <span> / </span>
-              <span>{{ currentSong.album.name || 'unknow' }}</span>
-            </a>
-          </div>
-          <div class="song" v-else>Music is the eye of ear.</div>
-        </div> -->
     </div> 
   </header>
 </template>
@@ -206,6 +176,7 @@ header {
   }
 
   >.header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -216,21 +187,28 @@ header {
       display: flex;
 
       >.logo{
+        position: absolute;
+        left: 50%;
+        height: $header-height;
+        line-height: $header-height;
+        @include transform(translateX(-50%));
 
         a {
           color: $black;
           font-size: 2rem;
+
+          img {
+            vertical-align: text-bottom;
+          }
         }
       }
     }
   }
 
   nav {
-    margin-left: 2rem;
 
     >a {
       margin-right: 2.25rem;
-      padding: .5rem;
       color: $disabled;
 
       >i {
@@ -259,11 +237,7 @@ header {
     width: 100%;
     height: 40px;
     cursor: pointer;
-    webkit-transform: translate3d(0,0,0);
-    -moz-transform: translate3d(0,0,0);
-    -ms-transform: translate3d(0,0,0);
-    -o-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
+    @include transform(translate3d(0,0,0));
 
     >.search {
       position: relative;
