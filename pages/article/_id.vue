@@ -382,54 +382,13 @@ export default {
       }
 
       pre {
+        margin-bottom: 1rem;
         overflow: auto;
         font-size: 85%;
         line-height: 1.45;
-        background-color: rgba(0,0,0,.8);
+        background-color: $code-bg;
         border-radius: 3px;
-        margin-bottom: 1rem;
         word-wrap: normal;
-
-        >.code-lines {
-          position: absolute;
-          left: 0;
-          top: 2.8rem;
-          margin: 0;
-          padding: 1rem 0;
-          width: 2.5rem;
-          height: calc(100% - 2.8rem);
-          text-align: center;
-          background-color: rgba(0, 0, 0, 0.2);
-
-          >.code-line-number {
-            padding: 0;
-            position: relative;
-            list-style-type: none;
-            line-height: 1.6rem;
-            transition: background-color .05s;
-
-            &:hover {
-              &:before {
-                display: block;
-                opacity: 1;
-                visibility: visible;
-              }
-            }
-
-            &:before {
-              content: '';
-              height: 1.6rem;
-              position: absolute;
-              top: 0;
-              left: 2.5rem;
-              width: 66rem;
-              background-color: rgba(154, 154, 154, 0.2);
-              display: none;
-              visibility: hidden;
-              opacity: 0;
-            }
-          }
-        }
 
         >code {
           margin: 0;
