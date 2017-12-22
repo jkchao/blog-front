@@ -398,7 +398,6 @@ export default {
           height: 100%;
           display: block;
           line-height: 1.6rem;
-          color: rgba(255, 255, 255, 0.87);
           background-color: transparent;
         }
       }

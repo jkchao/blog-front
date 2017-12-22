@@ -119,7 +119,7 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [{ src: '~assets/scss/index.scss', lang: 'scss' }, 'highlight.js/styles/atom-one-dark.css'],
+  css: [{ src: '~assets/scss/index.scss', lang: 'scss' }, 'highlight.js/styles/github.css'],
   /*
   ** Customize the progress-bar color
   */

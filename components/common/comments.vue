@@ -602,7 +602,7 @@
       overflow: auto;
       font-size: 85%;
       line-height: 1.45;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: $code-bg;
       border-radius: 3px;
       width: 100%;
 
@@ -614,7 +614,6 @@
         height: 100%;
         display: block;
         line-height: 1.6em;
-        color: rgba(255, 255, 255, 0.87);
         background-color: transparent;
       }
     }
