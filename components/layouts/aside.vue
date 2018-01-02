@@ -8,7 +8,7 @@
           </nuxt-link>
         </h3>
         <transition-group tag="div" class="hot-article-list" name="list">
-          <p v-for="(list, index) in hotArt" :key="list._id" class="list">
+          <p v-for="list in hotArt" :key="list._id" class="list">
             <nuxt-link 
             :to="`/article/${list._id}`"
             :title="list.title">
@@ -31,10 +31,10 @@
         </ul>
       </div>
 
-      <div 
-      class="aside-item aside-tag aside-fix"  
-      key="5"
-      v-fix>
+      <div
+        class="aside-item aside-tag aside-fix"  
+        key="5"
+        v-fix>
         <ul class="tag clearfix">
           <li class="tag-item" v-for="item in tag" :key="item.id">
             <nuxt-link :to="`/tag/${item._id}`">
@@ -43,8 +43,19 @@
             </nuxt-link>
           </li>
         </ul>
-      </div>       
-
+      </div>
+      <div class="aside-item link">
+        <h3 class="title">
+          <span>链接</span>
+        </h3>
+        <p class="mune">
+          <nuxt-link to="/about">关于博主</nuxt-link>
+          <span class="hr"></span>
+          <nuxt-link to="/wall">留言墙</nuxt-link>
+          <span class="hr"></span>
+          <nuxt-link to="/sitemap">归档</nuxt-link>
+        </p>
+      </div>
     </div>
 </template>
 
@@ -93,7 +104,7 @@ export default {
       inserted (el) {
         window.addEventListener('scroll', _ => {
           const scrollTop = document.documentElement.scrollTop
-          if (scrollTop > 900) el.classList.add('fixed')
+          if (scrollTop > 1000) el.classList.add('fixed')
           else el.classList.remove('fixed')
         })
       },
@@ -115,7 +126,8 @@ export default {
   }
 
   .aside-item.hot-article,
-  .aside-item.aside-tag {
+  .aside-item.aside-tag,
+  .aside-item.link {
 
 
     >.title {
@@ -149,7 +161,6 @@ export default {
   }
 
   .aside-tag {
-    margin-bottom: 0;
 
     >.tag {
 
@@ -169,6 +180,20 @@ export default {
           &.link-active {
             color: $black;
           }
+        }
+      }
+    }
+  }
+
+  .link {
+    margin-bottom: 0;
+
+    >.mune {
+      padding: .8rem .3rem;
+
+      >a {
+        &:hover {
+          color: $black;
         }
       }
     }

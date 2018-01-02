@@ -44,7 +44,7 @@
       <div class="column" key="3">
         <div
           class="list"
-          v-for="(list, index) in list2" 
+          v-for="list in list2"
           :key="list._id">
           <h3 class="user">
             <span class="user-name">
@@ -68,7 +68,7 @@
             :key="list._id">
             <h3 class="user">
               <span class="user-name">
-                {{ list.create_time | dateFormat('yyyy.MM.dd hh:mm')}}
+                {{ list.create_time | dateFormat('yyyy.MM.dd')}}
               </span>
             </h3>
             <div class="content markdown-content" v-html="marked(list.content)"></div>

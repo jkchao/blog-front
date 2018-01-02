@@ -18,7 +18,7 @@
           <div class="meta">
             <span class="time" v-if="!mobileLayout">
               {{ 
-                item.create_at | dateFormat('yyyy.MM.dd hh:mm')
+                item.create_at | dateFormat('yyyy.MM.dd')
               }}
             </span>
             <span class="time" v-else>
@@ -34,11 +34,6 @@
             <span class="like"> {{ item.meta.likes }} 人喜欢</span>
           </div>
         </div>
-        <nuxt-link :to="`/article/${item._id}`" v-if="!mobileLayout">
-          <div class="pc-thumb">
-            <img :src="item.thumb + '?watermark/2/text/amtjaGFvLmNu/font/Y2FuZGFyYQ==/fontsize/400/fill/I0ZGRkZGRg=='" alt="" width="140"/>
-          </div>
-        </nuxt-link>
       </div>
       <div class="end-article" v-if="!haveMoreArt" key="-1">
         <i>end</i>
@@ -100,6 +95,7 @@ export default {
       >.content {
         width: 100%;
         margin: 0;
+
         >a {
           display: block;
           margin-bottom: .5rem;
@@ -118,7 +114,6 @@ export default {
     }
 
     >.content {
-      margin-right: 1.3rem;
 
       >.title {
         &:hover {
@@ -127,6 +122,7 @@ export default {
       }
 
       >.abstrack {
+        margin: 1rem 0;
         min-height: 4rem;
         line-height: 1.8rem;
         color: #555555;
@@ -143,6 +139,7 @@ export default {
         color: #969696;
       }
     }
+
     >a {
       display: block;
       width: 10rem;

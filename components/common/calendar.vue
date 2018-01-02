@@ -131,7 +131,7 @@ export default {
 
 <style lang="scss" scoped>
 
-@import '~assets/scss/variable.scss'; // @import '~assets/scss/mixin.scss';
+@import '~assets/scss/variable.scss';
 
 .calendar-box {
   padding: $normal-pad;
