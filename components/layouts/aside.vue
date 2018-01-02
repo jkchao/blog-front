@@ -3,13 +3,10 @@
       <div class="aside-item hot-article" key="1">
         <h3 class="title">
           <span>热门文章</span>
-          <nuxt-link to="/sitemap">
-            <i class="iconfont icon-sitemap"></i>
-          </nuxt-link>
         </h3>
         <transition-group tag="div" class="hot-article-list" name="list">
           <p v-for="list in hotArt" :key="list._id" class="list">
-            <nuxt-link 
+            <nuxt-link
             :to="`/article/${list._id}`"
             :title="list.title">
               <span class="list-name">{{ list.title }}</span>
@@ -45,9 +42,7 @@
         </ul>
       </div>
       <div class="aside-item link">
-        <h3 class="title">
-          <span>链接</span>
-        </h3>
+        <h3 class="title"></h3>
         <p class="mune">
           <nuxt-link to="/about">关于博主</nuxt-link>
           <span class="hr"></span>
@@ -129,7 +124,6 @@ export default {
   .aside-item.aside-tag,
   .aside-item.link {
 
-
     >.title {
       display: flex;
       justify-content: space-between;
@@ -189,9 +183,11 @@ export default {
     margin-bottom: 0;
 
     >.mune {
-      padding: .8rem .3rem;
+      padding: .8rem $sm-pad;
 
       >a {
+        color: #969696;
+
         &:hover {
           color: $black;
         }

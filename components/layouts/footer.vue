@@ -1,18 +1,21 @@
 <template>
   <footer :class="{'mobile': mobileLayout}" class="">
     <div class="container">
-      <p class="mune">
+      <p class="icp">
+        <time>©{{new Date().getFullYear()}}</time>
+        {{ option.icp }}
+      </p>
+      <!-- <p class="mune">
         <nuxt-link to="/about">关于博主</nuxt-link>
         <span class="hr"></span>
         <nuxt-link to="/wall">留言墙</nuxt-link>
         <span class="hr"></span>
         <nuxt-link to="/sitemap">归档</nuxt-link>
-      </p>
+      </p> -->
       <div
         class="clearfix">
-        <span v-if="mobileLayout">©{{new Date().getFullYear()}}</span>
-        <span v-else>BASE ON NUXT + NODE + MONGODB</span>
-        <span> BY
+        <span>Theme</span>
+        <span> By
           <nuxt-link to="/about">{{ user.name }}</nuxt-link>
         </span>
       </div>
@@ -36,6 +39,10 @@ export default {
     user () {
       return this.$store.state.options.adminInfo
     }
+  },
+
+  created () {
+    console.log(this.option.icp)
   }
 }
 
@@ -54,14 +61,7 @@ footer {
 
   >.container {
     display: flex;
-    justify-content: space-between;    
-
-    .mune {
-
-      >a.link-active {
-        color: $black;
-      }
-    }
+    justify-content: space-between;
   }
 
   &.mobile {

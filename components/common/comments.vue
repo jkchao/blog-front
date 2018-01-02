@@ -416,11 +416,11 @@
         const contents = {
           image: {
             start: `![`,
-            end: `](https://)`
+            end: `]()`
           },
           link: {
             start: `[`,
-            end: `](https://)`
+            end: `]()`
           },
           code: {
             start: '\n```javascript\n',
