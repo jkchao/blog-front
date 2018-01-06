@@ -19,11 +19,11 @@
       </nav>
       <div class="aside-foot">
         <p class="mune">
-          <nuxt-link to="/about">关于博主</nuxt-link>
+          <nuxt-link to="/about">{{ currentSaying.slice(0, 1) }}</nuxt-link>
           <span class="hr"></span>
-          <nuxt-link to="/wall">留言墙</nuxt-link>
+          <nuxt-link to="/wall">{{ currentSaying.slice(1, 4) }}</nuxt-link>
           <span class="hr"></span>
-          <nuxt-link to="/sitemap">归档</nuxt-link>
+          <nuxt-link to="/sitemap">{{ currentSaying.slice(4) }}</nuxt-link>
         </p>
       </div>
   </div>
@@ -38,6 +38,12 @@ export default {
         { path: '/', name: '码 农', icon: 'iconfont icon-home'},
         { path: '/think', name: '读 书', icon: 'iconfont icon-read'},
         { path: '/fuck', name: '民 谣', icon: 'iconfont icon-read'}
+      ],
+      saying: [
+        '当一个人成了谜',
+        '我有一瓶酒',
+        '去他妈的生活',
+        '请原谅我'
       ]
     }
   },
@@ -45,6 +51,9 @@ export default {
   computed: {
     user () {
       return this.$store.state.options.adminInfo
+    },
+    currentSaying () {
+      return this.saying[Math.floor(Math.random() * 3)]
     }
   }
 }

@@ -42,17 +42,29 @@
             </nuxt-link>
           </li>
         </ul>
+        <div class="link">
+          <h3 class="title">
+            <span class="line"></span>
+          </h3>
+          <p class="mune">
+            <nuxt-link to="/about">{{ currentSaying.slice(0, 1) }}</nuxt-link>
+            <span class="hr"></span>
+            <nuxt-link to="/wall">{{ currentSaying.slice(1, 4) }}</nuxt-link>
+            <span class="hr"></span>
+            <nuxt-link to="/sitemap">{{ currentSaying.slice(4) }}</nuxt-link>
+          </p>
+        </div>
       </div>
       <div class="aside-item link">
         <h3 class="title">
           <span class="line"></span>
         </h3>
         <p class="mune">
-          <nuxt-link to="/about">关于博主</nuxt-link>
+          <nuxt-link to="/about">{{ currentSaying.slice(0, 1) }}</nuxt-link>
           <span class="hr"></span>
-          <nuxt-link to="/wall">留言墙</nuxt-link>
+          <nuxt-link to="/wall">{{ currentSaying.slice(1, 4) }}</nuxt-link>
           <span class="hr"></span>
-          <nuxt-link to="/sitemap">归档</nuxt-link>
+          <nuxt-link to="/sitemap">{{ currentSaying.slice(4) }}</nuxt-link>
         </p>
       </div>
     </div>
@@ -65,7 +77,12 @@ export default {
   data () {
     return {
       open : false,
-      keyword: ''
+      keyword: '',
+      saying: [
+        '去他妈的生活',
+        '当一个人成了谜',
+        '我有一瓶酒'
+      ]
     }
   },
 
@@ -75,6 +92,9 @@ export default {
     },
     hotArt () {
       return this.$store.state.article.hotArt.list
+    },
+    currentSaying () {
+      return this.saying[Math.floor(Math.random() * 3)]
     }
   },
 
@@ -104,7 +124,7 @@ export default {
         window.addEventListener('scroll', _ => {
           const scrollTop = document.documentElement.scrollTop
           if (scrollTop > 1000) el.classList.add('fixed')
-          else el.classList.remove('fixed')
+          // else el.classList.remove('fixed')
         })
       },
       unbind () {
@@ -223,6 +243,10 @@ export default {
     opacity: 0;
     z-index: -1;
     pointer-events: none;
+
+    > .link {
+      margin-top: $normal-pad;
+    }
 
     &.fixed {
       top: 5rem;
