@@ -44,7 +44,7 @@
 <script>
 
 import EventBus from '~/utils/event-bus'
-
+import _ from '~/utils/underscore'
 export default {
   name: 'header',
   data () {
@@ -120,11 +120,27 @@ export default {
   directives: {
     fix: {
       inserted (el) {
-        window.addEventListener('scroll', _ => {
-          const top = window.pageYOffset
-          if (top > 64) el.classList.add('draken')
-          else el.classList.remove('draken')
-        })
+        let beforeScrollTop = document.documentElement.scrollTop || 
+                                window.pageYOffset || 
+                                window.scrollY ||
+                                document.body.scrollTop
+        window.addEventListener('scroll', _.throttle(() => {
+          let afterScrollTop = document.documentElement.scrollTop || 
+                              window.pageYOffset || 
+                              window.scrollY ||
+                              document.body.scrollTop
+          let delta = afterScrollTop - beforeScrollTop
+          if (delta === 0 ) return false
+          delta > 0
+          ? el.classList.add('fixed')
+          : el.classList.remove('fixed')
+          afterScrollTop > 0
+          ? el.classList.add('darken')
+          : el.classList.remove('darken')
+          setTimeout(() => {
+            beforeScrollTop = afterScrollTop
+          }, 0)
+        }, 200))
       },
       unbind () {
         window.onscroll = null
@@ -165,14 +181,18 @@ header {
   width: 100%;
   height: $header-height;
   background: $module-bg;
-  @include box-shadow(0, 1px, 2px, rgba(0,0,0,.05));
+  transform: translateY(0);
 
   &:hover {
     background: $white;
   }
 
-  &.draken {
-    background: $white;
+  &.fixed {
+    transform: translateY(-100%);
+  }
+
+  &.darken {    
+    @include box-shadow(0, 1px, 2px, rgba(0,0,0,.05));
   }
 
   >.header {

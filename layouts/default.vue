@@ -133,7 +133,8 @@ export default {
     @include transition(all .3s ease-out);
 
     >.main-container {
-      min-height: calc(100vh - 142px);
+      min-height: calc(100vh - 156px);
+      margin-top: $normal-pad;
     }
 
     >.main-container.mobile {
