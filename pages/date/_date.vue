@@ -1,6 +1,9 @@
 <template>
   <div class="date">
-    <p class="title"> {{ date }} </p>
+    <p class="title">
+      <span class="title-name"> {{ date }} </span>
+      <span class="line"></span>
+    </p>
 
     <div class="article">
       <articleView
@@ -74,17 +77,28 @@ export default {
 <style scoped lang="scss">
 @import '~assets/scss/variable.scss';
 
-.date>.title {
+.date > .title {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 0.5rem 0rem;
   line-height: 1.5rem;
   font-size: 1rem;
   font-weight: normal;
-  border-bottom: 1px solid $border-color;
 
   i {
     margin-right: .5rem;
+  }
+
+  > .title-name {
+    position: relative;
+    padding-right: $lg-pad;
+    background: $white;
+    z-index: 99;      
+  }
+
+  > .line {
+    top: 50%;
   }
 }
 
