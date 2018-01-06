@@ -1,6 +1,9 @@
 <template>
   <div class="about" :class="{'mobile': mobileLayout}">
-    <p class="title" >关于我</p>
+    <div class="title" >
+      <span class="title-name">关于我</span>
+      <span class="line"></span>
+    </div>
     <div class="info-box" :class="{'info-mobile': mobileLayout}">
       <div class="info ">
         <div class="list">
@@ -55,7 +58,10 @@
       </div>
     </div>
 
-    <p class="title more" :class="{'title-mobile': mobileLayout}">More</p>
+    <p class="title more" :class="{'title-mobile': mobileLayout}">
+      <span class="title-name">More</span>
+      <span class="line"></span>
+    </p>
     <div class="text-box ">
       <div class="text">
         <p>Too young too simple, sometimes native.</p>
@@ -66,7 +72,10 @@
       </div>
     </div>
 
-    <p class="title more">还有啥？</p>
+    <p class="title more">
+      <span class="title-name">还有啥？</span>
+      <span class="line"></span>
+    </p>
     <div class="last">
       <p></p>
       <p>哦，对了，可以看看这篇文章
@@ -125,12 +134,23 @@ export default {
   margin: 0 auto;
 
   >.title {
+    position: relative;
     padding: 0.5rem 0rem;
     line-height: 1.5rem;
     color: $black;
     font-size: 1rem;
     font-weight: normal;
-    border-bottom: 1px solid $border-color;
+
+    > .title-name {
+      position: relative;
+      padding-right: $lg-pad;
+      background: $white;
+      z-index: 99;      
+    }
+
+    > .line {
+      top: 50%;
+    }
   }
 
   >.title.more {

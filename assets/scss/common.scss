@@ -42,6 +42,17 @@ body.mobile {
   margin: 0 auto;
 }
 
+// line
+.line {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  color: $border-color;
+  background: currentColor;
+}
+
 
 
 // 清除浮动

@@ -2,12 +2,11 @@
   <div class="comment-box" id="comment-box" :class="{ mobile: mobileLayout }">
     <div class="tools">
       <div class="total">
-        <div class="count">
-          <strong class="count">{{ comment.data.pagination.total || 0 }}</strong>
-          <span>&nbsp;</span>
-          <span>条评论</span>
-        </div>
+        <strong class="count">{{ comment.data.pagination.total || 0 }}</strong>
+        <span>&nbsp;</span>
+        <span>条评论</span>
       </div>
+      <span class="line"></span>
       <!-- <div class="sort">
         <a href="" 
            class="sort-btn"
@@ -709,16 +708,20 @@
     }
 
     > .tools {
+      position: relative;
       display: flex;
       padding: 1em 0;
       padding-top: 0;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid $border-color;
 
       >.total {
+        position: relative;
+        padding-right: $lg-pad;
         color: $black;
+        background: $white;
         font-weight: 500;
+        z-index: 99;
       }
 
       > .sort {
@@ -743,7 +746,6 @@
     }
 
     .list-box {
-      border-top: 1px solid $border-color;
       margin-top: 1rem;
 
       > .comment-list {
@@ -754,7 +756,6 @@
         > .comment-item {
           position: relative;
           padding: .6em 0 .6em 3.6em;
-          border-bottom: 1px solid $border-color;
 
           &:last-child {
             border: 0;
@@ -768,14 +769,14 @@
 
             > a {
               display: block;
-              width: 3rem;
-              height: 3rem;
+              width: $gravatar;
+              height: $gravatar;
 
               > img {
                 width: 100%;
                 height: 100%;
                 transition: transform .5s ease-out;
-                border-radius: 50%;
+                border-radius: $radius;
               }
             }
           }
@@ -1057,8 +1058,8 @@
           > .gravatar {
             display: block;
             margin-bottom: .5em;
-            width: 3rem;
-            height: 3rem;
+            width: $gravatar;
+            height: $gravatar;
 
             > img {
               width: 100%;

@@ -1,6 +1,9 @@
 <template>
   <section  class="clearfix main">
-    <p class="title">最新文章</p>
+    <div class="title">
+      <span class="title-name">最新文章</span>
+      <span class="line"></span>
+    </div>
     <div class="article">
       <articleView
         :articleList = "list"
@@ -67,6 +70,7 @@ export default {
 @import '~assets/scss/variable.scss';
 .main {
   >.title {
+    position: relative;
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0rem;
@@ -74,7 +78,17 @@ export default {
     color: $black;
     font-size: 1rem;
     font-weight: normal;
-    border-bottom: 1px solid $border-color;
+
+    > .title-name {
+      position: relative;
+      padding-right: $lg-pad;
+      background: $white;
+      z-index: 99;      
+    }
+
+    > .line {
+      top: 50%;
+    }
   }
 }
 

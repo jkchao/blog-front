@@ -34,6 +34,7 @@
             <span class="like"> {{ item.meta.likes }} 人喜欢</span>
           </div>
         </div>
+        <span class="article-line"></span>
       </div>
       <div class="end-article" v-if="!haveMoreArt" key="-1">
         <i>end</i>
@@ -74,12 +75,13 @@ export default {
   margin: 0 auto;
 
   >.article-item {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 0 1rem;
+    padding: $lg-pad 0 $normal-pad;
+    margin-bottom: $mlg-pad;
     color: $black;
-    border-bottom: 1px solid $border-color;
 
     .title {
       margin-bottom: $sm-pad;
@@ -150,6 +152,14 @@ export default {
         line-height: 6rem;
         overflow: hidden;
       }
+    }
+
+    > .article-line {
+      position: absolute;
+      bottom: -$mlg-pad;
+      width: $xlg-pad * 2;
+      height: 1px;
+      background: $border-color;
     }
   }
 

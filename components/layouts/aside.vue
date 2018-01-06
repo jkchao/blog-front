@@ -2,7 +2,8 @@
     <div tag="div" class="aside" >
       <div class="aside-item hot-article" key="1">
         <h3 class="title">
-          <span>热门文章</span>
+          <span class="title-name">热门文章</span>
+          <span class="line"></span>
         </h3>
         <transition-group tag="div" class="hot-article-list" name="list">
           <p v-for="list in hotArt" :key="list._id" class="list">
@@ -16,7 +17,8 @@
       </div>
       <div class="aside-item aside-tag " key="2">
         <h3 class="title">
-          <span>标签</span>
+          <span class="title-name">标签</span>
+          <span class="line"></span>
         </h3>
         <ul class="tag clearfix">
           <li class="tag-item" v-for="item in tag" :key="item.id">
@@ -125,6 +127,7 @@ export default {
   .aside-item.link {
 
     >.title {
+      position: relative;
       display: flex;
       justify-content: space-between;
       padding: $sm-pad 0;
@@ -132,7 +135,17 @@ export default {
       color: $black;
       font-size: 1rem;
       font-weight: normal;
-      border-bottom: 1px solid $border-color;
+
+      > .title-name {
+        position: relative;
+        padding-right: $lg-pad;
+        background: $white;
+        z-index: 99;      
+      }
+
+      > .line {
+        top: 50%;
+      }
     }
 
     >.hot-article-list {

@@ -1,6 +1,9 @@
 <template>
   <div class="sitemap" :class="{'mobile': mobileLayout}">
-    <h3 class="title">标签</h3>
+    <div class="title">
+      <p>标签</p>
+      <span class="line"></span>
+    </div>
     <ul class="tag clearfix">
       <li class="tag-item" v-for="item in tag" :key="item.id">
         <nuxt-link :to="`/tag/${item._id}`">
@@ -10,31 +13,34 @@
       </li>
     </ul>
 
-    <h3 class="title sitemap-article">文章</h3>
-      <div class="sitemap-article-list">
-        <div v-for="(year, index) in yearList" :key="index" class="year-list">
-          <p class="year-name">{{ year.year }}</p>
-          <ul class="month-list" v-for="(month, index) in year.monthList" :key="index">
-            <p class="month-name">{{ month.month | monthFilter }}</p>
-            <li
-              class="sitemap-list"
-              v-for="(item,index) in month.articleList"
-              :key="item._id">
-              <article>
-                <time>
-                  {{ item.create_at | dateFormat('MM.dd') }}
-                </time>
-                <nuxt-link :to="`/article/${item._id}`">
-                  {{ item.title }}
-                </nuxt-link>
-              </article>
-            </li>
-            <!-- <li class="sitemap-item" v-if="item.length === 0">
-              暂无文章
-            </li> -->
-          </ul>  
-        </div>
+    <h3 class="title sitemap-article">
+      <p>文章</p>
+      <span class="line"></span>
+    </h3>
+    <div class="sitemap-article-list">
+      <div v-for="(year, index) in yearList" :key="index" class="year-list">
+        <p class="year-name">{{ year.year }}</p>
+        <ul class="month-list" v-for="(month, index) in year.monthList" :key="index">
+          <p class="month-name">{{ month.month | monthFilter }}</p>
+          <li
+            class="sitemap-list"
+            v-for="item in month.articleList"
+            :key="item._id">
+            <article>
+              <time>
+                {{ item.create_at | dateFormat('MM.dd') }}
+              </time>
+              <nuxt-link :to="`/article/${item._id}`">
+                {{ item.title }}
+              </nuxt-link>
+            </article>
+          </li>
+          <!-- <li class="sitemap-item" v-if="item.length === 0">
+            暂无文章
+          </li> -->
+        </ul>  
       </div>
+    </div>
 
     <!-- <ul class="sitemap-list">
       <li
@@ -118,6 +124,7 @@ export default {
   margin: 0 auto;
 
   >.title {
+    position: relative;
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0rem;
@@ -125,7 +132,17 @@ export default {
     color: $black;
     font-size: 1rem;
     font-weight: normal;
-    border-bottom: 1px solid $border-color;
+
+    > p {
+      position: relative;
+      padding-right: $lg-pad;
+      background: $white;
+      z-index: 99;      
+    }
+
+    > .line {
+      top: 50%;
+    }
 
     &.sitemap-article {
       margin-top: 1rem;

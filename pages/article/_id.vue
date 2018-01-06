@@ -405,7 +405,6 @@ export default {
   >.item {
     margin: 3rem 0;
     padding: $lg-pad 0;
-    border-bottom: 1px solid $border-color;
 
     >.info {
       display: flex;
