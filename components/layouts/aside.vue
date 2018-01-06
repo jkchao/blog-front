@@ -55,6 +55,7 @@
           </p>
         </div>
       </div>
+  
       <div class="aside-item link">
         <h3 class="title">
           <span class="line"></span>
@@ -124,7 +125,7 @@ export default {
         window.addEventListener('scroll', _ => {
           const scrollTop = document.documentElement.scrollTop
           if (scrollTop > 1000) el.classList.add('fixed')
-          // else el.classList.remove('fixed')
+          else el.classList.remove('fixed')
         })
       },
       unbind () {
