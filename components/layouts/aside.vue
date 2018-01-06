@@ -44,7 +44,9 @@
         </ul>
       </div>
       <div class="aside-item link">
-        <h3 class="title"></h3>
+        <h3 class="title">
+          <span class="line"></span>
+        </h3>
         <p class="mune">
           <nuxt-link to="/about">关于博主</nuxt-link>
           <span class="hr"></span>
@@ -206,6 +208,10 @@ export default {
           color: $black;
         }
       }
+    }
+
+    .line {
+      width: $xlg-pad;
     }
   }
 

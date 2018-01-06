@@ -800,7 +800,7 @@
                 font-family: Microsoft YaHei,Arial,Helvetica,sans-serif;
 
                 img {
-                  border-radius: 50%;
+                  border-radius: $radius;
                   margin-right: .2rem;
                 }
 

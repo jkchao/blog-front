@@ -304,14 +304,12 @@ export default {
       // width: calc(100%/3 - 2rem/3);
       // margin: 1rem 1rem 0 0;
       color: $black;
-      border: 1px solid $border-color;
+      background: $code-bg;
       @include css3-prefix('transition', 'all .3s');
 
       &:hover {
-        left: -4px;
-        top: -4px;
         box-shadow: 4px 4px 10px 0 rgba(0,0,0,.2);
-        background: $white;
+        transform: translate(-4px, -4px);
       }
 
       >.user {

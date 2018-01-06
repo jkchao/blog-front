@@ -156,6 +156,7 @@ export default {
 
     > .article-line {
       position: absolute;
+      left: -$mlg-pad;
       bottom: -$mlg-pad;
       width: $xlg-pad * 2;
       height: 1px;
