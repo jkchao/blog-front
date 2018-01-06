@@ -125,7 +125,7 @@ export default {
     }
 
     input {
-      width: 20rem;
+      width: $container-right;
       height: 2rem;
       line-height: 2rem;
     }

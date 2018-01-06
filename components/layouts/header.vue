@@ -1,6 +1,6 @@
 <template>
   <header v-fix>
-    <div class="container header">
+    <div class="header">
         <div class="header-left">
           <div class="logo">
             <nuxt-link to="/">
@@ -180,7 +180,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-width: $container-width;
     height: $header-height;
+    padding: 0 $lg-pad;
     line-height: $header-height;
 
     >.header-left {

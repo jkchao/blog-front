@@ -183,10 +183,11 @@ export default {
     margin-bottom: 0;
 
     >.mune {
-      padding: .8rem $sm-pad;
+      padding: $sm-pad;
 
       >a {
         color: #969696;
+        font-size: $font-size-small;
 
         &:hover {
           color: $black;
@@ -197,7 +198,7 @@ export default {
 
   .aside-fix {
     position: fixed;
-    width: 20.5rem;
+    width: $container-right;
     top: 1rem;
     transition: all .2s;
     opacity: 0;

@@ -1,6 +1,8 @@
 // container
-$container-width: 70rem;
-$container-min-width: 48rem;
+$container-width: 56rem;
+$container-min-width: 45rem;
+$container-left: 38rem;
+$container-right: 16rem;
 $body-bg: #eee;
 $header-height: 4rem;
 
@@ -32,6 +34,7 @@ $sm-pad: .5rem;
 $normal-pad: 1rem;
 $md-pad: 1.2rem;
 $lg-pad: 1.5rem;
+$mlg-pad: 2rem;
 $xlg-pad: 3rem;
 
 //text

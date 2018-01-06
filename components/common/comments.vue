@@ -8,7 +8,7 @@
           <span>条评论</span>
         </div>
       </div>
-      <div class="sort">
+      <!-- <div class="sort">
         <a href="" 
            class="sort-btn"
            :class="{ actived: Object.is(sortMode, 1) }" 
@@ -17,7 +17,7 @@
            class="sort-btn"
            :class="{ actived: Object.is(sortMode, 2) }" 
            @click.stop.prevent="sortComemnts(2)">最热</a>
-      </div>
+      </div> -->
     </div>
     <form class="post-box" name="comment" id="post-box">
       <div class="editor-box">

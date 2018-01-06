@@ -70,7 +70,7 @@ export default {
 @import '~assets/scss/mixin.scss';
 
 .article-box {
-  width: 48rem;
+  width: $container-left;
   margin: 0 auto;
 
   >.article-item {

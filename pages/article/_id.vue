@@ -170,7 +170,6 @@ export default {
 
 .article-list {
   width: $container-min-width;
-  // transform: translateX(($container-width - $container-min-width)/2);
   margin: 0 auto;
 
   >.article-cont {
