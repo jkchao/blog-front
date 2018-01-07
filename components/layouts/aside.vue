@@ -82,7 +82,8 @@ export default {
       saying: [
         '去他妈的生活',
         '当一个人成了谜',
-        '我有一瓶酒'
+        '我有一瓶酒',
+        '写给你的信'
       ]
     }
   },
@@ -95,7 +96,7 @@ export default {
       return this.$store.state.article.hotArt.list
     },
     currentSaying () {
-      return this.saying[Math.floor(Math.random() * 3)]
+      return this.saying[Math.floor(Math.random() * 4)]
     }
   },
 

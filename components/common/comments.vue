@@ -158,7 +158,7 @@
       <div class="list-box" v-if="comment.data.data.length && comment.data.data.length !== 0" key="1">
         <transition-group name="list" tag="ul" class="comment-list">
           <li class="comment-item"
-              v-for="(comment, index) in comment.data.data"
+              v-for="comment in comment.data.data"
               :id="`comment-item-${comment.id}`"
               :key="comment.id">
             <div class="cm-avatar" v-if="!mobileLayout">

@@ -43,7 +43,7 @@ export default {
         '当一个人成了谜',
         '我有一瓶酒',
         '去他妈的生活',
-        '请原谅我'
+        '写给你的信'
       ]
     }
   },
@@ -53,7 +53,7 @@ export default {
       return this.$store.state.options.adminInfo
     },
     currentSaying () {
-      return this.saying[Math.floor(Math.random() * 3)]
+      return this.saying[Math.floor(Math.random() * 4)]
     }
   }
 }
