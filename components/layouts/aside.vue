@@ -47,11 +47,11 @@
             <span class="line"></span>
           </h3>
           <p class="mune">
-            <nuxt-link to="/about">{{ currentSaying.slice(0, 1) }}</nuxt-link>
+            <nuxt-link to="/about">我</nuxt-link>
             <span class="hr"></span>
-            <nuxt-link to="/wall">{{ currentSaying.slice(1, 4) }}</nuxt-link>
+            <nuxt-link to="/sitemap">归档</nuxt-link>
             <span class="hr"></span>
-            <nuxt-link to="/sitemap">{{ currentSaying.slice(4) }}</nuxt-link>
+            <nuxt-link to="/wall">留言墙</nuxt-link>
           </p>
         </div>
       </div>
