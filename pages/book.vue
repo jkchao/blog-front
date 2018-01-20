@@ -1,7 +1,7 @@
 <template>
   <div class="books">
     <div class="head">
-      <p>一些看过的书，一些想卖的书。</p>
+      <p>一些读过的书，一些想卖的书。</p>
     </div>
 
     <transition-group name="slide-down" tag="div" class="list-box" :class="{'mobile': mobileLayout}">
