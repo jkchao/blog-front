@@ -4,7 +4,7 @@
       <p>一些看过的书，一些想卖的书。</p>
     </div>
 
-    <transition-group name="slide-down" tag="div" class="list-box">
+    <transition-group name="slide-down" tag="div" class="list-box" :class="{'mobile': mobileLayout}">
       <div class="list" v-for="list in items" :key="list._id">
         <div class="book-thumb">
           <img :src="`${list.thumb}?imageView2/2/h/300/`" alt="">
@@ -44,6 +44,10 @@ export default {
   },
 
   computed: {
+    mobileLayout () {
+      return this.$store.state.options.mobileLayout
+    },
+
     fetch () {
       return this.$store.state.book.fetch
     },
@@ -138,6 +142,14 @@ export default {
             }
           }
         }
+      }
+    }
+
+    &.mobile {
+
+      >.list {
+        width: 100%;
+        margin: 0 0 $normal-pad;
       }
     }
   }
