@@ -168,6 +168,7 @@ export const actions = {
     return res
   },
 
+  // 获取音乐
   async getMusicList ({ commit }) {
     EventBus.REQUEST_LIST()
     const res = await service.getMusicLst()
@@ -178,11 +179,29 @@ export const actions = {
     } else EventBus.GET_LIST_FAILURE()
   },
 
+  // 获取音乐详情
   async getMusicDetail ({ commit }, para = {}) {
     EventBus.REQUEST_SONG()
     const res = await service.getMusicDetail(para)
                         .catch(err => console.error(err))
     if (res && res.code === 1) EventBus.GET_SONG_SUCCESS(res)
     else EventBus.GET_SONG_FAILURE()
+  },
+
+  // 获取书本
+  async getBook ({ commit, state }, data = { current_page: 1, page_size: 6 }) {
+    commit('book/FETCH_BOOK')
+    const res = await service.getBook(data)
+                      .catch(err => console.error(err))
+    if (res && res.code === 1) {
+      let list
+      if (res.result.pagination.current_page === 1) list = res.result.list
+      else list = [...state.book.data.list, ...res.result.list]
+      commit('book/SET_BOOK_SUCCESS', {
+        list,
+        pagination: res.result.pagination
+      })
+    } else commit('book/SET_BOOK_FILE')
+    return res
   }
 }

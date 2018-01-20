@@ -21,9 +21,11 @@
         <p class="mune">
           <nuxt-link to="/about">我</nuxt-link>
           <span class="hr"></span>
-          <nuxt-link to="/sitemap">归档</nuxt-link>
+          <nuxt-link to="/book">书店</nuxt-link>
           <span class="hr"></span>
           <nuxt-link to="/wall">留言墙</nuxt-link>
+          <span class="hr"></span>
+          <nuxt-link to="/sitemap">归档</nuxt-link>
         </p>
       </div>
   </div>

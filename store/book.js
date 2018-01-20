@@ -1,4 +1,8 @@
 /**
+ *
+ * book
+ */
+/**
  * 留言板
  */
 
@@ -8,34 +12,24 @@ export const state = () => ({
     pagination: {}
   },
 
-  fetch: false,
-  posting: false
+  fetch: false
 })
 
 export const mutations = {
   // 获取列表
-  FETCH_HERO (state) {
+  FETCH_BOOK (state) {
     state.fetch = true
   },
 
   // 成功
-  SET_HERO_SUCCESS (state, data) {
+  SET_BOOK_SUCCESS (state, data) {
     state.data = data
     state.fetch = false
   },
 
   // 失败
-  SET_HERO_FILE (state, data) {
+  SET_BOOK_FILE (state, data) {
     state.data = { list: [], pagination: {} }
     state.fetch = false
-  },
-
-  // 发布留言板
-  POST_ITEM (state) {
-    state.posting = true
-  },
-
-  POST_ITEM_FINAL (state, action) {
-    state.posting = false
   }
 }

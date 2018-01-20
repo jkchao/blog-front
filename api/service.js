@@ -89,3 +89,9 @@ export function getMusicUrl (para) {
   return ax.get(`/music/url/${para.id}`)
           .then(res => res.data)
 }
+
+// 获取书本
+export function getBook (params) {
+  return ax.get(`/book`, { params })
+          .then(res => res.data)
+}

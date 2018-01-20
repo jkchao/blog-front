@@ -60,7 +60,7 @@
 
     </transition-group>
 
-      <transition-group name="slide-down" tag="div" class="list-box" v-else>
+    <transition-group name="slide-down" tag="div" class="list-box" v-else>
         <div class="column" key="1">
           <div
             class="list"

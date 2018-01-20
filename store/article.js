@@ -1,3 +1,7 @@
+/**
+ * aiticle
+ */
+
 export const state = () => ({
 
   // 热门文章

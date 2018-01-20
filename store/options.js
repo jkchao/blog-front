@@ -1,3 +1,8 @@
+/**
+ *
+ * option
+ */
+
 export const state = () => {
   return {
     // 是否有侧栏
