@@ -180,7 +180,7 @@ header {
   z-index: 999;
   width: 100%;
   height: $header-height;
-  background: $module-bg;
+  background: $white;
   transform: translateY(0);
 
   &:hover {
