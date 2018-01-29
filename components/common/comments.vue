@@ -120,7 +120,7 @@
                    placeholder="邮箱（必填，不会公开）" 
                    v-model="user.email" 
                    @blur="upadteUserGravatar"
-                   maxlength="30">
+                   maxlength="40">
           </div>
           <div class="site">
             <input 
@@ -128,7 +128,7 @@
               name="url"
               placeholder="网站（http, https:// 开头，非必填）" 
               v-model="user.site"
-              maxlength="20">
+              maxlength="40">
           </div>
           <div class="save" v-if="userCacheEditing">
             <button type="submit" @click="updateUserCache($event)">
