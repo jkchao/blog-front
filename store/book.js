@@ -2,9 +2,6 @@
  *
  * book
  */
-/**
- * 留言板
- */
 
 export const state = () => ({
   data: {
