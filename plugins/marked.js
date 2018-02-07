@@ -36,8 +36,8 @@ const imageParse = (src, title, alt) => {
 
 // 外链
 const linkParse = (href, title, text) => {
-  return `<a href="${href}" 
-             target="_blank" >
+  return `<a href="${href}"
+             target="${href.includes('#') ? '_self' : '_blank'}" >
              ${
                text.length > 20
                ? text.slice(0, 20) + '...'
