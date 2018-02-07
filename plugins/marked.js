@@ -39,9 +39,11 @@ const linkParse = (href, title, text) => {
   return `<a href="${href}"
              target="${href.includes('#') ? '_self' : '_blank'}" >
              ${
-               text.length > 20
-               ? text.slice(0, 20) + '...'
-               : text
+              href.includes('#')
+              ? text
+              : text.length > 20
+                ? text.slice(0, 20) + '...'
+                : text
               }
           </a>`.replace(/\s+/g, ' ').replace('\n', '')
 }
