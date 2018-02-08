@@ -29,6 +29,8 @@ body.mobile {
 code,
 pre {
   font-family: "Roboto Mono", Monaco, courier, monospace;
+  -webkit-font-smoothing: initial;
+  -moz-osx-font-smoothing: initial;
 }
 
 *, *:hover {
