@@ -80,8 +80,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    { src: '~assets/scss/index.scss', lang: 'scss' },
-    'highlight.js/styles/github.css'
+    { src: '~assets/scss/index.scss', lang: 'scss' }
   ],
   /*
   ** Customize the progress-bar color

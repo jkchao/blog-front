@@ -23,7 +23,12 @@ body.mobile {
 
 @font-face {
   font-family: 'Futura';
-  src: url('/fonts/Futura.ttc')
+  src: url('/fonts/Futura.ttc');
+}
+
+code,
+pre {
+  font-family: "Roboto Mono", Monaco, courier, monospace;
 }
 
 *, *:hover {
