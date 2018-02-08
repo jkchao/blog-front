@@ -265,6 +265,11 @@ export default {
       iframe {
         margin-bottom: 1rem;
         background: #000;
+
+        &.music {
+          background: transparent;
+          width: 100%;
+        }
       }
 
       h1,
