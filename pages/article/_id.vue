@@ -199,6 +199,21 @@ export default {
       color: $black;
       word-wrap: break-word;
 
+      .demo {
+        border: 1px solid #eee;
+        border-radius: 2px;
+        padding: 25px 35px;
+        margin-top: 1em;
+        margin-bottom: 40px;
+        font-size: 1.2em;
+        line-height: 1.5em;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        overflow-x: auto;
+      }
+
       a {
         font-weight: bold;
         margin: 0 .1rem;
