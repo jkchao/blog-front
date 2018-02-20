@@ -43,7 +43,7 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - ~Disqus 国内~
 
-- 安卓 uc 浏览器无法点击头部。
+- ~安卓 uc 浏览器无法点击头部~。
 
 - 加载优化
 
