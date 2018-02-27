@@ -219,11 +219,10 @@
           </li>
         </transition-group>
       </div>
-      <div class="loading" v-if="comment.fetching" key="2">
-        <loadingCom></loadingCom>
-      </div>
     </transition-group>
-
+    <div class="loading" v-show="comment.fetching" key="2">
+      <loadingCom></loadingCom>
+    </div>
   </div>
 </template>
 
@@ -231,7 +230,7 @@
   import markdown from '~/plugins/marked'
   import gravatar from '~/plugins/gravatar'
   import { scrollTo } from '~/utils/scroll'
-  import loadingCom from '~components/common/loading'
+  import loadingCom from '~components/common/pageLoading/pageLoading'
   import _ from '~/utils/underscore'
   export default {
     name: 'comment',

@@ -1,5 +1,5 @@
 <template>
-  <div class="loading-page" v-show="loading">
+  <div class="loading-page">
     <canvas ref="canvas"></canvas>
   </div>
 </template>
@@ -96,19 +96,11 @@
 </script>
 <style scoped lang="scss">
   .loading-page {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
     background: rgba(255, 255, 255, 0.8);
     z-index: 10;
 
     canvas {
-      width: 150px;
+      width: 120px;
     }
   }
 </style>
