@@ -14,7 +14,7 @@
 </template>
 <script>
 
-import articleView from '~/components/common/article.vue'
+import articleView from '~/components/common/article'
 
 export default {
 
@@ -67,7 +67,6 @@ export default {
 
 <style lang="scss">
 
-@import '~assets/scss/variable.scss';
 .main {
   >.title {
     position: relative;

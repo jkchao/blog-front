@@ -91,7 +91,7 @@
 
 <script>
 
-import comments from '~/components/common/comments.vue'
+import comments from '~/components/common/comments'
 
 export default {
 
@@ -125,8 +125,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-@import '~assets/scss/variable.scss';
 @import '~assets/scss/mixin.scss';
 
 .about {

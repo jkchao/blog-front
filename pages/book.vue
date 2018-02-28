@@ -72,7 +72,6 @@ export default {
 
 <style scoped lang="scss">
 @import '../assets/scss/mixin.scss';
-@import '../assets/scss/variable.scss';
 
 .books {
   >.head {

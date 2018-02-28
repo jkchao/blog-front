@@ -69,8 +69,6 @@ export default {
 
 <style scoped lang="scss">
 
-@import '~assets/scss/variable.scss';
-
 .scoll-aside {
   position: fixed;
   right: 6rem;

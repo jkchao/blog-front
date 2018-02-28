@@ -36,13 +36,13 @@
 
 <script>
 
-import myFooter from '~/components/layouts/footer.vue'
-import myHeader from '~/components/layouts/header.vue'
-import asideView from '~/components/layouts/aside.vue'
-import scollTop from '~/components/layouts/scollTop.vue'
+import myFooter from '~/components/layouts/footer'
+import myHeader from '~/components/layouts/header'
+import asideView from '~/components/layouts/aside'
+import scollTop from '~/components/layouts/scollTop'
 
-import mobileSide from '~/components/mobile/aside.vue'
-import mobileHeader from '~/components/mobile/header.vue'
+import mobileSide from '~/components/mobile/aside'
+import mobileHeader from '~/components/mobile/header'
 
 export default {
   head () {
@@ -95,8 +95,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-@import '~assets/scss/variable.scss';
 @import '~assets/scss/mixin.scss';
 
 

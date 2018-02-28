@@ -101,7 +101,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/scss/variable';
+
 #share {
   .share-box {
     &.mobile {

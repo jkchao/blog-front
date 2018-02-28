@@ -73,6 +73,7 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports = {
+  // cache: true,
   cache: {
     max: 1000,
     maxAge: 900000
@@ -86,8 +87,13 @@ module.exports = {
     babel: {
       presets: ['es2015', 'stage-2'],
       plugins: ['transform-async-to-generator', 'transform-runtime']
+    },
+    styleResources: {
+      scss: ['./assets/scss/variable.scss', './assets/scss/mixin.scss'],
+      options: {}
     }
   },
+  dev: "development" !== 'production',
   /*
   ** Headers of the page
   */
@@ -106,12 +112,7 @@ module.exports = {
     // ],
     noscript: [{ innerHTML: 'This website requires JavaScript.' }]
   },
-
-  /*
-  ** Global CSS
-  */
-  css: [{ src: '~assets/scss/index.scss', lang: 'scss' }],
-
+  // plugins
   plugins: [{ src: '~plugins/marked.js' }, { src: '~/plugins/highlight.js' }, { src: '~/plugins/gravatar.js' }, { src: '~plugins/clickOutside.js', ssr: false }, { src: '~/plugins/ga.js', ssr: false }, { src: '~plugins/baidu-seo-push.js', ssr: false }, { src: '~plugins/filter.js' }, { src: '~plugins/finally.js' }],
 
   // router
@@ -119,7 +120,13 @@ module.exports = {
     middleware: ['layout'],
     linkActiveClass: 'link-active'
   },
-
+  /*
+  ** Global CSS
+  */
+  css: [{ src: '~assets/scss/index.scss', lang: 'scss' }],
+  /*
+  ** Customize the progress-bar color
+  */
   loading: { color: '#24292e' }
 };
 
@@ -184,13 +191,14 @@ var start = function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2() {
     var _this = this;
 
-    var app, host, port, config, nuxt, builder;
+    var app, port, config, nuxt, builder;
     return __WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             app = new __WEBPACK_IMPORTED_MODULE_1_koa___default.a();
-            host = process.env.HOST || '127.0.0.1';
+            // const host = process.env.HOST || '127.0.0.1'
+
             port = process.env.PORT || 3000;
 
             // Import and Set Nuxt.js options
@@ -205,15 +213,15 @@ var start = function () {
             // Build in development
 
             if (!config.dev) {
-              _context2.next = 10;
+              _context2.next = 9;
               break;
             }
 
             builder = new __WEBPACK_IMPORTED_MODULE_2_nuxt__["Builder"](nuxt);
-            _context2.next = 10;
+            _context2.next = 9;
             return builder.build();
 
-          case 10:
+          case 9:
 
             app.use(function () {
               var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(ctx, next) {
@@ -248,10 +256,10 @@ var start = function () {
               };
             }());
 
-            app.listen(port, host);
+            app.listen(port);
             console.log('Server listening on :' + port); // eslint-disable-line no-console
 
-          case 13:
+          case 12:
           case 'end':
             return _context2.stop();
         }

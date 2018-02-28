@@ -15,7 +15,7 @@
 
 <script>
 
-const articleView = () => import('~/components/common/article.vue')
+const articleView = () => import('~/components/common/article')
 
 
 export default {
@@ -70,8 +70,6 @@ export default {
 
 
 <style lang="scss" scoped>
-
-@import '~assets/scss/variable.scss';
 
 .think {
   >.title {

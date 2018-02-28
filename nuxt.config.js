@@ -26,6 +26,10 @@ module.exports = {
         'transform-async-to-generator',
         'transform-runtime'
       ]
+    },
+    styleResources: {
+      scss: ['./assets/scss/variable.scss', './assets/scss/mixin.scss'],
+      options: {}
     }
   },
   dev: (process.env.NODE_ENV !== 'production'),

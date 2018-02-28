@@ -108,7 +108,7 @@
 
 <script>
 import markdown from '~/plugins/marked'
-import dialogCom from '~/components/common/dialog.vue'
+import dialogCom from '~/components/common/dialog'
 export default {
   name: 'wall',
 
@@ -215,8 +215,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-@import '~assets/scss/variable.scss';
 @import '~assets/scss/mixin.scss';
 
 .walls {

@@ -50,8 +50,6 @@ export default {
 
 <style scoped lang="scss">
 
-@import '~assets/scss/variable.scss';
-
 footer {
   margin-top: $normal-pad;
   height: $header-height;
