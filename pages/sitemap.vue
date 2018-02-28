@@ -115,8 +115,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~assets/scss/mixin.scss';
-
 .sitemap {
   width: $container-min-width;
   margin: 0 auto;

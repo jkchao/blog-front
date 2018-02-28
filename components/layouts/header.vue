@@ -171,8 +171,6 @@ export default {
 
 <style lang="scss">
 
-@import '~assets/scss/mixin.scss';
-
 header {
   position: fixed;
   top: 0;

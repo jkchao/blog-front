@@ -37,7 +37,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~assets/scss/mixin.scss';
 
 .download {
   width: 600px;

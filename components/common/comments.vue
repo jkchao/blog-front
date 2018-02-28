@@ -565,7 +565,6 @@
 </script>
 
 <style lang="scss">
-  @import '~assets/scss/mixin';
   .cm-content,
   .reply-preview {
     font-size: 1em;

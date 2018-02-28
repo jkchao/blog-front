@@ -67,8 +67,6 @@ export default {
 
 <style scoped lang="scss">
 
-@import '~assets/scss/mixin.scss';
-
 .article-box {
   width: $container-left;
   margin: 0 auto;

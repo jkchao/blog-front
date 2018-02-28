@@ -164,8 +164,6 @@ export default {
 </script>
 
 <style lang="scss" scope>
-@import '~assets/scss/mixin.scss';
-
 
 .article-list {
   width: $container-min-width;

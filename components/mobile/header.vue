@@ -80,8 +80,6 @@ export default {
 
 <style scoped lang="scss">
 
-@import '~assets/scss/mixin.scss';
-
 .mobile-head {
   position: relative;
   position: fixed;
