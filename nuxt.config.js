@@ -65,14 +65,14 @@ module.exports = {
   },
   // plugins
   plugins: [
-    { src: '~plugins/marked.js' },
+    { src: '~/plugins/marked.js' },
     { src: '~/plugins/highlight.js' },
     { src: '~/plugins/gravatar.js' },
-    { src: '~plugins/clickOutside.js', ssr: false },
+    { src: '~/plugins/clickOutside.js', ssr: false },
     { src: '~/plugins/ga.js', ssr: false },
-    { src: '~plugins/baidu-seo-push.js', ssr: false },
-    { src: '~plugins/filter.js' },
-    { src: '~plugins/finally.js' }
+    { src: '~/plugins/baidu-seo-push.js', ssr: false },
+    { src: '~/plugins/filter.js' },
+    { src: '~/plugins/finally.js' }
   ],
 
   // router
