@@ -73,7 +73,6 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports = {
-  // cache: true,
   cache: {
     max: 1000,
     maxAge: 900000
@@ -89,7 +88,6 @@ module.exports = {
       plugins: ['transform-async-to-generator', 'transform-runtime']
     }
   },
-  dev: "development" !== 'production',
   /*
   ** Headers of the page
   */
@@ -108,7 +106,12 @@ module.exports = {
     // ],
     noscript: [{ innerHTML: 'This website requires JavaScript.' }]
   },
-  // plugins
+
+  /*
+  ** Global CSS
+  */
+  css: [{ src: '~assets/scss/index.scss', lang: 'scss' }],
+
   plugins: [{ src: '~plugins/marked.js' }, { src: '~/plugins/highlight.js' }, { src: '~/plugins/gravatar.js' }, { src: '~plugins/clickOutside.js', ssr: false }, { src: '~/plugins/ga.js', ssr: false }, { src: '~plugins/baidu-seo-push.js', ssr: false }, { src: '~plugins/filter.js' }, { src: '~plugins/finally.js' }],
 
   // router
@@ -116,13 +119,7 @@ module.exports = {
     middleware: ['layout'],
     linkActiveClass: 'link-active'
   },
-  /*
-  ** Global CSS
-  */
-  css: [{ src: '~assets/scss/index.scss', lang: 'scss' }],
-  /*
-  ** Customize the progress-bar color
-  */
+
   loading: { color: '#24292e' }
 };
 
@@ -175,68 +172,70 @@ module.exports = require("regenerator-runtime");
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_vue_nuxt_node_modules_babel_runtime_regenerator__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_vue_nuxt_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_vue_nuxt_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_koa__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_koa___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_koa__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_nuxt__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_nuxt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_nuxt__);
 
 
-// Start nuxt.js
 var start = function () {
-  var _ref = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_vue_nuxt_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2() {
+  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2() {
     var _this = this;
 
-    var config, nuxt;
-    return __WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_vue_nuxt_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+    var app, host, port, config, nuxt, builder;
+    return __WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
+            app = new __WEBPACK_IMPORTED_MODULE_1_koa___default.a();
+            host = process.env.HOST || '127.0.0.1';
+            port = process.env.PORT || 3000;
+
             // Import and Set Nuxt.js options
+
             config = __webpack_require__(0);
 
             config.dev = !(app.env === 'production');
-            // Instanciate nuxt.js
-            _context2.next = 4;
-            return new __WEBPACK_IMPORTED_MODULE_2_nuxt___default.a(config);
 
-          case 4:
-            nuxt = _context2.sent;
+            // Instantiate nuxt.js
+            nuxt = new __WEBPACK_IMPORTED_MODULE_2_nuxt__["Nuxt"](config);
+
+            // Build in development
 
             if (!config.dev) {
-              _context2.next = 15;
+              _context2.next = 10;
               break;
             }
 
-            _context2.prev = 6;
-            _context2.next = 9;
-            return nuxt.build();
+            builder = new __WEBPACK_IMPORTED_MODULE_2_nuxt__["Builder"](nuxt);
+            _context2.next = 10;
+            return builder.build();
 
-          case 9:
-            _context2.next = 15;
-            break;
-
-          case 11:
-            _context2.prev = 11;
-            _context2.t0 = _context2['catch'](6);
-
-            console.error(_context2.t0); // eslint-disable-line no-console
-            process.exit(1);
-
-          case 15:
+          case 10:
 
             app.use(function () {
-              var _ref2 = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_vue_nuxt_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(ctx, next) {
-                return __WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_vue_nuxt_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+              var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(ctx, next) {
+                return __WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
                   while (1) {
                     switch (_context.prev = _context.next) {
                       case 0:
-                        ctx.status = 200; // koa defaults to 404 when it sees that status is unset
-                        _context.next = 3;
-                        return nuxt.render(ctx.req, ctx.res);
+                        _context.next = 2;
+                        return next();
 
-                      case 3:
+                      case 2:
+                        ctx.status = 200; // koa defaults to 404 when it sees that status is unset
+                        return _context.abrupt('return', new Promise(function (resolve, reject) {
+                          ctx.res.on('close', resolve);
+                          ctx.res.on('finish', resolve);
+                          nuxt.render(ctx.req, ctx.res, function (promise) {
+                            // nuxt.render passes a rejected promise into callback on error.
+                            promise.then(resolve).catch(reject);
+                          });
+                        }));
+
+                      case 4:
                       case 'end':
                         return _context.stop();
                     }
@@ -249,15 +248,15 @@ var start = function () {
               };
             }());
 
-            app.listen(port);
-            console.log('Server listening on ' + port); // eslint-disable-line no-console
+            app.listen(port, host);
+            console.log('Server listening on :' + port); // eslint-disable-line no-console
 
-          case 18:
+          case 13:
           case 'end':
             return _context2.stop();
         }
       }
-    }, _callee2, this, [[6, 11]]);
+    }, _callee2, this);
   }));
 
   return function start() {
@@ -269,10 +268,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 
 
-
-var app = new __WEBPACK_IMPORTED_MODULE_1_koa___default.a();
-var host = process.env.HOST || '127.0.0.1';
-var port = process.env.PORT || 3000;
 
 start();
 

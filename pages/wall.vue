@@ -10,7 +10,7 @@
       <div class="column" key="1">
         <div
           class="list"
-          v-for="(list, index) in list0" 
+          v-for="list in list0" 
           :key="list._id">
           <h3 class="user">
             <span class="user-name">
@@ -27,7 +27,7 @@
       <div class="column" key="2">
         <div
           class="list"
-          v-for="(list, index) in list1" 
+          v-for="list in list1" 
           :key="list._id">
           <h3 class="user">
             <span class="user-name">
@@ -64,7 +64,7 @@
         <div class="column" key="1">
           <div
             class="list"
-            v-for="(list, index) in items" 
+            v-for="list in items" 
             :key="list._id">
             <h3 class="user">
               <span class="user-name">
@@ -108,7 +108,7 @@
 
 <script>
 import markdown from '~/plugins/marked'
-import dialogCom from '~components/common/dialog.vue'
+import dialogCom from '~/components/common/dialog.vue'
 export default {
   name: 'wall',
 

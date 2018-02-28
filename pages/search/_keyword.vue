@@ -16,7 +16,7 @@
 </template>
 <script>
 
-import articleView from '~components/common/article.vue'
+import articleView from '~/components/common/article.vue'
 
 export default {
 

@@ -36,13 +36,13 @@
 
 <script>
 
-import myFooter from '~components/layouts/footer.vue'
-import myHeader from '~components/layouts/header.vue'
-import asideView from '~components/layouts/aside.vue'
-import scollTop from '~components/layouts/scollTop.vue'
+import myFooter from '~/components/layouts/footer.vue'
+import myHeader from '~/components/layouts/header.vue'
+import asideView from '~/components/layouts/aside.vue'
+import scollTop from '~/components/layouts/scollTop.vue'
 
-import mobileSide from '~components/mobile/aside.vue'
-import mobileHeader from '~components/mobile/header.vue'
+import mobileSide from '~/components/mobile/aside.vue'
+import mobileHeader from '~/components/mobile/header.vue'
 
 export default {
   head () {

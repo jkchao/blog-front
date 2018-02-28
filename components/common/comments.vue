@@ -230,7 +230,7 @@
   import markdown from '~/plugins/marked'
   import gravatar from '~/plugins/gravatar'
   import { scrollTo } from '~/utils/scroll'
-  import loadingCom from '~components/common/pageLoading/pageLoading'
+  import loadingCom from '~/components/common/pageLoading/pageLoading'
   import _ from '~/utils/underscore'
   export default {
     name: 'comment',

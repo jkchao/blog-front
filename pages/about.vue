@@ -91,7 +91,7 @@
 
 <script>
 
-import comments from '~components/common/comments'
+import comments from '~/components/common/comments.vue'
 
 export default {
 

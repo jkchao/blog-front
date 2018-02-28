@@ -15,7 +15,7 @@
 
 <script>
 
-const articleView = () => import('~components/common/article.vue')
+const articleView = () => import('~/components/common/article.vue')
 
 
 export default {
