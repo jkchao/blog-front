@@ -1,7 +1,7 @@
 /*
 ** 只在生成模式的客户端中使用
 */
-if (process.BROWSER_BUILD && process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   /*
   ** Google 统计分析脚本
   */
@@ -13,6 +13,7 @@ if (process.BROWSER_BUILD && process.env.NODE_ENV === 'production') {
   ** 当前页的访问统计
   */
   ga('create', 'UA-106861408-1', 'auto')
+  ga('send', 'pageview')
 }
 
 export default ({ app: { router }, store }) => {
