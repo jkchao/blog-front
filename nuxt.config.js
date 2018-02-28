@@ -1,4 +1,5 @@
 module.exports = {
+  // cache: true,
   cache: {
     max: 1000,
     maxAge: 900000
@@ -27,6 +28,7 @@ module.exports = {
       ]
     }
   },
+  dev: (process.env.NODE_ENV !== 'production'),
   /*
   ** Headers of the page
   */
@@ -57,14 +59,7 @@ module.exports = {
       { innerHTML: 'This website requires JavaScript.' }
     ]
   },
-
-  /*
-  ** Global CSS
-  */
-  css: [
-    { src: '~assets/scss/index.scss', lang: 'scss' }
-  ],
-
+  // plugins
   plugins: [
     { src: '~plugins/marked.js' },
     { src: '~/plugins/highlight.js' },
@@ -81,6 +76,14 @@ module.exports = {
     middleware: ['layout'],
     linkActiveClass: 'link-active'
   },
-
+  /*
+  ** Global CSS
+  */
+  css: [
+    { src: '~assets/scss/index.scss', lang: 'scss' }
+  ],
+  /*
+  ** Customize the progress-bar color
+  */
   loading: { color: '#24292e' }
 }
