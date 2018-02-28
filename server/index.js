@@ -3,7 +3,7 @@ import { Nuxt, Builder } from 'nuxt'
 
 async function start () {
   const app = new Koa()
-  const host = process.env.HOST || '127.0.0.1'
+  // const host = process.env.HOST || '127.0.0.1'
   const port = process.env.PORT || 3000
 
   // Import and Set Nuxt.js options
@@ -32,7 +32,7 @@ async function start () {
     })
   })
 
-  app.listen(port, host)
+  app.listen(port)
   console.log('Server listening on :' + port) // eslint-disable-line no-console
 }
 
