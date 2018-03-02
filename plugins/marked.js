@@ -41,14 +41,14 @@ const imageParse = (src, title, alt) => {
 // 外链
 const linkParse = (href, title, text) => {
   return `<a href="${href}"
-             target="${href.includes('#') ? '_self' : '_blank'}" 
-             class="c-link">
+             target="${href.substr(0, 1) === '#' ? '_self' : '_blank'}" 
+             class="${href.substr(0, 1) === '#' ? '' : 'c-link'}">
              ${
-              href.includes('#')
-              ? text
-              : text.length > 20
-                ? text.slice(0, 20) + '...'
-                : text
+                href.substr(0, 1) === '#'
+                ? text
+                : text.length > 40
+                  ? text.slice(0, 40) + '...'
+                  : text
               }
           </a>`.replace(/\s+/g, ' ').replace('\n', '')
 }
