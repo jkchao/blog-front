@@ -2,7 +2,6 @@
  * 归档
  */
 
- 
 export const state = () => ({
   art: [],
 
