@@ -41,7 +41,8 @@ const imageParse = (src, title, alt) => {
 // 外链
 const linkParse = (href, title, text) => {
   return `<a href="${href}"
-             target="${href.includes('#') ? '_self' : '_blank'}" >
+             target="${href.includes('#') ? '_self' : '_blank'}" 
+             class="c-link">
              ${
               href.includes('#')
               ? text
