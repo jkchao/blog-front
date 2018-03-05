@@ -53,7 +53,7 @@
       <comments :post-id="article.id" v-if="article.title"></comments>
     </div>
 
-    <aside>
+    <aside v-if="!mobileLayout" >
       <div 
         class="like" 
         @click="like"
@@ -506,7 +506,7 @@ export default {
 
   >aside {
     position: fixed;
-    top: $xlg-pad * 4;
+    top: $xlg-pad * 6;
     margin-left: -$xlg-pad * 3;
 
     > div {
