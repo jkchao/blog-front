@@ -1,5 +1,6 @@
 <template>
   <div class="article-list" :class="{'mobile': mobileLayout}">
+
     <div class="article-cont">
       <h3 class="">{{ article.title }}</h3>
       <div class="meta">
@@ -17,6 +18,7 @@
       </div>
       <div class="content" v-html="articleContent"></div>
     </div>
+
     <div class="item">
       <div class="info">
         <div class="info-left">
@@ -46,9 +48,27 @@
         <share class="article-share"></share>
       </div>
     </div>
+
     <div class="comment">
       <comments :post-id="article.id" v-if="article.title"></comments>
     </div>
+
+    <aside>
+      <div 
+        class="like" 
+        @click="like"
+        :class="{'is-liked': isLiked}">
+
+        <i
+          class="iconfont icon-like like"
+          ></i>
+        <span>{{ article.meta.likes || 0}}</span>
+      </div>
+      <div class="comment" @click="scrollToComment">
+        <i class="iconfont icon-comments"></i>
+        <span>{{ article.meta.comments || 0}}</span>        
+      </div>
+    </aside>
 
     <dialog-com 
       :visible.sync="showDialog" 
@@ -65,6 +85,7 @@ import markdown from '~/plugins/marked'
 import share from '~/components/layouts/share'
 import dialogCom from '~/components/common/dialog'
 import comments from '~/components/common/comments'
+import { scrollTo } from '~/utils/scroll'
 // import lazyImg from '../../utils/lazyImg'
 export default {
   name: 'article',
@@ -153,6 +174,10 @@ export default {
           this.img = list[i].getAttribute('src')
         })
       }
+    },
+
+    scrollToComment () {
+      scrollTo(document.querySelector(`#comment-box`), 500, { offset: 0 })
     }
   },
 
@@ -422,6 +447,7 @@ export default {
       }
     }
   }
+
   >.item {
     margin: 3rem 0;
     padding: $lg-pad 0;
@@ -475,6 +501,58 @@ export default {
     }
     >.share {
       margin-top: 1rem;
+    }
+  }
+
+  >aside {
+    position: fixed;
+    top: $xlg-pad * 4;
+    margin-left: -$xlg-pad * 3;
+
+    > div {
+      position: relative;
+      width: $xlg-pad;
+      height: $xlg-pad;
+      margin-bottom: $normal-pad;
+      text-align: center;
+      line-height: $xlg-pad;
+      border: 1px solid $border-color;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,.04);
+      cursor: pointer;
+
+      &.like:hover {
+        color: $red;
+        border-color: $red;
+      }
+
+      &.comment:hover {
+        color: $green;
+        border-color: $green;
+      }
+
+      &.is-liked {
+        color: $red;
+      }
+
+
+      > i {
+        font-size: 1.2rem;
+      }
+
+      > span {
+        position: absolute;
+        right: -0.5rem;
+        top: -5px;
+        line-height: 1;
+        color: $black;
+        font-size: 1rem;
+        padding: $xs-pad $sm-pad;
+        background: #eee;
+        border-radius: .7rem;
+        /* text-align: center; */
+        transform: scale(.75);
+      }
     }
   }
 
