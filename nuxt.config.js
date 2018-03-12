@@ -87,6 +87,9 @@ module.exports = {
   css: [
     { src: '~assets/scss/index.scss', lang: 'scss' }
   ],
+  modules: [
+    ['@nuxtjs/pwa']
+  ],
   /*
   ** Customize the progress-bar color
   */

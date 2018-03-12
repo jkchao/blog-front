@@ -12,3 +12,6 @@ dist
 
 # Mac Finder DS_Store
 .DS_Store
+
+# pwa
+sw.*
