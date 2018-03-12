@@ -45,7 +45,7 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - ~安卓 uc 浏览器无法点击头部~。
 
-- 加载优化
+- ~加载优化~
 
 - ~尾部信息优化~
 
@@ -67,7 +67,9 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - TypeScript 重构
 
-- 支持 PWA
+- ~支持 PWA~
+
+- CDN 缓存
 
 ## Build Setup
 
