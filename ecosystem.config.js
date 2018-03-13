@@ -26,6 +26,7 @@ module.exports = {
   deploy: {
     production: {
       user: 'root',
+      host: 'jkchao.cn',
       ref: 'origin/master',
       repo: 'git@github.com:jkchao/vue-blog.git',
       path: '/home/front',
