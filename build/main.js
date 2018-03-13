@@ -93,7 +93,7 @@ module.exports = {
       options: {}
     }
   },
-  dev: "development" !== 'production',
+  dev: "production" !== 'production',
   /*
   ** Headers of the page
   */
@@ -124,6 +124,7 @@ module.exports = {
   ** Global CSS
   */
   css: [{ src: '~assets/scss/index.scss', lang: 'scss' }],
+  modules: [['@nuxtjs/pwa']],
   /*
   ** Customize the progress-bar color
   */

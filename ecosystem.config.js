@@ -30,7 +30,7 @@ module.exports = {
       ref: 'origin/master',
       repo: 'git@github.com:jkchao/vue-blog.git',
       path: '/home/front',
-      'post-deploy': 'git pull && pm2 startOrReload ecosystem.config.js --env production'
+      'post-deploy': 'git pull && npm run build &&pm2 startOrReload ecosystem.config.js --env production'
     }
   }
 }
