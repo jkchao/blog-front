@@ -6,7 +6,7 @@ module.exports = {
   apps: [
     {
       name: 'jkchao.cn',
-      script: 'build/main.js',
+      script: './build/main.js',
       env: {
         COMMON_VARIABLE: 'true'
       },
@@ -14,8 +14,8 @@ module.exports = {
         NODE_ENV: 'production'
       },
       log_date_format: 'YYYY-MM-DD HH:mm Z',
-      out_file: './logs/jkchao.cn/pm2-out.log',
-      error_file: './logs/jkchao.cn/pm2-error.log'
+      out_file: '/home/logs/jkchao.cn/pm2-out.log',
+      error_file: '/home/logs/jkchao.cn/pm2-error.log'
     }
   ],
 
