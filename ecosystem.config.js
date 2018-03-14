@@ -1,12 +1,8 @@
 module.exports = {
-  /**
-   * Application configuration section
-   * http://pm2.keymetrics.io/docs/usage/application-declaration/
-   */
   apps: [
     {
       name: 'jkchao.cn',
-      script: './build/main.js',
+      script: 'build/main.js',
       env: {
         COMMON_VARIABLE: 'true'
       },
@@ -18,11 +14,6 @@ module.exports = {
       error_file: '/home/logs/jkchao.cn/pm2-error.log'
     }
   ],
-
-  /**
-   * Deployment section
-   * http://pm2.keymetrics.io/docs/usage/deployment/
-   */
   deploy: {
     production: {
       user: 'root',
