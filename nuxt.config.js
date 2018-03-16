@@ -6,7 +6,7 @@ module.exports = {
   },
   build: {
     // cdn
-    publicPath: 'https://static.jkchao.cn/_nuxt/',
+    // publicPath: 'https://static.jkchao.cn/_nuxt/',
     // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
     vendor: [
       'axios',
