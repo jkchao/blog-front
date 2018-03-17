@@ -1,4 +1,4 @@
-import { STATIC_PATH } from './config'
+const STATIC_PATH = require('./config').STATIC_PATH
 
 module.exports = {
   // cache: true,

@@ -72,10 +72,7 @@ module.exports =
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(4);
-
+var STATIC_PATH = __webpack_require__(4).STATIC_PATH;
 
 module.exports = {
   // cache: true,
@@ -85,7 +82,7 @@ module.exports = {
   },
   build: {
     // cdn
-    publicPath: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* STATIC_PATH */] + '/_nuxt/',
+    publicPath: STATIC_PATH + '/_nuxt/',
     // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
     vendor: ['axios', 'howler', 'marked', 'gravatar', 'highlight.js'],
     // postcss
@@ -100,7 +97,7 @@ module.exports = {
       options: {}
     }
   },
-  dev: "development" !== 'production',
+  dev: "production" !== 'production',
   /*
   ** Headers of the page
   */
@@ -161,14 +158,11 @@ module.exports = require("nuxt");
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-"use strict";
-/* unused harmony export API_ROOT */
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return STATIC_PATH; });
-var IS_DEV = "development" !== 'production';
+var IS_DEV = "production" !== 'production';
 
-var API_ROOT = IS_DEV ? 'http://localhost:8000/api/' : 'https://api.jkchao.cn/api/';
+exports.API_ROOT = IS_DEV ? 'http://localhost:8000/api/' : 'https://api.jkchao.cn/api/';
 
-var STATIC_PATH = 'https://static.jkchao.cn';
+exports.STATIC_PATH = 'https://static.jkchao.cn';
 
 /***/ },
 /* 5 */
