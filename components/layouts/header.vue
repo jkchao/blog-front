@@ -52,7 +52,8 @@ export default {
       keyword: '',
       open: false,
       nav: [
-        { path: '/', name: '码农', icon: 'iconfont icon-home'},
+        { path: '/', name: '首页', icon: 'iconfont icon-home'},
+        { path: '/code', name: '码农', icon: 'iconfont icon-home'},
         { path: '/think', name: '读书', icon: 'iconfont icon-read'},
         { path: '/fuck', name: '民谣', icon: 'iconfont icon-user'}
       ]
