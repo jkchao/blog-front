@@ -39,10 +39,6 @@ export default {
     user () {
       return this.$store.state.options.adminInfo
     }
-  },
-
-  created () {
-    console.log(this.option.icp)
   }
 }
 

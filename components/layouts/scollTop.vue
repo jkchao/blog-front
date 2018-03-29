@@ -76,13 +76,16 @@ export default {
 
   >.scoll-btn {
     display: block;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: $xlg-pad;
+    height: $xlg-pad;
     margin-bottom: .5rem;
     color: #5ab95c;
     background: $module-bg;
     text-align: center;
-    line-height: 2.5rem;
+    line-height: 2.7rem;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.04);
+    border: 1px solid $border-color;
     cursor: pointer;
 
     &:hover {

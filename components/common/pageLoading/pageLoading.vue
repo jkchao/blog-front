@@ -101,6 +101,8 @@
 
     canvas {
       width: 120px;
+      margin-top: $mlg-pad;
+      margin-left: $mlg-pad;
     }
   }
 </style>

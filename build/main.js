@@ -65,12 +65,14 @@ module.exports =
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
+
+var STATIC_PATH = __webpack_require__(4).STATIC_PATH;
 
 module.exports = {
   // cache: true,
@@ -79,10 +81,12 @@ module.exports = {
     maxAge: 900000
   },
   build: {
+    // cdn
+    publicPath: STATIC_PATH + '/_nuxt/',
     // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
     vendor: ['axios', 'howler', 'marked', 'gravatar', 'highlight.js'],
     // postcss
-    postcss: [__webpack_require__(5)(), __webpack_require__(6)(), __webpack_require__(4)()],
+    postcss: [__webpack_require__(6)(), __webpack_require__(7)(), __webpack_require__(5)()],
     // babel
     babel: {
       presets: ['es2015', 'stage-2'],
@@ -93,7 +97,7 @@ module.exports = {
       options: {}
     }
   },
-  dev: "development" !== 'production',
+  dev: "production" !== 'production',
   /*
   ** Headers of the page
   */
@@ -113,7 +117,7 @@ module.exports = {
     noscript: [{ innerHTML: 'This website requires JavaScript.' }]
   },
   // plugins
-  plugins: [{ src: '~/plugins/marked.js' }, { src: '~/plugins/highlight.js' }, { src: '~/plugins/gravatar.js' }, { src: '~/plugins/clickOutside.js', ssr: false }, { src: '~/plugins/ga.js', ssr: false }, { src: '~/plugins/baidu-seo-push.js', ssr: false }, { src: '~/plugins/filter.js' }, { src: '~/plugins/finally.js' }],
+  plugins: [{ src: '~/plugins/marked.js' }, { src: '~/plugins/highlight.js' }, { src: '~/plugins/gravatar.js' }, { src: '~/plugins/clickOutside.js', ssr: false }, { src: '~/plugins/ga.js', ssr: false }, { src: '~/plugins/copy.js', ssr: false }, { src: '~/plugins/baidu-seo-push.js', ssr: false }, { src: '~/plugins/filter.js' }, { src: '~/plugins/finally.js' }],
 
   // router
   router: {
@@ -124,6 +128,7 @@ module.exports = {
   ** Global CSS
   */
   css: [{ src: '~assets/scss/index.scss', lang: 'scss' }],
+  modules: [['@nuxtjs/pwa']],
   /*
   ** Customize the progress-bar color
   */
@@ -134,7 +139,7 @@ module.exports = {
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(7);
+module.exports = __webpack_require__(8);
 
 
 /***/ },
@@ -151,30 +156,40 @@ module.exports = require("nuxt");
 
 /***/ },
 /* 4 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-module.exports = require("postcss-hexrgba");
+var IS_DEV = "production" !== 'production';
+
+exports.API_ROOT = IS_DEV ? 'http://localhost:8000/api/' : 'https://api.jkchao.cn/api/';
+
+exports.STATIC_PATH = 'https://static.jkchao.cn';
 
 /***/ },
 /* 5 */
 /***/ function(module, exports) {
 
-module.exports = require("postcss-nested");
+module.exports = require("postcss-hexrgba");
 
 /***/ },
 /* 6 */
 /***/ function(module, exports) {
 
-module.exports = require("postcss-responsive-type");
+module.exports = require("postcss-nested");
 
 /***/ },
 /* 7 */
 /***/ function(module, exports) {
 
-module.exports = require("regenerator-runtime");
+module.exports = require("postcss-responsive-type");
 
 /***/ },
 /* 8 */
+/***/ function(module, exports) {
+
+module.exports = require("regenerator-runtime");
+
+/***/ },
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";

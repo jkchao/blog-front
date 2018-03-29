@@ -1,3 +1,5 @@
+const STATIC_PATH = require('./config').STATIC_PATH
+
 module.exports = {
   // cache: true,
   cache: {
@@ -5,6 +7,8 @@ module.exports = {
     maxAge: 900000
   },
   build: {
+    // cdn
+    publicPath: `${STATIC_PATH}/_nuxt/`,
     // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
     vendor: [
       'axios',
@@ -70,6 +74,7 @@ module.exports = {
     { src: '~/plugins/gravatar.js' },
     { src: '~/plugins/clickOutside.js', ssr: false },
     { src: '~/plugins/ga.js', ssr: false },
+    { src: '~/plugins/copy.js', ssr: false },
     { src: '~/plugins/baidu-seo-push.js', ssr: false },
     { src: '~/plugins/filter.js' },
     { src: '~/plugins/finally.js' }
@@ -85,6 +90,9 @@ module.exports = {
   */
   css: [
     { src: '~assets/scss/index.scss', lang: 'scss' }
+  ],
+  modules: [
+    ['@nuxtjs/pwa']
   ],
   /*
   ** Customize the progress-bar color
