@@ -95,3 +95,9 @@ export function getBook (params) {
   return ax.get(`/book`, { params })
           .then(res => res.data)
 }
+
+// 获取友链
+export function getLink (params) {
+  return ax.get(`/link`, { params })
+          .then(res => res.data)
+}

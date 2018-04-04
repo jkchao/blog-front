@@ -72,12 +72,25 @@
       </div>
     </div>
 
+    <p class="title more" :class="{'title-mobile': mobileLayout}">
+      <span class="title-name">Friends</span>
+      <span class="line"></span>
+    </p>
+    <div class="friend">
+      <a
+        v-for="(friend,index) in friends"
+        :key="index" 
+        :href="friend.url" target="_blank">
+          {{ friend.name }}
+      </a>
+    </div>
+
     <p class="title more">
       <span class="title-name">还有啥？</span>
       <span class="line"></span>
     </p>
     <div class="last">
-      <p></p>
+      <p>你可以在下面申请友请链接，称呼 + 网址 。</p>
       <p>哦，对了，可以看看这篇文章
         <i><a href="https://jkchao.cn/article/5a03f6ec0a7b41779c672afa" target="_blank">来，喝酒吧！</a></i>这都是我乱说的。
       </p>
@@ -103,6 +116,10 @@ export default {
     title: 'About'
   },
 
+  fetch ({ store }) {
+    return store.dispatch('getLink', { page_size: 1000 })
+  },
+
   data () {
     return {
       showBox:  false
@@ -116,6 +133,10 @@ export default {
 
     user () {
       return this.$store.state.options.adminInfo
+    },
+
+    friends () {
+      return this.$store.state.link.data.list
     }
   },
 
@@ -162,8 +183,28 @@ export default {
     padding: 2rem;
     border: 0;
 
+    p {
+      margin: .5rem 0;
+    }
+
     a {
       text-decoration: underline;
+    }
+  }
+
+  > .friend {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 2rem 2rem 1rem 2rem;
+
+    a {
+      width: 30%;
+      height: 3rem;
+      line-height: 3rem;
+      text-align: center;
+      background: #f8f8f8;
+      margin-bottom: 1rem;
     }
   }
 

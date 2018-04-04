@@ -97,7 +97,7 @@ module.exports = {
       options: {}
     }
   },
-  dev: "production" !== 'production',
+  dev: "development" !== 'production',
   /*
   ** Headers of the page
   */
@@ -158,7 +158,7 @@ module.exports = require("nuxt");
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-var IS_DEV = "production" !== 'production';
+var IS_DEV = "development" !== 'production';
 
 exports.API_ROOT = IS_DEV ? 'http://localhost:8000/api/' : 'https://api.jkchao.cn/api/';
 

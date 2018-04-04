@@ -203,5 +203,18 @@ export const actions = {
       })
     } else commit('book/SET_BOOK_FILE')
     return res
+  },
+
+  // 获取书本
+  async getLink ({ commit, state }, data = { current_page: 1, page_size: 30 }) {
+    const res = await service.getLink(data)
+                      .catch(err => console.error(err))
+    if (res && res.code === 1) {
+      commit('link/SET_LINK_SUCCESS', {
+        list: res.result.list,
+        pagination: res.result.pagination
+      })
+    } else commit('link/SET_LINK_FILE')
+    return res
   }
 }
