@@ -13,7 +13,7 @@
           <!-- <span class="disqus-comment-count" :data-disqus-identifier="article._id"></span> -->
         </span>
       </div>
-      <div class="article-thumb">
+      <div class="article-thumb" v-if="article.thumb">
         <img :src="article.thumb" alt="">
       </div>
       <div class="content" v-html="articleContent"></div>
@@ -222,8 +222,10 @@ export default {
     }
 
     .content {
+      margin: $lg-pad 0;
       color: $black;
       word-wrap: break-word;
+
 
       .demo {
         border: 1px solid #eee;
