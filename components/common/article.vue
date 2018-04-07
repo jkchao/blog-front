@@ -77,7 +77,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding: $lg-pad 0 $normal-pad;
-    margin-bottom: $mlg-pad;
+    margin-bottom: $xlg-pad;
     color: $black;
 
     .title {
@@ -120,7 +120,7 @@ export default {
       }
 
       >.abstrack {
-        margin: 1rem 0;
+        margin: 2rem 0;
         min-height: 4rem;
         line-height: 1.8rem;
         color: $descript;
