@@ -83,6 +83,7 @@ export default {
     .title {
       margin-bottom: $sm-pad;
       font-size: $font-size-large;
+      font-weight: 700;
     }
 
     &.mobile-article {
@@ -115,16 +116,15 @@ export default {
     >.content {
 
       >.title {
-        &:hover {
-          text-decoration: underline;
-        }
+        @include content-overflow(1);
       }
 
       >.abstrack {
         margin: 1rem 0;
         min-height: 4rem;
         line-height: 1.8rem;
-        color: #555555;
+        color: $descript;
+        @include content-overflow(3);
       }
 
       >.meta {

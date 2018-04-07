@@ -1,12 +1,12 @@
-"use strict"
+'use strict'
 
-let BezierEasing = require("bezier-easing")
+let BezierEasing = require('bezier-easing')
 
 let _ = {
-  $(selector) {
+  $ (selector) {
     return document.querySelector(selector)
   },
-  on(element, events, handler) {
+  on (element, events, handler) {
     if (!(events instanceof Array)) {
       events = [events]
     }
@@ -14,7 +14,7 @@ let _ = {
       element.addEventListener(events[i], handler)
     }
   },
-  off(element, events, handler) {
+  off (element, events, handler) {
     if (!(events instanceof Array)) {
       events = [events]
     }
@@ -27,34 +27,33 @@ let _ = {
 exports.easing = {
   ease: [0.25, 0.1, 0.25, 1.0],
   linear: [0.00, 0.0, 1.00, 1.0],
-  "ease-in": [0.42, 0.0, 1.00, 1.0],
-  "ease-out": [0.00, 0.0, 0.58, 1.0],
-  "ease-in-out": [0.42, 0.0, 0.58, 1.0]
+  'ease-in': [0.42, 0.0, 1.00, 1.0],
+  'ease-out': [0.00, 0.0, 0.58, 1.0],
+  'ease-in-out': [0.42, 0.0, 0.58, 1.0]
 }
 
 exports.scrollTo = (element, duration = 500, options) => {
+  options = options || {}
+  options.easing = exports.easing['ease-in-out'] 
 
-	options = options || {}
-	options.easing = exports.easing["ease-in-out"] 
-
-  if (typeof element === "string") {
-      element = _.$(element)
+  if (typeof element === 'string') {
+    element = _.$(element)
   }
 
-  let page = _.$("html, body")
+  let page = _.$('html, body')
   let events = [
-      "scroll",
-      "mousedown",
-      "wheel",
-      "DOMMouseScroll",
-      "mousewheel",
-      "keyup",
-      "touchmove"
+    'scroll',
+    'mousedown',
+    'wheel',
+    'DOMMouseScroll',
+    'mousewheel',
+    'keyup',
+    'touchmove'
   ]
   let abort = false
 
-  let abortFn = function() {
-      abort = true
+  let abortFn = function () {
+    abort = true
   }
 
   _.on(page, events, abortFn)
@@ -78,7 +77,7 @@ exports.scrollTo = (element, duration = 500, options) => {
   let easing = BezierEasing.apply(BezierEasing, options.easing)
   let start
 
-  let done = function() {
+  let done = function () {
     _.off(page, events, abortFn)
     if (abort && options.onCancel) options.onCancel()
     if (!abort && options.onDone) options.onDone()
@@ -86,7 +85,7 @@ exports.scrollTo = (element, duration = 500, options) => {
 
   if (!diff) return
 
-  window.requestAnimationFrame(function step(timestamp) {
+  window.requestAnimationFrame(function step (timestamp) {
     if (abort) return done()
     if (!start) start = timestamp
 

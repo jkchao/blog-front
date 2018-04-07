@@ -426,3 +426,11 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+@mixin content-overflow ($num) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $num;
+  -webkit-box-orient: vertical;
+}
