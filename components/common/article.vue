@@ -1,5 +1,4 @@
 <template>
-
     <transition-group tag="div" name="slide-down" class="article-box" :class="{'mobile': mobileLayout}">
       <div
         class="article-item"
