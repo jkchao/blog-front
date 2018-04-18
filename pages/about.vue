@@ -116,10 +116,6 @@ export default {
     title: 'About'
   },
 
-  fetch ({ store }) {
-    return store.dispatch('getLink', { page_size: 1000 })
-  },
-
   data () {
     return {
       showBox:  false

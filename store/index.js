@@ -19,7 +19,10 @@ export const actions = {
       store.dispatch('getOpt'),
 
       // 标签
-      store.dispatch('getTag')
+      store.dispatch('getTag'),
+
+      // 友情链接
+      store.dispatch('getLink', { page_size: 1000 })
     ]
 
     if (!isMobile) {

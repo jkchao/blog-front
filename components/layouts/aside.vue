@@ -15,6 +15,7 @@
           </p>
         </transition-group>
       </div>
+  
       <div class="aside-item aside-tag " key="2">
         <h3 class="title">
           <span class="title-name">标签</span>
@@ -27,6 +28,21 @@
               <span>({{ item.count }})</span>
             </nuxt-link>
           </li>
+        </ul>
+      </div>
+
+      <div class="aside-tiem aside-friends">
+        <h3 class="title">
+          <span class="title-name">朋友</span>
+          <span class="line"></span>
+        </h3>
+        <ul class="friends clearfix">
+            <a
+              v-for="(friend,index) in friends"
+              :key="index" 
+              :href="friend.url" target="_blank">
+                {{ friend.name }}
+            </a>
         </ul>
       </div>
 
@@ -91,14 +107,21 @@ export default {
   },
 
   computed: {
+
     tag () {
       return this.$store.state.tag.data.list
     },
+
     hotArt () {
       return this.$store.state.article.hotArt.list
     },
+
     currentSaying () {
       return this.saying[Math.floor(Math.random() * 4)]
+    },
+
+    friends () {
+      return this.$store.state.link.data.list
     }
   },
 
@@ -147,6 +170,7 @@ export default {
 
   .aside-item.hot-article,
   .aside-item.aside-tag,
+  .aside-friends,
   .aside-item.link {
 
     >.title {
@@ -233,6 +257,17 @@ export default {
 
     .line {
       width: $xlg-pad;
+    }
+  }
+  
+  .friends {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+
+    a {
+      padding: .8rem 1rem;
+      text-align: center;
     }
   }
 

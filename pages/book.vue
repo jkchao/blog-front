@@ -151,6 +151,7 @@ export default {
       }
     }
   }
+
   >.loading-more {
     margin-top: 1rem;
     padding: $md-pad;
@@ -160,9 +161,11 @@ export default {
     &:hover {
       background: lighten($module-hover-bg, 60%);
     }
+
     >.allow {
       cursor: pointer;
     }
+
     >.not-allow {
       cursor: not-allowed;
     }
