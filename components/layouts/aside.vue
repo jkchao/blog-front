@@ -33,7 +33,10 @@
 
       <div class="aside-tiem aside-friends">
         <h3 class="title">
-          <span class="title-name">朋友</span>
+          <span class="title-name">
+          <nuxt-link to="/about" >朋友</nuxt-link>
+
+          </span>
           <span class="line"></span>
         </h3>
         <ul class="friends clearfix">
@@ -65,6 +68,8 @@
           <p class="mune">
             <nuxt-link to="/about">我</nuxt-link>
             <span class="hr"></span>
+            <nuxt-link to="/about">朋友</nuxt-link>
+            <span class="hr"></span>
             <nuxt-link to="/wall">留言墙</nuxt-link>
             <span class="hr"></span>
             <nuxt-link to="/sitemap">归档</nuxt-link>
@@ -78,8 +83,8 @@
         </h3>
         <p class="mune">
           <nuxt-link to="/about">我</nuxt-link>
-          <!-- <span class="hr"></span>
-          <nuxt-link to="/book">书店</nuxt-link> -->
+          <span class="hr"></span>
+          <nuxt-link to="/about">朋友</nuxt-link>
           <span class="hr"></span>
           <nuxt-link to="/wall">留言墙</nuxt-link>
           <span class="hr"></span>
@@ -259,11 +264,14 @@ export default {
       width: $xlg-pad;
     }
   }
+
+  .aside-friends {}
   
   .friends {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 1rem;
+    font-weight: 600;
 
     a {
       padding: .8rem 1rem;

@@ -8,7 +8,7 @@ module.exports = {
   },
   build: {
     // cdn
-    publicPath: `${STATIC_PATH}/_nuxt/`,
+    // publicPath: `${STATIC_PATH}/_nuxt/`,
     // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
     vendor: [
       'axios',

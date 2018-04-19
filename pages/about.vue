@@ -197,10 +197,15 @@ export default {
     a {
       width: 30%;
       height: 3rem;
+      margin-bottom: 1rem;
+      margin-right: 5%;
       line-height: 3rem;
       text-align: center;
       background: #f8f8f8;
-      margin-bottom: 1rem;
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
     }
   }
 
