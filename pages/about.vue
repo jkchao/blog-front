@@ -64,11 +64,11 @@
     </p>
     <div class="text-box ">
       <div class="text">
-        <p>Too young too simple, sometimes native.</p>
-        <p>Have so many new ideas, <br v-if="mobileLayout"/>maybe i will go to relize it.</p>
-        <p>Enjoy the present.</p>
-        <p>Always on the road.</p>
-        <p>All of me in the code and music.</p>
+        <p>Too young too simple, sometimes native</p>
+        <p>Have so many new ideas, <br v-if="mobileLayout"/>maybe i will go to relize it</p>
+        <p>Enjoy the present</p>
+        <p>Always on the road</p>
+        <p>All of me in the code and music</p>
       </div>
     </div>
 
