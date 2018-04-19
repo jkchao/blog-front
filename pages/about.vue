@@ -190,7 +190,6 @@ export default {
 
   > .friend {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     padding: 2rem 2rem 1rem 2rem;
 
