@@ -1,93 +1,52 @@
 <template>
-  <section  class="clearfix main">
-    <div class="title">
-      <span class="title-name">最新文章</span>
-      <span class="line"></span>
-    </div>
-    <div class="article">
-      <articleView
-        :articleList = "list"
-        :haveMoreArt="haveMoreArt"
-        @loadMore="loadMore"></articleView>
+  <section  class="welcome">
+    <div class="haiyan">
+      <h3>你好，我叫<nuxt-link to="/about">三毛</nuxt-link></h3>
+      <h4 class="mune">
+        <nuxt-link to="/code">码农</nuxt-link>
+        <span >/</span>
+        <nuxt-link to="/think">读书</nuxt-link>
+        <span >/</span>
+        <nuxt-link to="/fuck">民谣</nuxt-link>
+      </h4>
     </div>
   </section>
 </template>
 <script>
 
-import articleView from '~/components/common/article'
-
 export default {
 
   scrollToTop: true,
 
-  transition: 'fade',
-
-  fetch ({ store }) {
-    return store.dispatch('getArtList')
-  },
-
-  data () {
-    return {}
-  },
-
-  computed: {
-    mobileLayout () {
-      return this.$store.state.options.mobileLayout
-    },
-
-    list () {
-      return this.$store.state.article.art.list
-    },
-
-    banners () {
-      return this.list.slice(0, 9)
-    },
-
-    haveMoreArt () {
-      return this.$store.state.article.art.pagination.current_page
-              !== this.$store.state.article.art.pagination.total_page
-    }
-  },
-
-  components: {
-    articleView
-  },
-
-  methods: {
-    loadMore () {
-      this.$store.dispatch('getArtList', {
-        current_page: this.$store.state.article.art.pagination.current_page + 1
-      })
-    }
-  }
+  transition: 'fade'
 }
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
+.welcome {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  
+  background: url('https://static.jkchao.cn/main_bg.jpg') no-repeat 20% 20%;
+  background-size: cover;
 
-.main {
-  >.title {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0rem;
-    line-height: 1.5rem;
-    color: $black;
-    font-size: 1rem;
-    font-weight: normal;
+  .haiyan {
+    position: absolute;
+    left: 80px;
+    top: 80px;
+    color: $body-bg;
 
-    > .title-name {
-      position: relative;
-      padding-right: $lg-pad;
-      background: $white;
-      z-index: 99;      
-    }
-
-    > .line {
-      top: 50%;
+    .mune {
+      span {
+        padding: .35rem;
+      }
     }
   }
 }
+
 
 </style>

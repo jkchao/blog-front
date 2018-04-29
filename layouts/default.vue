@@ -1,14 +1,22 @@
 <template>
   <div class="app">
-    <div class="app-aside" v-if="mobileLayout" :class="{ open: mobileSidebar }" v-click-outside="hideSide">
+    <div 
+        class="app-aside" 
+        v-if="mobileLayout" 
+        :class="{ open: mobileSidebar }" 
+        v-click-outside="hideSide">
       <mobile-side ></mobile-side>
     </div>
     <div class="app-main" :class="{ open: mobileSidebar }">
-      <div class="head-box">
+      <div class="head-box" v-if="$route.path !== '/'">
         <mobile-header v-if="mobileLayout"></mobile-header>
         <my-header v-else></my-header>
       </div>
-      <transition-group tag="div" class="container clearfix main-container" name="slide-up" :class="{ 'mobile': mobileLayout }">
+      <transition-group 
+          tag="div" 
+          class="container clearfix main-container" 
+          name="slide-up" 
+          :class="{ 'mobile': mobileLayout }">
         <div
           class="content-left" 
           key="1" 
@@ -27,7 +35,8 @@
           </keep-alive>
         </div>
       </transition-group>
-      <my-footer v-if="!isError"></my-footer>
+      
+      <my-footer v-if="!isError && $route.path !== '/'"></my-footer>
     </div>
     <scoll-top></scoll-top>
   </div>

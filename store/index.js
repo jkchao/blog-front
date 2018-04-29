@@ -8,6 +8,7 @@ export const actions = {
     // 设备检查类型
     const userAgent = isServer ? req.headers['user-agent'] : navigator.userAgent
     const isMobile = /(iPhone|iPod|Opera Mini|Android.*Mobile|NetFront|PSP|BlackBerry|Windows Phone)/ig.test(userAgent)
+    console.log(route)
     store.commit('options/SET_MOBILE_LAYOUT', isMobile)
     store.commit('options/SET_USER_AGENT', userAgent)
 
