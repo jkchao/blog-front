@@ -1,5 +1,7 @@
 <template>
-  <section  class="welcome">
+  <section  
+    class="welcome"
+    :class="{ 'mobil': mobileLayout }">
     <div class="haiyan">
       <h3>你好，我叫<nuxt-link to="/about">三毛</nuxt-link></h3>
       <h4 class="mune">
@@ -18,7 +20,11 @@ export default {
 
   scrollToTop: true,
 
-  transition: 'fade'
+  computed: {
+    mobileLayout () {
+      return this.$store.state.options.mobileLayout
+    }
+  }
 }
 </script>
 
@@ -36,7 +42,7 @@ export default {
 
   .haiyan {
     position: absolute;
-    left: 80px;
+    left: 100px;
     top: 80px;
     color: $body-bg;
 
@@ -44,6 +50,12 @@ export default {
       span {
         padding: .35rem;
       }
+    }
+  }
+
+  &.mobil {
+    .haiyan {
+      left: 80px;
     }
   }
 }
