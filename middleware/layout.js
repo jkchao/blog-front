@@ -4,5 +4,6 @@ export default function ({ store, route }, next) {
   if (!Object.is(store.state.options.isAsidePage, isAsidePage)) {
     store.commit('options/CHANGE_ASIDE_PAGE', isAsidePage)
   }
+  store.commit('options/CHANGE_WEL_PAGE', route.name === 'index')
   next()
 }

@@ -8,10 +8,13 @@
       <mobile-side ></mobile-side>
     </div>
     <div class="app-main" :class="{ open: mobileSidebar }">
-      <div class="head-box" v-if="$route.path !== '/'">
-        <mobile-header v-if="mobileLayout"></mobile-header>
-        <my-header v-else></my-header>
-      </div>
+      <transition name="fade" mode="">
+        <div class="head-box" v-if="!isWelcome">
+          <mobile-header v-if="mobileLayout"></mobile-header>
+          <my-header v-else></my-header>
+        </div>    
+      </transition>
+
       <transition-group 
           tag="div" 
           class="container clearfix main-container" 
@@ -36,7 +39,9 @@
         </div>
       </transition-group>
       
-      <my-footer v-if="!isError && $route.path !== '/'"></my-footer>
+      <transition name="fade" mode="">
+        <my-footer v-if="!isError && !isWelcome"></my-footer>        
+      </transition>
     </div>
     <scoll-top></scoll-top>
   </div>
@@ -74,6 +79,10 @@ export default {
   computed: {
     isAsdiePage () {
       return this.$store.state.options.isAsidePage
+    },
+
+    isWelcome () {
+      return this.$store.state.options.isWelcome
     },
 
     mobileLayout () {

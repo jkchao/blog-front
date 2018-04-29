@@ -24,7 +24,9 @@ export const state = () => {
     adminInfo: {},
 
     // 网站信息
-    option: {}
+    option: {},
+
+    isWelcome: true
   }
 }
 
@@ -63,5 +65,11 @@ export const mutations = {
   // 错误页面
   SET_ERROR_PAGE (state, data) {
     state.isError = data
+  },
+
+  // 欢迎页面
+  CHANGE_WEL_PAGE (state, data) {
+    console.log(data)
+    state.isWelcome = data
   }
 }
