@@ -40,7 +40,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: '民谣、读书、码农',
+    title: '码农，读书，民谣',
     titleTemplate: '%s | 三毛',
     meta: [
       { charset: 'utf-8' },
