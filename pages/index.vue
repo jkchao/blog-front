@@ -3,7 +3,6 @@
     class="welcome"
     :class="{ 'mobil': mobileLayout }">
     <div class="haiyan">
-      <h3>你好，我叫<nuxt-link to="/about">三毛</nuxt-link></h3>
       <h4 class="mune">
         <nuxt-link to="/code">码农</nuxt-link>
         <span >/</span>
@@ -11,6 +10,9 @@
         <span >/</span>
         <nuxt-link to="/fuck">民谣</nuxt-link>
       </h4>
+    </div>
+    <div class="will" v-if="!mobileLayout">
+      <img src="https://static.jkchao.cn/will.png" alt="" width="80">
     </div>
   </section>
 </template>
@@ -43,8 +45,8 @@ export default {
 
   .haiyan {
     position: absolute;
-    left: 100px;
-    top: 80px;
+    right: 80px;
+    top: 280px;
     color: $body-bg;
 
     .mune {
@@ -54,9 +56,16 @@ export default {
     }
   }
 
+  .will {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+  }
+
   &.mobil {
     .haiyan {
-      left: 80px;
+      top: 70px;
+      left: 60px;
     }
   }
 }
