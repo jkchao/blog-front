@@ -27,6 +27,16 @@ export default {
     mobileLayout () {
       return this.$store.state.options.mobileLayout
     }
+  },
+
+  mounted () {
+    this.$nextTick(() => {
+      Promise.all([
+        this.$store.dispatch('getArtList', { type: 1 }),
+        this.$store.dispatch('getArtList', { type: 2 }),
+        this.$store.dispatch('getArtList', { type: 3 })
+      ])
+    })
   }
 }
 </script>

@@ -615,7 +615,7 @@ export default {
 }
 
 .article-list.mobile {
-  transform: translate(0);
+  // transform: translate(0);
   .article-cont {
 
     .content {
