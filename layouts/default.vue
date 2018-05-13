@@ -31,7 +31,7 @@
         </div>
         <div
         class="content-right" 
-        v-if="isAsdiePage && !mobileLayout" 
+        v-if="isAsdiePage && !mobileLayout && $route.name !== 'index'" 
         key="2">
           <keep-alive>
             <asideView></asideView>
