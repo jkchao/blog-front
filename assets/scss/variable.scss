@@ -2,9 +2,11 @@
 // $cdn-path: https://static.jkchao.cn/_nuxt
 
 // container
-$container-width: 56rem;
-$container-min-width: 45rem;
 $container-left: 38rem;
+$container-min-width: $container-left;
+$container-width: $container-min-width;
+
+
 $container-right: 16rem;
 $body-bg: #eee;
 $gravatar: 36px;

@@ -29,14 +29,14 @@
           }">
           <nuxt></nuxt>
         </div>
-        <div
+        <!-- <div
         class="content-right" 
         v-if="isAsdiePage && !mobileLayout && $route.name !== 'index'" 
         key="2">
           <keep-alive>
             <asideView></asideView>
           </keep-alive>
-        </div>
+        </div> -->
       </transition-group>
       
       <transition name="fade" mode="">

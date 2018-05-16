@@ -65,14 +65,13 @@ module.exports =
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-var STATIC_PATH = __webpack_require__(4).STATIC_PATH;
 
 module.exports = {
   // cache: true,
@@ -86,7 +85,7 @@ module.exports = {
     // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
     vendor: ['axios', 'howler', 'marked', 'gravatar', 'highlight.js'],
     // postcss
-    postcss: [__webpack_require__(6)(), __webpack_require__(7)(), __webpack_require__(5)()],
+    postcss: [__webpack_require__(5)(), __webpack_require__(6)(), __webpack_require__(4)()],
     // babel
     babel: {
       presets: ['es2015', 'stage-2'],
@@ -97,12 +96,12 @@ module.exports = {
       options: {}
     }
   },
-  dev: "production" !== 'production',
+  dev: "development" !== 'production',
   /*
   ** Headers of the page
   */
   head: {
-    title: '民谣、读书、码农',
+    title: '码农，读书，民谣',
     titleTemplate: '%s | 三毛',
     meta: [{ charset: 'utf-8' }, { 'http-equiv': 'cleartype', content: 'on' }, { 'http-equiv': 'Cache-Control' }, { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' }, { hid: 'description', name: 'description', content: '民谣，读书，码农。' }, { hid: 'keywords', name: 'keywords', content: '前端开发，JavaScript, Node, Vue，nuxt' }, { name: 'author', content: 'jkchaom@gmail.com' }],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
@@ -139,7 +138,7 @@ module.exports = {
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(8);
+module.exports = __webpack_require__(7);
 
 
 /***/ },
@@ -156,46 +155,36 @@ module.exports = require("nuxt");
 
 /***/ },
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-var IS_DEV = "production" !== 'production';
-
-exports.API_ROOT = IS_DEV ? 'http://localhost:8000/api/' : 'https://api.jkchao.cn/api/';
-
-exports.STATIC_PATH = 'https://static.jkchao.cn';
-
-/***/ },
-/* 5 */
 /***/ function(module, exports) {
 
 module.exports = require("postcss-hexrgba");
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports) {
 
 module.exports = require("postcss-nested");
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports) {
 
 module.exports = require("postcss-responsive-type");
 
 /***/ },
-/* 8 */
+/* 7 */
 /***/ function(module, exports) {
 
 module.exports = require("regenerator-runtime");
 
 /***/ },
-/* 9 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Users_jack_guo_code_private_vue_blog_node_modules_babel_runtime_regenerator__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Users_jack_guo_code_private_vue_blog_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Users_jack_guo_code_private_vue_blog_node_modules_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_koa__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_koa___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_koa__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_nuxt__ = __webpack_require__(3);
@@ -203,11 +192,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 
 
 var start = function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2() {
+  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Users_jack_guo_code_private_vue_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2() {
     var _this = this;
 
     var app, port, config, nuxt, builder;
-    return __WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+    return __WEBPACK_IMPORTED_MODULE_0__Users_jack_guo_code_private_vue_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
@@ -239,8 +228,8 @@ var start = function () {
           case 9:
 
             app.use(function () {
-              var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(ctx, next) {
-                return __WEBPACK_IMPORTED_MODULE_0__Users_guowenchao_html_myPritice_nuxt_koa_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+              var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Users_jack_guo_code_private_vue_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(ctx, next) {
+                return __WEBPACK_IMPORTED_MODULE_0__Users_jack_guo_code_private_vue_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
                   while (1) {
                     switch (_context.prev = _context.next) {
                       case 0:
