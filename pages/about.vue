@@ -8,7 +8,7 @@
       <div class="info ">
         <div class="list">
           <i class="iconfont icon-user"></i>
-          <span class="list-content">三毛 (JK chao), <span >a 90s boy,</span> Web Engineer.</span>
+          <span class="list-content">三毛 (JK chao), <span >a 90s boy.</span></span>
         </div>
         <div class="list">
           <i class="iconfont icon-like"></i>

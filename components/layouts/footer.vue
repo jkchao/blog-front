@@ -1,17 +1,37 @@
 <template>
   <footer :class="{'mobile': mobileLayout}" class="">
-    <div class="container">
-      <p class="icp">
-        <time>©{{new Date().getFullYear()}}</time>
-        {{ option.icp }}
-      </p>
-      <!-- <p class="mune">
+
+    <div class="container center">
+      <ul class="friends clearfix">
+          <a
+            v-for="(friend,index) in friends"
+            :key="index" 
+            :href="friend.url" target="_blank">
+              {{ friend.name }}
+            <span 
+              class="hr"
+              v-if="index !== friends.length - 1"
+              ></span>
+          </a>
+      </ul>
+    </div>
+
+    <div class="container center">
+      <p class="mune">
         <nuxt-link to="/about">关于博主</nuxt-link>
         <span class="hr"></span>
         <nuxt-link to="/wall">留言墙</nuxt-link>
         <span class="hr"></span>
         <nuxt-link to="/sitemap">归档</nuxt-link>
-      </p> -->
+      </p>
+    </div>
+  
+
+    <!-- <div class="container">
+      <p class="icp">
+        <time>©{{new Date().getFullYear()}}</time>
+        {{ option.icp }}
+      </p>
       <div
         class="clearfix">
         <span>Theme</span>
@@ -19,7 +39,7 @@
           <nuxt-link to="/about">{{ user.name }}</nuxt-link>
         </span>
       </div>
-    </div>
+    </div> -->
   </footer>
 </template>
 <script>
@@ -38,6 +58,10 @@ export default {
 
     user () {
       return this.$store.state.options.adminInfo
+    },
+
+    friends () {
+      return this.$store.state.link.data.list
     }
   }
 }
@@ -48,14 +72,26 @@ export default {
 
 footer {
   margin-top: $normal-pad;
-  height: $header-height;
-  line-height: $header-height;
+  padding: $normal-pad 0;
   background: $module-bg;
   border-top: 1px solid $border-color;
 
   >.container {
     display: flex;
     justify-content: space-between;
+
+    &.center {
+      justify-content: center;
+    }
+
+    > ul,
+    > .mune {
+      padding: $normal-pad / 2 0;
+    }
+
+    > .mune {
+      border-top: 1px solid $border-color;
+    }
   }
 
   &.mobile {

@@ -1,5 +1,5 @@
 <template>
-  <header v-fix>
+  <header v-fix class="darken">
     <div class="header">
         <div class="header-left">
           <div class="logo">
@@ -135,9 +135,6 @@ export default {
           delta > 0
           ? el.classList.add('fixed')
           : el.classList.remove('fixed')
-          afterScrollTop > 0
-          ? el.classList.add('darken')
-          : el.classList.remove('darken')
           setTimeout(() => {
             beforeScrollTop = afterScrollTop
           }, 0)

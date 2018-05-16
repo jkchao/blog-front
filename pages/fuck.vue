@@ -1,9 +1,5 @@
 <template>
   <section  class="fuck" >
-    <div class="title">
-      <span class="title-name">最新文章</span>
-      <span class="line"></span>
-    </div>
     <div class="article">
       <articleView
         :articleList = "list"
