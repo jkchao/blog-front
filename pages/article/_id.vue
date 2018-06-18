@@ -192,7 +192,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 
 .article-list {
   width: $container-min-width;
