@@ -1,5 +1,5 @@
 <template>
-  <transition-group tag="div" name="slide-up" class="scoll-aside" :class="{ mobile: mobileLayout }">
+  <transition-group tag="div" name="slide-left" class="scoll-aside" :class="{ mobile: mobileLayout }">
     <a class="scoll-btn" @click="scrollTop" v-if="showScroll" key="1">
       <i class="iconfont icon-arrow-up"></i>
     </a>
@@ -71,7 +71,7 @@ export default {
 
 .scoll-aside {
   position: fixed;
-  right: 6rem;
+  right: 0;
   bottom: 5rem;
 
   >.scoll-btn {
@@ -83,9 +83,7 @@ export default {
     background: $module-bg;
     text-align: center;
     line-height: 2.7rem;
-    border-radius: 50%;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.04);
-    border: 1px solid $border-color;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.14);
     cursor: pointer;
 
     &:hover {

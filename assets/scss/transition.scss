@@ -15,7 +15,7 @@
 .slide-left-enter-active { transition: all .5s ease;}
 .slide-left-leave-active { transition: all .5s cubic-bezier(.55,0,.1,1);}
 .slide-left-enter,{ transform: translateX(20px); opacity: 0;}
-.slide-left-leave-active { transform: translateX(-20px); opacity: 0;}
+.slide-left-leave-active { transform: translateX(20px); opacity: 0;}
 .slide-left-move { transition: all .5s;}
 
 // right
