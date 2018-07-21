@@ -72,7 +72,7 @@ module.exports = {
     { src: '~/plugins/highlight.js' },
     { src: '~/plugins/gravatar.js' },
     { src: '~/plugins/clickOutside.js', ssr: false },
-    { src: '~/plugins/ga.js', ssr: false },
+    // { src: '~/plugins/ga.js', ssr: false },
     { src: '~/plugins/copy.js', ssr: false },
     { src: '~/plugins/baidu-seo-push.js', ssr: false },
     { src: '~/plugins/filter.js' },
@@ -88,7 +88,8 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    { src: '~assets/scss/index.scss', lang: 'scss' }
+    { src: '~assets/scss/index.scss', lang: 'scss' },
+    'highlight.js/styles/github.css'
   ],
   modules: [
     ['@nuxtjs/pwa']

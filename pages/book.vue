@@ -159,7 +159,7 @@ export default {
     text-align: center;
     color: $black;
     &:hover {
-      background: lighten($module-hover-bg, 60%);
+      background: $module-hover-bg-light-6;
     }
 
     >.allow {

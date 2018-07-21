@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: 'dialog',
+  name: 'Mdialog',
 
   data () {
     return {
@@ -90,7 +90,7 @@ export default {
     padding: 1rem;
     background: $white;
     @include border-radius(.5rem);
-    @include css3-prefix('box-shadow', "0px 8px 46px rgba(0, 0, 0, 0.08), 0px 2px 6px rgba(0, 0, 0, 0.03)");
+    box-shadow: 0px 8px 46px rgba(0, 0, 0, 0.08), 0px 2px 6px rgba(0, 0, 0, 0.03);
 
     >.dialog-head {
       text-align: right;

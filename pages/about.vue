@@ -244,7 +244,7 @@ export default {
           }
 
           i {
-            color: $black-light;
+            color: $text;
             @include transition(all .5s);
 
             &:hover {
@@ -259,7 +259,7 @@ export default {
           right: 11rem;
           bottom: -10rem;
           padding: .5rem;
-          background: lighten($module-hover-bg, 30%);
+          background: $module-hover-bg-light-3;
 
           >.arrow {
             position: absolute;
@@ -268,7 +268,7 @@ export default {
             height: 0;
             border-width: 7px;
             border-style: dashed dashed solid;
-            border-color: transparent transparent lighten($module-hover-bg, 30%);
+            border-color: transparent transparent $module-hover-bg-light-3;
             overflow: hidden;
             font-size: 0;
             line-height: 0;

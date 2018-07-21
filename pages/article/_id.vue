@@ -92,7 +92,7 @@ import comments from '~/components/common/comments'
 import { scrollTo } from '~/utils/scroll'
 // import lazyImg from '../../utils/lazyImg'
 export default {
-  name: 'article',
+  name: 'MArticle',
 
   transition: 'fade',
 
@@ -192,7 +192,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 .article-list {
   width: $container-min-width;
@@ -228,7 +228,7 @@ export default {
 
 
       .demo {
-        border: 1px solid #eee;
+        border: 1px solid $border-color;
         border-radius: 2px;
         padding: 25px 35px;
         margin-top: 1em;
@@ -310,7 +310,7 @@ export default {
 
       iframe {
         margin-bottom: 1rem;
-        background: #000;
+        background: $black;
 
         &.music {
           background: transparent;
@@ -557,7 +557,7 @@ export default {
         color: $black;
         font-size: 1rem;
         padding: $xs-pad $sm-pad;
-        background: #eee;
+        background: $border-color;
         border-radius: .7rem;
         /* text-align: center; */
         transform: scale(.75);

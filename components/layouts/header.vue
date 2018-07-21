@@ -46,7 +46,7 @@
 import EventBus from '~/utils/event-bus'
 import _ from '~/utils/underscore'
 export default {
-  name: 'header',
+  name: 'Mheader',
   data () {
     return {
       keyword: '',

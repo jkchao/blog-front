@@ -87,7 +87,7 @@ export default {
     cursor: pointer;
 
     &:hover {
-      background: lighten($module-hover-bg, 60%);
+      background: $module-hover-bg-light-6;
     }
 
     &.email {

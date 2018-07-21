@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div id="app" class="light">
     <div 
         class="app-aside" 
         v-if="mobileLayout" 
@@ -105,9 +105,8 @@ export default {
   },
 
   mounted () {
-    if (!this.mobileLayout) {
-      this.$store.dispatch('getMusicList')
-    }
+    const theme = window.localStorage.getItem('THEME') || 'light'
+    document.body.classList.add('dark')
   }
 }
 </script>

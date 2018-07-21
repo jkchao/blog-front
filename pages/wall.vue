@@ -294,12 +294,9 @@ export default {
       position: relative;
       left: 0;
       top: 0;
-      // align-self: flex-start;
       padding: $normal-pad;
-      min-height: 14rem;
+      min-height: 13rem;
       margin-bottom: 1rem;
-      // width: calc(100%/3 - 2rem/3);
-      // margin: 1rem 1rem 0 0;
       color: $black;
       background: $code-bg;
       @include css3-prefix('transition', 'all .3s');
@@ -322,7 +319,7 @@ export default {
 
       >.content {
         margin: 1rem 0;
-        min-height: 7rem;
+        min-height: 6rem;
         max-height: 20rem;
         font-size: .85rem;
         word-break: break-all;
@@ -346,7 +343,7 @@ export default {
     color: $black;
 
     &:hover {
-      background: lighten($module-hover-bg, 60%);
+      background: $module-hover-bg-light-6;
     }
 
     >.allow {

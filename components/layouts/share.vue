@@ -181,7 +181,7 @@ export default {
       &:hover {
 
         >.iconfont {
-          color: #fff;
+          color: $white;
         }
       }
     }

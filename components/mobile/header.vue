@@ -90,7 +90,7 @@ export default {
   height: $header-height - .5;
   line-height: $header-height - .5 ;
   background: $white;
-  @include css3-prefix('box-shadow', '0 1px 2px rgba(0,0,0,.05)');
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
 
   >nav {
     display: flex;

@@ -1,7 +1,9 @@
+
+
 html,
 body {
   margin: 0;
-  color: $text;
+  color: var(--text);
   letter-spacing: 0.5px;
   // font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
@@ -13,6 +15,7 @@ body {
 
 body {
   padding: 5rem 0 0 0;
+  background: $white;
 }
 
 body.mobile {
@@ -35,7 +38,7 @@ pre {
 
 *, *:hover {
   @include transition(background-color .25s linear,
-                      color .10s linear,
+                      color .20s linear,
                       margin .25s linear,
                       opacity .25s linear,
                       filter .25s linear,
@@ -88,7 +91,7 @@ pre {
           width: calc((100% - (.445em * 11)) / 12);
           height: 2.2em;
           line-height: 2.3em;
-          background-color: #eee;
+          background-color: $border-color;
           margin-right: .445em;
   
           > .iconfont {

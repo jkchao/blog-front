@@ -114,7 +114,7 @@ textarea[readonly] {
 input:focus:invalid,
 textarea:focus:invalid,
 select:focus:invalid {
-    border-color: lighten($red, 10%) !important;
+    border-color: $red-light-1 !important;
     // color: $red;
 }
 

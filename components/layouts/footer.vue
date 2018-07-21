@@ -44,7 +44,7 @@
 <script>
 
 export default {
-  name: 'footer',
+  name: 'Mfooter',
 
   computed: {
     mobileLayout () {
@@ -72,8 +72,9 @@ export default {
 footer {
   margin-top: $normal-pad;
   padding: $normal-pad 0;
-  background: $module-bg;
+  background: $white;
   border-top: 1px solid $border-color;
+  color: var(--text);
 
   >.container {
     display: flex;

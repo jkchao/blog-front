@@ -11,8 +11,8 @@ version: 2.9.0
  * @requires 
  */
 html {
-	color: #000;
-	background: #FFF;
+	color: $text;
+	background: $white;
 }
 body,
 /*div,*/
@@ -123,6 +123,6 @@ img {
 
 /*because legend doesn't inherit in IE */
 legend {
-	color: #000;
+	color: $black;
 }
 

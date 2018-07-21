@@ -983,7 +983,7 @@
               padding: 0;
               padding-top: .5rem;
               list-style-type: square;
-              background: white;
+              background: $white;
               z-index: 99;
 
               li {
