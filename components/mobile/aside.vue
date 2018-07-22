@@ -4,15 +4,9 @@
       <img :src="user.gravatar + '?imageView2/1/w/200/h/200'" />
       <p>三毛</p>
 
-      <li>
-        <a
-          href="javascript:;"
+        <p
           @click="toogleTheme"
-          class="scoll-btn theme"
-          :class="{
-            'dark': theme === 'light',
-            'light': theme === 'dark'
-          }">
+          class="scoll-btn theme">
             <i
               class="iconfont"
               :class="{
@@ -20,8 +14,7 @@
                 'icon-light': theme === 'dark'
               }"
             ></i>
-          </a>
-      </li>
+          </p>
     </div>
       <nav>
         <li
@@ -83,7 +76,7 @@ export default {
   },
 
   mounted () {
-    this.theme = window.localStorage.getItem('THEME') || light
+    this.theme = window.localStorage.getItem('THEME') || 'light'
   }
 }
 </script>
@@ -114,7 +107,6 @@ export default {
     .scoll-btn {
       display: block;
       margin-top: 2rem;
-      background: $module-bg;
       text-align: center;
       line-height: 2rem;
       color: $black;
