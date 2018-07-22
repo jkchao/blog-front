@@ -1,5 +1,25 @@
 <template>
-  <transition-group tag="div" name="slide-left" class="scoll-aside" :class="{ mobile: mobileLayout }">
+  <transition-group 
+    tag="div" 
+    name="fade" 
+    class="scoll-aside" 
+    :class="{ mobile: mobileLayout }"
+    v-if="$route.path !== '/'">
+    <a 
+      href="javascript:;"
+      @click="toogleTheme"
+      class="scoll-btn theme"
+      key="2"
+      v-if="!mobileLayout">
+        <i
+          class="iconfont"
+          :class="{
+            'icon-dark': theme === 'light',
+            'icon-light': theme === 'dark'
+          }"
+          ></i>
+      </a>
+
     <a class="scoll-btn" @click="scrollTop" v-if="showScroll" key="1">
       <i class="iconfont icon-arrow-up"></i>
     </a>
@@ -12,7 +32,8 @@ export default {
 
   data () {
     return {
-      showScroll: false
+      showScroll: false,
+      theme: ''
     }
   },
 
@@ -35,6 +56,15 @@ export default {
           cancelAnimationFrame(timer)
         }
       })
+    },
+
+    toogleTheme () {
+      const isLight = document.body.id === 'light'
+
+      this.theme = isLight ? 'dark' : 'light'
+
+      document.body.id = this.theme
+      window.localStorage.setItem('THEME', this.theme)
     }
   },
 
@@ -63,6 +93,8 @@ export default {
         this.showScroll = true
       } else this.showScroll = false
     })
+
+    this.theme = window.localStorage.getItem('THEME') || light
   }
 }
 </script>
@@ -72,7 +104,7 @@ export default {
 .scoll-aside {
   position: fixed;
   right: 0;
-  bottom: 5rem;
+  bottom: 8rem;
 
   >.scoll-btn {
     display: block;
@@ -84,10 +116,16 @@ export default {
     text-align: center;
     line-height: 2.7rem;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.14);
+    border-color: 1px solid $border-color;
     cursor: pointer;
 
-    &:hover {
-      background: $module-hover-bg-light-6;
+    &.theme {
+      color: $black;
+
+
+      i {
+        font-size: $font-size-large;
+      }
     }
 
     &.email {

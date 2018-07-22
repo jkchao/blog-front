@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="light">
+  <div class="app">
     <div 
         class="app-aside" 
         v-if="mobileLayout" 
@@ -106,7 +106,7 @@ export default {
 
   mounted () {
     const theme = window.localStorage.getItem('THEME') || 'light'
-    document.body.classList.add('dark')
+    document.body.id = theme
   }
 }
 </script>

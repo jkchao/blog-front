@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'iconfont';  /* project id 376001 */
-  src: url('//at.alicdn.com/t/font_376001_1rnznysdv1oo5hfr.eot');
-  src: url('//at.alicdn.com/t/font_376001_1rnznysdv1oo5hfr.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_376001_1rnznysdv1oo5hfr.woff') format('woff'),
-  url('//at.alicdn.com/t/font_376001_1rnznysdv1oo5hfr.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_376001_1rnznysdv1oo5hfr.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_376001_1cvrlea65nz.eot');
+  src: url('//at.alicdn.com/t/font_376001_1cvrlea65nz.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_376001_1cvrlea65nz.woff') format('woff'),
+  url('//at.alicdn.com/t/font_376001_1cvrlea65nz.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_376001_1cvrlea65nz.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -158,4 +158,8 @@
 .icon-music-muted:before { content: "\e659"; }
 
 .icon-download:before { content: "\e626"; }
+
+.icon-dark:before { content: "\e61a"; }
+
+.icon-light:before { content: "\e61b"; }
 

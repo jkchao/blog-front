@@ -102,7 +102,7 @@ export default {
         }
 
         .meta {      
-          color: #969696;
+          color: $descript;
         }
 
         .mobil-img {
@@ -122,7 +122,7 @@ export default {
         margin: 2rem 0;
         min-height: 4rem;
         line-height: 1.8rem;
-        color: $descript;
+        color: $text;
         @include content-overflow(3);
       }
 
@@ -134,7 +134,7 @@ export default {
         height: 1rem;
         line-height: 1rem;
         font-size: $font-size-small;
-        color: #969696;
+        color: $descript;
       }
     }
 

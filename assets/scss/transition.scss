@@ -37,6 +37,7 @@
 .fade-enter-active, .fade-leave-active { transition: opacity .3s; }
 .fade-enter, .fade-leave-active { opacity: 0; }
 .fade-move { transition: transform .3s; }
+.fade-leave-active { position: absolute; }
 
 // btn 
 .btn-enter-active, .btn-leave-active { transition: all .5s; }

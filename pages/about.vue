@@ -200,7 +200,7 @@ export default {
       margin-right: 5%;
       line-height: 3rem;
       text-align: center;
-      background: #f8f8f8;
+      background: $code-bg;
 
       &:nth-child(3n) {
         margin-right: 0;

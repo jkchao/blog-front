@@ -814,7 +814,7 @@
               // }
 
               > .flool {
-                color: $dividers;
+                color: $disabled;
                 font-size: $font-size-small;
                 font-family: Arial;
                 display: inline-block;

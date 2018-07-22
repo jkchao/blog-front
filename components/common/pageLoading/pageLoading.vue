@@ -96,7 +96,7 @@
 </script>
 <style scoped lang="scss">
   .loading-page {
-    background: rgba(255, 255, 255, 0.8);
+    background: transparent;
     z-index: 10;
 
     canvas {

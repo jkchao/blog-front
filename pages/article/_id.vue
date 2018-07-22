@@ -203,7 +203,7 @@ export default {
     >.meta {
       margin-top: .3rem;
       font-size: .8rem;
-      color: #969696;
+      color: var(--text-disabled);
 
       span {
         margin-right: .5rem;
@@ -212,6 +212,7 @@ export default {
 
     >h3 {
       font-size: 1.3rem;
+      color: $black;
     }
 
     >.article-thumb {
@@ -270,9 +271,9 @@ export default {
           display: inline-block;
           padding: 6px;
           margin: 0 auto;
-          border-bottom: 1px solid #d9d9d9;
+          border-bottom: 1px solid $border-color;
           font-size: 14px;
-          color: #969696;
+          color: var(--text-disabled);
           line-height: 1.2;
 
           &:empty {
@@ -462,6 +463,7 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      color: $disabled;
 
       >.info-left {
         display: flex;
@@ -513,7 +515,7 @@ export default {
   >aside {
     position: fixed;
     right: 0;
-    bottom: 8.8rem;
+    bottom: 16.8rem;
 
     > div {
       position: relative;

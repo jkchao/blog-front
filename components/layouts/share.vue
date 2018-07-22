@@ -104,6 +104,7 @@ export default {
 
 #share {
   .share-box {
+    color: $text;
     &.mobile {
       width: 100%;
       display: flex;

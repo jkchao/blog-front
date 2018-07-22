@@ -5,7 +5,8 @@
   $theme-red,
   $theme-primary,
   $theme-green,
-  $theme-text
+  $theme-text,
+  $border-color
 ) {
   --module-bg: rgba($theme-white, 0.6);
   --header-fix-bg: rgba($theme-white, .8);
@@ -14,42 +15,52 @@
   --module-hover-bg-light-3: lighten(rgba($theme-black, .12), 30%);
   --module-hover-bg-light-6: lighten(rgba($theme-black, .12), 50%);
 
+  --code-bg: darken($theme-white, 3%);
+
   --theme-white: $theme-white;
   --theme-black: $theme-black;
   --theme-red: $theme-red;
   --theme-primary: $theme-primary;
   --theme-green: $theme-green;
 
-  --theme-red-light-1: lighten($theme-red, 10%);
+  --theme-red-light-1: lighten($theme-red, 5%);
+
+  --border-color: $border-color;
 
   --text: $theme-text;
   --text-dividers: lighten($theme-text, 40%);
-  --text-disabled: lighten($theme-text, 20%);
-  --text-secondary: lighten($theme-text, 10%);
+  --text-disabled: lighten($theme-text, 25%);
+  --text-secondary: darken($theme-text, 10%);
+
+  --text-light-4: lighten($theme-text, 40%);
+  --text-light-3: lighten($theme-text, 30%);
+  --text-light-1: lighten($theme-text, 10%);
+  --text-dark-1: darken($theme-text, 10%);
 }
 
 
 body {
-  &.light {
+  &#light {
     @include theme(
       $theme-white: #fff,
       $theme-black: #24292e,
       $theme-red: #ea6f5a,
       $theme-primary: #20A0FF,
       $theme-green: #5ab95c,
-      $theme-text: #555
+      $border-color: #eee,
+      $theme-text: #666
     )
   }
 
-  &.dark {
+  &#dark {
     @include theme(
       $theme-white: #4a4a4a,
-      $theme-black: #c9c9c9,
+      $theme-black: #c8c8c8,
       $theme-red: #ea6f5a,
       $theme-primary: #20A0FF,
       $theme-green: #5ab95c,
-      $theme-text: #555
+      $border-color: #696969,
+      $theme-text: #999999
     )
   }
-
 }

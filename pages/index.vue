@@ -57,7 +57,7 @@ export default {
     position: absolute;
     right: 80px;
     top: 280px;
-    color: $border-color;
+    color: #eee;
 
     .mune {
       span {

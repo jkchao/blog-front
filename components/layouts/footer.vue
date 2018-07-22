@@ -74,7 +74,7 @@ footer {
   padding: $normal-pad 0;
   background: $white;
   border-top: 1px solid $border-color;
-  color: var(--text);
+  color: $text;
 
   >.container {
     display: flex;
@@ -96,6 +96,7 @@ footer {
   }
 
   &.mobile {
+    display: none;
     margin-top: 0;
     padding: 0 1rem;
 

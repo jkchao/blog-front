@@ -3,6 +3,25 @@
     <div class="user-head">
       <img :src="user.gravatar + '?imageView2/1/w/200/h/200'" />
       <p>三毛</p>
+
+      <li>
+        <a
+          href="javascript:;"
+          @click="toogleTheme"
+          class="scoll-btn theme"
+          :class="{
+            'dark': theme === 'light',
+            'light': theme === 'dark'
+          }">
+            <i
+              class="iconfont"
+              :class="{
+                'icon-dark': theme === 'light',
+                'icon-light': theme === 'dark'
+              }"
+            ></i>
+          </a>
+      </li>
     </div>
       <nav>
         <li
@@ -42,22 +61,29 @@ export default {
         { path: '/think', name: '读 书', icon: 'iconfont icon-read'},
         { path: '/fuck', name: '民 谣', icon: 'iconfont icon-read'}
       ],
-      saying: [
-        '当一个人成了谜',
-        '我有一瓶酒',
-        '去他妈的生活',
-        '未寄出的信'
-      ]
+      theme: ''
     }
   },
 
   computed: {
     user () {
       return this.$store.state.options.adminInfo
-    },
-    currentSaying () {
-      return this.saying[Math.floor(Math.random() * 4)]
     }
+  },
+
+  methods: {
+    toogleTheme () {
+      const isLight = document.body.id === 'light'
+
+      this.theme = isLight ? 'dark' : 'light'
+
+      document.body.id = this.theme
+      window.localStorage.setItem('THEME', this.theme)
+    }
+  },
+
+  mounted () {
+    this.theme = window.localStorage.getItem('THEME') || light
   }
 }
 </script>
@@ -83,6 +109,21 @@ export default {
       color: $black;
       font-size: 1.6rem;
     }
+
+
+    .scoll-btn {
+      display: block;
+      margin-top: 2rem;
+      background: $module-bg;
+      text-align: center;
+      line-height: 2rem;
+      color: $black;
+      cursor: pointer;
+
+      i {
+        font-size: $font-size-large;
+      }
+    }
   }
   > nav {
     margin-top: $mlg-pad;
@@ -93,7 +134,7 @@ export default {
     a {
       margin-right: 0rem;
       padding: .5rem;
-      color: $disabled;
+      color: $descript;
 
       i {
         margin-right: .8rem;

@@ -26,16 +26,16 @@ $red: var(--theme-red);
 $red-light-1: var(--theme-red-light-1);
 
 
-$border-color: #eee;
+$border-color: var(--border-color);
 $form-hover: #8391a5;
-$code-bg: #f8f8f8;
+$code-bg: var(--code-bg);
 
 //text
 $text: var(--text);
-$dividers: var(--text-dividers);
-$disabled: var(--text-disabled);
-$secondary: var(--text-secondary);
-$descript: #586069;
+$dividers: var(--text-light-4);
+$disabled: var(--text-light-3);
+$secondary: var(--text-dark-1);
+$descript: var(--text-light-1);
 
 // radius
 $radius: 4px;
