@@ -54,7 +54,7 @@ export default {
         { path: '/think', name: '读 书', icon: 'iconfont icon-read'},
         { path: '/fuck', name: '民 谣', icon: 'iconfont icon-read'}
       ],
-      theme: ''
+      theme: 'light'
     }
   },
 

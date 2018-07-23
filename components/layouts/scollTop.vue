@@ -94,7 +94,7 @@ export default {
       } else this.showScroll = false
     })
 
-    this.theme = window.localStorage.getItem('THEME') || light
+    this.theme = window.localStorage.getItem('THEME') || 'light'
   }
 }
 </script>
