@@ -29,11 +29,11 @@ const paragraphParse = text => {
 
 // 对图片进行弹窗处理, 及懒加载处理
 const imageParse = (src, title, alt) => {
-  src.replace('http://ovshyp9zv.bkt.clouddn.com/', 'https://static.jkchao.cn/')
+  const link = src.replace('http://ovshyp9zv.bkt.clouddn.com/', 'https://static.jkchao.cn/')
   return `<img
-            src="${src}?imageMogr2/auto-orient/interlace/1/blur/1x0/quality/75|watermark/2/text/amtjaGFvLmNu/font/5qW35L2T/fontsize/720/fill/I0ZERkRGRA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim"
+            src="${link}?imageMogr2/auto-orient/interlace/1/blur/1x0/quality/75|watermark/2/text/amtjaGFvLmNu/font/5qW35L2T/fontsize/720/fill/I0ZERkRGRA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim"
             title="${title || alt || 'jkchao.cn'}"
-            data-src="${src}"
+            data-src="${link}"
             class="img-pop"/>
           <div class="img-caption">${title || alt || ''}</div>
           `
