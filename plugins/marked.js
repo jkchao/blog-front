@@ -40,6 +40,16 @@ const imageParse = (src, title, alt) => {
           `
 }
 
+const commentImageParse = (src, title, alt) => {
+  return `<img
+            src="${src}?imageMogr2/auto-orient/interlace/1/blur/1x0/quality/75|watermark/2/text/amtjaGFvLmNu/font/5qW35L2T/fontsize/720/fill/I0ZERkRGRA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim"
+            title="${title || alt || 'jkchao.cn'}"
+            data-src="${src}"
+            class="img-pop"/>
+          <div class="img-caption">${title || alt || ''}</div>
+          `
+}
+
 // 外链
 const linkParse = (href, title, text) => {
   return `<a href="${href}"
@@ -81,6 +91,8 @@ export default (content, tags, parseHtml = false) => {
   marked.setOptions({ sanitize: !parseHtml })
 
   renderer.heading = headingParse
+
+  if (!parseHtml) renderer.image = commentImageParse
 
   let html = marked(content, { renderer })
 
