@@ -54,14 +54,22 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
-    // script: [
-    //   {
-    //     async: 'async',
-    //     type: 'text/javascript',
-    //     src: '//jkchao.disqus.com/count.js',
-    //     id: 'dsq-count-scr'
-    //   }
-    // ],
+    script: [
+      {
+        async: 'async',
+        type: 'text/javascript',
+        src: '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+      },
+      {
+        type: 'text/javascript',
+        innerHTML: `
+          (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8918100374180146",
+            enable_page_level_ads: true
+          });
+        `
+      }
+    ],
     noscript: [
       { innerHTML: 'This website requires JavaScript.' }
     ]
