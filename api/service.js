@@ -1,9 +1,9 @@
 import ax from './axios'
 
 // 获取用户信息
-export function getAuth () {
-  return ax.get('/auth')
-          .then(res => res.data)
+export async function getAuth () {
+  const res = await ax.get('/auth');
+  return res.data;
 }
 
 // 获取网站配置项

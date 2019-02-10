@@ -119,7 +119,7 @@ export default {
   },
 
   fetch ({ store }) {
-    return store.dispatch('getHero')
+    return store.dispatch('heros/getHero')
   },
 
   components: { dialogCom },
@@ -196,7 +196,7 @@ export default {
     },
 
     loadMore () {
-      this.$store.dispatch('getHero', {
+      this.$store.dispatch('heros/getHero', {
         current_page: this.$store.state.heros.data.pagination.current_page + 1
       })
     },
@@ -204,7 +204,7 @@ export default {
     async submit () {
       if (this.form.content === '') return alert('说点什么？')
       if (this.form.content.split('\n').length > 12) return alert('内容需在12行以内')
-      const res = await this.$store.dispatch('postHero', { ...this.form })
+      const res = await this.$store.dispatch('heros/postHero', { ...this.form })
       window.alert(res.message)
       if (res.code === 1) {
         this.show = false

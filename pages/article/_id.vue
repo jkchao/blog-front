@@ -99,7 +99,7 @@ export default {
   scrollToTop: true,
 
   fetch ({ store, params }) {
-    return store.dispatch('getArt', params)
+    return store.dispatch('article/getArt', params)
   },
 
   head () {
@@ -150,7 +150,7 @@ export default {
   methods: {
     async like () {
       if (this.isLiked) return
-      const res = await this.$store.dispatch('likeArt', { _id: this.article._id })
+      const res = await this.$store.dispatch('article/likeArt', { _id: this.article._id })
       if (res.code !== 1) alert(`喜欢文章失败：${res.message}`)
       else {
         this.article.meta.likes += 1

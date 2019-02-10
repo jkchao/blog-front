@@ -4,7 +4,7 @@
         <div class="header-left">
           <div class="logo">
             <nuxt-link to="/">
-              <img src="~static/images/logo.png" alt="" width="36">
+              <img src="~/static/images/logo.png" alt="" width="36">
             </nuxt-link>
           </div>
           <nav>

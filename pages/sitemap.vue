@@ -76,7 +76,7 @@ export default {
   },
 
   fetch ({ store }) {
-    return store.dispatch('getSitemap', { page_size: 1000 })
+    return store.dispatch('sitemap/getSitemap', { page_size: 1000 })
   },
 
   computed: {

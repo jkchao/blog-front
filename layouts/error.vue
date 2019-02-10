@@ -1,6 +1,6 @@
 <template>
   <section class="error-page">
-    <img src="~static/images/logo.png" alt="Logo" width="200"/>
+    <img src="~/static/images/logo.png" alt="Logo" width="200"/>
     <h1 class="title">
       {{ error.statusCode }}
     </h1>
