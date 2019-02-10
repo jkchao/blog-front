@@ -60,7 +60,7 @@ export const actions = {
     if (res && res.code === 1) {
       let list
       if (res.result.pagination.current_page === 1) list = res.result.list
-      else list = [...state.heros.data.list, ...res.result.list]
+      else list = [...state.data.list, ...res.result.list]
       commit('SET_HERO_SUCCESS', {
         list,
         pagination: res.result.pagination

@@ -116,8 +116,9 @@ export const actions = {
       const res = await service.getComment(data)
       if (res && res.code === 1) {
         let list
+        console.log(res);
         if (res.result.pagination.current_page === 1) list = res.result.data
-        else list = [...state.comment.data.data, ...res.result.data]
+        else list = [...state.data.data, ...res.result.data]
         // if (Object.is(data.sort, -1)) res.result.data.reverse()
         commit('GET_LIST_SUCCESS', {
           data: list,
