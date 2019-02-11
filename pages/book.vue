@@ -40,7 +40,7 @@ export default {
   },
 
   fetch ({ store }) {
-    return store.dispatch('getBook')
+    return store.dispatch('book/getBook')
   },
 
   computed: {
@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     loadMore () {
-      this.$store.dispatch('getBook', {
+      this.$store.dispatch('book/getBook', {
         current_page: this.$store.state.book.data.pagination.current_page + 1,
         page_size: 6
       })

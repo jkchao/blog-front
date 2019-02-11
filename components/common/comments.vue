@@ -499,7 +499,7 @@
       // 点赞某条评论
       likeComment(comment) {
         if (this.commentLiked(comment._id)) return false
-        this.$store.dispatch('likeComment', { type: 1, _id: comment._id })
+        this.$store.dispatch('comment/likeComment', { type: 1, _id: comment._id })
         .then(data => {
           this.likeComments.push(comment._id)
           localStorage.setItem('LIKE_COMMENTS', JSON.stringify(this.likeComments))
@@ -516,7 +516,7 @@
       // 获取评论列表
       async loadComemntList(params = {}) {
         params.sort = this.sortMode
-        const res = await this.$store.dispatch('loadCommentsByPostId', {
+        const res = await this.$store.dispatch('comment/loadCommentsByPostId', {
           ...params,
           post_id: this.postId
         })
@@ -543,7 +543,7 @@
         if(lineOverflow || lengthOverflow) return alert('内容需要在1000字/36行以内')
 
         if (!this.user.site) delete this.user.site
-        const res = await this.$store.dispatch('postComment', {
+        const res = await this.$store.dispatch('comment/postComment', {
           pid: this.pid,
           post_id: this.postId,
           content: this.comemntContentText,

@@ -24,7 +24,7 @@
       </div>
       <div class="name">
         <nuxt-link to="/">
-          <img src="~static/images/logo.png" alt="" width="30">
+          <img src="~/static/images/logo.png" alt="" width="30">
         </nuxt-link>
       </div>
       <div>

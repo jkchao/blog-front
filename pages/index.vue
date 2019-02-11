@@ -32,9 +32,9 @@ export default {
   mounted () {
     this.$nextTick(() => {
       Promise.all([
-        this.$store.dispatch('getArtList', { type: 1 }),
-        this.$store.dispatch('getArtList', { type: 2 }),
-        this.$store.dispatch('getArtList', { type: 3 })
+        this.$store.dispatch('article/getArtList', { type: 1 }),
+        this.$store.dispatch('article/getArtList', { type: 2 }),
+        this.$store.dispatch('article/getArtList', { type: 3 })
       ])
     })
   }

@@ -31,7 +31,7 @@ export default {
   },
 
   fetch ({ store, params }) {
-    return store.dispatch('getArtList', params)
+    return store.dispatch('article/getArtList', params)
   },
 
   data () {
@@ -63,7 +63,7 @@ export default {
 
   methods: {
     loadMore () {
-      this.$store.dispatch('getArtList', {
+      this.$store.dispatch('article/getArtList', {
         current_page: this.$store.state.article.art.pagination.current_page + 1,
         keyword: this.keyword
       })

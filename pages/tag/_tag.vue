@@ -25,7 +25,7 @@ export default {
   scrollToTop: true,
 
   fetch ({ store, params }) {
-    return store.dispatch('getArtList', params)
+    return store.dispatch('tag/getArtList', params)
   },
 
   head () {
@@ -62,7 +62,7 @@ export default {
 
   methods: {
     loadMore () {
-      this.$store.dispatch('getArtList', {
+      this.$store.dispatch('tag/getArtList', {
         current_page: this.$store.state.article.art.pagination.current_page + 1,
         tag: this.$route.params.tag
       })
