@@ -1,0 +1,11 @@
+version: '3'
+services:
+  blog-front:
+    build: .
+    command: 
+      - npm run build
+      - npm run start
+    ports: 
+      - 3000:3000
+    volumes: 
+      - /home/blog-front:/usr/src/app
