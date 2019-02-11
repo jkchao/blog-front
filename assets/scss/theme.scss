@@ -8,34 +8,34 @@
   $theme-text,
   $border-color
 ) {
-  --module-bg: rgba($theme-white, 0.6);
-  --header-fix-bg: rgba($theme-white, .8);
+  --module-bg: rgba(#{$theme-white}, 0.6);
+  --header-fix-bg: rgba(#{$theme-white}, .8);
 
-  --module-hover-bg: rgba($theme-black, .12);
-  --module-hover-bg-light-3: lighten(rgba($theme-black, .12), 30%);
-  --module-hover-bg-light-6: lighten(rgba($theme-black, .12), 50%);
+  --module-hover-bg: rgba(#{$theme-black}, .12);
+  --module-hover-bg-light-3: lighten(rgba(#{$theme-black}, .12), 30%);
+  --module-hover-bg-light-6: lighten(rgba(#{$theme-black}, .12), 50%);
 
-  --code-bg: darken($theme-white, 3%);
+  --code-bg: darken(#{$theme-white}, 3%);
 
-  --theme-white: $theme-white;
-  --theme-black: $theme-black;
-  --theme-red: $theme-red;
-  --theme-primary: $theme-primary;
-  --theme-green: $theme-green;
+  --theme-white: #{$theme-white};
+  --theme-black: #{$theme-black};
+  --theme-red: #{$theme-red};
+  --theme-primary: #{$theme-primary};
+  --theme-green: #{$theme-green};
 
-  --theme-red-light-1: lighten($theme-red, 5%);
+  --theme-red-light-1: lighten(#{$theme-red}, 5%);
 
-  --border-color: $border-color;
+  --border-color: #{$border-color};
 
-  --text: $theme-text;
-  --text-dividers: lighten($theme-text, 40%);
-  --text-disabled: lighten($theme-text, 25%);
-  --text-secondary: darken($theme-text, 10%);
+  --text: #{$theme-text};
+  --text-dividers: lighten(#{$theme-text}, 40%);
+  --text-disabled: lighten(#{$theme-text}, 25%);
+  --text-secondary: darken(#{$theme-text}, 10%);
 
-  --text-light-4: lighten($theme-text, 40%);
-  --text-light-3: lighten($theme-text, 30%);
-  --text-light-1: lighten($theme-text, 10%);
-  --text-dark-1: darken($theme-text, 10%);
+  --text-light-4: lighten(#{$theme-text}, 40%);
+  --text-light-3: lighten(#{$theme-text}, 30%);
+  --text-light-1: lighten(#{$theme-text}, 10%);
+  --text-dark-1: darken(#{$theme-text}, 10%);
 }
 
 
