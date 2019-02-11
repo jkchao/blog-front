@@ -6,12 +6,10 @@ WORKDIR /usr/src/app
 
 COPY package.json /usr/src/app/
 
-RUN npm install -g yarn
-
-RUN yarn config set registry 'https://registry.npm.taobao.org'
-
-RUN yarn install
+RUN npm install
 
 COPY . /usr/src/app
 
 EXPOSE 3000
+
+CMD npm run deploy

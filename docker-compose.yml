@@ -2,9 +2,7 @@ version: '3'
 services:
   blog-front:
     build: .
-    command: 
-      - npm run build
-      - npm run start
+    command: npm run deploy
     ports: 
       - 3000:3000
     volumes: 
