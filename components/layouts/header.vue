@@ -260,7 +260,7 @@ header {
       position: relative;
       width: 1rem;
       height: 1rem;
-      border: 2px solid $dividers;
+      border: 2px solid $black;
       @include transition (all .3s ease .15s);
       @include border-radius(.9rem);
       cursor: pointer;
@@ -270,7 +270,7 @@ header {
         left: 100%;
         width: 5px;
         height: 2px;
-        background-color: $dividers;
+        background-color: $black;
         border-radius: 1px;
         @include def;        
         @include transition(width .15s ease .45s);
@@ -406,7 +406,7 @@ header {
   //     @include text-overflow();
 
   //     > .link {
-  //       color: $dividers;
+  //       color: $black;
 
   //       &:hover {
   //         color: $black;
@@ -415,7 +415,7 @@ header {
   //   }
 
   //   .iconfont {
-  //     color: $dividers;
+  //     color: $black;
   //   }
   // }
 }

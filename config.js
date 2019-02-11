@@ -7,8 +7,8 @@ const STATIC_PATH = 'https://static.jkchao.cn'
 const CDN_PATH = 'https://cdn.jkchao.cn/nuxt'
 
 const QINIU_OPTIONS = {
-  accessKey: 'accessKey',
-  secretKey: 'secretKey',
+  accessKey: 'uRYE0M3ru9g5Al1h-H1sUV6qqFKAJ4F4yPQXoLcf',
+  secretKey: '_So4S5DZNYmvDezZqav7iB4Z4UZZMawKM_0Uokph',
   bucket: 'blog-cdn',
   domain: 'http://ply4cszel.bkt.clouddn.com'
 }
