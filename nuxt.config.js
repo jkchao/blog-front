@@ -100,10 +100,10 @@ module.exports = {
     src: '~/plugins/clickOutside.js',
     ssr: false
   },
-  // {
-  //   src: '~/plugins/ga.js',
-  //   ssr: false
-  // },
+  {
+    src: '~/plugins/ga.js',
+    ssr: false
+  },
   {
     src: '~/plugins/copy.js',
     ssr: false
@@ -130,6 +130,10 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
+    ['@nuxtjs/component-cache', {
+      max: 10000,
+      maxAge: 1000 * 60 * 60
+    }],
     '~/modules/index.js'
   ],
   styleResources: {
@@ -144,16 +148,19 @@ module.exports = {
      ** You can extend webpack config here
      */
     publicPath: IS_DEV ? '' : CDN_PATH,
+    extractCSS: true,
     extend(config, ctx) {
-      // Run ESLint on save
-      // if (ctx.isDev && ctx.isClient) {
-      //   config.module.rules.push({
-      //     enforce: 'pre',
-      //     test: /\.(js|vue)$/,
-      //     loader: 'eslint-loader',
-      //     exclude: /(node_modules)/
-      //   })
-      // }
+      // ..
+    },
+    babel: {
+      presets({ isServer }) {
+        return [
+          [
+            '@nuxtjs/babel-preset-app',
+            { targets: isServer ? { node: '10.4.0' } : { chrome: 69 } }
+          ]
+        ]
+      }
     }
   }
 }
