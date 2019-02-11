@@ -133,8 +133,7 @@ module.exports = {
     ['@nuxtjs/component-cache', {
       max: 10000,
       maxAge: 1000 * 60 * 60
-    }],
-    '~/modules/index.js'
+    }]
   ],
   styleResources: {
     scss: ['./assets/scss/variable.scss', './assets/scss/mixin.scss']

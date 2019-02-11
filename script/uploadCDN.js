@@ -2,7 +2,7 @@ const qiniu = require('qiniu')
 const glob = require('glob')
 const mime = require('mime')
 const path = require('path')
-const { QINIU_OPTIONS, IS_DEV } = require('../config.js');
+const { QINIU_OPTIONS } = require('../config.js');
 
 function getFileKey (pre, file) {
   if (file.indexOf(pre) > -1) {
@@ -81,58 +81,49 @@ function deleteList(bucketManager, bucket, list) {
   })
 }
 
-export default function uploadModule() {
+const pre = process.cwd() + '/.nuxt'
+const accessKey = QINIU_OPTIONS.accessKey
+const secretKey = QINIU_OPTIONS.secretKey
 
-  this.nuxt.hook('build:done', async ({name, compiler }) => {
-    // Called before the compiler (default: webpack) starts
+const files = glob.sync(
+  `${path.join(
+    pre + '/dist/client',
+    '/**/*.?(js|css|map|png|jpg|svg|woff|woff2|ttf|eot|json)'
+  )}`
+)
 
-    if (IS_DEV) return;
+const mac = new qiniu.auth.digest.Mac(accessKey, secretKey)
+const putPolicy = new qiniu.rs.PutPolicy({
+  scope: QINIU_OPTIONS.bucket
+})
+const uploadToken = putPolicy.uploadToken(mac)
+const cf = new qiniu.conf.Config({
+  zone: qiniu.zone.Zone_z2
+})
+const formUploader = new qiniu.form_up.FormUploader(cf)
+const bucketManager = new qiniu.rs.BucketManager(mac, cf);
 
-    const pre = process.cwd() + '/.nuxt'
-    const accessKey = QINIU_OPTIONS.accessKey
-    const secretKey = QINIU_OPTIONS.secretKey
+async function uploadFileCDN (files) {
 
-    const files = glob.sync(
-      `${path.join(
-        pre + '/dist/client',
-        '/**/*.?(js|css|map|png|jpg|svg|woff|woff2|ttf|eot|json)'
-      )}`
-    )
+  const list = await getList(bucketManager);
 
-    const mac = new qiniu.auth.digest.Mac(accessKey, secretKey)
-    const putPolicy = new qiniu.rs.PutPolicy({
-      scope: QINIU_OPTIONS.bucket
+  await deleteList(bucketManager, QINIU_OPTIONS.bucket, list);
+
+  await Promise.all(
+    files.map(async file => {
+      const key = getFileKey(pre, file).replace(/dist\/client/, 'nuxt')
+      try {
+        await uploadFile(key, file, uploadToken, formUploader)
+        console.log(`上传成功 key: ${key}`)
+      } catch (err) {
+        console.log('error', err)
+      }
     })
-    const uploadToken = putPolicy.uploadToken(mac)
-    const cf = new qiniu.conf.Config({
-      zone: qiniu.zone.Zone_z2
-    })
-    const formUploader = new qiniu.form_up.FormUploader(cf)
-    const bucketManager = new qiniu.rs.BucketManager(mac, cf);
-
-    async function uploadFileCDN (files) {
-
-      const list = await getList(bucketManager);
-
-      await deleteList(bucketManager, QINIU_OPTIONS.bucket, list);
-
-      await Promise.all(
-        files.map(async file => {
-          const key = getFileKey(pre, file).replace(/dist\/client/, 'nuxt')
-          try {
-            await uploadFile(key, file, uploadToken, formUploader)
-            console.log(`上传成功 key: ${key}`)
-          } catch (err) {
-            console.log('error', err)
-          }
-        })
-      )
-    }
-
-
-    console.time('上传文件到cdn')
-    await uploadFileCDN(files)
-    console.timeEnd('上传文件到cdn')
-    // console.log(path);
-  })
+  )
 }
+
+(async() => {
+  console.time('上传文件到cdn')
+  await uploadFileCDN(files)
+  console.timeEnd('上传文件到cdn')
+})()
