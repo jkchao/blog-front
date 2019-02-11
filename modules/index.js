@@ -94,8 +94,8 @@ export default function uploadModule() {
 
     const files = glob.sync(
       `${path.join(
-        pre,
-        '/**/*.?(js|css|map|png|jpg|svg|woff|woff2|ttf|eot)'
+        pre + '/dist/client',
+        '/**/*.?(js|css|map|png|jpg|svg|woff|woff2|ttf|eot|json)'
       )}`
     )
 
@@ -118,7 +118,7 @@ export default function uploadModule() {
 
       await Promise.all(
         files.map(async file => {
-          const key = 'nuxt/' + getFileKey(pre, file)
+          const key = getFileKey(pre, file).replace(/dist\/client/, 'nuxt')
           try {
             await uploadFile(key, file, uploadToken, formUploader)
             console.log(`上传成功 key: ${key}`)
