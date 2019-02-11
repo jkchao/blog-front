@@ -1,5 +1,7 @@
 // const pkg = require('./package')
 
+const { CDN_PATH, IS_DEV } = require('./config.js')
+
 module.exports = {
   mode: 'universal',
 
@@ -127,7 +129,8 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/pwa',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '~/modules/index.js'
   ],
   styleResources: {
     scss: ['./assets/scss/variable.scss', './assets/scss/mixin.scss']
@@ -140,6 +143,7 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
+    publicPath: IS_DEV ? '' : CDN_PATH,
     extend(config, ctx) {
       // Run ESLint on save
       // if (ctx.isDev && ctx.isClient) {
