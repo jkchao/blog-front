@@ -1,15 +1,19 @@
+
 FROM node:10.14.0
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/blog-front
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/blog-front
 
-COPY package.json /usr/src/app/
+ADD package.json /usr/src/blog-front
 
-RUN npm install
+ADD yarn.lock /usr/src/blog-front
 
-COPY . /usr/src/app
+RUN npm i yarn -g
 
-EXPOSE 3000
+RUN yarn
 
-CMD npm run deploy
+ADD . /usr/src/blog-front
+
+
+
