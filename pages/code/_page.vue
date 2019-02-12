@@ -17,7 +17,7 @@
 import articleView from '~/components/common/article'
 
 export default {
-  name: 'code',
+  name: 'code-component',
 
   scrollToTop: true,
 
