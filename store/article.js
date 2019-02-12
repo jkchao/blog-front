@@ -71,7 +71,7 @@ export const actions = {
     commit('FETCH_ART')
     const res = await service.getArts({
       ...data,
-      page_size: 2
+      page_size: 6
     })
     if (res && res.code === 1) {
       // let list
