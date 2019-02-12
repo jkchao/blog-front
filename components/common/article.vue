@@ -21,7 +21,7 @@
               }}
             </span>
             <span class="time" v-else>
-              {{ 
+              {{
                 item.create_at | dateFormat('yyyy.MM.dd')
               }}
             </span>
@@ -35,12 +35,18 @@
         </div>
         <span class="article-line"></span>
       </div>
-      <div class="end-article" v-if="!haveMoreArt" key="-1">
-        <i>end</i>
-      </div>
-      <div class="loading-more end-article " v-if="haveMoreArt" key="-2">
-        <a href="javascript:;" @click="$emit('loadMore')" v-if="!fetch" class="allow"><i>more</i></a>
-        <a href="javascript:;" v-if="fetch" class="not-allow"><i>loading...</i></a>
+
+      <div class="article-foot" key="-1">
+        <div class="pre-article" v-show="havePreArt">
+          <nuxt-link :to="`/${this.type}/${this.currentPage - 1}`">上一页</nuxt-link>
+        </div>
+
+        <div class="end-article" v-if="!haveMoreArt">
+          <i>end</i>
+        </div>
+        <div class="loading-more end-article" v-show="haveMoreArt" key="-2">
+          <nuxt-link :to="`/${this.type}/${this.currentPage + 1}`">下一页</nuxt-link>
+        </div>
       </div>
     </transition-group>
 
@@ -50,7 +56,7 @@
 export default {
   name: 'article-box',
 
-  props: ['articleList', 'haveMoreArt'],
+  props: ['articleList', 'haveMoreArt', 'havePreArt', 'currentPage', 'currentType'],
 
   computed: {
     fetch () {
@@ -59,6 +65,10 @@ export default {
 
     mobileLayout () {
       return this.$store.state.options.mobileLayout
+    },
+
+    type() {
+      return ['', 'code', 'think', 'fuck'][this.currentType]
     }
   }
 }
@@ -160,6 +170,12 @@ export default {
     }
   }
 
+  .article-foot {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .pre-article,
   .end-article {
     padding: $md-pad 0;
     color: $black;
@@ -168,7 +184,7 @@ export default {
   &.mobile {
     width: 100%;
 
-    >.end-article {
+    .end-article {
       margin-bottom: 0;
       padding: 1rem 0;
     }

@@ -1,10 +1,12 @@
 <template>
-  <section  class="think" >
+  <section  class="fuck" >
     <div class="article">
       <articleView
         :articleList = "list"
         :haveMoreArt="haveMoreArt"
-        @loadMore="loadMore"></articleView>
+        :havePreArt="havePreArt"
+        :currentPage="currentPage"
+        :currentType="3"></articleView>
     </div>
   </section>
 </template>
@@ -13,19 +15,21 @@
 
 const articleView = () => import('~/components/common/article')
 
-
 export default {
 
   scrollToTop: true,
 
   head: {
-    title: 'Think'
+    title: 'Fuck'
   },
 
   transition: 'fade',
 
-  fetch ({ store }) {
-    return store.dispatch('article/getArtList', { type: 2 })
+  fetch ({ store, params }) {
+    return store.dispatch('article/getArtList', {
+      type: 3,
+      current_page: params.page || 1
+    })
   },
 
   data () {
@@ -42,24 +46,22 @@ export default {
       return this.$store.state.article.art.list
     },
 
+    currentPage() {
+      return this.$store.state.article.art.pagination.current_page
+    },
 
     haveMoreArt () {
       return this.$store.state.article.art.pagination.current_page
-              !== this.$store.state.article.art.pagination.total_page
+              < this.$store.state.article.art.pagination.total_page
+    },
+
+    havePreArt () {
+      return this.$store.state.article.art.pagination.current_page !== 1
     }
   },
 
   components: {
     articleView
-  },
-
-  methods: {
-    loadMore () {
-      this.$store.dispatch('article/getArtList', {
-        current_page: this.$store.state.article.art.pagination.current_page + 1,
-        type: 2
-      })
-    }
   }
 }
 </script>
@@ -67,7 +69,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.think {
+.fuck {
   >.title {
     position: relative;
     display: flex;

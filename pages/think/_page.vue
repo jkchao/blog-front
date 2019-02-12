@@ -1,27 +1,36 @@
 <template>
-  <section  class="clearfix main">
+  <section  class="think" >
     <div class="article">
-
       <articleView
         :articleList = "list"
         :haveMoreArt="haveMoreArt"
-        @loadMore="loadMore"></articleView>
-
+        :havePreArt="havePreArt"
+        :currentPage="currentPage"
+        :currentType="2"></articleView>
     </div>
   </section>
 </template>
+
 <script>
 
-import articleView from '~/components/common/article'
+const articleView = () => import('~/components/common/article')
 
 export default {
+  name: 'think',
 
   scrollToTop: true,
 
+  head: {
+    title: 'Think'
+  },
+
   transition: 'fade',
 
-  fetch ({ store }) {
-    return store.dispatch('article/getArtList', { type: 1 })
+  fetch ({ store, params }) {
+    return store.dispatch('article/getArtList', {
+      type: 2,
+      current_page: params.page || 1
+    })
   },
 
   data () {
@@ -29,6 +38,7 @@ export default {
   },
 
   computed: {
+
     mobileLayout () {
       return this.$store.state.options.mobileLayout
     },
@@ -37,13 +47,17 @@ export default {
       return this.$store.state.article.art.list
     },
 
-    banners () {
-      return this.list.slice(0, 9)
+    currentPage() {
+      return this.$store.state.article.art.pagination.current_page
     },
 
     haveMoreArt () {
       return this.$store.state.article.art.pagination.current_page
-              !== this.$store.state.article.art.pagination.total_page
+              < this.$store.state.article.art.pagination.total_page
+    },
+
+    havePreArt () {
+      return this.$store.state.article.art.pagination.current_page !== 1
     }
   },
 
@@ -52,9 +66,16 @@ export default {
   },
 
   methods: {
-    loadMore () {
+    nextPage () {
       this.$store.dispatch('article/getArtList', {
         current_page: this.$store.state.article.art.pagination.current_page + 1,
+        type: 1
+      })
+    },
+
+    prePage () {
+      this.$store.dispatch('article/getArtList', {
+        current_page: this.$store.state.article.art.pagination.current_page - 1,
         type: 1
       })
     }
@@ -63,9 +84,9 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 
-.main {
+.think {
   >.title {
     position: relative;
     display: flex;
@@ -88,5 +109,4 @@ export default {
     }
   }
 }
-
 </style>
