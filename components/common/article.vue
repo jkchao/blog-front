@@ -1,5 +1,5 @@
 <template>
-    <transition-group tag="div" name="slide-down" class="article-box" :class="{'mobile': mobileLayout}">
+    <div tag="div"  class="article-box" :class="{'mobile': mobileLayout}">
       <div
         class="article-item"
         v-for="item in articleList"
@@ -16,12 +16,12 @@
           <p class="abstrack">{{ item.descript | text(200)}}</p>
           <div class="meta">
             <span class="time" v-if="!mobileLayout">
-              {{ 
+              {{
                 item.create_at | dateFormat('yyyy.MM.dd')
               }}
             </span>
             <span class="time" v-else>
-              {{ 
+              {{
                 item.create_at | dateFormat('yyyy.MM.dd')
               }}
             </span>
@@ -35,30 +35,50 @@
         </div>
         <span class="article-line"></span>
       </div>
-      <div class="end-article" v-if="!haveMoreArt" key="-1">
-        <i>end</i>
+
+      <div v-if="articleList.length === 0 && !fetch" class="empty-article" key="0">
+        没有文章了
       </div>
-      <div class="loading-more end-article " v-if="haveMoreArt" key="-2">
-        <a href="javascript:;" @click="$emit('loadMore')" v-if="!fetch" class="allow"><i>more</i></a>
-        <a href="javascript:;" v-if="fetch" class="not-allow"><i>loading...</i></a>
+
+      <div v-show="fetch" key="-1" class="loading-article">
+        <loadingCom></loadingCom>
       </div>
-    </transition-group>
+
+      <div class="article-foot" key="-2" v-if="!fetch">
+        <div class="pre-article">
+          <nuxt-link :to="`/${this.type}/${this.currentPage - 1}`" v-show="havePreArt">上一页</nuxt-link>
+        </div>
+
+        <div class="loading-more end-article" key="-2" v-show="haveMoreArt">
+          <nuxt-link :to="`/${this.type}/${this.currentPage + 1}`">下一页</nuxt-link>
+        </div>
+      </div>
+    </div>
 
 </template>
 
 <script>
+import loadingCom from '~/components/common/pageLoading/pageLoading'
 export default {
+  components: {
+    loadingCom
+  },
   name: 'article-box',
 
-  props: ['articleList', 'haveMoreArt'],
+  props: ['articleList', 'haveMoreArt', 'havePreArt', 'currentPage', 'currentType'],
 
   computed: {
     fetch () {
+      // return true
       return this.$store.state.article.fetch
     },
 
     mobileLayout () {
       return this.$store.state.options.mobileLayout
+    },
+
+    type() {
+      return ['', 'code', 'think', 'fuck'][this.currentType]
     }
   }
 }
@@ -160,15 +180,33 @@ export default {
     }
   }
 
+  .article-foot {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .loading-article,
+  .empty-article,
+  .pre-article,
   .end-article {
     padding: $md-pad 0;
     color: $black;
   }
 
+  .empty-article {
+    text-align: center;
+    font-size: $font-size-base;
+    margin-top: $md-pad;
+  }
+
+  .loading-article {
+    text-align: center;
+  }
+
   &.mobile {
     width: 100%;
 
-    >.end-article {
+    .end-article {
       margin-bottom: 0;
       padding: 1rem 0;
     }

@@ -1,31 +1,33 @@
 <template>
-  <section  class="think" >
+  <section  class="clearfix main">
     <div class="article">
+
       <articleView
         :articleList = "list"
         :haveMoreArt="haveMoreArt"
-        @loadMore="loadMore"></articleView>
+        :havePreArt="havePreArt"
+        :currentPage="currentPage"
+        :currentType="1"></articleView>
+
     </div>
   </section>
 </template>
-
 <script>
 
-const articleView = () => import('~/components/common/article')
-
+import articleView from '~/components/common/article'
 
 export default {
+  name: 'code-component',
 
   scrollToTop: true,
 
-  head: {
-    title: 'Think'
-  },
+  // transition: 'fade',
 
-  transition: 'fade',
-
-  fetch ({ store }) {
-    return store.dispatch('article/getArtList', { type: 2 })
+  fetch ({ store, params }) {
+    return store.dispatch('article/getArtList', {
+      type: 1,
+      current_page: params.page || 1
+    })
   },
 
   data () {
@@ -33,7 +35,6 @@ export default {
   },
 
   computed: {
-
     mobileLayout () {
       return this.$store.state.options.mobileLayout
     },
@@ -42,32 +43,34 @@ export default {
       return this.$store.state.article.art.list
     },
 
+    banners () {
+      return this.list.slice(0, 9)
+    },
 
     haveMoreArt () {
       return this.$store.state.article.art.pagination.current_page
-              !== this.$store.state.article.art.pagination.total_page
+              < this.$store.state.article.art.pagination.total_page
+    },
+
+    currentPage() {
+      return this.$store.state.article.art.pagination.current_page
+    },
+
+    havePreArt () {
+      return this.$store.state.article.art.pagination.current_page !== 1
     }
   },
 
   components: {
     articleView
-  },
-
-  methods: {
-    loadMore () {
-      this.$store.dispatch('article/getArtList', {
-        current_page: this.$store.state.article.art.pagination.current_page + 1,
-        type: 2
-      })
-    }
   }
 }
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss">
 
-.think {
+.main {
   >.title {
     position: relative;
     display: flex;
@@ -90,4 +93,5 @@ export default {
     }
   }
 }
+
 </style>

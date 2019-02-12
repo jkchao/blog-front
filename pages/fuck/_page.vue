@@ -4,7 +4,9 @@
       <articleView
         :articleList = "list"
         :haveMoreArt="haveMoreArt"
-        @loadMore="loadMore"></articleView>
+        :havePreArt="havePreArt"
+        :currentPage="currentPage"
+        :currentType="3"></articleView>
     </div>
   </section>
 </template>
@@ -21,10 +23,13 @@ export default {
     title: 'Fuck'
   },
 
-  transition: 'fade',
+  // transition: 'fade',
 
-  fetch ({ store }) {
-    return store.dispatch('article/getArtList', { type: 3 })
+  fetch ({ store, params }) {
+    return store.dispatch('article/getArtList', {
+      type: 3,
+      current_page: params.page || 1
+    })
   },
 
   data () {
@@ -41,24 +46,22 @@ export default {
       return this.$store.state.article.art.list
     },
 
+    currentPage() {
+      return this.$store.state.article.art.pagination.current_page
+    },
 
     haveMoreArt () {
       return this.$store.state.article.art.pagination.current_page
-              !== this.$store.state.article.art.pagination.total_page
+              < this.$store.state.article.art.pagination.total_page
+    },
+
+    havePreArt () {
+      return this.$store.state.article.art.pagination.current_page !== 1
     }
   },
 
   components: {
     articleView
-  },
-
-  methods: {
-    loadMore () {
-      this.$store.dispatch('article/getArtList', {
-        current_page: this.$store.state.article.art.pagination.current_page + 1,
-        type: 3
-      })
-    }
   }
 }
 </script>
