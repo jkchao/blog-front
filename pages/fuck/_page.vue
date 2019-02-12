@@ -23,7 +23,7 @@ export default {
     title: 'Fuck'
   },
 
-  transition: 'fade',
+  // transition: 'fade',
 
   fetch ({ store, params }) {
     return store.dispatch('article/getArtList', {

@@ -1,5 +1,5 @@
 <template>
-  <div class="article-list" :class="{'mobile': mobileLayout}">
+  <transition-group tag="div" name="slide-down" class="article-box" :class="{'mobile': mobileLayout}">
 
     <div class="article-cont">
       <h3 class="">{{ article.title }}</h3>
@@ -81,7 +81,7 @@
     </dialog-com>
 
     <!-- <div class="toc" v-html="toc"></div> -->
-  </div>
+  </transition-group>
 </template>
 
 <script>

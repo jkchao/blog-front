@@ -23,6 +23,9 @@ ax.interceptors.request.use((data) => {
 })
 
 ax.interceptors.response.use((response) => {
+  // if (response && response.data.code !== 1) {
+  //   if (window) window.alert('出错了：' + response.data.message);
+  // }
 
   return response
 }, (error) => {

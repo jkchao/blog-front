@@ -21,7 +21,7 @@ export default {
 
   scrollToTop: true,
 
-  transition: 'fade',
+  // transition: 'fade',
 
   fetch ({ store, params }) {
     return store.dispatch('article/getArtList', {
