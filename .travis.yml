@@ -12,8 +12,6 @@ install:
 before_install:
 - openssl aes-256-cbc -K $encrypted_5e40c9d0462f_key -iv $encrypted_5e40c9d0462f_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
-# - openssl aes-256-cbc -K $encrypted_8a60de8b3d7b_key -iv $encrypted_8a60de8b3d7b_iv
-#   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 after_success:
 - ssh root@47.98.232.68 "cd /home/front-back && git pull && bash ./script/deploy.sh"
@@ -25,3 +23,7 @@ notifications:
     on_failure: always
 addons:
   ssh_known_hosts: 47.98.232.68
+env:
+  global:
+  - secure: WuRi+2qlAG5L9gv6YjSm115MrghDHHQr+Ogq3KT9FLi+oN67E0yEhaDBCBOXyXdnHwezdKHp5r6l2h63aJf66YsXxx6+0w7z4v5Q9lZ9PiZNB0Ads/dmFuPqw5QkVW5cQLRvWbTF7PZThURvuvNIRH3dG1es1/071YyAfS7ghTYVhETU0WKVNvijvEqXGdEyhN9m3RldtOIu4gLF4Bif8svws7FFU3GQKTkqlHGmrRywUlC5LuucQ+wb5MwLRJR4e0ARKRHawv/a0i2dVSexZO4yFa1yRN65pfxtij8+LUWqQuMUzBdB+0px9ABL3ZMIM8wz3jQQdzc5vokhPAkAZSxyhWnLD/WIgiDQCuMiC/dpkEkNk2KePdjpGpn3lMQR53FVrj5TC3Dm1HBuCB/E+qDuyzj02DPeFuXGdzYyDFXRo1dgqxaVJP2ehywmDBzpsxyHMRAgwY6CJSmHaxDy7Sf4ZK3CrvU++xsVuIlV4w0lm8kj2sQI3mJWXl7qWRtspzC42hz1z52Yl2H+egOMIwK/Gnsc5rsWsc9KKXEZRh7xxVUX7pC8E1nOu8I69yFeOghB4AhzmH/YviDmxz/d7aRkEt8+gzGrviS4cqTzHgm2c/FWw9C6ivrA5dlDpu33mFqyL/qH/R0yCMqPJP3ZntqBmjedXs7nA72S/OggVXg=
+  - secure: osM9NMwA+9ZWL4aDSBmHx+dl0J0PBGffF6OaJRv+4ch6D6ccfPVxPrvpCo9Pk0LU63Yi/Kq1wU2v5w75t7oeduCdhk0pN33zPAYSl5/Dba+k0ktlwwfku/iE5iXss6vwC7oKboEmyypdpKA/Yz9fAUSJ/PPJ3nRPfIw0g//37PMyJwI2kdY+YVxZRQQLrzmmT5RpVgUznlKS6tS+1W4wf4fw4x3t/DF8nl9IvXk2oGm4sVIQ+Davu86rX7qxJa98XAqz4fP+wSA0jeqzj+PtvNKWe/xoEq26txpvo1v4Kilft91aMRMZpTZJR+4Mv1uZfxTPOPXMlE90HcmzsZC/PAw2xPE9InGJ0FnPF1kzmnGWLGyf8OMUqJy6iXJVuXGwyqV4PAHbzrpWwc9m03hgHWatT8okmqBzqH7yiVAyAlzenxknD7yi7AY9/RkD8pAMp+QAM9diHZzayGXJkJ/tjw3N8EPT6EIpjeAGjMwCAFe9vfwGcM3nMBJLyNBILlOwdSeAXWKdbVBegKVVFMWNFGucFG6krD+WYilpZ5uQze1hoJBeZQpphr/jrDlePL68vg3jQlhyUfeuaD3V89P2NzuN4b31qkPrW6JIYg/yYkVpWqb8/2XvaefIVFgeFkcCPgvzWnPcu40wh0SxyunIFj4OjmsaxqF2G0txqMnlsmc=
