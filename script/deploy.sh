@@ -6,16 +6,7 @@ echo 'git pull'
 
 git pull
 
-echo 'yarn install'
+docker-compose -f docker-compose.yml build
+docker-compose -f docker-compose.yml up -d
 
-yarn install
 
-echo 'npm run build'
-
-npm run build
-
-echo 'pm2 restart all'
-
-pm2 restart all
-
-echo 'deploy done'

@@ -5,6 +5,11 @@ const { CDN_PATH, IS_DEV } = require('./config.js')
 module.exports = {
   mode: 'universal',
 
+  server: {
+    port: 3000, // default: 3000
+    host: '0.0.0.0', // default: localhost
+  },
+
   /*
    ** Headers of the page
    */
@@ -100,10 +105,10 @@ module.exports = {
     src: '~/plugins/clickOutside.js',
     ssr: false
   },
-  // {
-  //   src: '~/plugins/ga.js',
-  //   ssr: false
-  // },
+  {
+    src: '~/plugins/ga.js',
+    ssr: false
+  },
   {
     src: '~/plugins/copy.js',
     ssr: false
