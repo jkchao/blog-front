@@ -1,19 +1,33 @@
 language: node_js
+
 cache:
   directories:
   - node_modules
+
 node_js:
 - 10.14.0
+
 branches:
   only:
   - v2.0
+
 install:
 - yarn install
+
 before_install:
 - openssl aes-256-cbc -K $encrypted_8a60de8b3d7b_key -iv $encrypted_8a60de8b3d7b_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
+
 after_success:
 - ssh root@47.98.232.68 "cd /home/front-back && git pull && bash ./script/deploy.sh"
+
+notifications:
+  email:
+    recipients:
+    - jkchaom@gmail.com
+    on_success: always
+    on_failure: always
+
 addons:
   ssh_known_hosts: 47.98.232.68
