@@ -46,11 +46,25 @@ module.exports = {
     }
     ],
 
-    link: [{
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/favicon.ico'
-    }],
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      },
+      {
+        rel: 'dns-prefetch',
+        href: '//api.jkchao.cn'
+      },
+      {
+        rel: 'dns-prefetch',
+        href: '//static.jkchao.cn'
+      },
+      {
+        rel: 'dns-prefetch',
+        href: '//cdn.jkchao.cn'
+      },
+    ],
     script: [
     // {
     //   async: 'async',
