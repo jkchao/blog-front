@@ -1,5 +1,7 @@
 # vue-blog (http://jkchao.cn)
 
+[![Build Status](https://travis-ci.org/jkchao/blog-front.svg?branch=v2.0)](https://travis-ci.org/jkchao/blog-front)
+
 CLIENT: [vue-blog](https://github.com/jkchao/vue-blog)
 
 ADMIN: [vue-admin](https://github.com/jkchao/vue-admin)

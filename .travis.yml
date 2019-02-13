@@ -12,4 +12,4 @@ branches:
     - v2.0
 
 install:
-  - npm install
+  - yarn install
