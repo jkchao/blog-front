@@ -8,6 +8,8 @@ pm2 stop all
 
 echo 'npm run build'
 
+yarn install
+
 npm run build
 
 echo 'npm run start'
