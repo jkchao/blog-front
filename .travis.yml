@@ -14,6 +14,6 @@ before_install:
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 after_success:
-- ssh root@47.98.232.68 "script/deploy.sh"
+- ssh root@47.98.232.68 "/home/front-back/script/deploy.sh"
 addons:
   ssh_known_hosts: 47.98.232.68
