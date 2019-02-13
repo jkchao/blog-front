@@ -14,7 +14,7 @@ before_install:
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 after_success:
-- ssh root@47.98.232.68 "cd /home/front-back && git pull && bash ./script/deploy.sh"
+- ssh root@47.98.232.68 "cd /home/blog-front && git pull && bash ./script/deploy.sh"
 notifications:
   email:
     recipients:
