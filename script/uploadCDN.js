@@ -85,6 +85,9 @@ const pre = process.cwd() + '/.nuxt'
 const accessKey = QINIU_OPTIONS.accessKey
 const secretKey = QINIU_OPTIONS.secretKey
 
+console.log(accessKey)
+console.log(secretKey)
+
 const files = glob.sync(
   `${path.join(
     pre + '/dist/client',
