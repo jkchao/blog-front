@@ -427,7 +427,6 @@ export default {
       code {
         padding: .2rem .4rem;
         margin: 0;
-        font-size: 85%;
         border-radius: $radius;
         background-color: $module-hover-bg;
       }
