@@ -170,7 +170,7 @@ module.exports = {
      ** You can extend webpack config here
      */
     publicPath: IS_DEV ? '' : CDN_PATH,
-    extractCSS: true,
+    // extractCSS: true,
     extend(config, ctx) {
       // ..
     },
