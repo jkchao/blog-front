@@ -34,9 +34,9 @@
       <a title="email" rel="nofollow" class="share-link mail" @click.prevent="shareWindow(`mailto:?subject=${title()}&body=${url}`)">
         <i class="iconfont icon-email"></i>
       </a>
-      <span ref="share_copy_btn" class="share-link link" rel="nofollow" :data-clipboard-text="url">
+      <!-- <span ref="share_copy_btn" class="share-link link" rel="nofollow" :data-clipboard-text="url">
         <i class="iconfont icon-link"></i>
-      </span>
+      </span> -->
     </div>
   </div>
 </template>
