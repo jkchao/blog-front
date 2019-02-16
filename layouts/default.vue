@@ -15,7 +15,7 @@
         </div>    
       </transition>
 
-      <transition-group 
+      <transition-group
           tag="div" 
           class="container clearfix main-container" 
           name="slide-up" 
@@ -95,6 +95,10 @@ export default {
 
     isError () {
       return this.$store.state.options.isError
+    },
+
+    pageLoading() {
+      return this.$store.state.options.pageLoading
     }
   },
 

@@ -40,9 +40,9 @@
         没有文章了
       </div>
 
-      <!-- <div v-show="fetch" key="-1" class="loading-article">
+      <div v-show="fetch" key="-1" class="loading-article">
         <loadingCom></loadingCom>
-      </div> -->
+      </div>
 
       <div class="article-foot" key="-2" v-if="!fetch">
         <div class="pre-article">

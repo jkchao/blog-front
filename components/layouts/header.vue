@@ -3,7 +3,7 @@
     <div class="header">
         <div class="header-left">
           <div class="logo">
-            <nuxt-link to="/" v-show="!loadingChange">
+            <nuxt-link to="/">
               <img src="~/static/images/logo.png" alt="" width="36">
             </nuxt-link>
           </div>
@@ -61,9 +61,9 @@ export default {
   },
 
   computed: {
-    loadingChange() {
-      return this.$store.state.options.loadingChange
-    }
+    // loadingChange() {
+    //   return this.$store.state.options.loadingChange
+    // }
     // player () {
     //   return EventBus.player.player
     // },
