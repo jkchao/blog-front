@@ -64,6 +64,10 @@ module.exports = {
         rel: 'dns-prefetch',
         href: '//cdn.jkchao.cn'
       },
+      {
+        rel: 'dns-prefetch',
+        href: '//www.google-analytics.com'
+      },
     ],
     script: [
     // {

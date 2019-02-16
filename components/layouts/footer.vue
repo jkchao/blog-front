@@ -4,6 +4,7 @@
     <div class="container center">
       <ul class="friends clearfix">
           <a
+            rel="noopener"
             v-for="(friend,index) in friends"
             :key="index" 
             :href="friend.url" target="_blank">
