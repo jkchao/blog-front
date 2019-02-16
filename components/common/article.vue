@@ -1,5 +1,5 @@
 <template>
-    <div tag="div"  class="article-box" :class="{'mobile': mobileLayout}">
+    <div tag="div" class="article-box" :class="{'mobile': mobileLayout}">
       <div
         class="article-item"
         v-for="item in articleList"
@@ -40,9 +40,9 @@
         没有文章了
       </div>
 
-      <div v-show="fetch" key="-1" class="loading-article">
+      <!-- <div v-show="fetch" key="-1" class="loading-article">
         <loadingCom></loadingCom>
-      </div>
+      </div> -->
 
       <div class="article-foot" key="-2" v-if="!fetch">
         <div class="pre-article">
@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import loadingCom from '~/components/common/pageLoading/pageLoading'
+import loadingCom from '~/components/common/loading/index.vue'
 export default {
   components: {
     loadingCom

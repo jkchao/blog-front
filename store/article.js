@@ -28,10 +28,10 @@ export const state = () => ({
 export const mutations = {
   FETCH_ART(state) {
     state.fetch = true
-    state.art = {
-      pagination: {},
-      list: []
-    }
+    // state.art = {
+    //   pagination: {},
+    //   list: []
+    // }
   },
 
   SET_HOT_ART(state, data) {
@@ -74,11 +74,13 @@ export const actions = {
       page_size: 6
     })
     if (res && res.code === 1) {
-      if(!process.client) {
-        commit('SET_ART_SUCCESS', res.result)
-      } else setTimeout(() => {
-        commit('SET_ART_SUCCESS', res.result)
-      }, 200)
+      commit('SET_ART_SUCCESS', res.result)
+
+      // if(!process.client) {
+      //   commit('SET_ART_SUCCESS', res.result)
+      // } else setTimeout(() => {
+      //   commit('SET_ART_SUCCESS', res.result)
+      // }, 200)
     } else commit('SET_ART_FILE')
   },
 

@@ -29,7 +29,9 @@ export const state = () => {
     // 网站信息
     option: {},
 
-    isWelcome: true
+    isWelcome: true,
+
+    loadingChange: false
   }
 }
 
@@ -72,6 +74,11 @@ export const mutations = {
   // 欢迎页面
   CHANGE_WEL_PAGE(state, data) {
     state.isWelcome = data
+  },
+
+  LOADING_CHANGE(state, status) {
+    state.loadingChange = status;
+    console.log(status)
   }
 }
 

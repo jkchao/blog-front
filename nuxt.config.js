@@ -93,9 +93,7 @@ module.exports = {
   /*
    ** Customize the progress-bar color
    */
-  loading: {
-    color: '#24292e'
-  },
+  loading: '~/components/common/loading/pageLoading.vue',
 
   /*
    ** Global CSS
@@ -123,10 +121,10 @@ module.exports = {
     src: '~/plugins/clickOutside.js',
     ssr: false
   },
-  {
-    src: '~/plugins/ga.js',
-    ssr: false
-  },
+  // {
+  //   src: '~/plugins/ga.js',
+  //   ssr: false
+  // },
   {
     src: '~/plugins/copy.js',
     ssr: false
