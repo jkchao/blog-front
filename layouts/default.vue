@@ -110,7 +110,7 @@ export default {
   },
 
   mounted () {
-    const theme = window.localStorage.getItem('THEME') || 'light'
+    const theme = window.localStorage.getItem('THEME') || 'dark'
     document.body.id = theme
   }
 }
