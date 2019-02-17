@@ -1,84 +1,96 @@
 <template>
-  <section  
-    class="welcome"
-    :class="{ 'mobil': mobileLayout }">
-    <div class="haiyan">
-      <h4 class="mune">
-        <nuxt-link to="/code">码农</nuxt-link>
-        <span >/</span>
-        <nuxt-link to="/think">读书</nuxt-link>
-        <span >/</span>
-        <nuxt-link to="/fuck">民谣</nuxt-link>
-      </h4>
-    </div>
-    <div class="will" v-if="!mobileLayout">
-      <img src="https://static.jkchao.cn/will.png" alt="" width="80">
+  <section  class="clearfix main">
+    <div class="article">
+
+      <articleView
+        :articleList = "list"
+        :haveMoreArt="haveMoreArt"
+        :havePreArt="havePreArt"
+        :currentPage="currentPage"
+        :currentType="1"></articleView>
+
     </div>
   </section>
 </template>
 <script>
 
+import articleView from '~/components/common/article'
+
 export default {
+  name: 'code-component',
 
   scrollToTop: true,
-  transition: 'fade',
+
+  // transition: 'fade',
+
+  fetch ({ store, params }) {
+    return store.dispatch('article/getArtList', {
+      current_page: params.page || 1
+    })
+  },
+
+  data () {
+    return {}
+  },
 
   computed: {
     mobileLayout () {
       return this.$store.state.options.mobileLayout
+    },
+
+    list () {
+      return this.$store.state.article.art.list
+    },
+
+    banners () {
+      return this.list.slice(0, 9)
+    },
+
+    haveMoreArt () {
+      return this.$store.state.article.art.pagination.current_page
+              < this.$store.state.article.art.pagination.total_page
+    },
+
+    currentPage() {
+      return this.$store.state.article.art.pagination.current_page
+    },
+
+    havePreArt () {
+      return this.$store.state.article.art.pagination.current_page !== 1
     }
   },
 
-  mounted () {
-    this.$nextTick(() => {
-      Promise.all([
-        this.$store.dispatch('article/getArtList', { type: 1 }),
-        this.$store.dispatch('article/getArtList', { type: 2 }),
-        this.$store.dispatch('article/getArtList', { type: 3 })
-      ])
-    })
+  components: {
+    articleView
   }
 }
 </script>
 
 
-<style lang="scss" scoped>
-.welcome {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  
-  background: url('https://static.jkchao.cn/main_bg.jpg') no-repeat 20% 20%;
-  background-size: cover;
+<style lang="scss">
 
-  .haiyan {
-    position: absolute;
-    right: 80px;
-    top: 280px;
-    color: #eee;
+.main {
+  >.title {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0rem;
+    line-height: 1.5rem;
+    color: $black;
+    font-size: 1rem;
+    font-weight: normal;
 
-    .mune {
-      span {
-        padding: .35rem;
-      }
+    > .title-name {
+      position: relative;
+      padding-right: $lg-pad;
+      background: $white;
+      z-index: 99;      
     }
-  }
 
-  .will {
-    position: absolute;
-    right: 40px;
-    top: 40px;
-  }
-
-  &.mobil {
-    .haiyan {
-      top: 70px;
-      left: 60px;
+    > .line {
+      top: 50%;
     }
   }
 }
-
 
 </style>

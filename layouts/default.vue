@@ -82,7 +82,8 @@ export default {
     },
 
     isWelcome () {
-      return this.$store.state.options.isWelcome
+      return false;
+      // return this.$store.state.options.isWelcome
     },
 
     mobileLayout () {
@@ -150,7 +151,7 @@ export default {
     @include transition(all .3s ease-out);
 
     >.main-container {
-      min-height: calc(100vh - 156px);
+      min-height: calc(100vh - 196px);
       margin-top: $normal-pad;
     }
 

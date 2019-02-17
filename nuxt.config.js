@@ -71,20 +71,20 @@ module.exports = {
       }
     ],
     script: [
-      // {
-      //   async: 'async',
-      //   type: 'text/javascript',
-      //   src: '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
-      // },
-      // {
-      //   type: 'text/javascript',
-      //   innerHTML: `
-      //     (adsbygoogle = window.adsbygoogle || []).push({
-      //       google_ad_client: "ca-pub-8918100374180146",
-      //       enable_page_level_ads: true
-      //     });
-      //   `
-      // }
+      {
+        async: 'async',
+        type: 'text/javascript',
+        src: '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+      },
+      {
+        type: 'text/javascript',
+        innerHTML: `
+          (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8918100374180146",
+            enable_page_level_ads: true
+          });
+        `
+      }
     ],
     noscript: [
       {
@@ -96,7 +96,9 @@ module.exports = {
   /*
    ** Customize the progress-bar color
    */
-  loading: false,
+  loading: {
+    color: '#20A0FF'
+  },
 
   /*
    ** Global CSS
