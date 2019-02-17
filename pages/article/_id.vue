@@ -13,9 +13,8 @@
           <!-- <span class="disqus-comment-count" :data-disqus-identifier="article._id"></span> -->
         </span>
       </div>
-      <div class="article-thumb" v-if="article.thumb">
-        <img :src="article.thumb" alt="">
-      </div>
+      <progressive-image
+        :thumb="article.thumb"></progressive-image>
       <div class="content" v-html="articleContent"></div>
     </div>
 
@@ -90,6 +89,7 @@ import share from '~/components/layouts/share'
 import dialogCom from '~/components/common/dialog'
 import comments from '~/components/common/comments'
 import { scrollTo } from '~/utils/scroll'
+import progressiveImage from '~/components/common/progressiveImage.vue'
 // import lazyImg from '../../utils/lazyImg'
 export default {
   name: 'MArticle',
@@ -115,7 +115,7 @@ export default {
     }
   },
 
-  components: { share, dialogCom, comments },
+  components: { share, dialogCom, comments, progressiveImage },
 
   computed: {
     mobileLayout () {
@@ -169,15 +169,15 @@ export default {
 
     initEvent () {
       // lazyImg('.img-pop')
-      const list = document.querySelectorAll('.img-pop')
-      let _this = this
-      for (let i = 0; i < list.length; i++) {
-        list[i].addEventListener('click', (e) => {
-          e.stopPropagation()
-          this.showDialog = true
-          this.img = list[i].getAttribute('src')
-        })
-      }
+      // const list = document.querySelectorAll('.img-pop')
+      // let _this = this
+      // for (let i = 0; i < list.length; i++) {
+      //   list[i].addEventListener('click', (e) => {
+      //     e.stopPropagation()
+      //     this.showDialog = true
+      //     this.img = list[i].getAttribute('src')
+      //   })
+      // }
     },
 
     scrollToComment () {
@@ -215,12 +215,33 @@ export default {
       color: $black;
     }
 
-    >.article-thumb {
-      margin: $lg-pad 0;
-      img {
-        max-width: 100%;
-      }
-    }
+    // >.article-thumb {
+    //   background-color: var(--module-bg);
+    //   background-size: cover;
+    //   background-repeat: no-repeat;
+    //   position: relative;
+    //   overflow: hidden;
+    //   margin: $lg-pad 0;
+    //   // padding-top: 47%;
+
+    //   .img-placeholder {
+    //     filter: blur(8px);
+    //     transform: scale(1);
+    //   }
+
+    //   img {
+    //     position: absolute;
+    //     opacity: 0;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     // transition: opacity 1s linear;
+
+    //     &.loaded {
+    //       opacity: 1;
+    //     }
+    //   }
+    // }
 
     .content {
       margin: $lg-pad 0;

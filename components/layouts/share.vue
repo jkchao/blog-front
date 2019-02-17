@@ -25,18 +25,15 @@
       <a title="facebook" rel="nofollow" class="share-link facebook" @click.prevent="shareWindow(`https://www.facebook.com/sharer/sharer.php?u=${url}`)">
         <i class="iconfont icon-facebook"></i>
       </a>
-      <a title="google plus" rel="nofollow" class="share-link google-plus" @click.prevent="shareWindow(`https://plus.google.com/share?url=${url}`)">
-        <i class="iconfont icon-google-plus"></i>
-      </a>
       <a title="linkedin" rel="nofollow" class="share-link linkedin" @click.prevent="shareWindow(`http://www.linkedin.com/shareArticle?title=${title()}&summary=${description()}&mini=true&url=${url}`)">
         <i class="iconfont icon-linkedin"></i>
       </a>
       <a title="email" rel="nofollow" class="share-link mail" @click.prevent="shareWindow(`mailto:?subject=${title()}&body=${url}`)">
         <i class="iconfont icon-email"></i>
       </a>
-      <!-- <span ref="share_copy_btn" class="share-link link" rel="nofollow" :data-clipboard-text="url">
+      <span ref="share_copy_btn" class="share-link link" rel="nofollow" :data-clipboard-text="url">
         <i class="iconfont icon-link"></i>
-      </span> -->
+      </span>
     </div>
   </div>
 </template>
