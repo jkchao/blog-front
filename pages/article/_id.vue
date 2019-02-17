@@ -2,7 +2,7 @@
   <div class="article-list" :class="{'mobile': mobileLayout}">
 
     <div class="article-cont">
-      <h3 class="">{{ article.title }}</h3>
+      <h3 class="article-title">{{ article.title }}</h3>
       <div class="meta">
         <span class="time">{{ article.create_at | dateFormat('yyyy.MM.dd hh:mm') }}</span>
         <span class="num" v-if="!mobileLayout">字数 {{ article.content.length }}</span>
@@ -200,6 +200,10 @@ export default {
 
   >.article-cont {
 
+    .article-title {
+      font-size: $font-size-title;
+    }
+
     >.meta {
       margin-top: .3rem;
       font-size: .8rem;
@@ -214,34 +218,6 @@ export default {
       font-size: 1.3rem;
       color: $black;
     }
-
-    // >.article-thumb {
-    //   background-color: var(--module-bg);
-    //   background-size: cover;
-    //   background-repeat: no-repeat;
-    //   position: relative;
-    //   overflow: hidden;
-    //   margin: $lg-pad 0;
-    //   // padding-top: 47%;
-
-    //   .img-placeholder {
-    //     filter: blur(8px);
-    //     transform: scale(1);
-    //   }
-
-    //   img {
-    //     position: absolute;
-    //     opacity: 0;
-    //     top: 0;
-    //     left: 0;
-    //     width: 100%;
-    //     // transition: opacity 1s linear;
-
-    //     &.loaded {
-    //       opacity: 1;
-    //     }
-    //   }
-    // }
 
     .content {
       margin: $lg-pad 0;
