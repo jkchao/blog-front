@@ -1,7 +1,8 @@
 <template>
   <div
     class="article-thumb">
-    <img 
+    <img
+      v-if="isCDN"
       ref="smallImg"
       :src="smallThumb"
       alt=""
@@ -11,12 +12,13 @@
       }"
       crossorigin="anonymous"
       @load="loadingLarge = true">
-    <img 
+    <img
       v-if="loadingLarge"
       :src="largeThumb"
       alt=""
       :class="{
-        loaded: loadedLarge
+        loaded: loadedLarge,
+        'z-index': 1
       }"
       @load="handleLoadLarge">
     <div style="padding-bottom: 47.61%"></div>
@@ -41,6 +43,8 @@ export default {
     },
 
     largeThumb() {
+      // 如果不是放在七牛上，则是外链图片，不需要渐进式加载
+      if(!this.isCDN) return this.thumb;
       return this.mobileLayout
             ? `${this.thumb}?imageView2/1/w/350/h/170/format/webp/q/75|imageslim`
             : `${this.thumb}?imageView2/1/w/630/h/300/format/webp/q/75|imageslim`
@@ -52,6 +56,10 @@ export default {
             : `${this.thumb}?imageView2/1/w/630/h/300/format/webp/q/1|imageslim`
 
     },
+
+    isCDN() {
+      return this.thumb.includes('https://static.jkchao.cn');
+    }
   },
 
   methods: {
