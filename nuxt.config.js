@@ -10,6 +10,10 @@ module.exports = {
     host: '0.0.0.0' // default: localhost
   },
 
+  render: {
+    csp: true
+  },
+
   /*
    ** Headers of the page
    */
@@ -90,7 +94,8 @@ module.exports = {
       {
         innerHTML: 'This website requires JavaScript.'
       }
-    ]
+    ],
+    __dangerouslyDisableSanitizers: ['script']
   },
 
   /*
