@@ -64,10 +64,14 @@ export default {
 
 
   watch: {
-    isCDN(val) {
-      if (!val) {
-        this.loadingLarge = true;
-      }
+    isCDN: {
+      handler: function(val) {
+        // console.log(val);
+        if (!val) {
+          this.loadingLarge = true;
+        }
+      },
+      immediate: true
     }
   },
 
