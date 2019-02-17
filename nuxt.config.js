@@ -10,9 +10,9 @@ module.exports = {
     host: '0.0.0.0' // default: localhost
   },
 
-  render: {
-    csp: true
-  },
+  // render: {
+  //   csp: true
+  // },
 
   /*
    ** Headers of the page
