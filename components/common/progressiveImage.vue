@@ -62,6 +62,15 @@ export default {
     }
   },
 
+
+  watch: {
+    isCDN(val) {
+      if (!val) {
+        this.loadingLarge = true;
+      }
+    }
+  },
+
   methods: {
     handleLoadLarge() {
       setTimeout(() => {
