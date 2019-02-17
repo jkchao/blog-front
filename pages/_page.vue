@@ -7,7 +7,7 @@
         :haveMoreArt="haveMoreArt"
         :havePreArt="havePreArt"
         :currentPage="currentPage"
-        :currentType="1"></articleView>
+        currentType=""></articleView>
 
     </div>
   </section>
