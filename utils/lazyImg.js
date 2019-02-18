@@ -20,8 +20,9 @@ const io = new IntersectionObserver(ioes => {
     el.onload = () => {
       setTimeout(() => {
         el.classList.add('loaded');
+        el.style.display = 'block';
         el.previousElementSibling.classList.add('hidden');
-      }, 300);
+      }, 400);
       io.unobserve(el);
     };
 

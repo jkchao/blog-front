@@ -319,13 +319,18 @@ a {
         filter: blur(8px);
         transform: scale(1);
       }
+      
+      &.image-large {
+        display: none;
+        z-index: 1;
+      }
 
       &.loaded {
         opacity: 1;
       }
 
       &.hidden {
-        display: none !important;
+        opacity: 0;
       }
     }
   }
