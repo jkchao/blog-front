@@ -137,10 +137,10 @@ module.exports = {
       src: '~/plugins/progress-image.js',
       ssr: false
     },
-    {
-      src: '~/plugins/ga.js',
-      ssr: false
-    },
+    // {
+    //   src: '~/plugins/ga.js',
+    //   ssr: false
+    // },
     {
       src: '~/plugins/copy.js',
       ssr: false

@@ -56,13 +56,13 @@ const imageParse = (src, title, alt) => {
             <div class="progress-image">
               <div class="progress-image-fill"></div>
               <img
-                src="${link}?imageMogr2/auto-orient/thumbnail/630x/format/webp/blur/1x0/quality/1|imageslim"
+                src="${link}?imageMogr2/auto-orient/thumbnail/630x/blur/1x0/quality/1|imageslim"
                 title="${title || alt || 'jkchao.cn'}"
                 data-src="${link}"
                 class="img-pop image-small"
                 onload="if (window.loadedSmallImg) window.loadedSmallImg(this)"/>
               <img
-                data-large="${link}?imageMogr2/auto-orient/thumbnail/630x/format/webp/blur/1x0/quality/75|watermark/2/text/amtjaGFvLmNu/font/5qW35L2T/fontsize/720/fill/I0ZERkRGRA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim"
+                data-large="${link}?imageMogr2/auto-orient/thumbnail/630x/blur/1x0/quality/75|watermark/2/text/amtjaGFvLmNu/font/5qW35L2T/fontsize/720/fill/I0ZERkRGRA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim"
                 class="img-pop image-large"/>
             </div>
             <div class="img-caption">${title || alt || ''}</div>
@@ -72,7 +72,7 @@ const imageParse = (src, title, alt) => {
 
 const commentImageParse = (src, title, alt) => {
   return `<img
-            src="${src}?imageMogr2/auto-orient/format/webp/interlace/1/blur/1x0/quality/75|watermark/2/text/amtjaGFvLmNu/font/5qW35L2T/fontsize/720/fill/I0ZERkRGRA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim"
+            src="${src}?imageMogr2/auto-orient/interlace/1/blur/1x0/quality/75|watermark/2/text/amtjaGFvLmNu/font/5qW35L2T/fontsize/720/fill/I0ZERkRGRA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim"
             title="${title || alt || 'jkchao.cn'}"
             data-src="${src}"
             class="img-pop"/>
