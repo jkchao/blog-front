@@ -78,6 +78,11 @@ module.exports = {
       {
         async: 'async',
         type: 'text/javascript',
+        src: 'https://static.jkchao.cn/intersection-polyfill.js'
+      },
+      {
+        async: 'async',
+        type: 'text/javascript',
         src: '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
       },
       {
@@ -137,10 +142,10 @@ module.exports = {
       src: '~/plugins/progress-image.js',
       ssr: false
     },
-    // {
-    //   src: '~/plugins/ga.js',
-    //   ssr: false
-    // },
+    {
+      src: '~/plugins/ga.js',
+      ssr: false
+    },
     {
       src: '~/plugins/copy.js',
       ssr: false
