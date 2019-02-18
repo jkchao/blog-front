@@ -90,7 +90,7 @@ import dialogCom from '~/components/common/dialog'
 import comments from '~/components/common/comments'
 import { scrollTo } from '~/utils/scroll'
 import progressiveImage from '~/components/common/progressiveImage.vue'
-// import lazyImg from '../../utils/lazyImg'
+import lazyImg from '../../utils/lazyImg'
 export default {
   name: 'MArticle',
 
@@ -168,7 +168,7 @@ export default {
     },
 
     initEvent () {
-      // lazyImg('.img-pop')
+      lazyImg('.image-large')
       // const list = document.querySelectorAll('.img-pop')
       // let _this = this
       // for (let i = 0; i < list.length; i++) {
@@ -281,12 +281,10 @@ export default {
 
       img {
         max-width: 100%;
-        margin: .5rem auto;
         display: block;
         text-align: center;
         border-radius: $radius;
         transition: all .25s;
-        opacity: .9;
 
         &.img-pop {
           cursor: zoom-in;

@@ -107,7 +107,7 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    // transition: opacity 1s linear;
+    transition: opacity 1s linear;
 
     &.loaded {
       opacity: 1;

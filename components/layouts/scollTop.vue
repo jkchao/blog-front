@@ -1,10 +1,10 @@
 <template>
   <transition-group 
-    tag="div" 
-    name="fade" 
+    tag="div"
+    name="fade"
     class="scoll-aside" 
-    :class="{ mobile: mobileLayout }"
-    v-if="$route.path !== '/'">
+    :class="{ mobile: mobileLayout }">
+    <!-- v-if="$route.path !== '/'" -->
     <a 
       href="javascript:;"
       @click="toogleTheme"

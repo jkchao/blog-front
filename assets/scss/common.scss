@@ -136,7 +136,6 @@ pre {
     text-align: center;
     border-radius: $radius;
     transition: all .25s;
-    opacity: .9;
     cursor: default !important;
 
     &.img-pop {
@@ -291,5 +290,43 @@ a {
 
   &:hover {
     background-color: rgba(95,95,95, .7);
+  }
+}
+
+
+.article-content-thumb {
+  .progress-image {
+    position: relative;
+    background-color: var(--module-bg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+    .progress-image-fill {
+      padding-top: 20%;
+    }
+
+
+    img {
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transition: opacity 1s linear;
+
+      &.image-small {
+        filter: blur(8px);
+        transform: scale(1);
+      }
+
+      &.loaded {
+        opacity: 1;
+      }
+
+      &.hidden {
+        display: none !important;
+      }
+    }
   }
 }
