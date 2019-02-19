@@ -76,7 +76,8 @@
     <dialog-com 
       :visible.sync="showDialog" 
       :class="{'dialog-mobile': mobileLayout}"
-      :img="img">
+      :img="img"
+      :loading="loadingImg">
     </dialog-com>
 
     <!-- <div class="toc" v-html="toc"></div> -->
@@ -110,7 +111,8 @@ export default {
       likeArticles: [],
       showDialog: false,
       img: '',
-      scroll: ''
+      scroll: '',
+      loadingImg: false
     }
   },
 
@@ -171,13 +173,28 @@ export default {
       .then(res => {
         res.default('.image-large')
       })
-      // const list = document.querySelectorAll('.img-pop')
-      // let _this = this
+      const content = document.querySelectorAll('.content')[0]
+      content.addEventListener('click', e => {
+        const target = event.target;
+        if (target.nodeName.toLocaleLowerCase() === 'img') {
+          e.stopPropagation();
+          this.loadingImg = true;
+          const origin = target.nextElementSibling;
+          const src = origin.getAttribute('data-original');
+          origin.onload = () => {
+            this.loadingImg = false;
+          };
+
+          origin.src = src;
+          this.showDialog = true;
+          this.img = src;
+        }
+      })
       // for (let i = 0; i < list.length; i++) {
       //   list[i].addEventListener('click', (e) => {
       //     e.stopPropagation()
       //     this.showDialog = true
-      //     this.img = list[i].getAttribute('src')
+      //     this.img = e.target.getAttribute('src')
       //   })
       // }
     },
