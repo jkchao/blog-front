@@ -246,7 +246,7 @@ export default {
         margin: 0 .1rem;
 
         &.c-link {
-          color: #7f8c8d;
+          color: $blue;
         }
 
         &.image-link {
