@@ -88,7 +88,7 @@ export default {
 
 <style lang="scss" scoped>
 .article-thumb {
-  background-color: var(--module-bg);
+  background-color: $module-bg;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;

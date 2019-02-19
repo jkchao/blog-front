@@ -209,7 +209,7 @@ export default {
     >.meta {
       margin-top: .3rem;
       font-size: .8rem;
-      color: var(--text-disabled);
+      color: $descript;
 
       span {
         margin-right: .5rem;
@@ -269,10 +269,10 @@ export default {
           min-height: 22px;
           display: inline-block;
           padding: 6px;
-          margin: 0 auto;
+          margin: 10px auto;
           border-bottom: 1px solid $border-color;
           font-size: 14px;
-          color: var(--text-disabled);
+          color: $disabled;
           line-height: 1.2;
 
           &:empty {
@@ -335,7 +335,7 @@ export default {
 
       hr {
         height: 0.1rem;
-        background: #e1e4e8;
+        background: $text;
         border: 0;
       }
 

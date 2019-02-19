@@ -154,7 +154,7 @@ export default {
         height: 1rem;
         line-height: 1rem;
         font-size: $font-size-small;
-        color: $descript;
+        color: $secondary;
       }
     }
 

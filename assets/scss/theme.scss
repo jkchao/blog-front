@@ -55,12 +55,12 @@ body {
   &#dark {
     @include theme(
       $theme-white: #282c35,
-      $theme-black: #c8c8c8,
+      $theme-black: #d3d3d3,
       $theme-red: #CA5C54,
       $theme-primary: #75BFD7,
       $theme-green: #73B769,
       $border-color: #696969,
-      $theme-text: #999999
+      $theme-text: #c0c0c0
     )
   }
 }

@@ -251,7 +251,7 @@ export default {
       padding: $sm-pad;
 
       >a {
-        color: var(--text-disabled);
+        color: $disabled;
         font-size: $font-size-small;
 
         &:hover {
