@@ -176,7 +176,10 @@ export default {
       const content = document.querySelectorAll('.content')[0]
       content.addEventListener('click', e => {
         const target = event.target;
-        if (target.nodeName.toLocaleLowerCase() === 'img') {
+        if (
+          target.nodeName.toLocaleLowerCase() === 'img' &&
+          target.classList.contains('image-large')
+        ) {
           e.stopPropagation();
           this.loadingImg = true;
           const origin = target.nextElementSibling;
@@ -185,18 +188,16 @@ export default {
             this.loadingImg = false;
           };
 
+          origin.onerror = () => {
+            this.loadingImg = false;
+            this.img = target.getAttribute('src');
+          };
+
           origin.src = src;
           this.showDialog = true;
           this.img = src;
         }
       })
-      // for (let i = 0; i < list.length; i++) {
-      //   list[i].addEventListener('click', (e) => {
-      //     e.stopPropagation()
-      //     this.showDialog = true
-      //     this.img = e.target.getAttribute('src')
-      //   })
-      // }
     },
 
     scrollToComment () {
