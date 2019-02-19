@@ -140,7 +140,7 @@ export default (content, tags, parseHtml = false) => {
 
   renderer.heading = headingParse;
 
-  if (!parseHtml) renderer.image = commentImageParse;
+  // if (!parseHtml) renderer.image = commentImageParse;
 
   let html = marked(content, { renderer });
 
