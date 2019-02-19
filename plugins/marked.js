@@ -1,5 +1,8 @@
 import marked from 'marked';
 import Hljs from '~/plugins/highlight.js';
+
+import { STATIC_PATH } from '~/config.js';
+
 const languages = [
   'cpp',
   'xml',
@@ -48,25 +51,40 @@ const paragraphParse = text => {
 
 // 对图片进行弹窗处理, 及懒加载处理
 const imageParse = (src, title, alt) => {
-  const index = src.indexOf('/', 8);
-  const url = src.slice(index);
-  const link = 'https://static.jkchao.cn' + url;
+  const isCDN = src.includes(STATIC_PATH);
+
+  if (!isCDN) {
+    return `
+              <figure class="article-content-thumb">
+                <div class="progress-image">
+                  <div class="progress-image-fill"></div>
+                  <img
+                    src="${src}"
+                    title="${title || alt || 'jkchao.cn'}"
+                    class="img-pop image-original"
+                    onload="if (window.loadedSmallImg) window.loadedSmallImg(this)"/>
+                </div>
+                <div class="img-caption">${title || alt || ''}</div>
+              </figure>
+            `;
+  }
+
   return `
           <figure class="article-content-thumb">
             <div class="progress-image">
               <div class="progress-image-fill"></div>
               <img
-                src="${link}?imageMogr2/auto-orient/thumbnail/630x/blur/1x0/quality/1|imageslim"
+                src="${src}?imageMogr2/auto-orient/thumbnail/630x/blur/1x0/quality/1|imageslim"
                 title="${title || alt || 'jkchao.cn'}"
                 class="img-pop image-small"
                 onload="if (window.loadedSmallImg) window.loadedSmallImg(this)"/>
               <img
-                data-large="${link}?imageMogr2/auto-orient/thumbnail/630x/blur/1x0/quality/75|imageslim"
-                data-src="${link}"
+                data-large="${src}?imageMogr2/auto-orient/thumbnail/630x/blur/1x0/quality/75|imageslim"
+                data-src="${src}"
                 class="img-pop image-large"/>
 
               <img
-                data-original="${link}"
+                data-original="${src}"
                 class="img-pop image-original"/>
             </div>
             <div class="img-caption">${title || alt || ''}</div>
@@ -76,7 +94,7 @@ const imageParse = (src, title, alt) => {
 
 const commentImageParse = (src, title, alt) => {
   return `<img
-            src="${src}?imageMogr2/auto-orient/interlace/1/blur/1x0/quality/75|imageslim"
+            src="${src}"
             title="${title || alt || 'jkchao.cn'}"
             data-src="${src}"
             class="img-pop"/>
