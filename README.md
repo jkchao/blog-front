@@ -71,7 +71,11 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - ~支持 PWA~
 
-- CDN 缓存
+- ~CDN 缓存~
+
+- 文章详情页面，相关文章推荐
+
+- 添加大赏功能
 
 ## Build Setup
 

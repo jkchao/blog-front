@@ -33,22 +33,7 @@
             <!-- <a href="" target="_blank"><i class="iconfont icon-stackoverflow"></i></a> -->
             <!-- <a href="" target="_blank"><i class="iconfont icon-zhihu"></i></a> -->
             <a href="mailto:jkchaom@gmail.com" target="_blank"><i class="iconfont icon-email"></i></a>
-            <a
-            href="javascript:;" 
-            class="wechat"
-            @mouseover="showBox = true"
-            @mouseleave="showBox = false"><i class="iconfont icon-wechat"></i></a>
           </span>
-          <transition name="fade">
-            <div 
-            class="wechat-box" 
-            v-show="showBox"
-            @mouseover="showBox = true"
-            @mouseleave="showBox = false">
-              <img src="../static/images/code.jpeg" alt="code" width="150px">
-              <span class="arrow"></span>
-            </div>
-          </transition>
         </div>
       </div>
       <div class="user-box">
@@ -64,11 +49,17 @@
     </p>
     <div class="text-box ">
       <div class="text">
-        <p>Too young too simple, sometimes native</p>
-        <p>Have so many new ideas, <br v-if="mobileLayout"/>maybe i will go to relize it</p>
-        <p>Enjoy the present</p>
-        <p>Always on the road</p>
-        <p>All of me in the code and music</p>
+        <div class="left">
+          <p>Too young too simple, sometimes native</p>
+          <p>Have so many new ideas, <br v-if="mobileLayout"/>maybe i will go to relize it</p>
+          <p>Enjoy the present</p>
+          <p>Always on the road</p>
+          <p>All of me in the code and music</p>
+        </div>
+        <div class="right">
+          <p>联系我</p>
+          <img src="~/static/images/contact.png" alt="" width="120">
+        </div>
       </div>
     </div>
 
@@ -84,6 +75,7 @@
           {{ friend.name }}
       </a>
     </div>
+
 
     <p class="title more">
       <span class="title-name">还有啥？</span>
@@ -223,7 +215,7 @@ export default {
         // grid-template-columns: 1rem auto;
         // grid-gap: 1.5rem;
         margin: .5rem;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
         height: 36px;
         line-height: 36px;
 
@@ -251,30 +243,6 @@ export default {
               font-size: 1.3rem;
               color: $black;
             }
-          }
-        }
-
-        >.wechat-box {
-          position: absolute;
-          right: 11rem;
-          bottom: -10rem;
-          padding: .5rem;
-          background: $module-hover-bg-light-3;
-
-          >.arrow {
-            position: absolute;
-            display: inline-block;
-            width: 0;
-            height: 0;
-            border-width: 7px;
-            border-style: dashed dashed solid;
-            border-color: transparent transparent $module-hover-bg-light-3;
-            overflow: hidden;
-            font-size: 0;
-            line-height: 0;
-            vertical-align: top;
-            top: -14px;
-            left: calc(50% - 3.5px);
           }
         }
       }
@@ -318,10 +286,6 @@ export default {
           // grid-gap: 1rem;
           @include text-overflow();
 
-
-          >.wechat-box {
-            right: 2.6rem;
-          }
         }
       }
       >.user-box {
@@ -336,7 +300,12 @@ export default {
     }
     .text-box .text {
       padding: 1.5rem;
+      flex-wrap: wrap;
       text-align: left;
+
+      .right {
+        display: none;
+      }
     }
   }
 
@@ -344,9 +313,20 @@ export default {
     margin-top: 1rem;
 
     >.text {
-      padding: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3rem 2rem;
       line-height: 2rem;
-      text-align: center;
+
+      .right {
+        width: 12rem;
+        text-align: center;
+
+        p {
+          margin-bottom: .5rem;
+        }
+      }
     }
   }
 }
