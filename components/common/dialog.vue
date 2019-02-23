@@ -101,9 +101,12 @@ export default {
     box-shadow: 0px 8px 46px rgba(0, 0, 0, 0.08), 0px 2px 6px rgba(0, 0, 0, 0.03);
 
     >.dialog-head {
+      position: relative;
       text-align: right;
+      z-index: 2;
+      color: $red;
 
-      .icon {
+      .iconfont {
         font-size: 1.3rem;
       }
     }

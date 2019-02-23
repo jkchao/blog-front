@@ -61,7 +61,7 @@ const imageParse = (src, title, alt) => {
                   <img
                     src="${src}"
                     title="${title || alt || 'jkchao.cn'}"
-                    class="img-pop image-original"
+                    class="image-original"
                     onload="if (window.loadedSmallImg) window.loadedSmallImg(this)"/>
                 </div>
                 <div class="img-caption">${title || alt || ''}</div>
