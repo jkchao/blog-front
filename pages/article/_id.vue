@@ -63,9 +63,9 @@
             <time>
               {{ item.create_at | dateFormat('yyyy-MM-dd') }}
             </time>
-            <nuxt-link :to="`/article/${item._id}`">
+            <a :href="`https://jkchao.cn/article/${item._id}`" target="_blank">
               {{ item.title }}
-            </nuxt-link>
+            </a>
           </div>
           <p class="descript" v-if="!mobileLayout">{{
             item.descript.length > 100
