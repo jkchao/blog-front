@@ -17,6 +17,9 @@ export const state = () => ({
     list: []
   },
 
+  // 相关文章推荐
+  relativeList: [],
+
   fetch: false,
 
   // 文章详情
@@ -30,6 +33,10 @@ export const mutations = {
       pagination: {},
       list: []
     };
+  },
+
+  SET_ART_FILE(state) {
+    state.fetch = false;
   },
 
   SET_HOT_ART(state, data) {
@@ -55,6 +62,10 @@ export const mutations = {
 
   ADD_COMMENT(state) {
     state.details.meta.comments += 1;
+  },
+
+  SET_RELATIVE_ART_LIST(state, list) {
+    state.relativeList = list.filter(item => item.id !== state.details.id);
   }
 };
 
@@ -69,7 +80,7 @@ export const actions = {
     commit('FETCH_ART');
     const res = await service.getArts({
       ...data,
-      page_size: 6
+      page_size: data.page_size || 6
     });
     if (res && res.code === 1) {
       if (!process.client) {
@@ -96,9 +107,18 @@ export const actions = {
   },
 
   // 文章详情
-  async getArt({ commit }, data) {
+  async getArt({ commit, dispatch }, data) {
     const res = await service.getArt(data);
     commit('SET_DETAILS', res.result || {});
+  },
+
+  async getRelativeList({ commit, state }, data) {
+    const list = await service.getArts({
+      tag: state.details.tag[0].id || 0,
+      current_page: 1,
+      page_size: 4
+    });
+    commit('SET_RELATIVE_ART_LIST', list.result.list || []);
   },
 
   // 喜欢文章

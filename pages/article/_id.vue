@@ -48,6 +48,35 @@
       </div>
     </div>
 
+    <div class="relative-article item">
+      <div class="tools">
+        <p class="name">相关推荐</p>
+        <span class="line"></span>
+      </div>
+      <div class="relative-list">
+        <li 
+          v-for="item in relativeList"
+          class="relative-item"
+          :key="item.key"
+          @click="$router.push(`/article/${item._id}`)">
+          <div class="relative-content">
+            <time>
+              {{ item.create_at | dateFormat('yyyy-MM-dd') }}
+            </time>
+            <nuxt-link :to="`/article/${item._id}`">
+              {{ item.title }}
+            </nuxt-link>
+          </div>
+          <p class="descript" v-if="!mobileLayout">{{
+            item.descript.length > 100
+            ? item.descript.slice(0, 100) + '...'
+            : item.descript
+          }}</p>
+        </li>
+        <p class="empty" v-if="relativeList.length === 0">暂无推荐文章</p>
+      </div>
+    </div>
+
     <div class="comment">
       <comments :post-id="article.id" v-if="article.title"></comments>
     </div>
@@ -143,6 +172,10 @@ export default {
       return tochtml
     },
 
+    relativeList() {
+      return this.$store.state.article.relativeList
+    },
+
     isLiked () {
       return this.likeArticles.includes(this.article._id)
     }
@@ -208,6 +241,7 @@ export default {
   mounted () {
     this.init ()
     this.initEvent()
+    this.$store.dispatch('article/getRelativeList')
   }
 }
 </script>
@@ -523,6 +557,85 @@ export default {
     }
     >.share {
       margin-top: 1rem;
+    }
+
+    &.relative-article {
+      position: relative;
+      padding: 1em 0;
+      padding-top: 0;
+
+      .tools {
+        position: relative;
+        display: flex;
+        padding: 1em 0;
+        padding-top: 0;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .name {
+        position: relative;
+        padding-right: 1.5rem;
+        color: var(--theme-black);
+        background: var(--theme-white);
+        font-weight: 500;
+        z-index: 99;
+      }
+
+      .relative-list {
+        padding: 1.5rem;
+      }
+
+      .empty {
+        text-align: center;
+        font-size: 1.3rem;
+      }
+
+      .relative-item {
+        width: 100%;
+        padding: 0 2rem;
+        margin: 1.5rem 0;
+        cursor: pointer;
+      }
+
+      .descript {
+        padding: .5rem 1rem;
+      }
+
+      .relative-content::after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 6px;
+        width: 6px;
+        height: 6px;
+        margin-left: -4px;
+        background: var(--text-light-4);
+        border-radius: 50%;
+      }
+
+      .relative-content {
+        position: relative;
+        display: flex;
+        height: 20px;
+        line-height: 20px;
+        a {
+          margin-left: 1.2rem;
+          text-decoration: underline;
+          color: var(--theme-black);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          line-height: 16px;
+        }
+
+        time {
+          margin-left: 1rem;
+          color: $dividers;
+          font-size: $font-size-small;
+        }
+      }
     }
   }
 
