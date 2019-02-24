@@ -241,7 +241,9 @@ export default {
   mounted () {
     this.init ()
     this.initEvent()
-    this.$store.dispatch('article/getRelativeList')
+    this.$nextTick(() => {
+      this.$store.dispatch('article/getRelativeList')
+    })
   }
 }
 </script>
@@ -588,6 +590,7 @@ export default {
       }
 
       .empty {
+        padding: 3rem 1.5rem 0rem 1.5rem;
         text-align: center;
         font-size: 1.3rem;
       }
@@ -620,20 +623,21 @@ export default {
         display: flex;
         height: 20px;
         line-height: 20px;
+        color: $dividers;
+        font-size: 1.3rem;
+
         a {
           margin-left: 1.2rem;
           text-decoration: underline;
-          color: var(--theme-black);
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          line-height: 16px;
+          line-height: 14px
         }
 
         time {
           margin-left: 1rem;
-          color: $dividers;
-          font-size: $font-size-small;
+          font-size: .8em;
         }
       }
     }

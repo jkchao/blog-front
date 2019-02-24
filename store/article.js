@@ -114,7 +114,7 @@ export const actions = {
 
   async getRelativeList({ commit, state }, data) {
     const list = await service.getArts({
-      tag: state.details.tag[0].id || 0,
+      tag: state.details.tag[0]._id || 0,
       current_page: 1,
       page_size: 4
     });
