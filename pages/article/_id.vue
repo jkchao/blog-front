@@ -57,8 +57,7 @@
         <li 
           v-for="item in relativeList"
           class="relative-item"
-          :key="item.key"
-          @click="$router.push(`/article/${item._id}`)">
+          :key="item.key">
           <div class="relative-content">
             <time>
               {{ item.create_at | dateFormat('yyyy-MM-dd') }}
