@@ -8,6 +8,8 @@ ADMIN: [vue-admin](https://github.com/jkchao/vue-admin)
 
 SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
+**注意**：此项目的后端接口为 RESTFul 版的接口，你可以 clone [blog-service](https://github.com/jkchao/blog-service/tree/master) master 分之，来启动此项目。
+
 ---
 
 ![](https://static.jkchao.cn/f3.png)
@@ -67,15 +69,21 @@ SERVICE: [node-koa](https://github.com/jkchao/node-koa)
 
 - ~归档优化~
 
-- TypeScript 重构
-
 - ~支持 PWA~
 
 - ~CDN 缓存~
 
 - 文章详情页面，相关文章推荐
 
-- 添加大赏功能
+- 添加打赏功能
+
+- RSS
+
+- GraphQL
+
+- Next.js
+
+- TypeScript 重构
 
 ## Build Setup
 
