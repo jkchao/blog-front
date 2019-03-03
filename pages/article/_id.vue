@@ -766,6 +766,14 @@ export default {
     >.info {
       line-height: 20px;
     }
+
+    .relative-list {
+      padding: 0;
+
+      time {
+        width: 120px;
+      }
+    }
   }
 }
 

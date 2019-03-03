@@ -31,9 +31,9 @@
       <p class="icp">
         <time>©{{new Date().getFullYear()}}</time>
         <span class="hr"></span>
-        <a href="mailto:jkchaom@gmail.com">邮箱</a>
+        <a href="mailto:jkchaom@gmail.com" _target="_blank">邮箱</a>
         <span class="hr"></span>
-        <a href="https://github.com/jkchao">GitHub</a>
+        <a href="https://github.com/jkchao" _target="_blank">GitHub</a>
         <span class="hr"></span>
         <span>RSS</span>
       </p>
