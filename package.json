@@ -14,11 +14,6 @@
     "precommit": "lint-staged",
     "test": "jest"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,json,ts,css,md.vue}": [
       "prettier --write",
@@ -26,8 +21,10 @@
     ]
   },
   "dependencies": {
+    "@commitlint/cli": "^7.5.2",
     "@nuxtjs/babel-preset-app": "^0.8.0",
     "@nuxtjs/component-cache": "^1.1.4",
+    "@nuxtjs/feed": "^1.1.0",
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/style-resources": "^0.1.2",
     "axios": "^0.18.0",
@@ -46,6 +43,7 @@
     "nuxt": "^2.3.4"
   },
   "devDependencies": {
+    "@commitlint/config-angular": "^7.5.0",
     "@nuxtjs/eslint-config": "^0.0.1",
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-core": "7.0.0-bridge.0",
