@@ -21,7 +21,6 @@
     ]
   },
   "dependencies": {
-    "@commitlint/cli": "^7.5.2",
     "@nuxtjs/babel-preset-app": "^0.8.0",
     "@nuxtjs/component-cache": "^1.1.4",
     "@nuxtjs/feed": "^1.1.0",
@@ -43,6 +42,7 @@
     "nuxt": "^2.3.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.5.2",
     "@commitlint/config-angular": "^7.5.0",
     "@nuxtjs/eslint-config": "^0.0.1",
     "@vue/test-utils": "^1.0.0-beta.27",
