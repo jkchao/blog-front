@@ -77,6 +77,7 @@ export default {
           name: '文章',
           icon: 'iconfont icon-home',
           children: [
+            { path: '/', name: '全部' },
             { path: '/code', name: '码农' },
             { path: '/fuck', name: '民谣' },
             { path: '/think', name: '读书' },
