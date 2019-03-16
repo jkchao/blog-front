@@ -348,7 +348,7 @@ export default {
 
       p {
         line-height: 1.8rem;
-        margin-bottom: 1rem;
+        margin: 1.5rem 0;
 
         &.text-center {
           text-align: center;
@@ -360,7 +360,7 @@ export default {
       }
 
       iframe {
-        margin-bottom: 1rem;
+        margin: 1.5rem 0;
         background: $black;
 
         &.music {
@@ -395,7 +395,7 @@ export default {
       blockquote {
   
         padding: 0 1rem;
-        margin-bottom: 1rem;
+        margin: 1.5rem 0;
         color: #6a737d;
         border-left: 0.25rem solid #dfe2e5;
   
@@ -418,16 +418,17 @@ export default {
       ul,
       ol {
         padding-left: 2rem;
-        margin-bottom: 1rem;
+        margin: 1.5rem 0;
 
         >li {
-          line-height: 1.8rem;
+          line-height: 1.5rem;
           padding: .5rem;
           list-style-type: disc;
 
 
           >p {
             text-indent: 0;
+            margin: 0;
           }
 
           >ul {
@@ -479,10 +480,11 @@ export default {
         margin: 0;
         border-radius: $radius;
         background-color: $module-hover-bg;
+        color: $red-light-1;
       }
 
       pre {
-        margin-bottom: 1rem;
+        margin: 1.5rem 0;
         overflow: auto;
         font-size: 85%;
         line-height: 1.45;
@@ -499,6 +501,7 @@ export default {
           display: block;
           line-height: 1.6rem;
           background-color: transparent;
+          color: $text;
         }
       }
     }
@@ -557,7 +560,7 @@ export default {
       }
     }
     >.share {
-      margin-top: 1rem;
+      margin-top: 1.3rem;
     }
 
     &.relative-article {
@@ -602,7 +605,7 @@ export default {
       }
 
       .descript {
-        padding: .5rem 1rem;
+        padding: .5rem 1.3rem;
       }
 
       .relative-content::after {
@@ -627,11 +630,6 @@ export default {
 
         a {
           margin-left: 1.2rem;
-          text-decoration: underline;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          line-height: 14px
         }
 
         time {
@@ -770,8 +768,18 @@ export default {
     .relative-list {
       padding: 0;
 
+      .relative-content {
+        flex-wrap: wrap;
+        height: auto;
+      }
+
+      a {
+        margin-top: .5rem;
+      }
+
       time {
-        width: 120px;
+        width: 100px;
+        min-width: 100px;
       }
     }
   }
