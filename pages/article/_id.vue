@@ -43,10 +43,17 @@
              target="_blank">非商用-署名-自由转载</a>
         </div>
       </div>
+
+
       <div class="share">
         <share class="article-share"></share>
       </div>
     </div>
+
+
+    <appreciate
+      :mobileLayout="mobileLayout"
+      class="item appreciate-list"></appreciate>
 
     <div class="relative-article item">
       <div class="tools">
@@ -119,6 +126,8 @@ import dialogCom from '~/components/common/dialog'
 import comments from '~/components/common/comments'
 import { scrollTo } from '~/utils/scroll'
 import progressiveImage from '~/components/common/progressiveImage.vue'
+import appreciate from '~/components/common/appreciate.vue'
+
 export default {
   name: 'MArticle',
 
@@ -144,7 +153,7 @@ export default {
     }
   },
 
-  components: { share, dialogCom, comments, progressiveImage },
+  components: { share, dialogCom, comments, progressiveImage, appreciate },
 
   computed: {
     mobileLayout () {
@@ -563,7 +572,8 @@ export default {
       margin-top: 1.3rem;
     }
 
-    &.relative-article {
+    &.relative-article,
+    &.appreciate-list {
       position: relative;
       padding: 1em 0;
       padding-top: 0;

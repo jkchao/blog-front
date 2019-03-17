@@ -76,21 +76,9 @@
       </a>
     </div>
 
-    <p class="title more" :class="{'title-mobile': mobileLayout}">
-      <span class="title-name">赞赏支持</span>
-      <span class="line"></span>
-    </p>
-    <div class="appreciate">
-      <div class="appreciate-item">
-        <img src="~/static/images/wechat.jpg" alt="" width="200">
-        <p>微信</p>
-      </div>
-      <div class="appreciate-item">
-        <img src="~/static/images/zhifubao.jpg" alt="" width="200">
-        <p>支付宝</p>
-      </div>
-
-    </div>
+    <appreciate
+      :mobileLayout="mobileLayout"
+      ></appreciate>
 
 
     <p class="title more">
@@ -112,7 +100,8 @@
 
 <script>
 
-import comments from '~/components/common/comments'
+import comments from '~/components/common/comments.vue'
+import appreciate from '~/components/common/appreciate'
 
 export default {
 
@@ -144,18 +133,18 @@ export default {
     }
   },
 
-  components: { comments }
+  components: { comments, appreciate }
 }
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 
 .about {
   width: $container-min-width;
   margin: 0 auto;
 
-  >.title {
+  .title {
     position: relative;
     padding: 0.5rem 0rem;
     line-height: 1.5rem;
@@ -175,15 +164,15 @@ export default {
     }
   }
 
-  >.title.more {
+  .title.more {
     margin-top: 2rem;
   }
 
-  >.title-mobile {
+  .title-mobile {
     margin-top: 0;
   }
 
-  >.last {
+  .last {
     padding: 2rem;
     border: 0;
 
@@ -196,7 +185,7 @@ export default {
     }
   }
 
-  > .friend {
+  .friend {
     display: flex;
     flex-wrap: wrap;
     padding: 2rem 2rem 1rem 2rem;
@@ -216,21 +205,7 @@ export default {
     }
   }
 
-  .appreciate {
-    display: flex;
-    justify-content: space-around;
-    padding: 2rem 2rem 1rem 2rem;
-
-    .appreciate-item {
-      text-align: center;
-
-      p {
-        margin-top: 1rem;
-      }
-    }
-  }
-
-  >.info-box {
+  .info-box {
     display: flex;
     justify-content: space-between;
 
@@ -332,14 +307,6 @@ export default {
 
       .right {
         display: none;
-      }
-    }
-
-    .appreciate {
-      flex-wrap: wrap;
-
-      > .appreciate-item:first-child {
-        margin-bottom: 1rem;
       }
     }
   }
