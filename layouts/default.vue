@@ -15,7 +15,7 @@
         </div>    
       </transition>
 
-      <transition-group 
+      <transition-group
           tag="div" 
           class="container clearfix main-container" 
           name="slide-up" 
@@ -82,7 +82,8 @@ export default {
     },
 
     isWelcome () {
-      return this.$store.state.options.isWelcome
+      return false;
+      // return this.$store.state.options.isWelcome
     },
 
     mobileLayout () {
@@ -95,6 +96,10 @@ export default {
 
     isError () {
       return this.$store.state.options.isError
+    },
+
+    pageLoading() {
+      return this.$store.state.options.pageLoading
     }
   },
 
@@ -105,7 +110,7 @@ export default {
   },
 
   mounted () {
-    const theme = window.localStorage.getItem('THEME') || 'light'
+    const theme = window.localStorage.getItem('THEME') || 'dark'
     document.body.id = theme
   }
 }
@@ -146,7 +151,7 @@ export default {
     @include transition(all .3s ease-out);
 
     >.main-container {
-      min-height: calc(100vh - 156px);
+      min-height: calc(100vh - 196px);
       margin-top: $normal-pad;
     }
 

@@ -1,5 +1,5 @@
 <template>
-    <div tag="div"  class="article-box" :class="{'mobile': mobileLayout}">
+    <div tag="div" class="article-box" :class="{'mobile': mobileLayout}">
       <div
         class="article-item"
         v-for="item in articleList"
@@ -46,11 +46,11 @@
 
       <div class="article-foot" key="-2" v-if="!fetch">
         <div class="pre-article">
-          <nuxt-link :to="`/${this.type}/${this.currentPage - 1}`" v-show="havePreArt">上一页</nuxt-link>
+          <nuxt-link :to="this.type ? `/${this.type}/${this.currentPage - 1}` : `/${this.currentPage - 1}`" v-show="havePreArt">上一页</nuxt-link>
         </div>
 
         <div class="loading-more end-article" key="-2" v-show="haveMoreArt">
-          <nuxt-link :to="`/${this.type}/${this.currentPage + 1}`">下一页</nuxt-link>
+          <nuxt-link :to="this.type ? `/${this.type}/${this.currentPage + 1}` : `/${this.currentPage + 1}`">下一页</nuxt-link>
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import loadingCom from '~/components/common/pageLoading/pageLoading'
+import loadingCom from '~/components/common/loading/index.vue'
 export default {
   components: {
     loadingCom
@@ -154,7 +154,7 @@ export default {
         height: 1rem;
         line-height: 1rem;
         font-size: $font-size-small;
-        color: $descript;
+        color: $secondary;
       }
     }
 

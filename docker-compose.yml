@@ -5,5 +5,5 @@ services:
     command: npm run deploy
     ports: 
       - 3000:3000
-    volumes: 
-      - /home/blog-front:/usr/src/app
+    # volumes: 
+    #   - /home/blog-front:/usr/src/app

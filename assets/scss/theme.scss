@@ -44,9 +44,9 @@ body {
     @include theme(
       $theme-white: #fff,
       $theme-black: #24292e,
-      $theme-red: #ea6f5a,
-      $theme-primary: #20A0FF,
-      $theme-green: #5ab95c,
+      $theme-red: #CA5C54,
+      $theme-primary: #75BFD7,
+      $theme-green: #73B769,
       $border-color: #eee,
       $theme-text: #666
     )
@@ -54,13 +54,13 @@ body {
 
   &#dark {
     @include theme(
-      $theme-white: #4a4a4a,
-      $theme-black: #c8c8c8,
-      $theme-red: #ea6f5a,
-      $theme-primary: #20A0FF,
-      $theme-green: #5ab95c,
+      $theme-white: #282c35,
+      $theme-black: #d3d3d3,
+      $theme-red: #CA5C54,
+      $theme-primary: #75BFD7,
+      $theme-green: #73B769,
       $border-color: #696969,
-      $theme-text: #999999
+      $theme-text: #c0c0c0
     )
   }
 }

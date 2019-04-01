@@ -8,7 +8,8 @@
           </div>
           <div class="dialog-content">
             <slot></slot>
-            <img :src="img" alt="" v-if="img" class="close" v-click-outside="hide" @click="hide">
+            <LoadingComponent v-show="loading"></LoadingComponent>
+            <img :src="img" alt="" v-if="img" class="close" v-click-outside="hide" @click="hide" v-show="!loading">
           </div>
           <div class="dialog-foot">
             <slot name="foot"></slot>
@@ -20,6 +21,9 @@
 </template>
 
 <script>
+
+import LoadingComponent from './loading/index.vue';
+
 export default {
   name: 'Mdialog',
 
@@ -32,7 +36,11 @@ export default {
     }
   },
 
-  props: ['visible', 'img'],
+  components: {
+    LoadingComponent
+  },
+
+  props: ['visible', 'img', 'loading'],
 
   computed: {
 
@@ -93,9 +101,12 @@ export default {
     box-shadow: 0px 8px 46px rgba(0, 0, 0, 0.08), 0px 2px 6px rgba(0, 0, 0, 0.03);
 
     >.dialog-head {
+      position: relative;
       text-align: right;
+      z-index: 2;
+      color: $red;
 
-      .icon {
+      .iconfont {
         font-size: 1.3rem;
       }
     }

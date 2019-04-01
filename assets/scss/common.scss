@@ -3,11 +3,11 @@
 html,
 body {
   margin: 0;
-  color: var(--text);
+  color: $text;
   letter-spacing: 0.5px;
   // font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
-  font-size: $font-size-base;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
@@ -22,6 +22,7 @@ body.mobile {
   overflow-x: hidden;
   padding: 0;
   background: $white;
+  font-size: 14px;
 }
 
 // @font-face {
@@ -136,7 +137,6 @@ pre {
     text-align: center;
     border-radius: $radius;
     transition: all .25s;
-    opacity: .9;
     cursor: default !important;
 
     &.img-pop {
@@ -176,7 +176,7 @@ pre {
 
   hr {
     height: 0.1rem;
-    background: #e1e4e8;
+    background: $text;
     border: 0;
   }
 
@@ -291,5 +291,48 @@ a {
 
   &:hover {
     background-color: rgba(95,95,95, .7);
+  }
+}
+
+
+.article-content-thumb {
+  .progress-image {
+    position: relative;
+    background-color: $module-bg;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+    .progress-image-fill {
+      padding-top: 20%;
+    }
+
+
+    img {
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transition: opacity 1s linear;
+
+      &.image-small {
+        filter: blur(8px);
+        transform: scale(1);
+      }
+      
+      &.image-large {
+        display: none;
+        z-index: 1;
+      }
+
+      &.loaded {
+        opacity: 1;
+      }
+
+      &.hidden {
+        opacity: 0;
+      }
+    }
   }
 }

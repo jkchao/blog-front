@@ -2,7 +2,7 @@
   <div class="article-list" :class="{'mobile': mobileLayout}">
 
     <div class="article-cont">
-      <h3 class="">{{ article.title }}</h3>
+      <h3 class="article-title">{{ article.title }}</h3>
       <div class="meta">
         <span class="time">{{ article.create_at | dateFormat('yyyy.MM.dd hh:mm') }}</span>
         <span class="num" v-if="!mobileLayout">字数 {{ article.content.length }}</span>
@@ -13,9 +13,8 @@
           <!-- <span class="disqus-comment-count" :data-disqus-identifier="article._id"></span> -->
         </span>
       </div>
-      <div class="article-thumb" v-if="article.thumb">
-        <img :src="article.thumb" alt="">
-      </div>
+      <progressive-image
+        :thumb="article.thumb"></progressive-image>
       <div class="content" v-html="articleContent"></div>
     </div>
 
@@ -44,8 +43,43 @@
              target="_blank">非商用-署名-自由转载</a>
         </div>
       </div>
+
+
       <div class="share">
         <share class="article-share"></share>
+      </div>
+    </div>
+
+
+    <appreciate
+      :mobileLayout="mobileLayout"
+      class="item appreciate-list"></appreciate>
+
+    <div class="relative-article item">
+      <div class="tools">
+        <p class="name">相关推荐</p>
+        <span class="line"></span>
+      </div>
+      <div class="relative-list">
+        <li 
+          v-for="item in relativeList"
+          class="relative-item"
+          :key="item.key">
+          <div class="relative-content">
+            <time>
+              {{ item.create_at | dateFormat('yyyy-MM-dd') }}
+            </time>
+            <a :href="`https://jkchao.cn/article/${item._id}`" target="_blank">
+              {{ item.title }}
+            </a>
+          </div>
+          <p class="descript" v-if="!mobileLayout">{{
+            item.descript.length > 100
+            ? item.descript.slice(0, 100) + '...'
+            : item.descript
+          }}</p>
+        </li>
+        <p class="empty" v-if="relativeList.length === 0">暂无推荐文章</p>
       </div>
     </div>
 
@@ -77,7 +111,8 @@
     <dialog-com 
       :visible.sync="showDialog" 
       :class="{'dialog-mobile': mobileLayout}"
-      :img="img">
+      :img="img"
+      :loading="loadingImg">
     </dialog-com>
 
     <!-- <div class="toc" v-html="toc"></div> -->
@@ -90,7 +125,9 @@ import share from '~/components/layouts/share'
 import dialogCom from '~/components/common/dialog'
 import comments from '~/components/common/comments'
 import { scrollTo } from '~/utils/scroll'
-// import lazyImg from '../../utils/lazyImg'
+import progressiveImage from '~/components/common/progressiveImage.vue'
+import appreciate from '~/components/common/appreciate.vue'
+
 export default {
   name: 'MArticle',
 
@@ -111,11 +148,12 @@ export default {
       likeArticles: [],
       showDialog: false,
       img: '',
-      scroll: ''
+      scroll: '',
+      loadingImg: false
     }
   },
 
-  components: { share, dialogCom, comments },
+  components: { share, dialogCom, comments, progressiveImage, appreciate },
 
   computed: {
     mobileLayout () {
@@ -140,6 +178,10 @@ export default {
       })
       tochtml += '</ul>'
       return tochtml
+    },
+
+    relativeList() {
+      return this.$store.state.article.relativeList
     },
 
     isLiked () {
@@ -168,16 +210,35 @@ export default {
     },
 
     initEvent () {
-      // lazyImg('.img-pop')
-      const list = document.querySelectorAll('.img-pop')
-      let _this = this
-      for (let i = 0; i < list.length; i++) {
-        list[i].addEventListener('click', (e) => {
-          e.stopPropagation()
-          this.showDialog = true
-          this.img = list[i].getAttribute('src')
-        })
-      }
+      import('../../utils/lazyImg')
+      .then(res => {
+        res.default('.image-large')
+      })
+      const content = document.querySelectorAll('.content')[0]
+      content.addEventListener('click', e => {
+        const target = event.target;
+        if (
+          target.nodeName.toLocaleLowerCase() === 'img' &&
+          target.classList.contains('image-large')
+        ) {
+          e.stopPropagation();
+          this.loadingImg = true;
+          const origin = target.nextElementSibling;
+          const src = origin.getAttribute('data-original');
+          origin.onload = () => {
+            this.loadingImg = false;
+          };
+
+          origin.onerror = () => {
+            this.loadingImg = false;
+            this.img = target.getAttribute('src');
+          };
+
+          origin.src = src;
+          this.showDialog = true;
+          this.img = src;
+        }
+      })
     },
 
     scrollToComment () {
@@ -188,6 +249,9 @@ export default {
   mounted () {
     this.init ()
     this.initEvent()
+    this.$nextTick(() => {
+      this.$store.dispatch('article/getRelativeList')
+    })
   }
 }
 </script>
@@ -200,10 +264,14 @@ export default {
 
   >.article-cont {
 
+    .article-title {
+      font-size: $font-size-title;
+    }
+
     >.meta {
       margin-top: .3rem;
       font-size: .8rem;
-      color: var(--text-disabled);
+      color: $descript;
 
       span {
         margin-right: .5rem;
@@ -213,13 +281,6 @@ export default {
     >h3 {
       font-size: 1.3rem;
       color: $black;
-    }
-
-    >.article-thumb {
-      margin: $lg-pad 0;
-      img {
-        max-width: 100%;
-      }
     }
 
     .content {
@@ -247,7 +308,7 @@ export default {
         margin: 0 .1rem;
 
         &.c-link {
-          color: #7f8c8d;
+          color: $blue;
         }
 
         &.image-link {
@@ -270,10 +331,10 @@ export default {
           min-height: 22px;
           display: inline-block;
           padding: 6px;
-          margin: 0 auto;
+          margin: 10px auto;
           border-bottom: 1px solid $border-color;
           font-size: 14px;
-          color: var(--text-disabled);
+          color: $disabled;
           line-height: 1.2;
 
           &:empty {
@@ -284,12 +345,10 @@ export default {
 
       img {
         max-width: 100%;
-        margin: .5rem auto;
         display: block;
         text-align: center;
         border-radius: $radius;
         transition: all .25s;
-        opacity: .9;
 
         &.img-pop {
           cursor: zoom-in;
@@ -298,7 +357,7 @@ export default {
 
       p {
         line-height: 1.8rem;
-        margin-bottom: 1rem;
+        margin: 1.5rem 0;
 
         &.text-center {
           text-align: center;
@@ -310,7 +369,7 @@ export default {
       }
 
       iframe {
-        margin-bottom: 1rem;
+        margin: 1.5rem 0;
         background: $black;
 
         &.music {
@@ -338,14 +397,14 @@ export default {
 
       hr {
         height: 0.1rem;
-        background: #e1e4e8;
+        background: $text;
         border: 0;
       }
 
       blockquote {
   
         padding: 0 1rem;
-        margin-bottom: 1rem;
+        margin: 1.5rem 0;
         color: #6a737d;
         border-left: 0.25rem solid #dfe2e5;
   
@@ -368,16 +427,17 @@ export default {
       ul,
       ol {
         padding-left: 2rem;
-        margin-bottom: 1rem;
+        margin: 1.5rem 0;
 
         >li {
-          line-height: 1.8rem;
+          line-height: 1.5rem;
           padding: .5rem;
           list-style-type: disc;
 
 
           >p {
             text-indent: 0;
+            margin: 0;
           }
 
           >ul {
@@ -427,13 +487,13 @@ export default {
       code {
         padding: .2rem .4rem;
         margin: 0;
-        font-size: 85%;
         border-radius: $radius;
         background-color: $module-hover-bg;
+        color: $red-light-1;
       }
 
       pre {
-        margin-bottom: 1rem;
+        margin: 1.5rem 0;
         overflow: auto;
         font-size: 85%;
         line-height: 1.45;
@@ -450,6 +510,7 @@ export default {
           display: block;
           line-height: 1.6rem;
           background-color: transparent;
+          color: $text;
         }
       }
     }
@@ -508,7 +569,84 @@ export default {
       }
     }
     >.share {
-      margin-top: 1rem;
+      margin-top: 1.3rem;
+    }
+
+    &.relative-article,
+    &.appreciate-list {
+      position: relative;
+      padding: 1em 0;
+      padding-top: 0;
+
+      .tools {
+        position: relative;
+        display: flex;
+        padding: 1em 0;
+        padding-top: 0;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .name {
+        position: relative;
+        padding-right: 1.5rem;
+        color: var(--theme-black);
+        background: var(--theme-white);
+        font-weight: 500;
+        z-index: 99;
+      }
+
+      .relative-list {
+        padding: 1.5rem;
+      }
+
+      .empty {
+        padding: 3rem 1.5rem 0rem 1.5rem;
+        text-align: center;
+        font-size: 1.3rem;
+      }
+
+      .relative-item {
+        width: 100%;
+        padding: 0 2rem;
+        margin: 1.5rem 0;
+        cursor: pointer;
+      }
+
+      .descript {
+        padding: .5rem 1.3rem;
+      }
+
+      .relative-content::after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 6px;
+        width: 6px;
+        height: 6px;
+        margin-left: -4px;
+        background: var(--text-light-4);
+        border-radius: 50%;
+      }
+
+      .relative-content {
+        position: relative;
+        display: flex;
+        height: 20px;
+        line-height: 20px;
+        color: $dividers;
+        font-size: 1.3rem;
+
+        a {
+          margin-left: 1.2rem;
+        }
+
+        time {
+          margin-left: 1rem;
+          font-size: .8em;
+        }
+      }
     }
   }
 
@@ -635,6 +773,24 @@ export default {
 
     >.info {
       line-height: 20px;
+    }
+
+    .relative-list {
+      padding: 0;
+
+      .relative-content {
+        flex-wrap: wrap;
+        height: auto;
+      }
+
+      a {
+        margin-top: .5rem;
+      }
+
+      time {
+        width: 100px;
+        min-width: 100px;
+      }
     }
   }
 }

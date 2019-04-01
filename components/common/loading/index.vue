@@ -1,5 +1,5 @@
 <template>
-  <div class="loading-page">
+  <div class="loading">
     <canvas ref="canvas"></canvas>
   </div>
 </template>
@@ -7,7 +7,7 @@
 <script>
   import { color, lightness } from 'kewler'
   export default {
-    name: 'loading-page',
+    name: 'loading',
     data () {
       return {
         points: require('./points.json'),
@@ -16,8 +16,7 @@
         context: {},
         radius: 4,
         mainRadius: 8,
-        interval: {},
-        loading: false
+        interval: {}
       }
     },
     methods: {
@@ -69,13 +68,6 @@
       },
       animate () {
         this.interval = setInterval(this.update, 30)
-      },
-      finish () {
-        clearInterval(this.interval)
-        this.loading = false
-      },
-      start () {
-        this.loading = true
       }
     },
     mounted () {
@@ -95,7 +87,7 @@
   }
 </script>
 <style scoped lang="scss">
-  .loading-page {
+  .loading {
     background: transparent;
     z-index: 10;
 

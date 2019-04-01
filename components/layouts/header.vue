@@ -8,14 +8,34 @@
             </nuxt-link>
           </div>
           <nav>
-            <nuxt-link
-              v-for="(list, index) in nav"
-              :key="index"
-              :to="list.path"
-              exact>
-                <!-- <i :class="list.icon"></i> -->
-                <span>{{ list.name }}</span>
-            </nuxt-link>
+            <div
+              class="nav-item"
+               v-for="(list, index) in nav"
+              :key="index">
+              <nuxt-link
+                :to="list.path"
+                exact>
+                {{ list.name }}
+              </nuxt-link>
+              <div class="sub-nav">
+                <template
+                  v-if="list.children">
+
+                   <nuxt-link
+                      class="sub-nav-item"
+                      v-for="child in list.children"
+                      :key="child.path"
+                      :to="child.path"
+                      exact
+                      tag="div">
+                      <span>
+                        {{ child.name }}
+                      </span>
+                  </nuxt-link>      
+                </template>
+
+              </div>
+            </div>
           </nav>
         </div>
 
@@ -52,24 +72,37 @@ export default {
       keyword: '',
       open: false,
       nav: [
-        // { path: '/all', name: '所有文章', icon: 'iconfont icon-home'},
-        { path: '/code', name: '码农', icon: 'iconfont icon-home'},
-        { path: '/think', name: '读书', icon: 'iconfont icon-read'},
-        { path: '/fuck', name: '民谣', icon: 'iconfont icon-user'}
+        {
+          path: '/',
+          name: '文章',
+          icon: 'iconfont icon-home',
+          children: [
+            { path: '/', name: '全部' },
+            { path: '/code', name: '码农' },
+            { path: '/fuck', name: '民谣' },
+            { path: '/think', name: '读书' },
+          ]
+        },
+        { path: '/sitemap', name: '归档', icon: 'iconfont icon-read'},
+        { path: '/about', name: '关于我', icon: 'iconfont icon-read'},
+        { path: '/wall', name: '留言墙', icon: 'iconfont icon-read'}
       ]
     }
   },
 
   computed: {
-    player () {
-      return EventBus.player.player
-    },
-    playerState () {
-      return EventBus.player.playerState
-    },
-    currentSong () {
-      return EventBus.currentSong
-    }
+    // loadingChange() {
+    //   return this.$store.state.options.loadingChange
+    // }
+    // player () {
+    //   return EventBus.player.player
+    // },
+    // playerState () {
+    //   return EventBus.player.playerState
+    // },
+    // currentSong () {
+    //   return EventBus.currentSong
+    // }
   },
 
   watch: {
@@ -223,21 +256,46 @@ header {
   }
 
   nav {
+    display: flex;
 
-    >a {
-      margin-right: 2.25rem;
+    >div.nav-item {
+      position: relative;
+      padding: 0 1.5rem;
       color: $disabled;
 
       >i {
         margin-right: .5rem;
       }
 
-      &:hover {
+      a:hover {
         color: $black;
+      }
+
+      &:hover {
+        > .sub-nav {
+          display: block;
+        }
+      }
+
+      .sub-nav {
+        display: none;
+        position: absolute;
+        top: $header-height;
+        width: 100%;
+        cursor: pointer;
+
+        .sub-nav-item {
+          padding-left: .8rem;
+          background: $code-bg;
+
+          &:hover {
+            background: $module-hover-bg-light-3;
+          }
+        }
       }
     }
 
-    >a.link-active {
+    a.link-active {
       color: $black;
     }
   }

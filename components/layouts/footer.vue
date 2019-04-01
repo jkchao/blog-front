@@ -1,9 +1,10 @@
 <template>
   <footer :class="{'mobile': mobileLayout}" class="">
 
-    <div class="container center">
+    <!-- <div class="container center">
       <ul class="friends clearfix">
           <a
+            rel="noopener"
             v-for="(friend,index) in friends"
             :key="index" 
             :href="friend.url" target="_blank">
@@ -14,9 +15,9 @@
               ></span>
           </a>
       </ul>
-    </div>
+    </div> -->
 
-    <div class="container center">
+    <!-- <div class="container center">
       <p class="mune">
         <nuxt-link to="/about">我</nuxt-link>
         <span class="hr"></span>
@@ -24,21 +25,19 @@
         <span class="hr"></span>
         <nuxt-link to="/sitemap">归档</nuxt-link>
       </p>
-    </div>
+    </div> -->
 
-    <!-- <div class="container">
+    <div class="container">
       <p class="icp">
         <time>©{{new Date().getFullYear()}}</time>
-        {{ option.icp }}
+        <span class="hr"></span>
+        <a href="mailto:jkchaom@gmail.com" _target="_blank">邮箱</a>
+        <span class="hr"></span>
+        <a href="https://github.com/jkchao" _target="_blank">GitHub</a>
+        <span class="hr"></span>
+        <span>RSS</span>
       </p>
-      <div
-        class="clearfix">
-        <span>Theme</span>
-        <span> By
-          <nuxt-link to="/about">{{ user.name }}</nuxt-link>
-        </span>
-      </div>
-    </div> -->
+    </div>
   </footer>
 </template>
 <script>
@@ -78,7 +77,7 @@ footer {
 
   >.container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 
     &.center {
       justify-content: center;

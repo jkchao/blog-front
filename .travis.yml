@@ -1,0 +1,29 @@
+language: node_js
+cache:
+  directories:
+  - node_modules
+node_js:
+- 10.14.0
+branches:
+  only:
+  - master
+install:
+- yarn install
+before_install:
+- openssl aes-256-cbc -K $encrypted_5e40c9d0462f_key -iv $encrypted_5e40c9d0462f_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+after_success:
+- ssh root@47.98.232.68 "cd /home/blog-front && git pull && bash ./script/deploy.sh"
+notifications:
+  email:
+    recipients:
+    - jkchaom@gmail.com
+    on_success: always
+    on_failure: always
+addons:
+  ssh_known_hosts: 47.98.232.68
+env:
+  global:
+  - secure: n64OAFsDqALFY155uKmKkeHxHDqHFRS68LVetRF+q3liSitLZPF6zj6ttXX1uDyqulz+oKLBNDEOqaP+y3IP/ywtiVwvNR+sXhUKdqkbJ9u/2MeOVMnQ+1LzG+NdQRclCkKXdZN95DFPHGjXcQCwNBXDW7Ue9ij+Y6BC+PMSPo8sfCnEBB/JJXGDg+53HhT3mQQxyV+3Rl/88F0UBv8orVpiirS3Tnz7AFaSdZdFVJMY07f5u5hqBhWdQEImeGA8mE3G2a23pw7RQWhuxAvatFAex+FKgAyJsJej2hiaEY+TPUjk52RFn90LBDleHTQFsbq7IFPhlSbrZ2JdlM6wNP4zIFtKMY7ZInE4MiCybXQK956JzyF9tf3yAyPBeFxETxhJg+tk15XkVwUcvAB3QZZsmAgsrbYBkNaJsU/vjIbcSaQvq5a1wYu6CRAozHhhe83ZUkyAhUJz2Vq0B7OyXUXNYWe4EIu7routoGgDpEVLJZFcdTgjpXEMzy8xp50tvPGBo9LZ1spju6CTi0CPQseSoFS9GUgPT4RCujv+uMr5CkuNbEiLunELA7MHrT5cU0X0qfzqbDiwcNPpPfNdgomoCyaF/7x4p/G2MsO5pEx14BVEgyeUtJwx2QzhhlOFBl/LSf8YNq5qTdYZJEoHk1K+3oo1w259mqtd1eNTrqc=
+  - secure: bLmy4iNQ+NsOsQklja4okxQi1pUpvdhMYtKaAwuxe7IQnXh2Ot+tX2xSvW5i+G7XQq91S4qusSdjwG3/k5JETlyzvmXAtbQMHYiIgavQ/se+jXKqQe2Y4HGF3DZ02S7nzoK46hfbMuOs7WvHbVVBG9RDGOYxAHfagT9Cg47d3sEvF3a83xopvlWAVgqYtkFSDnrT4IZwHa1NBL8IgcPvQ8r/COH8DAI+IumjeLPwhN/9u3HG5FT89+ahAhj2rmjXIO9oYVqx0rp/RuCArnmkrcNqXxRVavC9ziFF07G1mkvfXtY26zJ2SiRxUD/JNV3/Ts+jelFU9dJcjY4PCxnX/M1hHo9PTqdX3JQEntOvEU3Mt+KEHTegRWPpTCmpB20DfJoUgCB5tq75M25p261vepCUzgHSAvjbfvH9zjdaMnvhBrZ0OD/YHDUV2cNDOtzMJk0BBMBssuqWJhU7Fkgt8mSRb3xwrJwvMBlN87BHRzAryk4MO9Cq0P2ERp/gEFANlESUx3QKf1hforTfJ9K/vn9xFe1rL0py1UB1lffBI1d5OzVQDtwW/17lqcBqPQlzbltVCECxfUiVcG2FVTbaEifSiNm/l9slLoGK70Nk1YHidlcpZgsqDXqhE7QAQOqpuT7SykoWSARwbYL8cKjcVk2EkSZQHCBIRcUzBg0pYRY=

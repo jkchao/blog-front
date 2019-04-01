@@ -6,9 +6,11 @@
     </p>
     <div class="article">
       <articleView
-        :articleList = "list"
-        :haveMoreArt="haveMoreArt"
-        @loadMore="loadMore"></articleView>
+        :articleList="list"
+        :haveMoreArt="false"
+        :havePreArt="false"
+        :currentPage="currentPage"
+        currentType=""></articleView>
     </div>
   </div>
 </template>
@@ -25,7 +27,10 @@ export default {
   scrollToTop: true,
 
   fetch ({ store, params }) {
-    return store.dispatch('tag/getArtList', params)
+    return store.dispatch('article/getArtList', {
+      ...params,
+      page_size: 20
+    })
   },
 
   head () {
@@ -54,18 +59,8 @@ export default {
       return this.$store.state.article.art.list
     },
 
-    haveMoreArt () {
+    currentPage() {
       return this.$store.state.article.art.pagination.current_page
-              !== this.$store.state.article.art.pagination.total_page
-    }
-  },
-
-  methods: {
-    loadMore () {
-      this.$store.dispatch('tag/getArtList', {
-        current_page: this.$store.state.article.art.pagination.current_page + 1,
-        tag: this.$route.params.tag
-      })
     }
   }
 }
