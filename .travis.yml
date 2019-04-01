@@ -6,7 +6,7 @@ node_js:
 - 10.14.0
 branches:
   only:
-  - v2.0
+  - master
 install:
 - yarn install
 before_install:
