@@ -8,9 +8,8 @@
 
     <div class="article">
       <articleView
-        :articleList = "list"
-        :haveMoreArt="haveMoreArt"
-        @loadMore="loadMore"></articleView>
+        :articleList="list"
+        :haveMoreArt="haveMoreArt"></articleView>
     </div>
   </div>
 </template>
@@ -31,7 +30,10 @@ export default {
   },
 
   fetch ({ store, params }) {
-    return store.dispatch('article/getArtList', params)
+    return store.dispatch('article/getArtList', {
+      ...params,
+      page_size: 100
+    })
   },
 
   data () {
@@ -53,20 +55,6 @@ export default {
 
     list () {
       return this.$store.state.article.art.list
-    },
-
-    haveMoreArt () {
-      return this.$store.state.article.art.pagination.current_page
-              !== this.$store.state.article.art.pagination.total_page
-    }
-  },
-
-  methods: {
-    loadMore () {
-      this.$store.dispatch('article/getArtList', {
-        current_page: this.$store.state.article.art.pagination.current_page + 1,
-        keyword: this.keyword
-      })
     }
   }
 }
