@@ -14,7 +14,8 @@
         </span>
       </div>
       <progressive-image
-        :thumb="article.thumb"></progressive-image>
+        :thumb="article.thumb"
+        v-if="article.thumb"></progressive-image>
       <div class="content" v-html="articleContent"></div>
     </div>
 
