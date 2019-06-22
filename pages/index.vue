@@ -28,11 +28,25 @@
               <nuxt-link :to="`/article/${item._id}`">
                 {{ item.title }}
               </nuxt-link>
+
+              <span
+                @click="goType(item)"
+                class="tag">
+                  <i
+                    :class="{
+                      'iconfont': true,
+                      'icon-code': item.type === 1,
+                      'icon-think': item.type === 2,
+                      'icon-music': item.type === 3
+                    }"></i>
+              </span>
+
               <span
                 v-if="item.meta.views + item.meta.comments * 10 + item.meta.likes * 3 > 1000"
                 >
                 <i class="iconfont icon-hot"></i>  
               </span>
+
             </article>
           </li>
           <!-- <li class="sitemap-item" v-if="item.length === 0">
@@ -109,6 +123,15 @@ export default {
         case 11: return 'November'
         case 12: return 'December'
       }
+    }
+  },
+
+  methods: {
+    goType(item) {
+      let route = '/code';
+      if (item.type === 2) route = '/think';
+      if (item.type === 3) route = 'fuck';
+      this.$router.push(route);
     }
   }
 }
@@ -208,10 +231,11 @@ export default {
             margin-left: 1rem;
             color: $dividers;
             font-size: $font-size-small;
-
+            width: 2.3rem;
           }
 
           a {
+            width: 70%;
             margin-left: $md-pad;
             text-decoration: underline;
             color: $black;
@@ -221,6 +245,11 @@ export default {
           span {
             margin-left: .8rem;
             color: $red;
+
+            &.tag {
+              cursor: pointer;
+              color: $blue;
+            }
           }
         }
       }
@@ -249,10 +278,11 @@ export default {
         }
 
         time {
+          width: 2.3rem;
+
           margin-left: $md-pad;
           color: $dividers;
           font-size: $font-size-small;
-
         }
 
         a {
@@ -260,7 +290,18 @@ export default {
           text-decoration: underline;
           color: $black;
           @include text-overflow();
+          width: 70%;
         }
+
+          span {
+            margin-left: .8rem;
+            color: $red;
+
+            &.tag {
+              cursor: pointer;
+              color: $blue;
+            }
+          }
       }
     }
   }
