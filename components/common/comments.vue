@@ -1,5 +1,5 @@
 <template>
-  <div class="comment-box" id="comment-box" :class="{ mobile: mobileLayout }">
+  <div class="comment-box" id="comment-box" :class="{ mobile: mobileLayout }" v-click-outside="clickOut">
     <div class="tools">
       <div class="total">
         <strong class="count">{{ comment.data.pagination.total || 0 }}</strong>
@@ -157,10 +157,14 @@
       <!-- <div class="empty-box" v-if="!comment.data.data.length && !comment.fetching">暂无评论</div> -->
       <div class="list-box" v-if="comment.data.data.length && comment.data.data.length !== 0" key="1">
         <transition-group name="list" tag="ul" class="comment-list">
-          <li class="comment-item"
+          <li
               v-for="comment in comment.data.data"
               :id="`comment-item-${comment.id}`"
-              :key="comment.id">
+              :key="comment.id"
+              :class="{
+                'comment-item': true,
+                'active': `comment-item-${comment.id}` === activeComment
+              }">
             <div class="cm-avatar" v-if="!mobileLayout">
               <a target="_blank"
                  rel="external nofollow"
@@ -241,6 +245,7 @@
         pid: 0,
         // 评论排序
         sortMode: 1,
+        activeComment: 0,
         // 编辑器相关
         comemntContentHtml: '',
         comemntContentText: '',
@@ -328,6 +333,11 @@
       this.$store.commit('comment/CLEAR_LIST')
     },
     methods: {
+
+      clickOut() {
+        this.activeComment = 0;
+      },
+
       // markdown解析服务
       marked(content) {
         return markdown(content, null, false).html
@@ -470,7 +480,10 @@
             r.setEnd(p, p.childElementCount)
             s.removeAllRanges()
             s.addRange(r)
+          } else {
+            this.activeComment = id;
           }
+          console.log(this.activeComment);
         }
       },
 
@@ -515,7 +528,8 @@
 
       // 获取评论列表
       async loadComemntList(params = {}) {
-        params.sort = this.sortMode
+        // params.sort = this.sortMode
+        params.sort = -1
         const res = await this.$store.dispatch('comment/loadCommentsByPostId', {
           ...params,
           post_id: this.postId
@@ -554,9 +568,9 @@
           this.userCacheMode = true
           this.cancelCommentReply()
           this.clearCommentContent()
-          this.$nextTick(() => {
-            scrollTo(document.querySelector(`#comment-item-${res.result.id}`), 200, { offset: 0 })
-          })
+          // this.$nextTick(() => {
+          //   scrollTo(document.querySelector(`#comment-item-${res.result.id}`), 200, { offset: 0 })
+          // })
           localStorage.setItem('BLOG_USER', JSON.stringify(this.user))
         } else alert('操作失败')
       }
@@ -752,16 +766,20 @@
 
         > .comment-item {
           position: relative;
-          padding: .6em 0 .6em 3.6em;
+          padding: .6em 0 .6em 4.4em;
 
           &:last-child {
             border: 0;
           }
 
+          &.active {
+            border: 1px dashed $red;
+          }
+
           > .cm-avatar {
             display: block;
             position: absolute;
-            left: 0;
+            left: 0.8rem;
             top: 1.2rem;
 
             > a {
