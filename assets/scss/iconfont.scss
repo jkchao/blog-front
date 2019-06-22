@@ -1,10 +1,11 @@
 @font-face {
   font-family: 'iconfont';  /* project id 376001 */
-  src: url('//at.alicdn.com/t/font_376001_1cvrlea65nz.eot');
-  src: url('//at.alicdn.com/t/font_376001_1cvrlea65nz.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_376001_1cvrlea65nz.woff') format('woff'),
-  url('//at.alicdn.com/t/font_376001_1cvrlea65nz.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_376001_1cvrlea65nz.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_376001_kx21qpmiht9.eot');
+  src: url('//at.alicdn.com/t/font_376001_kx21qpmiht9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_376001_kx21qpmiht9.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_376001_kx21qpmiht9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_376001_kx21qpmiht9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_376001_kx21qpmiht9.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -163,3 +164,4 @@
 
 .icon-light:before { content: "\e61b"; }
 
+.icon-hot::before { content: '\e6a0'}

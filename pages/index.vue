@@ -1,9 +1,5 @@
 <template>
   <div class="sitemap" :class="{'mobile': mobileLayout}">
-    <div class="title">
-      <p>标签</p>
-      <span class="line"></span>
-    </div>
     <ul class="tag clearfix">
       <li class="tag-item" v-for="item in tag" :key="item.id">
         <nuxt-link :to="`/tag/${item._id}`">
@@ -14,7 +10,6 @@
     </ul>
 
     <h3 class="title sitemap-article">
-      <p>文章</p>
       <span class="line"></span>
     </h3>
     <div class="sitemap-article-list">
@@ -33,6 +28,11 @@
               <nuxt-link :to="`/article/${item._id}`">
                 {{ item.title }}
               </nuxt-link>
+              <span
+                v-if="item.meta.views + item.meta.comments * 10 + item.meta.likes * 3 > 1000"
+                >
+                <i class="iconfont icon-hot"></i>  
+              </span>
             </article>
           </li>
           <!-- <li class="sitemap-item" v-if="item.length === 0">
@@ -169,7 +169,7 @@ export default {
   }
 
   .sitemap-article-list {
-    padding: 1rem 2rem;
+    padding: 1rem;
 
     .year-name {
       font-size: 1.5rem;
@@ -217,6 +217,11 @@ export default {
             color: $black;
             @include text-overflow();
           }
+
+          span {
+            margin-left: .8rem;
+            color: $red;
+          }
         }
       }
     }
@@ -261,7 +266,6 @@ export default {
   }
 
   >.tag {
-    padding: 1rem 2rem;
 
     >.tag-item {
       float: left;
@@ -270,7 +274,7 @@ export default {
       >a {
         display: block;
         padding: .4rem;
-        color: $secondary;
+        color: $black;
 
         &:hover {
           color: $black;
