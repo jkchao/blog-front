@@ -155,7 +155,7 @@
 
     <transition-group name="list" tag="span">
       <!-- <div class="empty-box" v-if="!comment.data.data.length && !comment.fetching">暂无评论</div> -->
-      <div class="list-box" v-if="comment.data.data.length && comment.data.data.length !== 0" key="1">
+      <div class="list-box" v-if="comment.data.data && comment.data.data.length && comment.data.data.length !== 0" key="1">
         <transition-group name="list" tag="ul" class="comment-list">
           <li
               v-for="comment in comment.data.data"
