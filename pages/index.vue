@@ -23,7 +23,7 @@
             :key="item._id">
             <article>
               <time>
-                {{ item.create_at | dateFormat('MM.dd') }}
+                {{ item.create_at }}
               </time>
               <nuxt-link :to="`/article/${item._id}`">
                 {{ item.title }}
