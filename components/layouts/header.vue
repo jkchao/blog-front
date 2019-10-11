@@ -72,18 +72,18 @@ export default {
       keyword: '',
       open: false,
       nav: [
-        // {
-        //   path: '/',
-        //   name: '文章',
-        //   icon: 'iconfont icon-home',
-        //   children: [
-        //     { path: '/', name: '全部' },
-        //     { path: '/code', name: '码农' },
-        //     { path: '/fuck', name: '民谣' },
-        //     { path: '/think', name: '读书' },
-        //   ]
-        // },
-        { path: '/', name: '文章', icon: 'iconfont icon-read'},
+        {
+          path: '/',
+          name: '文章',
+          icon: 'iconfont icon-home',
+          children: [
+            { path: '/', name: '全部' },
+            { path: '/code', name: '码农' },
+            { path: '/fuck', name: '民谣' },
+            { path: '/think', name: '读书' },
+          ]
+        },
+        // { path: '/', name: '文章', icon: 'iconfont icon-read'},
         { path: '/about', name: '关于我', icon: 'iconfont icon-read'},
         { path: '/wall', name: '留言墙', icon: 'iconfont icon-read'}
       ]
