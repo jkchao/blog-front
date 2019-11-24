@@ -97,7 +97,7 @@ export const actions = {
   async loadCommentsByPostId({ commit, state }, data) {
     data.sort = data.sort || -1;
     data.current_page = data.current_page || 1;
-    data.page_size = data.page_size || 60;
+    data.page_size = data.page_size || 100;
     if (Object.is(data.current_page, 1)) {
       // commit('comment/CLEAR_LIST')
     }
