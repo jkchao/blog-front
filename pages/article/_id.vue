@@ -56,6 +56,11 @@
       :mobileLayout="mobileLayout"
       class="item appreciate-list"></appreciate>
 
+      <book
+        :mobileLayout="mobileLayout"
+          class="item book-list"
+      ></book>
+
     <div class="relative-article item">
       <div class="tools">
         <p class="name">相关推荐</p>
@@ -128,6 +133,7 @@ import comments from '~/components/common/comments'
 import { scrollTo } from '~/utils/scroll'
 import progressiveImage from '~/components/common/progressiveImage.vue'
 import appreciate from '~/components/common/appreciate.vue'
+import book from '~/components/common/book.vue'
 
 export default {
   name: 'MArticle',
@@ -154,7 +160,7 @@ export default {
     }
   },
 
-  components: { share, dialogCom, comments, progressiveImage, appreciate },
+  components: { share, dialogCom, comments, progressiveImage, appreciate, book },
 
   computed: {
     mobileLayout () {
@@ -574,6 +580,7 @@ export default {
     }
 
     &.relative-article,
+    &.book-list,
     &.appreciate-list {
       position: relative;
       padding: 1em 0;

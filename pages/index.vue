@@ -41,11 +41,11 @@
                     }"></i>
               </span>
 
-              <span
+              <!-- <span
                 v-if="item.meta.views + item.meta.comments * 10 + item.meta.likes * 3 > 1000"
                 >
                 <i class="iconfont icon-hot"></i>  
-              </span>
+              </span> -->
 
             </article>
           </li>

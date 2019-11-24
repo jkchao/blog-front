@@ -80,11 +80,17 @@
       :mobileLayout="mobileLayout"
       ></appreciate>
 
+    <book
+      :mobileLayout="mobileLayout"
+      ></book>
+
+
 
     <p class="title more">
       <span class="title-name">还有啥？</span>
       <span class="line"></span>
     </p>
+
     <div class="last">
       <p>你可以在下面申请友请链接，称呼 + 网址 。</p>
       <p>哦，对了，可以看看这篇文章
@@ -102,6 +108,7 @@
 
 import comments from '~/components/common/comments.vue'
 import appreciate from '~/components/common/appreciate'
+import book from '~/components/common/book'
 
 export default {
 
@@ -133,7 +140,7 @@ export default {
     }
   },
 
-  components: { comments, appreciate }
+  components: { comments, appreciate, book }
 }
 
 </script>
@@ -204,6 +211,8 @@ export default {
       }
     }
   }
+
+
 
   .info-box {
     display: flex;
