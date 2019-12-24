@@ -1,17 +1,17 @@
 <template>
   <div>
     <p class="title more tools" :class="{'title-mobile': mobileLayout}">
-      <span class="title-name name">赞赏支持</span>
+      <span class="title-name name">Contact</span>
       <span class="line"></span>
     </p>
     <div class="appreciate">
       <div class="appreciate-item">
-        <img src="~/static/images/wechat.jpg" alt="" :width="mobileLayout ? 160 : 200">
-        <p>微信</p>
+        <img src="~/static/images/qrcode.jpg" alt="" :width="mobileLayout ? 160 : 200">
+        <p>微信公众号</p>
       </div>
       <div class="appreciate-item">
-        <img src="~/static/images/zhifubao.jpg" alt="" :width="mobileLayout ? 160 : 200">
-        <p>支付宝</p>
+        <img src="~/static/images/contact.png" alt="" :width="mobileLayout ? 160 : 200">
+        <p>微信</p>
       </div>
     </div>
   </div>

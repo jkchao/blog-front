@@ -52,9 +52,9 @@
     </div>
 
 
-    <appreciate
+    <!-- <appreciate
       :mobileLayout="mobileLayout"
-      class="item appreciate-list"></appreciate>
+      class="item appreciate-list"></appreciate> -->
 
       <book
         :mobileLayout="mobileLayout"

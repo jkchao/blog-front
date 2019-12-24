@@ -56,10 +56,10 @@
           <p>Always on the road</p>
           <p>All of me in the code and music</p>
         </div>
-        <div class="right">
+        <!-- <div class="right">
           <p>联系我</p>
-          <img src="~/static/images/contact.png" alt="" width="120">
-        </div>
+          <img src="~/static/images/qrcode.jpg" alt="" width="120">
+        </div> -->
       </div>
     </div>
 
@@ -325,10 +325,14 @@ export default {
 
     >.text {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       padding: 3rem 2rem;
       line-height: 2rem;
+
+      .left {
+        text-align: center;
+      }
 
       .right {
         width: 12rem;
