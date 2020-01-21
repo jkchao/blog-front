@@ -7,14 +7,14 @@
         :class="{'mobile-article': mobileLayout}">
         <div class="content">
           <p class="title"><nuxt-link :to="`/article/${item._id}`">{{ item.title }}</nuxt-link></p>
-          <nuxt-link :to="`/article/${item._id}`" v-if="mobileLayout">
+          <!-- <nuxt-link :to="`/article/${item._id}`" v-if="mobileLayout">
             <img :src="item.thumb + '?imageView2/1/w/350/h/180/watermark/2/text/amtjaGFvLmNu/font/Y2FuZGFyYQ==/fontsize/400/fill/I0ZGRkZGRg=='"
             alt=""
             width="100%"
             class="mobil-img"/>
-          </nuxt-link>
-          <p class="abstrack">{{ item.descript | text(200)}}</p>
-          <div class="meta">
+          </nuxt-link> -->
+          <!-- <p class="abstrack">{{ item.descript | text(200)}}</p> -->
+          <!-- <div class="meta">
             <span class="time" v-if="!mobileLayout">
               {{
                 item.create_at | dateFormat('yyyy.MM.dd')
@@ -26,14 +26,14 @@
               }}
             </span>
             <span class="hr"></span>
-            <!-- <span class="read"> {{ item.meta.views }} 次阅读</span> -->
+            <span class="read"> {{ item.meta.views }} 次阅读</span>
             <span class="hr"></span>
             <span class="comments"> {{ item.meta.comments }} 条评论</span>
             <span class="hr"></span>
             <span class="like"> {{ item.meta.likes }} 人喜欢</span>
-          </div>
+          </div> -->
         </div>
-        <span class="article-line"></span>
+        <!-- <span class="article-line"></span> -->
       </div>
 
       <div v-if="articleList.length === 0 && !fetch" class="empty-article" key="0">
@@ -95,14 +95,14 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: $lg-pad 0 $normal-pad;
-    margin-bottom: $xlg-pad;
+    padding: $lg-pad 0 $normal-pad $lg-pad;
+    // margin-bottom: $lg-pad;
     color: $black;
 
     .title {
-      margin-bottom: $sm-pad;
+      // margin-bottom: $sm-pad;
       font-size: $font-size-large;
-      font-weight: 700;
+      // font-weight: 700;
     }
 
     &.mobile-article {
