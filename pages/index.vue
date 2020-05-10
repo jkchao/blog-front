@@ -25,21 +25,24 @@
               <time>
                 {{ item.create_at | dateFormat('MM.dd') }}
               </time>
+
+              <span
+                v-if="!mobileLayout"
+
+                @click="goType(item)"
+                class="tag">
+                {{
+                  item.type === 1
+                    ? 'Code'
+                    : item.type === 2
+                      ? 'Think'
+                      : 'Music'
+                }}
+              </span>
+
               <nuxt-link :to="`/article/${item._id}`">
                 {{ item.title }}
               </nuxt-link>
-
-              <span
-                @click="goType(item)"
-                class="tag">
-                  <i
-                    :class="{
-                      'iconfont': true,
-                      'icon-code': item.type === 1,
-                      'icon-think': item.type === 2,
-                      'icon-music': item.type === 3
-                    }"></i>
-              </span>
 
               <!-- <span
                 v-if="item.meta.views + item.meta.comments * 10 + item.meta.likes * 3 > 1000"
@@ -236,7 +239,7 @@ export default {
 
           a {
             width: 70%;
-            margin-left: $md-pad;
+            margin-left: $sm-pad + $xs-pad;
             text-decoration: underline;
             color: $black;
             @include text-overflow();
@@ -247,8 +250,16 @@ export default {
             color: $red;
 
             &.tag {
+              font-size: 10px;
+              padding: 0.1em 0.4em;
+              background: $module-hover-bg-light-6;
+              border-radius: 2px;
+              color: #ADDCCA;
               cursor: pointer;
-              color: $blue;
+
+              &:hover {
+                // background: $module-bg;
+              }
             }
           }
         }

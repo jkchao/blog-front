@@ -4,21 +4,6 @@
     name="fade"
     class="scoll-aside" 
     :class="{ mobile: mobileLayout }">
-    <!-- v-if="$route.path !== '/'" -->
-    <a 
-      href="javascript:;"
-      @click="toogleTheme"
-      class="scoll-btn theme"
-      key="2"
-      v-if="!mobileLayout">
-        <i
-          class="iconfont"
-          :class="{
-            'icon-dark': theme === 'light',
-            'icon-light': theme === 'dark'
-          }"
-          ></i>
-      </a>
 
     <a class="scoll-btn" @click="scrollTop" v-if="showScroll" key="1">
       <i class="iconfont icon-arrow-up"></i>
