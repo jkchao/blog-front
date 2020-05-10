@@ -260,11 +260,10 @@ export default {
               padding: 0.1em 0.4em;
               background: $module-hover-bg-light-6;
               border-radius: 2px;
-              color: #ADDCCA;
               cursor: pointer;
 
               &.code {
-                color: #ADDCCA;
+                color: #457e86;
               }
 
               &.think {
@@ -272,7 +271,7 @@ export default {
               }
 
               &.music {
-                colode: #c0c0c0;
+                color: #c0c0c0;
               }
 
               &:hover {
