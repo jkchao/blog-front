@@ -30,6 +30,12 @@
                 v-if="!mobileLayout"
 
                 @click="goType(item)"
+
+                :class="{
+                  'code': item.type === 1,
+                  'think': item.type === 2,
+                  'music': item.type === 3
+                }"
                 class="tag">
                 {{
                   item.type === 1
@@ -256,6 +262,18 @@ export default {
               border-radius: 2px;
               color: #ADDCCA;
               cursor: pointer;
+
+              &.code {
+                color: #ADDCCA;
+              }
+
+              &.think {
+                color: #000000;
+              }
+
+              &.music {
+                colode: #c0c0c0;
+              }
 
               &:hover {
                 // background: $module-bg;
