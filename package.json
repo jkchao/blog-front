@@ -65,7 +65,7 @@
     "jest": "^23.6.0",
     "lint-staged": "^8.1.4",
     "mime": "^2.4.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "nodemon": "^1.18.9",
     "prettier": "1.14.3",
     "qiniu": "^7.2.1",
