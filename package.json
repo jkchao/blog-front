@@ -38,7 +38,7 @@
     "howler": "^2.0.5",
     "kewler": "^1.0.8",
     "koa": "^2.6.2",
-    "marked": "^0.3.6",
+    "marked": "^4.0.10",
     "nuxt": "^2.3.4"
   },
   "devDependencies": {
