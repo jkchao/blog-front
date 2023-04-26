@@ -34,7 +34,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.1.1",
     "gravatar": "^1.6.0",
-    "highlight.js": "^9.12.0",
+    "highlight.js": "^10.4.1",
     "howler": "^2.0.5",
     "kewler": "^1.0.8",
     "koa": "^2.6.2",
